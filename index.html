@@ -54,7 +54,7 @@
                     <div class="relative">
                         <i data-lucide="search" class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
                         <input type="text" id="search-input" 
-                            placeholder="Ex: EF07CI01, D12, efeito estufa, frações..." 
+                            placeholder="Ex: EF08CI06, EF07CI01, D12, hormônios..." 
                             class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all">
                     </div>
                 </div>
@@ -126,6 +126,29 @@
         // Database of skills and descriptors
         const db = [
             {
+                id: "EF08CI06",
+                descriptor: "D10",
+                subject: "Ciências",
+                grade: "8º Ano",
+                title: "Puberdade e Ação Hormonal",
+                description: "Discutir as transformações que ocorrem na puberdade considerando a atuação dos hormônios sexuais e do sistema nervoso.",
+                focus: "Compreender a integração entre o sistema nervoso e endócrino na regulação da puberdade e desenvolvimento de caracteres sexuais secundários.",
+                prerequisites: [
+                    "Organização geral do corpo humano (células, tecidos e órgãos)",
+                    "Noções básicas de sistemas do corpo humano (6º ano)"
+                ],
+                pitfalls: [
+                    "Confundir as funções do estrogênio/progesterona com as da testosterona em itens comparativos.",
+                    "Acreditar que as transformações físicas dependem exclusivamente da idade cronológica e não da sinalização hormonal."
+                ],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar gráficos de taxas hormonais ao longo do crescimento e imagens de caracteres secundários." },
+                    { step: 2, action: "Duvidar", detail: "Questionar: 'O que faz o corpo saber o momento exato de iniciar as mudanças na puberdade?'" },
+                    { step: 3, action: "Teorizar", detail: "Mapear o eixo Hipófise -> Gônadas -> Liberação Hormonal -> Alterações corporais." }
+                ],
+                sampleQuestionTip: "Avaliações externas cobram a interpretação de gráficos de variação de níveis hormonais e a identificação da glândula responsável pelo sinal inicial (hipófise)."
+            },
+            {
                 id: "EF07CI01",
                 descriptor: "D14",
                 subject: "Ciências",
@@ -190,7 +213,7 @@
                 methodologyRoute: [
                     { step: 1, action: "Observar", detail: "Leitura guiada de um artigo curto destacando o título e o primeiro parágrafo." },
                     { step: 2, action: "Duvidar", detail: "Perguntar: 'Qual é a posição exata que o autor defende sobre esse tema?'" },
-                    { step: 3, action: "Teorizar", detail: "Mapear a estrutura: Tese $\rightarrow$ Argumentos de Suporte $\rightarrow$ Conclusão." }
+                    { step: 3, action: "Teorizar", detail: "Mapear a estrutura: Tese -> Argumentos de Suporte -> Conclusão." }
                 ],
                 sampleQuestionTip: "Em provas SAEB/Estaduais, o distrator mais forte costuma ser um dado quantitativo mencionado no meio do texto."
             },
@@ -223,12 +246,13 @@
 
         // Render List Items
         function renderList() {
-            const searchVal = document.getElementById('search-input').value.toLowerCase();
+            const searchVal = document.getElementById('search-input').value.toLowerCase().trim();
             const subjectVal = document.getElementById('filter-subject').value;
             const gradeVal = document.getElementById('filter-grade').value;
 
             const filtered = db.filter(item => {
-                const matchSearch = item.id.toLowerCase().includes(searchVal) ||
+                const matchSearch = searchVal === '' || 
+                                    item.id.toLowerCase().includes(searchVal) ||
                                     item.descriptor.toLowerCase().includes(searchVal) ||
                                     item.title.toLowerCase().includes(searchVal) ||
                                     item.description.toLowerCase().includes(searchVal);
@@ -244,8 +268,14 @@
             container.innerHTML = '';
 
             if (filtered.length === 0) {
-                container.innerHTML = `<div class="p-4 bg-white rounded-lg border border-slate-200 text-center text-slate-500 text-sm">Nenhuma habilidade encontrada.</div>`;
+                container.innerHTML = `<div class="p-4 bg-white rounded-lg border border-slate-200 text-center text-slate-500 text-sm">Nenhuma habilidade encontrada para o filtro selecionado.</div>`;
+                document.getElementById('detail-card').innerHTML = `<div class="text-center text-slate-400 py-12">Selecione uma habilidade válida na busca para ver o direcionamento.</div>`;
                 return;
+            }
+
+            // Ensure valid selection
+            if (!filtered.some(i => i.id === selectedId)) {
+                selectedId = filtered[0].id;
             }
 
             filtered.forEach(item => {
@@ -272,12 +302,16 @@
                 `;
                 container.appendChild(card);
             });
+
+            renderDetail();
         }
 
         // Render Detail Card
         function renderDetail() {
-            const item = db.find(i => i.id === selectedId) || db[0];
+            const item = db.find(i => i.id === selectedId);
             const container = document.getElementById('detail-card');
+
+            if (!item) return;
 
             container.innerHTML = `
                 <!-- Top Info Bar -->
@@ -376,6 +410,8 @@
         // Helper function: Copy plan summary
         function copyLessonPlan() {
             const item = db.find(i => i.id === selectedId);
+            if (!item) return;
+
             const text = `NORTEADOR PEDAGÓGICO
 Habilidade: ${item.id} (${item.descriptor})
 Componente: ${item.subject} - ${item.grade}
@@ -385,12 +421,10 @@ FOCO DA AVALIAÇÃO:
 ${item.focus}
 
 ERROS COMUNS / DISTRATORES:
-${item.pitfalls.map(p => '- ' + p).join('
-')}
+${item.pitfalls.map(p => '- ' + p).join('\n')}
 
 ROTA DIDÁTICA:
-${item.methodologyRoute.map(r => `${r.step}. ${r.action}: ${r.detail}`).join('
-')}
+${item.methodologyRoute.map(r => `${r.step}. ${r.action}: ${r.detail}`).join('\n')}
             `;
 
             navigator.clipboard.writeText(text).then(() => {
@@ -405,7 +439,6 @@ ${item.methodologyRoute.map(r => `${r.step}. ${r.action}: ${r.detail}`).join('
 
         // Initial setup
         renderList();
-        renderDetail();
     </script>
 </body>
 </html>
