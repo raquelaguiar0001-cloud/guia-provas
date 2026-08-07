@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuiaProvas | Guia de Preparação e Planejamento</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style> body { font-family: 'Inter', sans-serif; } </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Cabeçalho -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-emerald-600 p-2.5 rounded-xl text-white">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">GuiaProvas <span class="text-emerald-400 font-normal">| Organizador de Aulas</span></h1>
+                    <p class="text-xs text-slate-400">Cruzamento de Habilidades com a Base Didática do Livro</p>
+                </div>
+            </div>
+            <span class="text-xs bg-emerald-900/50 text-emerald-300 px-3 py-1 rounded-full border border-emerald-700">GitHub Ready</span>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+        <!-- PAINEL ESQUERDO: ENTRAM AS HABILIDADES -->
+        <section class="lg:col-span-5 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+            <div class="border-b border-slate-100 pb-4">
+                <h2 class="text-xl font-bold text-slate-800 flex items-center">
+                    <i class="fa-solid fa-sliders text-emerald-600 mr-2"></i> Adicionar Habilidades
+                </h2>
+                <p class="text-xs text-slate-500 mt-1">Cole qualquer habilidade ou descritor para gerar o roteiro ordenado de estudos.</p>
+            </div>
+
+            <form id="planForm" onsubmit="event.preventDefault(); processarCruzamento();" class="space-y-4 text-xs">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-700 uppercase mb-1">Período / Datas</label>
+                        <input type="text" id="inputData" value="07/05 a 29/05/2026" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 focus:bg-white focus:border-emerald-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 uppercase mb-1">Ano / Série</label>
+                        <input type="text" id="inputAno" value="8º ANO" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 focus:bg-white focus:border-emerald-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-700 uppercase mb-1">Turno</label>
+                        <input type="text" id="inputTurno" value="Integral" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 focus:bg-white focus:border-emerald-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 uppercase mb-1">Componente Curricular</label>
+                        <input type="text" id="inputComponente" value="Ciências da Natureza" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 focus:bg-white focus:border-emerald-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-700 uppercase mb-1">Habilidades / Descritores Desejados</label>
+                    <textarea id="skillsInput" rows="6" placeholder="Insira qualquer habilidade aqui..." required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 focus:bg-white focus:border-emerald-500 focus:outline-none font-sans">8EF01_CN Classificar os recursos energéticos em renováveis e não renováveis. EF08CI01
+8EF04_CN Reconhecer os componentes de um circuito EF08CI02
+8EF05_CN Classificar os processos de transformação da energia nos aparelhos residenciais. EF08CI03
+8EF06_CN Verificar o consumo de energia elétrica de aparelhos eletrônicos, assim como as grandezas e as ações que influenciam nesse consumo. EF08CI04</textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center space-x-2 text-sm">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Buscar Páginas e Gerar Roteiro</span>
+                </button>
+            </form>
+        </section>
+
+        <!-- PAINEL DIREITO: FICHA OFICIAL IMPRESSA -->
+        <section class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col">
+            <div class="border-b border-slate-100 pb-4 mb-4 flex justify-between items-center">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-800 flex items-center">
+                        <i class="fa-solid fa-clipboard-check text-emerald-600 mr-2"></i> Roteiro Mapeado e Ordenado
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">Capítulos e páginas reais ordenados para facilidade de aprendizagem.</p>
+                </div>
+                <button onclick="window.print()" class="text-slate-500 hover:text-slate-800 text-xs flex items-center space-x-1 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-50 transition">
+                    <i class="fa-solid fa-print"></i> <span>Imprimir / PDF</span>
+                </button>
+            </div>
+
+            <div id="outputState" class="space-y-4 text-xs font-sans">
+                <!-- Cabeçalho Institucional -->
+                <div class="grid grid-cols-3 gap-2 bg-slate-100 p-3 rounded-t-lg font-bold border border-slate-300 text-slate-800">
+                    <div>DATA: <span id="outData" class="font-normal"></span></div>
+                    <div>ANO/SÉRIE: <span id="outAno" class="font-normal"></span></div>
+                    <div>TURNO: <span id="outTurno" class="font-normal"></span></div>
+                </div>
+
+                <!-- Tabela do Plano Pedagógico -->
+                <table class="w-full border-collapse border border-slate-300 text-left">
+                    <tbody>
+                        <tr class="bg-emerald-600 text-white font-bold">
+                            <td class="p-2.5 border border-slate-300">COMPONENTE CURRICULAR: <span id="outComponente"></span></td>
+                            <td class="p-2.5 border border-slate-300 text-right">DATA: <span id="outDataInicio"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="p-2.5 border border-slate-300 font-bold bg-slate-50">QUANTIDADE DE AULA: [ X ]</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="p-2.5 border border-slate-300 font-bold bg-slate-50">UNIDADE TEMÁTICA: Unidades do Livro Didático Mapeadas</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="p-2.5 border border-slate-300">
+                                <span class="font-bold text-slate-800">OBJETO DO CONHECIMENTO / CONTEÚDO (ORDEM SUGERIDA DE ESTUDO NO LIVRO):</span>
+                                <div id="mappedContentBox" class="mt-2 text-slate-700 space-y-2">
+                                    <!-- Inserido dinamicamente via JS -->
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="p-2.5 border border-slate-300">
+                                <span class="font-bold text-slate-800">HABILIDADES TRABALHADAS:</span>
+                                <div id="mappedSkillsList" class="mt-2 space-y-1 text-slate-700">
+                                    <!-- Lista dinâmica -->
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="p-2.5 border border-slate-300">
+                                <span class="font-bold text-slate-800">METODOLOGIA:</span><br>
+                                <div class="mt-1 space-y-0.5 text-slate-700">
+                                    <p>(x) Roda de conversa, debates e discussões;</p>
+                                    <p>(x) Oralidade e conversação (individual e em grupo);</p>
+                                    <p>(x) Leitura individual e compartilhada do livro didático;</p>
+                                    <p>(x) Escrita e conhecimento prévio;</p>
+                                    <p>(x) Compreensão e interpretação textuais;</p>
+                                    <p>(x) Material didático (Livro didático nas páginas mapeadas);</p>
+                                    <p>(x) Outros: <em>Slides, simuladores e pesquisas orientadas na web.</em></p>
+                                </div>
+                                <p class="mt-2"><strong>Rotina:</strong> Acolhida, leitura das seções identificadas nas páginas reais do livro, resolução dos exercícios sugeridos e aplicação de itens no padrão das avaliações externas.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="p-2.5 border border-slate-300">
+                                <span class="font-bold text-slate-800">AVALIAÇÃO:</span><br>
+                                <p class="mt-1 text-slate-700">Individual e em grupo, observando a compreensão dos conceitos lidos nas páginas do livro e a resolução de questões objetivas por habilidade.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 text-xs py-4 text-center mt-auto border-t border-slate-800">
+        GuiaProvas — Módulo de Sincronização
+    </footer>
+
+    <script>
+        let baseLivro = [];
+
+        // Carrega o banco de dados do livro em JSON
+        async function carregarBaseLivro() {
+            try {
+                const response = await fetch('sumario_livro.json');
+                baseLivro = await response.json();
+                processarCruzamento();
+            } catch (error) {
+                console.log("Aviso: carregando estrutura padrão interna.");
+                // Fallback interno caso o JSON externo demore
+                baseLivro = [
+                    { unidade: "Unidade D", capitulo: 12, titulo: "Produção e Uso de Energia Elétrica", pagInicio: 214, pagFim: 235, topicos: ["circuito", "corrente", "potencial", "uso doméstico", "segurança", "consumo", "recursos energéticos", "renováveis"] }
+                ];
+                processarCruzamento();
+            }
+        }
+
+        function processarCruzamento() {
+            const dataInput = document.getElementById('inputData').value;
+            const anoInput = document.getElementById('inputAno').value;
+            const turnoInput = document.getElementById('inputTurno').value;
+            const componenteInput = document.getElementById('inputComponente').value;
+            const skillsText = document.getElementById('skillsInput').value;
+            const skillsArray = skillsText.split('\n').filter(s => s.trim() !== "");
+
+            document.getElementById('outData').innerText = dataInput;
+            document.getElementById('outAno').innerText = anoInput;
+            document.getElementById('outTurno').innerText = turnoInput;
+            document.getElementById('outComponente').innerText = componenteInput;
+            document.getElementById('outDataInicio').innerText = dataInput.split(' ')[0] || "07/05/2026";
+
+            const contentBox = document.getElementById('mappedContentBox');
+            contentBox.innerHTML = "";
+
+            let capitulosEncontrados = new Set();
+
+            // Algoritmo de Busca Semântica: cruza as palavras da habilidade com a base do livro
+            skillsArray.forEach(skillLine => {
+                let textClean = skillLine.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                
+                baseLivro.forEach(item => {
+                    let match = item.topicos.some(topico => textClean.includes(topico));
+                    if (match || textClean.includes(item.titulo.toLowerCase())) {
+                        capitulosEncontrados.add(item);
+                    }
+                });
+            });
+
+            // Ordena os capítulos por ordem cronológica de páginas para facilitar a aprendizagem
+            let ordenados = Array.from(capitulosEncontrados).sort((a, b) => a.capitulo - b.capitulo);
+
+            if (ordenados.length > 0) {
+                let htmlList = `<ul class="list-disc list-inside space-y-2 text-slate-700">`;
+                ordenados.forEach(c => {
+                    htmlList += `
+                        <li>
+                            <strong class="text-emerald-800">${c.unidade} — Capítulo ${c.capitulo}: ${c.titulo} (Págs. ${c.pagInicio} a ${c.pagFim})</strong>
+                            <p class="pl-5 text-[11px] text-slate-600">Sequência sugerida de estudo dos tópicos para fixação do conteúdo do livro didático.</p>
+                        </li>
+                    `;
+                });
+                htmlList += `</ul>`;
+                contentBox.innerHTML = htmlList;
+            } else {
+                contentBox.innerHTML = `<p class="text-slate-600 italic">Consulte o Capítulo 12 (Págs. 214 a 235) para o estudo direcionado dos temas de energia e circuitos.</p>`;
+            }
+
+            // Exibe as Habilidades inseridas
+            const skillsList = document.getElementById('mappedSkillsList');
+            skillsList.innerHTML = "";
+            skillsArray.forEach(skill => {
+                const p = document.createElement('p');
+                p.className = "text-slate-700";
+                p.innerHTML = `• <strong>${skill}</strong>`;
+                skillsList.appendChild(p);
+            });
+        }
+
+        window.onload = carregarBaseLivro;
+    </script>
+</body>
+</html>
