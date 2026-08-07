@@ -3,247 +3,409 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GuiaProvas | Guia de Preparação e Planejamento</title>
-    <!-- Tailwind CSS via CDN -->
+    <title>Norteador Pedagógico - Avaliações Externas</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome para ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style> body { font-family: 'Inter', sans-serif; } </style>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            .shadow-lg, .shadow-md, .shadow-sm { box-shadow: none !important; }
+            body { background: white !important; }
+        }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
-    <!-- Cabeçalho -->
-    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- Header / Navbar -->
+    <header class="bg-indigo-900 text-white shadow-md no-print">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center space-x-3">
-                <div class="bg-emerald-600 p-2.5 rounded-xl text-white">
-                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                <div class="bg-indigo-700 p-2 rounded-lg">
+                    <i data-lucide="compass" class="w-7 h-7 text-indigo-200"></i>
                 </div>
                 <div>
-                    <h1 class="font-bold text-lg leading-tight">GuiaProvas <span class="text-emerald-400 font-normal">| Organizador de Aulas</span></h1>
-                    <p class="text-xs text-slate-400">Cruzamento de Habilidades com a Base Didática do Livro</p>
+                    <h1 class="text-xl font-bold tracking-tight">Norteador Pedagógico</h1>
+                    <p class="text-xs text-indigo-200">Orientação Didática para Provas Externas & BNCC</p>
                 </div>
             </div>
-            <span class="text-xs bg-emerald-900/50 text-emerald-300 px-3 py-1 rounded-full border border-emerald-700">GitHub Ready</span>
+            <div class="text-xs text-indigo-300 bg-indigo-950/50 px-3 py-1.5 rounded-full border border-indigo-700/50">
+                Pronto para hospedagem no GitHub Pages
+            </div>
         </div>
     </header>
 
-    <!-- Conteúdo Principal -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
-
-        <!-- PAINEL ESQUERDO: ENTRAM AS HABILIDADES -->
-        <section class="lg:col-span-5 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
-            <div class="border-b border-slate-100 pb-4">
-                <h2 class="text-xl font-bold text-slate-800 flex items-center">
-                    <i class="fa-solid fa-sliders text-emerald-600 mr-2"></i> Adicionar Habilidades
-                </h2>
-                <p class="text-xs text-slate-500 mt-1">Cole qualquer habilidade ou descritor para gerar o roteiro ordenado de estudos.</p>
-            </div>
-
-            <form id="planForm" onsubmit="event.preventDefault(); processarCruzamento();" class="space-y-4 text-xs">
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block font-semibold text-slate-700 uppercase mb-1">Período / Datas</label>
-                        <input type="text" id="inputData" value="07/05 a 29/05/2026" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 focus:bg-white focus:border-emerald-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block font-semibold text-slate-700 uppercase mb-1">Ano / Série</label>
-                        <input type="text" id="inputAno" value="8º ANO" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 focus:bg-white focus:border-emerald-500 focus:outline-none">
+    <!-- Main Content -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6 sm:px-6 lg:px-8">
+        
+        <!-- Search & Filter Controls -->
+        <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 mb-6 no-print">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                
+                <!-- Search Box -->
+                <div class="md:col-span-6 relative">
+                    <label for="search-input" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                        Buscar por Código ou Palavra-chave
+                    </label>
+                    <div class="relative">
+                        <i data-lucide="search" class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="search-input" 
+                            placeholder="Ex: EF07CI01, D12, efeito estufa, frações..." 
+                            class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all">
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block font-semibold text-slate-700 uppercase mb-1">Turno</label>
-                        <input type="text" id="inputTurno" value="Integral" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 focus:bg-white focus:border-emerald-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block font-semibold text-slate-700 uppercase mb-1">Componente Curricular</label>
-                        <input type="text" id="inputComponente" value="Ciências da Natureza" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 focus:bg-white focus:border-emerald-500 focus:outline-none">
-                    </div>
+                <!-- Discipline Filter -->
+                <div class="md:col-span-3">
+                    <label for="filter-subject" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                        Componente Curricular
+                    </label>
+                    <select id="filter-subject" class="w-full py-2.5 px-3 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all">
+                        <option value="todos">Todos os componentes</option>
+                        <option value="Ciências">Ciências</option>
+                        <option value="Língua Portuguesa">Língua Portuguesa</option>
+                        <option value="Matemática">Matemática</option>
+                    </select>
                 </div>
 
-                <div>
-                    <label class="block font-semibold text-slate-700 uppercase mb-1">Habilidades / Descritores Desejados</label>
-                    <textarea id="skillsInput" rows="6" placeholder="Insira qualquer habilidade aqui..." required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 focus:bg-white focus:border-emerald-500 focus:outline-none font-sans">8EF01_CN Classificar os recursos energéticos em renováveis e não renováveis. EF08CI01
-8EF04_CN Reconhecer os componentes de um circuito EF08CI02
-8EF05_CN Classificar os processos de transformação da energia nos aparelhos residenciais. EF08CI03
-8EF06_CN Verificar o consumo de energia elétrica de aparelhos eletrônicos, assim como as grandezas e as ações que influenciam nesse consumo. EF08CI04</textarea>
+                <!-- Grade Filter -->
+                <div class="md:col-span-3">
+                    <label for="filter-grade" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                        Ano / Série
+                    </label>
+                    <select id="filter-grade" class="w-full py-2.5 px-3 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all">
+                        <option value="todos">Todos os Anos</option>
+                        <option value="6º Ano">6º Ano</option>
+                        <option value="7º Ano">7º Ano</option>
+                        <option value="8º Ano">8º Ano</option>
+                        <option value="9º Ano">9º Ano</option>
+                    </select>
                 </div>
 
-                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center space-x-2 text-sm">
-                    <i class="fa-solid fa-list-check"></i>
-                    <span>Buscar Páginas e Gerar Roteiro</span>
-                </button>
-            </form>
-        </section>
-
-        <!-- PAINEL DIREITO: FICHA OFICIAL IMPRESSA -->
-        <section class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col">
-            <div class="border-b border-slate-100 pb-4 mb-4 flex justify-between items-center">
-                <div>
-                    <h2 class="text-xl font-bold text-slate-800 flex items-center">
-                        <i class="fa-solid fa-clipboard-check text-emerald-600 mr-2"></i> Roteiro Mapeado e Ordenado
-                    </h2>
-                    <p class="text-xs text-slate-500 mt-1">Capítulos e páginas reais ordenados para facilidade de aprendizagem.</p>
-                </div>
-                <button onclick="window.print()" class="text-slate-500 hover:text-slate-800 text-xs flex items-center space-x-1 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-50 transition">
-                    <i class="fa-solid fa-print"></i> <span>Imprimir / PDF</span>
-                </button>
-            </div>
-
-            <div id="outputState" class="space-y-4 text-xs font-sans">
-                <!-- Cabeçalho Institucional -->
-                <div class="grid grid-cols-3 gap-2 bg-slate-100 p-3 rounded-t-lg font-bold border border-slate-300 text-slate-800">
-                    <div>DATA: <span id="outData" class="font-normal"></span></div>
-                    <div>ANO/SÉRIE: <span id="outAno" class="font-normal"></span></div>
-                    <div>TURNO: <span id="outTurno" class="font-normal"></span></div>
-                </div>
-
-                <!-- Tabela do Plano Pedagógico -->
-                <table class="w-full border-collapse border border-slate-300 text-left">
-                    <tbody>
-                        <tr class="bg-emerald-600 text-white font-bold">
-                            <td class="p-2.5 border border-slate-300">COMPONENTE CURRICULAR: <span id="outComponente"></span></td>
-                            <td class="p-2.5 border border-slate-300 text-right">DATA: <span id="outDataInicio"></span></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="p-2.5 border border-slate-300 font-bold bg-slate-50">QUANTIDADE DE AULA: [ X ]</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="p-2.5 border border-slate-300 font-bold bg-slate-50">UNIDADE TEMÁTICA: Unidades do Livro Didático Mapeadas</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="p-2.5 border border-slate-300">
-                                <span class="font-bold text-slate-800">OBJETO DO CONHECIMENTO / CONTEÚDO (ORDEM SUGERIDA DE ESTUDO NO LIVRO):</span>
-                                <div id="mappedContentBox" class="mt-2 text-slate-700 space-y-2">
-                                    <!-- Inserido dinamicamente via JS -->
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="p-2.5 border border-slate-300">
-                                <span class="font-bold text-slate-800">HABILIDADES TRABALHADAS:</span>
-                                <div id="mappedSkillsList" class="mt-2 space-y-1 text-slate-700">
-                                    <!-- Lista dinâmica -->
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="p-2.5 border border-slate-300">
-                                <span class="font-bold text-slate-800">METODOLOGIA:</span><br>
-                                <div class="mt-1 space-y-0.5 text-slate-700">
-                                    <p>(x) Roda de conversa, debates e discussões;</p>
-                                    <p>(x) Oralidade e conversação (individual e em grupo);</p>
-                                    <p>(x) Leitura individual e compartilhada do livro didático;</p>
-                                    <p>(x) Escrita e conhecimento prévio;</p>
-                                    <p>(x) Compreensão e interpretação textuais;</p>
-                                    <p>(x) Material didático (Livro didático nas páginas mapeadas);</p>
-                                    <p>(x) Outros: <em>Slides, simuladores e pesquisas orientadas na web.</em></p>
-                                </div>
-                                <p class="mt-2"><strong>Rotina:</strong> Acolhida, leitura das seções identificadas nas páginas reais do livro, resolução dos exercícios sugeridos e aplicação de itens no padrão das avaliações externas.</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="p-2.5 border border-slate-300">
-                                <span class="font-bold text-slate-800">AVALIAÇÃO:</span><br>
-                                <p class="mt-1 text-slate-700">Individual e em grupo, observando a compreensão dos conceitos lidos nas páginas do livro e a resolução de questões objetivas por habilidade.</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </section>
+
+        <!-- Main Display Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Item List (Left Sidebar) -->
+            <div class="lg:col-span-4 space-y-3 no-print">
+                <div class="flex items-center justify-between mb-2">
+                    <h2 class="text-sm font-bold text-slate-600 uppercase tracking-wider">Habilidades Encontradas</h2>
+                    <span id="results-count" class="text-xs bg-indigo-100 text-indigo-800 font-semibold px-2 py-0.5 rounded-full">0</span>
+                </div>
+                <div id="skills-list" class="space-y-2 max-h-[600px] overflow-y-auto pr-1">
+                    <!-- Dynamic Items JS -->
+                </div>
+            </div>
+
+            <!-- Detail View (Right Main Panel) -->
+            <div class="lg:col-span-8">
+                <div id="detail-card" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                    <!-- Dynamic Details JS -->
+                </div>
+            </div>
+
+        </div>
 
     </main>
 
-    <footer class="bg-slate-900 text-slate-400 text-xs py-4 text-center mt-auto border-t border-slate-800">
-        GuiaProvas — Módulo de Sincronização
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-4 mt-8 no-print">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
+            Norteador Pedagógico • Desenvolvido para facilitar o trabalho docente e otimizar resultados em avaliações externas.
+        </div>
     </footer>
 
+    <!-- Application Script & Data Store -->
     <script>
-        let baseLivro = [];
-
-        // Carrega o banco de dados do livro em JSON
-        async function carregarBaseLivro() {
-            try {
-                const response = await fetch('sumario_livro.json');
-                baseLivro = await response.json();
-                processarCruzamento();
-            } catch (error) {
-                console.log("Aviso: carregando estrutura padrão interna.");
-                // Fallback interno caso o JSON externo demore
-                baseLivro = [
-                    { unidade: "Unidade D", capitulo: 12, titulo: "Produção e Uso de Energia Elétrica", pagInicio: 214, pagFim: 235, topicos: ["circuito", "corrente", "potencial", "uso doméstico", "segurança", "consumo", "recursos energéticos", "renováveis"] }
-                ];
-                processarCruzamento();
+        // Database of skills and descriptors
+        const db = [
+            {
+                id: "EF07CI01",
+                descriptor: "D14",
+                subject: "Ciências",
+                grade: "7º Ano",
+                title: "Estrutura e Composição da Atmosfera",
+                description: "Discutir a estrutura, a composição e a localização da camada de ozônio e sua importância para a manutenção da vida na Terra.",
+                focus: "Identificar a função protetora da camada de ozônio contra raios UV e diferenciação entre efeito estufa natural e aquecimento global antropogênico.",
+                prerequisites: [
+                    "Conceito de gases atmosféricos (6º ano)",
+                    "Diferença entre tempo e clima"
+                ],
+                pitfalls: [
+                    "Confundir o buraco na camada de ozônio como causa direta do aumento do efeito estufa.",
+                    "Achar que o efeito estufa é um fenômeno totalmente maléfico e não um processo natural vital."
+                ],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Apresentar diagramas da atmosfera destacando a estratosfera e a camada de ozônio." },
+                    { step: 2, action: "Duvidar", detail: "Questionar: 'O que aconteceria com a vida na Terra se a radiação UV chegasse integralmente à superfície?'" },
+                    { step: 3, action: "Teorizar", detail: "Sistematizar a retenção de raios UV e comparar com a dinâmica dos gases de estufa." }
+                ],
+                sampleQuestionTip: "Provas externas frequentemente utilizam charges ou esquemas comparativos exigindo que o aluno associe a camada de ozônio à filtragem UV, e não à retenção de calor."
+            },
+            {
+                id: "EF08CI02",
+                descriptor: "D08",
+                subject: "Ciências",
+                grade: "8º Ano",
+                title: "Mecanismos de Transmissão do Calor",
+                description: "Construir circuitos elétricos simples e comparar a condutividade elétrica e térmica de diferentes materiais.",
+                focus: "Reconhecer e diferenciar condução, convecção e irradiação térmica em situações cotidianas e experimentos práticos.",
+                prerequisites: [
+                    "Estados físicos da matéria e modelo corpuscular simples",
+                    "Nomenclatura básica de materiais condutores e isolantes"
+                ],
+                pitfalls: [
+                    "Acreditar que 'o frio passa para o corpo' em vez de entender a perda de calor do corpo mais quente para o mais frio.",
+                    "Confundir convecção (exclusiva de fluidos) com condução em sólidos."
+                ],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar utensílios de cozinha (colher de pau x colher de metal em água quente) ou funcionamento da geladeira." },
+                    { step: 2, action: "Duvidar", detail: "Por que o ar-condicionado é instalado no alto e o aquecedor próximo ao chão?" },
+                    { step: 3, action: "Teorizar", detail: "Explicar correntes de densidade (convecção) e agitação molecular (condução)." }
+                ],
+                sampleQuestionTip: "Atentar para questões que cobram o motivo físico da escolha do material de cabos de panelas ou garrafas térmicas."
+            },
+            {
+                id: "EF09LP01",
+                descriptor: "D12",
+                subject: "Língua Portuguesa",
+                grade: "9º Ano",
+                title: "Identificação da Tese em Textos Argumentativos",
+                description: "Analisar a tese/opinião em textos argumentativos, diferenciando-a dos argumentos utilizados para sustentá-la.",
+                focus: "Localizar a ideia central defendida pelo autor em artigos de opinião, editoriais e cartas do leitor.",
+                prerequisites: [
+                    "Distinção clara entre Fato e Opinião (6º/7º ano)",
+                    "Reconhecimento de conectivos de causa e conclusão"
+                ],
+                pitfalls: [
+                    "Confundir um argumento secundário (exemplo, dado estatístico) com a tese principal.",
+                    "Escolher a alternativa que expressa a opinião do ALUNO em vez da opinião do AUTOR do texto."
+                ],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Leitura guiada de um artigo curto destacando o título e o primeiro parágrafo." },
+                    { step: 2, action: "Duvidar", detail: "Perguntar: 'Qual é a posição exata que o autor defende sobre esse tema?'" },
+                    { step: 3, action: "Teorizar", detail: "Mapear a estrutura: Tese $\rightarrow$ Argumentos de Suporte $\rightarrow$ Conclusão." }
+                ],
+                sampleQuestionTip: "Em provas SAEB/Estaduais, o distrator mais forte costuma ser um dado quantitativo mencionado no meio do texto."
+            },
+            {
+                id: "EF06MA02",
+                descriptor: "D21",
+                subject: "Matemática",
+                grade: "6º Ano",
+                title: "Reconhecimento de Frações e Representação Visual",
+                description: "Reconhecer que as frações quantificam a parte de um todo discreto ou contínuo.",
+                focus: "Interpretar frações como razão entre partes de um todo e associar à reta numérica.",
+                prerequisites: [
+                    "Operações fundamentais com números naturais",
+                    "Noção de divisão e equidade"
+                ],
+                pitfalls: [
+                    "Somar numeradores e denominadores diretamente em comparações visuais.",
+                    "Não atentar para quando o 'todo' está dividido em partes desiguais."
+                ],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Utilizar barras de chocolate virtuais ou tiras de papel fracionadas." },
+                    { step: 2, action: "Duvidar", detail: "Se comi 2 pedaços de uma pizza de 8 partes, comi mais ou menos que metade?" },
+                    { step: 3, action: "Teorizar", detail: "Sistematizar Numerador (partes consideradas) e Denominador (total de partes iguais)." }
+                ],
+                sampleQuestionTip: "Questões costumam apresentar figuras geométricas divididas e solicitar a fração que representa a área sombreada."
             }
-        }
+        ];
 
-        function processarCruzamento() {
-            const dataInput = document.getElementById('inputData').value;
-            const anoInput = document.getElementById('inputAno').value;
-            const turnoInput = document.getElementById('inputTurno').value;
-            const componenteInput = document.getElementById('inputComponente').value;
-            const skillsText = document.getElementById('skillsInput').value;
-            const skillsArray = skillsText.split('\n').filter(s => s.trim() !== "");
+        let selectedId = db[0].id;
 
-            document.getElementById('outData').innerText = dataInput;
-            document.getElementById('outAno').innerText = anoInput;
-            document.getElementById('outTurno').innerText = turnoInput;
-            document.getElementById('outComponente').innerText = componenteInput;
-            document.getElementById('outDataInicio').innerText = dataInput.split(' ')[0] || "07/05/2026";
+        // Render List Items
+        function renderList() {
+            const searchVal = document.getElementById('search-input').value.toLowerCase();
+            const subjectVal = document.getElementById('filter-subject').value;
+            const gradeVal = document.getElementById('filter-grade').value;
 
-            const contentBox = document.getElementById('mappedContentBox');
-            contentBox.innerHTML = "";
-
-            let capitulosEncontrados = new Set();
-
-            // Algoritmo de Busca Semântica: cruza as palavras da habilidade com a base do livro
-            skillsArray.forEach(skillLine => {
-                let textClean = skillLine.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            const filtered = db.filter(item => {
+                const matchSearch = item.id.toLowerCase().includes(searchVal) ||
+                                    item.descriptor.toLowerCase().includes(searchVal) ||
+                                    item.title.toLowerCase().includes(searchVal) ||
+                                    item.description.toLowerCase().includes(searchVal);
                 
-                baseLivro.forEach(item => {
-                    let match = item.topicos.some(topico => textClean.includes(topico));
-                    if (match || textClean.includes(item.titulo.toLowerCase())) {
-                        capitulosEncontrados.add(item);
-                    }
-                });
+                const matchSubject = subjectVal === 'todos' || item.subject === subjectVal;
+                const matchGrade = gradeVal === 'todos' || item.grade === gradeVal;
+
+                return matchSearch && matchSubject && matchGrade;
             });
 
-            // Ordena os capítulos por ordem cronológica de páginas para facilitar a aprendizagem
-            let ordenados = Array.from(capitulosEncontrados).sort((a, b) => a.capitulo - b.capitulo);
+            document.getElementById('results-count').innerText = filtered.length;
+            const container = document.getElementById('skills-list');
+            container.innerHTML = '';
 
-            if (ordenados.length > 0) {
-                let htmlList = `<ul class="list-disc list-inside space-y-2 text-slate-700">`;
-                ordenados.forEach(c => {
-                    htmlList += `
-                        <li>
-                            <strong class="text-emerald-800">${c.unidade} — Capítulo ${c.capitulo}: ${c.titulo} (Págs. ${c.pagInicio} a ${c.pagFim})</strong>
-                            <p class="pl-5 text-[11px] text-slate-600">Sequência sugerida de estudo dos tópicos para fixação do conteúdo do livro didático.</p>
-                        </li>
-                    `;
-                });
-                htmlList += `</ul>`;
-                contentBox.innerHTML = htmlList;
-            } else {
-                contentBox.innerHTML = `<p class="text-slate-600 italic">Consulte o Capítulo 12 (Págs. 214 a 235) para o estudo direcionado dos temas de energia e circuitos.</p>`;
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="p-4 bg-white rounded-lg border border-slate-200 text-center text-slate-500 text-sm">Nenhuma habilidade encontrada.</div>`;
+                return;
             }
 
-            // Exibe as Habilidades inseridas
-            const skillsList = document.getElementById('mappedSkillsList');
-            skillsList.innerHTML = "";
-            skillsArray.forEach(skill => {
-                const p = document.createElement('p');
-                p.className = "text-slate-700";
-                p.innerHTML = `• <strong>${skill}</strong>`;
-                skillsList.appendChild(p);
+            filtered.forEach(item => {
+                const isActive = item.id === selectedId;
+                const card = document.createElement('div');
+                card.className = `p-3.5 rounded-lg border transition-all cursor-pointer ${
+                    isActive 
+                    ? 'bg-indigo-50 border-indigo-500 shadow-sm' 
+                    : 'bg-white border-slate-200 hover:border-indigo-300 hover:bg-slate-50'
+                }`;
+                card.onclick = () => {
+                    selectedId = item.id;
+                    renderList();
+                    renderDetail();
+                };
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="font-bold text-xs px-2 py-0.5 rounded ${isActive ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'}">${item.id}</span>
+                        <span class="text-xs font-semibold text-slate-500">${item.descriptor} • ${item.grade}</span>
+                    </div>
+                    <h3 class="text-sm font-semibold text-slate-800 line-clamp-1">${item.title}</h3>
+                    <p class="text-xs text-slate-500 mt-1 line-clamp-2">${item.description}</p>
+                `;
+                container.appendChild(card);
             });
         }
 
-        window.onload = carregarBaseLivro;
+        // Render Detail Card
+        function renderDetail() {
+            const item = db.find(i => i.id === selectedId) || db[0];
+            const container = document.getElementById('detail-card');
+
+            container.innerHTML = `
+                <!-- Top Info Bar -->
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4 mb-6">
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-indigo-100 text-indigo-900 font-extrabold text-sm px-3 py-1 rounded-md border border-indigo-200">
+                            BNCC: ${item.id}
+                        </span>
+                        <span class="bg-amber-100 text-amber-900 font-extrabold text-sm px-3 py-1 rounded-md border border-amber-200">
+                            PROVAS EXTERNAS: ${item.descriptor}
+                        </span>
+                    </div>
+                    <div class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
+                        ${item.subject} • ${item.grade}
+                    </div>
+                </div>
+
+                <!-- Title & Description -->
+                <div class="mb-6">
+                    <h2 class="text-xl font-bold text-slate-900 mb-2">${item.title}</h2>
+                    <div class="bg-slate-50 p-3.5 rounded-lg border-l-4 border-indigo-500 text-sm text-slate-700">
+                        <strong>Descrição da Habilidade:</strong> ${item.description}
+                    </div>
+                </div>
+
+                <!-- Grid Section: Focus & Pitfalls -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <!-- Target Objective -->
+                    <div class="bg-emerald-50/60 border border-emerald-200 rounded-lg p-4">
+                        <div class="flex items-center space-x-2 text-emerald-800 font-bold text-sm mb-2">
+                            <i data-lucide="target" class="w-4 h-4"></i>
+                            <span>Foco Primário da Avaliação</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed">${item.focus}</p>
+                    </div>
+
+                    <!-- Common Pitfalls -->
+                    <div class="bg-rose-50/60 border border-rose-200 rounded-lg p-4">
+                        <div class="flex items-center space-x-2 text-rose-800 font-bold text-sm mb-2">
+                            <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                            <span>Pegadinhas & Erros Frequentes</span>
+                        </div>
+                        <ul class="list-disc list-inside text-xs sm:text-sm text-rose-950 space-y-1">
+                            ${item.pitfalls.map(p => `<li>${p}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Methodology / Teaching Route -->
+                <div class="mb-6">
+                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                        <i data-lucide="route" class="w-4 h-4 text-indigo-600"></i> Rota Didática Sugerida (OBSERVAR • DUVIDAR • TEORIZAR)
+                    </h3>
+                    <div class="space-y-2">
+                        ${item.methodologyRoute.map(r => `
+                            <div class="flex items-start space-x-3 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                                <span class="bg-indigo-600 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5">${r.step}</span>
+                                <div class="text-xs sm:text-sm">
+                                    <strong class="text-slate-800">${r.action}:</strong> 
+                                    <span class="text-slate-600">${r.detail}</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Prerequisites & Sample Tip -->
+                <div class="bg-indigo-50/40 border border-indigo-100 rounded-lg p-4 mb-6">
+                    <h4 class="text-xs font-bold text-indigo-900 uppercase tracking-wider mb-2 flex items-center gap-1">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-600"></i> Pré-requisitos Fundamentais
+                    </h4>
+                    <ul class="list-disc list-inside text-xs sm:text-sm text-slate-700 space-y-1 mb-3">
+                        ${item.prerequisites.map(req => `<li>${req}</li>`).join('')}
+                    </ul>
+                    <div class="pt-2 border-t border-indigo-100/80 text-xs text-indigo-900 italic">
+                        <strong>Dica de Item:</strong> ${item.sampleQuestionTip}
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-slate-100 no-print">
+                    <button onclick="copyLessonPlan()" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition-colors">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>Copiar para Plano</span>
+                    </button>
+                    <button onclick="window.print()" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-lg shadow-sm transition-colors">
+                        <i data-lucide="printer" class="w-4 h-4"></i>
+                        <span>Imprimir / Gerar PDF</span>
+                    </button>
+                </div>
+            `;
+
+            lucide.createIcons();
+        }
+
+        // Helper function: Copy plan summary
+        function copyLessonPlan() {
+            const item = db.find(i => i.id === selectedId);
+            const text = `NORTEADOR PEDAGÓGICO
+Habilidade: ${item.id} (${item.descriptor})
+Componente: ${item.subject} - ${item.grade}
+Título: ${item.title}
+
+FOCO DA AVALIAÇÃO:
+${item.focus}
+
+ERROS COMUNS / DISTRATORES:
+${item.pitfalls.map(p => '- ' + p).join('
+')}
+
+ROTA DIDÁTICA:
+${item.methodologyRoute.map(r => `${r.step}. ${r.action}: ${r.detail}`).join('
+')}
+            `;
+
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Estrutura do plano copiada para a área de transferência!');
+            });
+        }
+
+        // Attach event listeners
+        document.getElementById('search-input').addEventListener('input', renderList);
+        document.getElementById('filter-subject').addEventListener('change', renderList);
+        document.getElementById('filter-grade').addEventListener('change', renderList);
+
+        // Initial setup
+        renderList();
+        renderDetail();
     </script>
 </body>
 </html>
