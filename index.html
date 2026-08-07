@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Norteador Pedagógico - Avaliações Externas</title>
+    <title>Norteador Pedagógico - CAEd 2026 (8º Ano Ciências)</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -30,11 +30,11 @@
                 </div>
                 <div>
                     <h1 class="text-xl font-bold tracking-tight">Norteador Pedagógico</h1>
-                    <p class="text-xs text-indigo-200">Orientação Didática para Provas Externas & BNCC</p>
+                    <p class="text-xs text-indigo-200">CAEd 2026 • 8º Ano Ciências da Natureza (Ciclo III)</p>
                 </div>
             </div>
             <div class="text-xs text-indigo-300 bg-indigo-950/50 px-3 py-1.5 rounded-full border border-indigo-700/50">
-                Pronto para hospedagem no GitHub Pages
+                Matriz CAEd 2026 Integrada
             </div>
         </div>
     </header>
@@ -49,40 +49,36 @@
                 <!-- Search Box -->
                 <div class="md:col-span-6 relative">
                     <label for="search-input" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
-                        Buscar por Código ou Palavra-chave
+                        Buscar por Código CAEd, BNCC ou Termo
                     </label>
                     <div class="relative">
                         <i data-lucide="search" class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
                         <input type="text" id="search-input" 
-                            placeholder="Ex: EF08CI06, EF07CI01, D12, hormônios..." 
+                            placeholder="Ex: 8EF01_CN, 8EF13_CN, EF08CI06, circuito..." 
                             class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all">
                     </div>
                 </div>
 
-                <!-- Discipline Filter -->
+                <!-- Unit Filter -->
                 <div class="md:col-span-3">
-                    <label for="filter-subject" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
-                        Componente Curricular
+                    <label for="filter-unit" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                        Unidade Temática
                     </label>
-                    <select id="filter-subject" class="w-full py-2.5 px-3 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all">
-                        <option value="todos">Todos os componentes</option>
-                        <option value="Ciências">Ciências</option>
-                        <option value="Língua Portuguesa">Língua Portuguesa</option>
-                        <option value="Matemática">Matemática</option>
+                    <select id="filter-unit" class="w-full py-2.5 px-3 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all">
+                        <option value="todos">Todas as Unidades</option>
+                        <option value="ME - Matéria e Energia">ME - Matéria e Energia</option>
+                        <option value="VE - Vida e Evolução">VE - Vida e Evolução</option>
                     </select>
                 </div>
 
                 <!-- Grade Filter -->
                 <div class="md:col-span-3">
                     <label for="filter-grade" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
-                        Ano / Série
+                        Ano / Ciclo
                     </label>
                     <select id="filter-grade" class="w-full py-2.5 px-3 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all">
-                        <option value="todos">Todos os Anos</option>
-                        <option value="6º Ano">6º Ano</option>
-                        <option value="7º Ano">7º Ano</option>
-                        <option value="8º Ano">8º Ano</option>
-                        <option value="9º Ano">9º Ano</option>
+                        <option value="todos">Todos</option>
+                        <option value="8º Ano - Ciclo III" selected>8º Ano - Ciclo III</option>
                     </select>
                 </div>
 
@@ -95,7 +91,7 @@
             <!-- Item List (Left Sidebar) -->
             <div class="lg:col-span-4 space-y-3 no-print">
                 <div class="flex items-center justify-between mb-2">
-                    <h2 class="text-sm font-bold text-slate-600 uppercase tracking-wider">Habilidades Encontradas</h2>
+                    <h2 class="text-sm font-bold text-slate-600 uppercase tracking-wider">Habilidades do CAEd</h2>
                     <span id="results-count" class="text-xs bg-indigo-100 text-indigo-800 font-semibold px-2 py-0.5 rounded-full">0</span>
                 </div>
                 <div id="skills-list" class="space-y-2 max-h-[600px] overflow-y-auto pr-1">
@@ -117,128 +113,253 @@
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-4 mt-8 no-print">
         <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
-            Norteador Pedagógico • Desenvolvido para facilitar o trabalho docente e otimizar resultados em avaliações externas.
+            Norteador Pedagógico • Alinhado à Matriz de Avaliação CAEd 2026.
         </div>
     </footer>
 
     <!-- Application Script & Data Store -->
     <script>
-        // Database of skills and descriptors
+        // Database based on CAEd 2026 / 8º ANO - CIÊNCIAS DA NATUREZA - CICLO III
         const db = [
             {
-                id: "EF08CI06",
-                descriptor: "D10",
-                subject: "Ciências",
-                grade: "8º Ano",
-                title: "Puberdade e Ação Hormonal",
-                description: "Discutir as transformações que ocorrem na puberdade considerando a atuação dos hormônios sexuais e do sistema nervoso.",
-                focus: "Compreender a integração entre o sistema nervoso e endócrino na regulação da puberdade e desenvolvimento de caracteres sexuais secundários.",
-                prerequisites: [
-                    "Organização geral do corpo humano (células, tecidos e órgãos)",
-                    "Noções básicas de sistemas do corpo humano (6º ano)"
-                ],
+                id: "8EF01_CN",
+                bncc: "EF08CI01",
+                unit: "ME - Matéria e Energia",
+                grade: "8º Ano - Ciclo III",
+                title: "Classificação dos Recursos Energéticos",
+                description: "Classificar os recursos energéticos em renováveis e não renováveis.",
+                focus: "Identificar fontes de energia (solar, eólica, biomassa, carvão, petróleo, gás) e categorizá-las quanto à sua renovabilidade.",
+                prerequisites: ["Conceito básico de energia e suas manifestações", "Recursos naturais e preservação ambiental"],
                 pitfalls: [
-                    "Confundir as funções do estrogênio/progesterona com as da testosterona em itens comparativos.",
-                    "Acreditar que as transformações físicas dependem exclusivamente da idade cronológica e não da sinalização hormonal."
+                    "Confundir fonte limpa com renovável (ex: energia nuclear não é renovável, mas não gera efeito estufa).",
+                    "Acreditar que a biomassa é inesgotável em qualquer cenário de desmatamento."
                 ],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar gráficos de taxas hormonais ao longo do crescimento e imagens de caracteres secundários." },
-                    { step: 2, action: "Duvidar", detail: "Questionar: 'O que faz o corpo saber o momento exato de iniciar as mudanças na puberdade?'" },
-                    { step: 3, action: "Teorizar", detail: "Mapear o eixo Hipófise -> Gônadas -> Liberação Hormonal -> Alterações corporais." }
+                    { step: 1, action: "Observar", detail: "Analisar cartões/imagens com diferentes fontes energéticas utilizadas no Brasil." },
+                    { step: 2, action: "Duvidar", detail: "Questionar: 'O que acontece se a taxa de consumo dessa fonte for maior que a capacidade da natureza de repô-la?'" },
+                    { step: 3, action: "Teorizar", detail: "Classificar as fontes em Tabela Comparativa (Renováveis x Não Renováveis)." }
                 ],
-                sampleQuestionTip: "Avaliações externas cobram a interpretação de gráficos de variação de níveis hormonais e a identificação da glândula responsável pelo sinal inicial (hipófise)."
+                sampleQuestionTip: "Itens do CAEd mostram gráficos ou textos curtos sobre matrizes energéticas e pedem para classificar a fonte citada."
             },
             {
-                id: "EF07CI01",
-                descriptor: "D14",
-                subject: "Ciências",
-                grade: "7º Ano",
-                title: "Estrutura e Composição da Atmosfera",
-                description: "Discutir a estrutura, a composição e a localização da camada de ozônio e sua importância para a manutenção da vida na Terra.",
-                focus: "Identificar a função protetora da camada de ozônio contra raios UV e diferenciação entre efeito estufa natural e aquecimento global antropogênico.",
-                prerequisites: [
-                    "Conceito de gases atmosféricos (6º ano)",
-                    "Diferença entre tempo e clima"
-                ],
+                id: "8EF04_CN",
+                bncc: "EF08CI02",
+                unit: "ME - Matéria e Energia",
+                grade: "8º Ano - Ciclo III",
+                title: "Componentes de um Circuito Elétrico",
+                description: "Reconhecer os componentes de um circuito elétrico simples.",
+                focus: "Identificar as funções de geradores, condutores, interruptores e receptores (lâmpadas, motores) em esquemas e diagramas.",
+                prerequisites: ["Conceito de corrente elétrica", "Condutores e isolantes elétricos"],
                 pitfalls: [
-                    "Confundir o buraco na camada de ozônio como causa direta do aumento do efeito estufa.",
-                    "Achar que o efeito estufa é um fenômeno totalmente maléfico e não um processo natural vital."
+                    "Confundir a função do interruptor com a do gerador.",
+                    "Não identificar a necessidade de um circuito fechado para a passagem da corrente."
                 ],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Apresentar diagramas da atmosfera destacando a estratosfera e a camada de ozônio." },
-                    { step: 2, action: "Duvidar", detail: "Questionar: 'O que aconteceria com a vida na Terra se a radiação UV chegasse integralmente à superfície?'" },
-                    { step: 3, action: "Teorizar", detail: "Sistematizar a retenção de raios UV e comparar com a dinâmica dos gases de estufa." }
+                    { step: 1, action: "Observar", detail: "Examinar uma lanterna desmontada ou simulação digital de um circuito elétrico simples." },
+                    { step: 2, action: "Duvidar", detail: "Questionar: 'Por que a lâmpada apaga imediatamente quando o interruptor é acionado?'" },
+                    { step: 3, action: "Teorizar", detail: "Desenhar e nomear cada elemento: Fonte/Gerador, Fios Condutores, Chave/Interruptor e Carga/Lâmpada." }
                 ],
-                sampleQuestionTip: "Provas externas frequentemente utilizam charges ou esquemas comparativos exigindo que o aluno associe a camada de ozônio à filtragem UV, e não à retenção de calor."
+                sampleQuestionTip: "Provas trazem esquemas visuais com símbolos de circuitos e pedem para indicar qual componente está faltando ou defeituoso."
             },
             {
-                id: "EF08CI02",
-                descriptor: "D08",
-                subject: "Ciências",
-                grade: "8º Ano",
-                title: "Mecanismos de Transmissão do Calor",
-                description: "Construir circuitos elétricos simples e comparar a condutividade elétrica e térmica de diferentes materiais.",
-                focus: "Reconhecer e diferenciar condução, convecção e irradiação térmica em situações cotidianas e experimentos práticos.",
-                prerequisites: [
-                    "Estados físicos da matéria e modelo corpuscular simples",
-                    "Nomenclatura básica de materiais condutores e isolantes"
-                ],
+                id: "8EF05_CN",
+                bncc: "EF08CI03",
+                unit: "ME - Matéria e Energia",
+                grade: "8º Ano - Ciclo III",
+                title: "Transformações de Energia em Aparelhos",
+                description: "Classificar os processos de transformação da energia nos aparelhos residenciais.",
+                focus: "Identificar as conversões energéticas principais (ex: elétrica em térmica no chuveiro; elétrica em luminosa/sonora na TV).",
+                prerequisites: ["Princípio de conservação da energia", "Formas de energia (térmica, luminosa, mecânica, sonora)"],
                 pitfalls: [
-                    "Acreditar que 'o frio passa para o corpo' em vez de entender a perda de calor do corpo mais quente para o mais frio.",
-                    "Confundir convecção (exclusiva de fluidos) com condução em sólidos."
+                    "Confundir a energia de entrada (elétrica) com a energia útil/final gerada.",
+                    "Acreditar que a energia dissipada (calor) se perde do universo."
                 ],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar utensílios de cozinha (colher de pau x colher de metal em água quente) ou funcionamento da geladeira." },
-                    { step: 2, action: "Duvidar", detail: "Por que o ar-condicionado é instalado no alto e o aquecedor próximo ao chão?" },
-                    { step: 3, action: "Teorizar", detail: "Explicar correntes de densidade (convecção) e agitação molecular (condução)." }
+                    { step: 1, action: "Observar", detail: "Analisar eletrodomésticos do cotidiano (ferro de passar, ventilador, batedeira, lâmpada)." },
+                    { step: 2, action: "Duvidar", detail: "Questionar: 'Entra energia elétrica no ventilador, mas que tipo de energia sai dele para nos refrescar?'" },
+                    { step: 3, action: "Teorizar", detail: "Mapear o fluxo de transformação: Energia Elétrica -> Energia Mecânica/Térmica/Luminosa." }
                 ],
-                sampleQuestionTip: "Atentar para questões que cobram o motivo físico da escolha do material de cabos de panelas ou garrafas térmicas."
+                sampleQuestionTip: "Questões apresentam uma lista de aparelhos e pedem para assinalar aquele em que a energia elétrica se transforma predominantemente em mecânica (movimento)."
             },
             {
-                id: "EF09LP01",
-                descriptor: "D12",
-                subject: "Língua Portuguesa",
-                grade: "9º Ano",
-                title: "Identificação da Tese em Textos Argumentativos",
-                description: "Analisar a tese/opinião em textos argumentativos, diferenciando-a dos argumentos utilizados para sustentá-la.",
-                focus: "Localizar a ideia central defendida pelo autor em artigos de opinião, editoriais e cartas do leitor.",
-                prerequisites: [
-                    "Distinção clara entre Fato e Opinião (6º/7º ano)",
-                    "Reconhecimento de conectivos de causa e conclusão"
-                ],
+                id: "8EF06_CN",
+                bncc: "EF08CI04",
+                unit: "ME - Matéria e Energia",
+                grade: "8º Ano - Ciclo III",
+                title: "Consumo de Energia Elétrica e Grandezas",
+                description: "Verificar o consumo de energia elétrica de aparelhos eletrônicos, assim como as grandezas e as ações que influenciam nesse consumo.",
+                focus: "Relacionar potência do aparelho (kW) e tempo de uso (h) ao consumo de energia (kWh) e estimar gastos.",
+                prerequisites: ["Cálculo simples de multiplicação", "Noção de potência e tempo de funcionamento"],
                 pitfalls: [
-                    "Confundir um argumento secundário (exemplo, dado estatístico) com a tese principal.",
-                    "Escolher a alternativa que expressa a opinião do ALUNO em vez da opinião do AUTOR do texto."
+                    "Achar que aparelhos de maior voltagem (220V) necessariamente consomem mais energia que os de 110V.",
+                    "Esquecer que o consumo depende diretamente da quantidade de horas ligado."
                 ],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Leitura guiada de um artigo curto destacando o título e o primeiro parágrafo." },
-                    { step: 2, action: "Duvidar", detail: "Perguntar: 'Qual é a posição exata que o autor defende sobre esse tema?'" },
-                    { step: 3, action: "Teorizar", detail: "Mapear a estrutura: Tese -> Argumentos de Suporte -> Conclusão." }
+                    { step: 1, action: "Observar", detail: "Analisar etiquetas de potência em watts (W) de um chuveiro e de uma lâmpada LED." },
+                    { step: 2, action: "Duvidar", detail: "Questionar: 'Quem gasta mais energia na conta no fim do mês: o chuveiro ligado 15 min ou a TV ligada 8h?'" },
+                    { step: 3, action: "Teorizar", detail: "Aplicar a relação de consumo $E = P \\times t$ para comparar o gasto de diferentes equipamentos." }
                 ],
-                sampleQuestionTip: "Em provas SAEB/Estaduais, o distrator mais forte costuma ser um dado quantitativo mencionado no meio do texto."
+                sampleQuestionTip: "Provas de avaliações externas apresentam tabelas de aparelhos com suas potências e tempo diário de uso para o aluno identificar o maior consumidor."
             },
             {
-                id: "EF06MA02",
-                descriptor: "D21",
-                subject: "Matemática",
-                grade: "6º Ano",
-                title: "Reconhecimento de Frações e Representação Visual",
-                description: "Reconhecer que as frações quantificam a parte de um todo discreto ou contínuo.",
-                focus: "Interpretar frações como razão entre partes de um todo e associar à reta numérica.",
-                prerequisites: [
-                    "Operações fundamentais com números naturais",
-                    "Noção de divisão e equidade"
-                ],
+                id: "8EF08_CN",
+                bncc: "EF08CI06",
+                unit: "ME - Matéria e Energia",
+                grade: "8º Ano - Ciclo III",
+                title: "Mecanismo de Geração de Energia nas Usinas",
+                description: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas.",
+                focus: "Compreender a dinâmica geral das usinas (pressão da água/vapor -> turbina -> gerador elétrico).",
+                prerequisites: ["Transformações de energia mecânica/térmica em elétrica", "Indução magnética simplificada"],
                 pitfalls: [
-                    "Somar numeradores e denominadores diretamente em comparações visuais.",
-                    "Não atentar para quando o 'todo' está dividido em partes desiguais."
+                    "Confundir o funcionamento de usinas termelétricas/nucleares (que usam vapor) com o das hidrelétricas (que usam água líquida em queda).",
+                    "Acreditar que o gerador 'cria' energia do nada."
                 ],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Utilizar barras de chocolate virtuais ou tiras de papel fracionadas." },
-                    { step: 2, action: "Duvidar", detail: "Se comi 2 pedaços de uma pizza de 8 partes, comi mais ou menos que metade?" },
-                    { step: 3, action: "Teorizar", detail: "Sistematizar Numerador (partes consideradas) e Denominador (total de partes iguais)." }
+                    { step: 1, action: "Observar", detail: "Assistir a um infográfico animado do movimento da turbina e do gerador." },
+                    { step: 2, action: "Duvidar", detail: "Questionar: 'O que usinas hidrelétricas, termelétricas e eólicas têm em comum na rotação do gerador?'" },
+                    { step: 3, action: "Teorizar", detail: "Sistematizar a sequência: Fonte de Força -> Movimento da Turbina -> Ação do Gerador -> Rede Elétrica." }
                 ],
-                sampleQuestionTip: "Questões costumam apresentar figuras geométricas divididas e solicitar a fração que representa a área sombreada."
+                sampleQuestionTip: "Itens mostram diagramas esquemáticos de usinas com números nas etapas e pedem para identificar onde ocorre a rotação da turbina."
+            },
+            {
+                id: "8EF09_CN",
+                bncc: "EF08CI06",
+                unit: "ME - Matéria e Energia",
+                grade: "8º Ano - Ciclo III",
+                title: "Impactos Ambientais das Usinas Elétricas",
+                description: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia elétrica.",
+                focus: "Identificar os impactos socioambientais específicos (alagamento de áreas em hidrelétricas, emissão de gases em termelétricas, poluição visual/sonora na eólica).",
+                prerequisites: ["Conceito de poluição, desmatamento e emissão de CO2", "Tipos de usinas de geração elétrica"],
+                pitfalls: [
+                    "Considerar a energia hidrelétrica como zero impacto devido a não emissão de fumaça na geração.",
+                    "Não diferenciar impactos na fase de construção dos impactos na fase de operação."
+                ],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar fotos de grandes reservatórios de hidrelétricas e chaminés de termelétricas." },
+                    { step: 2, action: "Duvidar", detail: "Questionar: 'Qual o custo ambiental pago pela população local quando uma usina é instalada?'" },
+                    { step: 3, action: "Teorizar", detail: "Listar Prós e Contras socioambientais de cada usina em um quadro de prós/contras." }
+                ],
+                sampleQuestionTip: "A prova costuma apresentar relatos de impacto na fauna/flora ou comunidade ribeirinha e solicitar a usina correspondente."
+            },
+            {
+                id: "8EF10_CN",
+                bncc: "EF08CI06",
+                unit: "ME - Matéria e Energia",
+                grade: "8º Ano - Ciclo III",
+                title: "Tipos de Usinas de Geração Elétrica",
+                description: "Reconhecer os tipos de usinas de geração de energia elétrica.",
+                focus: "Diferenciar usinas hidrelétricas, eólicas, solares fotovoltaicas, termelétricas, nucleares e biomassa por suas fontes primárias.",
+                prerequisites: ["Fontes de energia renováveis e não renováveis"],
+                pitfalls: [
+                    "Confundir usina solar fotovoltaica com aquecimento solar de água.",
+                    "Confundir combustível fóssil de termelétrica com biomassa."
+                ],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Visualizar um mapa das usinas de energia no estado do Maranhão e no Brasil." },
+                    { step: 2, action: "Duvidar", detail: "Questionar: 'Por que o Brasil utiliza majoritariamente usinas hidrelétricas enquanto outros países usam termelétricas?'" },
+                    { step: 3, action: "Teorizar", detail: "Associar o Recurso Natural (Vento, Sol, Queda d'água, Carvão) à Usina correspondente." }
+                ],
+                sampleQuestionTip: "Questões do CAEd solicitam a associação direta entre a fonte primária utilizada e o nome da usina."
+            },
+            {
+                id: "8EF11_CN",
+                bncc: "EF08CI07",
+                unit: "VE - Vida e Evolução",
+                grade: "8º Ano - Ciclo III",
+                title: "Processos Reprodutivos dos Seres Vivos",
+                description: "Reconhecer os diferentes processos reprodutivos dos seres vivos.",
+                focus: "Diferenciar reprodução assexuada (bipartição, brotamento, esporocpaspia) e sexuada (envolvendo gametas e variabilidade genética).",
+                prerequisites: ["Conceito de gametas (óvulo e espermatozoide)", "Nomenclatura básica de organismos"],
+                pitfalls: [
+                    "Acreditar que a reprodução sexuada ocorre exclusivamente em animais e não em plantas.",
+                    "Esquecer que a reprodução assexuada gera indivíduos geneticamente idênticos (clones)."
+                ],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar esquemas de brotamento em leveduras/hidras e fertilização em plantas/animais." },
+                    { step: 2, action: "Duvidar", detail: "Questionar: 'Qual dessas formas de reprodução oferece vantagem evolutiva para adaptação a mudanças no ambiente?'" },
+                    { step: 3, action: "Teorizar", detail: "Construir quadro comparativo: Variabilidade Genética (Sexuada) vs Rapidez/Clones (Assexuada)." }
+                ],
+                sampleQuestionTip: "Itens mostram desenhos de seres se multiplicando e perguntam qual tipo de reprodução está representado."
+            },
+            {
+                id: "8EF13_CN",
+                bncc: "EF08CI08",
+                unit: "VE - Vida e Evolução",
+                grade: "8º Ano - Ciclo III",
+                title: "Ação do Sistema Endócrino na Puberdade",
+                description: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias.",
+                focus: "Compreender a atuação dos hormônios sexuais (testosterona, estrogênio e progesterona) estimulados pela hipófise na puberdade.",
+                prerequisites: ["Organização do corpo humano e noção de hormônio como mensageiro químico"],
+                pitfalls: [
+                    "Trocar os hormônios responsáveis pelo desenvolvimento das características masculinas e femininas.",
+                    "Achar que as transformações físicas ocorrem sem sinalização prévia do sistema nervoso/endócrino."
+                ],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar infográficos de mudanças no corpo humano durante a puberdade." },
+                    { step: 2, action: "Duvidar", detail: "Questionar: 'Como os hormônios produzidos nas gônadas sabem onde atuar no corpo?'" },
+                    { step: 3, action: "Teorizar", detail: "Montar o fluxo endócrino: Hipófise -> Gônadas (Testículos/Ovários) -> Hormônios Sexuais -> Caracteres Secundários." }
+                ],
+                sampleQuestionTip: "A avaliação cobra a relação direta entre o hormônio secretado e a alteração física desenvolvida no corpo."
+            },
+            {
+                id: "8EF14_CN",
+                bncc: "EF08CI09",
+                unit: "VE - Vida e Evolução",
+                grade: "8º Ano - Ciclo III",
+                title: "Princípio de Ação dos Métodos Contraceptivos",
+                description: "Reconhecer o princípio de ação dos métodos contraceptivos.",
+                focus: "Classificar métodos contraceptivos (barreira, hormonais, comportamentais, cirúrgicos) e compreender seu funcionamento.",
+                prerequisites: ["Fisiologia básica da reprodução humana e ciclo menstrual"],
+                pitfalls: [
+                    "Acreditar que pílulas anticoncepcionais protegem contra infecções sexualmente transmissíveis.",
+                    "Confundir pílula do dia seguinte (emergencial) com métodos contraceptivos de uso diário ou cirúrgicos."
+                ],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar uma tabela com imagens de camisinha, pílula, DIU, vasectomia/laqueadura." },
+                    { step: 2, action: "Duvidar", detail: "Questionar: 'Qual destes métodos impede o encontro dos gametas e qual impede a ovulação?'" },
+                    { step: 3, action: "Teorizar", detail: "Categorizar os métodos segundo a forma de ação: Impedir fecundação (Barreira) ou Ovulação (Hormonal)." }
+                ],
+                sampleQuestionTip: "Questões do CAEd abordam situações-problema perguntando qual o método mais indicado para prevenir tanto a gravidez quanto as ISTs."
+            },
+            {
+                id: "8EF15_CN",
+                bncc: "EF08CI10",
+                unit: "VE - Vida e Evolução",
+                grade: "8º Ano - Ciclo III",
+                title: "Características das ISTs e Prevenção",
+                description: "Reconhecer as características das infecções sexualmente transmissíveis (IST).",
+                focus: "Identificar agentes causadores (vírus, bactérias), modos de transmissão, sintomas principais e formas de prevenção.",
+                prerequisites: ["Noções de higiene, sistema imunitário e vírus/bactérias"],
+                pitfalls: [
+                    "Acreditar que o contágio por IST ocorre pelo simples contato social (abraço, talheres, assento sanitário).",
+                    "Confundir infecção bacteriana (tratável com antibiótico) com infecção viral."
+                ],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar campanhas do Ministério da Saúde sobre prevenção de ISTs e uso do preservativo." },
+                    { step: 2, action: "Duvidar", detail: "Questionar: 'Por que o uso do preservativo (camisinha) é o método mais eficaz contra o contágio das ISTs?'" },
+                    { step: 3, action: "Teorizar", detail: "Mapear principais ISTs (HIV, Sífilis, HPV, Gonorreia), formas de transmissão e prevenção." }
+                ],
+                sampleQuestionTip: "Provas avaliam o reconhecimento do uso do preservativo como barreira essencial contra o contágio de agentes infecciosos."
+            },
+            {
+                id: "8EF17_CN",
+                bncc: "EF08CI13",
+                unit: "VE - Vida e Evolução",
+                grade: "8º Ano - Ciclo III",
+                title: "Movimentos da Terra, Dias, Noites e Estações",
+                description: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.",
+                focus: "Relacionar a Rotação ao ciclo dia/noite e a Translação + Inclinação do Eixo às Estações do Ano e insolação desigual.",
+                prerequisites: ["Conceito de eixos e formas da Terra", "Luz e sombra"],
+                pitfalls: [
+                    "Acreditar que o verão ocorre porque a Terra fica 'mais perto do Sol' na translação.",
+                    "Esquecer a importância da inclinação do eixo terrestre na variação das estações do ano."
+                ],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Demonstrar o globo terrestre inclinado sendo iluminado por uma lanterna." },
+                    { step: 2, action: "Duvidar", detail: "Questionar: 'Se fosse o afélio (maior distância) que definisse o inverno, por que quando é inverno no Brasil é verão nos EUA?'" },
+                    { step: 3, action: "Teorizar", detail: "Sistematizar: Rotação $\\rightarrow$ Dia/Noite | Translação + Eixo Inclinado $\\rightarrow$ Estações do Ano." }
+                ],
+                sampleQuestionTip: "Avaliações trazem diagramas da orbita terrestre ao redor do Sol e pedem para identificar em qual posição o Hemisfério Sul vive o Verão/Inverno."
             }
         ];
 
@@ -247,20 +368,18 @@
         // Render List Items
         function renderList() {
             const searchVal = document.getElementById('search-input').value.toLowerCase().trim();
-            const subjectVal = document.getElementById('filter-subject').value;
-            const gradeVal = document.getElementById('filter-grade').value;
+            const unitVal = document.getElementById('filter-unit').value;
 
             const filtered = db.filter(item => {
                 const matchSearch = searchVal === '' || 
                                     item.id.toLowerCase().includes(searchVal) ||
-                                    item.descriptor.toLowerCase().includes(searchVal) ||
+                                    item.bncc.toLowerCase().includes(searchVal) ||
                                     item.title.toLowerCase().includes(searchVal) ||
                                     item.description.toLowerCase().includes(searchVal);
                 
-                const matchSubject = subjectVal === 'todos' || item.subject === subjectVal;
-                const matchGrade = gradeVal === 'todos' || item.grade === gradeVal;
+                const matchUnit = unitVal === 'todos' || item.unit === unitVal;
 
-                return matchSearch && matchSubject && matchGrade;
+                return matchSearch && matchUnit;
             });
 
             document.getElementById('results-count').innerText = filtered.length;
@@ -268,12 +387,11 @@
             container.innerHTML = '';
 
             if (filtered.length === 0) {
-                container.innerHTML = `<div class="p-4 bg-white rounded-lg border border-slate-200 text-center text-slate-500 text-sm">Nenhuma habilidade encontrada para o filtro selecionado.</div>`;
-                document.getElementById('detail-card').innerHTML = `<div class="text-center text-slate-400 py-12">Selecione uma habilidade válida na busca para ver o direcionamento.</div>`;
+                container.innerHTML = `<div class="p-4 bg-white rounded-lg border border-slate-200 text-center text-slate-500 text-sm">Nenhuma habilidade do CAEd encontrada para essa busca.</div>`;
+                document.getElementById('detail-card').innerHTML = `<div class="text-center text-slate-400 py-12">Selecione um código válido na lista ao lado.</div>`;
                 return;
             }
 
-            // Ensure valid selection
             if (!filtered.some(i => i.id === selectedId)) {
                 selectedId = filtered[0].id;
             }
@@ -295,7 +413,7 @@
                 card.innerHTML = `
                     <div class="flex items-center justify-between mb-1">
                         <span class="font-bold text-xs px-2 py-0.5 rounded ${isActive ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'}">${item.id}</span>
-                        <span class="text-xs font-semibold text-slate-500">${item.descriptor} • ${item.grade}</span>
+                        <span class="text-xs font-semibold text-slate-500">${item.bncc}</span>
                     </div>
                     <h3 class="text-sm font-semibold text-slate-800 line-clamp-1">${item.title}</h3>
                     <p class="text-xs text-slate-500 mt-1 line-clamp-2">${item.description}</p>
@@ -317,15 +435,15 @@
                 <!-- Top Info Bar -->
                 <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4 mb-6">
                     <div class="flex items-center space-x-2">
-                        <span class="bg-indigo-100 text-indigo-900 font-extrabold text-sm px-3 py-1 rounded-md border border-indigo-200">
-                            BNCC: ${item.id}
-                        </span>
                         <span class="bg-amber-100 text-amber-900 font-extrabold text-sm px-3 py-1 rounded-md border border-amber-200">
-                            PROVAS EXTERNAS: ${item.descriptor}
+                            CÓDIGO CAEd: ${item.id}
+                        </span>
+                        <span class="bg-indigo-100 text-indigo-900 font-extrabold text-sm px-3 py-1 rounded-md border border-indigo-200">
+                            BNCC: ${item.bncc}
                         </span>
                     </div>
                     <div class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
-                        ${item.subject} • ${item.grade}
+                        ${item.unit}
                     </div>
                 </div>
 
@@ -333,7 +451,7 @@
                 <div class="mb-6">
                     <h2 class="text-xl font-bold text-slate-900 mb-2">${item.title}</h2>
                     <div class="bg-slate-50 p-3.5 rounded-lg border-l-4 border-indigo-500 text-sm text-slate-700">
-                        <strong>Descrição da Habilidade:</strong> ${item.description}
+                        <strong>Habilidade CAEd:</strong> ${item.description}
                     </div>
                 </div>
 
@@ -343,7 +461,7 @@
                     <div class="bg-emerald-50/60 border border-emerald-200 rounded-lg p-4">
                         <div class="flex items-center space-x-2 text-emerald-800 font-bold text-sm mb-2">
                             <i data-lucide="target" class="w-4 h-4"></i>
-                            <span>Foco Primário da Avaliação</span>
+                            <span>Foco Primário no CAEd</span>
                         </div>
                         <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed">${item.focus}</p>
                     </div>
@@ -352,7 +470,7 @@
                     <div class="bg-rose-50/60 border border-rose-200 rounded-lg p-4">
                         <div class="flex items-center space-x-2 text-rose-800 font-bold text-sm mb-2">
                             <i data-lucide="alert-triangle" class="w-4 h-4"></i>
-                            <span>Pegadinhas & Erros Frequentes</span>
+                            <span>Distratores & Erros Frequentes</span>
                         </div>
                         <ul class="list-disc list-inside text-xs sm:text-sm text-rose-950 space-y-1">
                             ${item.pitfalls.map(p => `<li>${p}</li>`).join('')}
@@ -387,7 +505,7 @@
                         ${item.prerequisites.map(req => `<li>${req}</li>`).join('')}
                     </ul>
                     <div class="pt-2 border-t border-indigo-100/80 text-xs text-indigo-900 italic">
-                        <strong>Dica de Item:</strong> ${item.sampleQuestionTip}
+                        <strong>Dica de Item de Prova:</strong> ${item.sampleQuestionTip}
                     </div>
                 </div>
 
@@ -395,7 +513,7 @@
                 <div class="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-slate-100 no-print">
                     <button onclick="copyLessonPlan()" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition-colors">
                         <i data-lucide="copy" class="w-4 h-4"></i>
-                        <span>Copiar para Plano</span>
+                        <span>Copiar para Plano de Aula</span>
                     </button>
                     <button onclick="window.print()" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-lg shadow-sm transition-colors">
                         <i data-lucide="printer" class="w-4 h-4"></i>
@@ -407,37 +525,36 @@
             lucide.createIcons();
         }
 
-        // Helper function: Copy plan summary
         function copyLessonPlan() {
             const item = db.find(i => i.id === selectedId);
             if (!item) return;
 
-            const text = `NORTEADOR PEDAGÓGICO
-Habilidade: ${item.id} (${item.descriptor})
-Componente: ${item.subject} - ${item.grade}
+            const text = `NORTEADOR PEDAGÓGICO - CAEd 2026
+Código CAEd: ${item.id} | Habilidade BNCC: ${item.bncc}
+Unidade Temática: ${item.unit}
 Título: ${item.title}
+
+HABILIDADE:
+${item.description}
 
 FOCO DA AVALIAÇÃO:
 ${item.focus}
 
-ERROS COMUNS / DISTRATORES:
+DISTRATORES / ERROS FREQUENTES:
 ${item.pitfalls.map(p => '- ' + p).join('\n')}
 
-ROTA DIDÁTICA:
+ROTA DIDÁTICA (OBSERVAR • DUVIDAR • TEORIZAR):
 ${item.methodologyRoute.map(r => `${r.step}. ${r.action}: ${r.detail}`).join('\n')}
             `;
 
             navigator.clipboard.writeText(text).then(() => {
-                alert('Estrutura do plano copiada para a área de transferência!');
+                alert('Estrutura do plano copiada com sucesso!');
             });
         }
 
-        // Attach event listeners
         document.getElementById('search-input').addEventListener('input', renderList);
-        document.getElementById('filter-subject').addEventListener('change', renderList);
-        document.getElementById('filter-grade').addEventListener('change', renderList);
+        document.getElementById('filter-unit').addEventListener('change', renderList);
 
-        // Initial setup
         renderList();
     </script>
 </body>
