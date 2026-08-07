@@ -38,7 +38,7 @@
                 </div>
             </div>
             
-            <!-- Class Tabs / Navigation -->
+            <!-- Class Tabs / Navigation (Strictly Separated) -->
             <div class="flex items-center bg-indigo-950 p-1 rounded-lg border border-indigo-700/50 text-xs font-semibold">
                 <button onclick="switchTab('6º Ano')" id="tab-6º Ano" class="tab-btn px-3 py-1.5 rounded-md transition-colors text-indigo-200 hover:text-white">6º Ano</button>
                 <button onclick="switchTab('7º Ano')" id="tab-7º Ano" class="tab-btn px-3 py-1.5 rounded-md transition-colors text-indigo-200 hover:text-white">7º Ano</button>
@@ -68,7 +68,7 @@
                         <div class="relative">
                             <i data-lucide="search" class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
                             <input type="text" id="search-input" 
-                                placeholder="Ex: 9EF01_CN, 8EF01_CN, Mendel, átomos..." 
+                                placeholder="Ex: 9EF01_CN, 8EF01_CN, Mendel, circuitos..." 
                                 class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all">
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                 <div class="border-b border-slate-200 pb-4 mb-6 flex items-center justify-between">
                     <div>
                         <h2 class="text-xl font-bold text-slate-900">Cadastrar Nova Habilidade / Prova CAEd</h2>
-                        <p class="text-xs text-slate-500">Adicione novas habilidades e planejamentos para suas turmas sem perder os dados salvos.</p>
+                        <p class="text-xs text-slate-500">Adicione novas habilidades sem alterar ou perder os dados já cadastrados.</p>
                     </div>
                     <span class="bg-amber-100 text-amber-900 text-xs font-bold px-3 py-1 rounded-full border border-amber-200">Painel do Professor</span>
                 </div>
@@ -224,29 +224,29 @@
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-4 mt-8 no-print">
         <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
-            Norteador Pedagógico • Matrizes do CAEd 2026 Integradas por Turma.
+            Norteador Pedagógico • Matrizes CAEd 2026 Integradas por Turma.
         </div>
     </footer>
 
-    <!-- Application Script & Complete Data Store -->
+    <!-- Master Database Script -->
     <script>
         let currentTab = '9º Ano';
 
-        // Master Database - Separated strictly by Class (Grade) and Cycle (Ciclo I, II e III)
+        // Master Database - Separated strictly by Class (Grade) and Cycle
         let db = [
             // =========================================================================
-            // --- 9º ANO - CIÊNCIAS DA NATUREZA (MATRIZES CAED 2026 ANEXADAS) ---
+            // --- 9º ANO - CIÊNCIAS DA NATUREZA (CAED 2026 / CICLOS I, II E III) ---
             // =========================================================================
 
             // --- 9º ANO: CICLO I ---
             {
-                id: "8EF04_CN",
+                id: "8EF04_CN_9I",
                 bncc: "EF08CI01",
                 unit: "ME - Matéria e Energia",
                 grade: "9º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo I",
-                title: "Classificação de Recursos Energéticos (Revisão)",
+                title: "Classificação de Recursos Energéticos",
                 description: "Classificar os recursos energéticos em renováveis e não renováveis.",
                 focus: "Classificar fontes energéticas primárias quanto à velocidade de recomposição natural.",
                 prerequisites: ["Conceito de matriz energética e fontes renováveis"],
@@ -259,13 +259,13 @@
                 sampleQuestionTip: "Itens pedem para o aluno identificar fontes renováveis em tabelas de consumo de energia."
             },
             {
-                id: "8EF04_CN_B",
+                id: "8EF04_CN_9I_Circ",
                 bncc: "EF08CI02",
                 unit: "ME - Matéria e Energia",
                 grade: "9º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo I",
-                title: "Componentes de um Circuito Elétrico (Revisão)",
+                title: "Componentes de um Circuito Elétrico",
                 description: "Reconhecer os componentes de um circuito.",
                 focus: "Identificar o papel de pilhas, fios condutores, interruptores e lâmpadas em circuitos elétricos.",
                 prerequisites: ["Fluxo de corrente elétrica em circuito fechado"],
@@ -278,13 +278,13 @@
                 sampleQuestionTip: "Identificar o elemento responsável por interromper a corrente em diagramas elétricos."
             },
             {
-                id: "8EF05_CN",
+                id: "8EF05_CN_9I",
                 bncc: "EF08CI03",
                 unit: "ME - Matéria e Energia",
                 grade: "9º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo I",
-                title: "Transformação de Energia Residencial (Revisão)",
+                title: "Transformação de Energia Residencial",
                 description: "Classificar os processos de transformação da energia nos aparelhos residenciais.",
                 focus: "Identificar a conversão da energia elétrica em térmica, mecânica, luminosa ou sonora.",
                 prerequisites: ["Princípio de conservação de energia"],
@@ -297,16 +297,16 @@
                 sampleQuestionTip: "Provas pedem para associar o aparelho residencial ao tipo principal de energia de saída."
             },
             {
-                id: "8EF06_CN",
+                id: "8EF06_CN_9I",
                 bncc: "EF08CI04",
                 unit: "ME - Matéria e Energia",
                 grade: "9º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo I",
-                title: "Consumo de Energia Eletroeletrônica (Revisão)",
+                title: "Consumo de Energia Eletroeletrônica",
                 description: "Verificar o consumo de energia elétrica de aparelhos eletroeletrônicos, assim como as grandezas e as ações que influenciam nesse consumo.",
                 focus: "Calcular e comparar o consumo em kWh a partir da potência (W) e do tempo de utilização.",
-                prerequisites: ["Cálculo simples de potência $\\times$ tempo"],
+                prerequisites: ["Cálculo simples de potência x tempo"],
                 pitfalls: ["Acreditar que a voltagem isolada determina o consumo da conta de luz."],
                 methodologyRoute: [
                     { step: 1, action: "Observar", detail: "Examinar tabela de potência e horas diárias de uso de eletrodomésticos." },
@@ -316,13 +316,13 @@
                 sampleQuestionTip: "Leitura de tabelas para identificar o equipamento de maior impacto na conta de luz."
             },
             {
-                id: "8EF08_CN",
+                id: "8EF08_CN_9I",
                 bncc: "EF08CI06",
                 unit: "ME - Matéria e Energia",
                 grade: "9º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo I",
-                title: "Mecanismos de Geração Elétrica (Revisão)",
+                title: "Mecanismos de Geração Elétrica",
                 description: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas.",
                 focus: "Identificar o papel do movimento da turbina e gerador em usinas hidrelétricas e termelétricas.",
                 prerequisites: ["Conversão de energia mecânica em elétrica"],
@@ -335,13 +335,13 @@
                 sampleQuestionTip: "Identificar no desenho esquemático a etapa em que ocorre o movimento da turbina."
             },
             {
-                id: "8EF09_CN",
+                id: "8EF09_CN_9I",
                 bncc: "EF08CI06",
                 unit: "ME - Matéria e Energia",
                 grade: "9º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo I",
-                title: "Impactos Ambientais das Usinas (Revisão)",
+                title: "Impactos Ambientais das Usinas",
                 description: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia elétrica.",
                 focus: "Identificar alagamentos de florestas nas hidrelétricas e poluição por gases nas termelétricas.",
                 prerequisites: ["Impactos socioambientais das matrizes elétricas"],
@@ -354,13 +354,13 @@
                 sampleQuestionTip: "Relacionar a alteração do habitat aquático e terrestre com a construção de hidrelétricas."
             },
             {
-                id: "8EF10_CN",
+                id: "8EF10_CN_9I",
                 bncc: "EF08CI06",
                 unit: "ME - Matéria e Energia",
                 grade: "9º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo I",
-                title: "Tipos de Usinas Elétricas (Revisão)",
+                title: "Tipos de Usinas Elétricas",
                 description: "Reconhecer os tipos de usinas de geração de energia elétrica.",
                 focus: "Diferenciar usinas eólicas, solares, hidrelétricas, nucleares e termelétricas pela fonte natural primária.",
                 prerequisites: ["Fontes de energia do planeta"],
@@ -373,13 +373,13 @@
                 sampleQuestionTip: "Associação direta entre o recurso natural da região e o tipo de usina instalado."
             },
             {
-                id: "8EF11_CN",
+                id: "8EF11_CN_9I",
                 bncc: "EF08CI07",
                 unit: "VE - Vida e Evolução",
                 grade: "9º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo I",
-                title: "Processos Reprodutivos dos Seres Vivos (Revisão)",
+                title: "Processos Reprodutivos dos Seres Vivos",
                 description: "Reconhecer os diferentes processos reprodutivos dos seres vivos.",
                 focus: "Diferenciar reprodução assexuada (sem variabilidade) e sexuada (fusão de gametas).",
                 prerequisites: ["Conceito de gametas e fertilização"],
@@ -392,13 +392,13 @@
                 sampleQuestionTip: "Identificação do tipo de reprodução em figuras e esquemas ilustrativos."
             },
             {
-                id: "8EF13_CN",
+                id: "8EF13_CN_9I",
                 bncc: "EF08CI08",
                 unit: "VE - Vida e Evolução",
                 grade: "9º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo I",
-                title: "Sistema Endócrino e Puberdade (Revisão)",
+                title: "Sistema Endócrino e Puberdade",
                 description: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias.",
                 focus: "Identificar o papel da hipófise e dos hormônios sexuais (testosterona/estrogênio) na puberdade.",
                 prerequisites: ["Mecanismos hormonais do corpo humano"],
@@ -411,13 +411,13 @@
                 sampleQuestionTip: "Atribuir as alterações do corpo ao hormônio sexual correspondente."
             },
             {
-                id: "8EF14_CN",
+                id: "8EF14_CN_9I",
                 bncc: "EF08CI09",
                 unit: "VE - Vida e Evolução",
                 grade: "9º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo I",
-                title: "Métodos Contraceptivos (Revisão)",
+                title: "Métodos Contraceptivos",
                 description: "Reconhecer o princípio de ação dos métodos contraceptivos.",
                 focus: "Classificar métodos em barreira, hormonal e cirúrgico e o bloqueio da fertilização.",
                 prerequisites: ["Anatomia do sistema reprodutor"],
@@ -430,13 +430,13 @@
                 sampleQuestionTip: "Identificar métodos indicados para evitar gravidez e transmissão de doenças simultaneamente."
             },
             {
-                id: "8EF15_CN",
+                id: "8EF15_CN_9I",
                 bncc: "EF08CI10",
                 unit: "VE - Vida e Evolução",
                 grade: "9º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo I",
-                title: "Características das ISTs (Revisão)",
+                title: "Características das ISTs",
                 description: "Reconhecer as características das infecções sexualmente transmissíveis (IST).",
                 focus: "Identificar agentes infecciosos, vias de transmissão e prevenção pelo preservativo.",
                 prerequisites: ["Microorganismos patogênicos"],
@@ -449,13 +449,13 @@
                 sampleQuestionTip: "Reconhecimento do preservativo como medida eficaz no combate às ISTs."
             },
             {
-                id: "8EF17_CN",
+                id: "8EF17_CN_9I",
                 bncc: "EF08CI13",
                 unit: "TU - Terra e Universo",
                 grade: "9º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo I",
-                title: "Movimentos da Terra e Estações (Revisão)",
+                title: "Movimentos da Terra e Estações",
                 description: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.",
                 focus: "Relacionar a rotação ao dia/noite e a translação com eixo inclinado às estações do ano.",
                 prerequisites: ["Movimentos planetários da Terra"],
@@ -560,7 +560,7 @@
                 methodologyRoute: [
                     { step: 1, action: "Observar", detail: "Projetar três lanternas com filtros Vermelho, Verde e Azul sobrepostos numa parede branca." },
                     { step: 2, action: "Duvidar", detail: "O que acontece se misturarmos feixes de luz Vermelha e Verde num mesmo ponto da parede?" },
-                    { step: 3, action: "Teorizar", detail: "Montar o diagrama de Venn das Cores da Luz: $Vemelho + Verde = Amarelo$; $Red + Green + Blue = Luz Branca$." }
+                    { step: 3, action: "Teorizar", detail: "Montar o diagrama de Venn das Cores da Luz: Vermelho + Verde = Amarelo; Red + Green + Blue = Luz Branca." }
                 ],
                 sampleQuestionTip: "Perguntas de múltipla escolha pedem para identificar a cor resultante da sobreposição dos feixes de luz primários."
             },
@@ -594,7 +594,7 @@
                 description: "Reconhecer as aplicações das radiações eletromagnéticas.",
                 focus: "Associar cada faixa do espectro a seus usos tecnológicos (Raio-X em radiografia, Infravermelho em termografia, Micro-ondas em telecomunicações/forno).",
                 prerequisites: ["Espectro eletromagnético e frequência"],
-                pitfalls: ["Acreditar que os aparelhos de micro-ondas ou raio-X deixam os alimentos ou o corpo 'radioativos' permanente."],
+                pitfalls: ["Acreditar que os aparelhos de micro-ondas ou raio-X deixam os alimentos ou o corpo radioativos permanente."],
                 methodologyRoute: [
                     { step: 1, action: "Observar", detail: "Levar imagens de exames de Raio-X, aparelho de Wi-Fi e um controle remoto de garagens." },
                     { step: 2, action: "Duvidar", detail: "Qual tipo de radiação consegue atravessar os tecidos moles do corpo, mas é barrada pelos ossos?" },
@@ -635,7 +635,7 @@
                 pitfalls: ["Acreditar que Mendel conhecia a estrutura molecular do DNA em sua época."],
                 methodologyRoute: [
                     { step: 1, action: "Observar", detail: "Apresentar a história do cruzamento de ervilhas amarelas e verdes de Gregor Mendel." },
-                    { step: 2, action: "Duvidar", detail: "Por que ao cruzar ervilhas amarelas puros com verdes puras a cor verde sumiu na $F1$ e reapareceu na $F2$?" },
+                    { step: 2, action: "Duvidar", detail: "Por que ao cruzar ervilhas amarelas puros com verdes puras a cor verde sumiu na F1 e reapareceu na F2?" },
                     { step: 3, action: "Teorizar", detail: "Sistematizar a 1ª Lei de Mendel: Os fatores (alelos) se separam na formação dos gametas em proporções matemáticas genotípicas." }
                 ],
                 sampleQuestionTip: "Questões do CAEd abordam a escolha da ervilha por Mendel devido ao ciclo de vida rápido e autofecundação fácil."
@@ -695,7 +695,7 @@
                 methodologyRoute: [
                     { step: 1, action: "Observar", detail: "Analisar representações visuais de partículas no estado sólido, líquido e gasoso sob aquecimento." },
                     { step: 2, action: "Duvidar", detail: "O que acontece com as forças de atração entre as moléculas da água à medida que ela esquenta?" },
-                    { step: 3, action: "Teorizar", detail: "Relacionar: Ganho de Energia Térmica $\\rightarrow$ Maior Agitação $\\rightarrow$ Enfraquecimento de atração $\\rightarrow$ Mudança de Estado." }
+                    { step: 3, action: "Teorizar", detail: "Relacionar: Ganho de Energia Térmica -> Maior Agitação -> Enfraquecimento de atração -> Mudança de Estado." }
                 ],
                 sampleQuestionTip: "Identificar em esquemas moleculares a transição do estado líquido para o gasoso."
             },
@@ -714,12 +714,12 @@
                 methodologyRoute: [
                     { step: 1, action: "Observar", detail: "Misturar vinagre e bicarbonato num balão preso à gargalo de uma garrafa PET sobre uma balança." },
                     { step: 2, action: "Duvidar", detail: "Se houver efervescência e formação de gás, a massa total indicada na balança vai mudar se a garrafa estiver vedada?" },
-                    { step: 3, action: "Teorizar", detail: "Lei de Lavoisier: $Massa_{Reagentes} = Massa_{Produtos}$. Átomos não são criados nem destruídos, apenas reagrupados." }
+                    { step: 3, action: "Teorizar", detail: "Lei de Lavoisier: Massa dos Reagentes = Massa dos Produtos. Átomos não são criados nem destruídos, apenas reagrupados." }
                 ],
                 sampleQuestionTip: "Cálculos simples de conservação de massas em tabelas de reação em sistema fechado."
             },
             {
-                id: "9EF04_CN",
+                id: "9EF04_CN_C3",
                 bncc: "EF09CI02",
                 unit: "ME - Matéria e Energia",
                 grade: "9º Ano",
@@ -731,14 +731,14 @@
                 prerequisites: ["Símbolos dos elementos químicos e fórmulas moleculares simples"],
                 pitfalls: ["Alterar o subíndice da fórmula química em vez do coeficiente para balancear a equação."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Escrever no quadro a reação da água: $2H_2 + O_2 \\rightarrow 2H_2O$ usando bolinhas coloridas." },
+                    { step: 1, action: "Observar", detail: "Escrever no quadro a reação da água: 2H2 + O2 -> 2H2O usando bolinhas coloridas." },
                     { step: 2, action: "Duvidar", detail: "Quantos átomos de Hidrogênio e Oxigênio temos antes da seta e quantos temos depois da seta?" },
                     { step: 3, action: "Teorizar", detail: "Ensinar a leitura de coeficientes e subíndices para verificar a igualdade de quantidade atômica." }
                 ],
                 sampleQuestionTip: "Provas pedem para o aluno identificar qual das equações químicas apresentadas está devidamente balanceada."
             },
             {
-                id: "9EF05_CN",
+                id: "9EF05_CN_C3",
                 bncc: "EF09CI03",
                 unit: "ME - Matéria e Energia",
                 grade: "9º Ano",
@@ -752,7 +752,7 @@
                 methodologyRoute: [
                     { step: 1, action: "Observar", detail: "Apresentar desenhos históricos dos quatro modelos atômicos principais lado a lado." },
                     { step: 2, action: "Duvidar", detail: "O que o experimento de Rutherford com a folha de ouro provou que o modelo de Dalton não conseguia explicar?" },
-                    { step: 3, action: "Teorizar", detail: "Ligar a tecnologia da época ao modelo descoberto: Dalton (Pesagens) $\\rightarrow$ Thomson (Raios Catódicos) $\\rightarrow$ Rutherford (Radioatividade)." }
+                    { step: 3, action: "Teorizar", detail: "Ligar a tecnologia da época ao modelo descoberto: Dalton (Pesagens) -> Thomson (Raios Catódicos) -> Rutherford (Radioatividade)." }
                 ],
                 sampleQuestionTip: "Associar o nome do cientista ou característica histórica ao desenho ou descrição do modelo atômico."
             },
@@ -807,9 +807,9 @@
                 prerequisites: ["Conceitos de dominante, recessivo e separação dos alelos nos gametas"],
                 pitfalls: ["Somar as probabilidades do quadro de Punnett incorretamente em vez de usar as quatro seções de 25%."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Desenhar um Quadro de Punnett na lousa cruzando dois indivíduos heterozigotos ($Aa \\times Aa$)." },
-                    { step: 2, action: "Duvidar", detail: "Qual é a chance exata de um casal heterozigoto ter um filho com fenótipo recessivo ($aa$)?" },
-                    { step: 3, action: "Teorizar", detail: "Demonstrar o cruzamento passo a passo: $1/4 (25\\%) AA$, $2/4 (50\\%) Aa$, $1/4 (25\\%) aa$." }
+                    { step: 1, action: "Observar", detail: "Desenhar um Quadro de Punnett na lousa cruzando dois indivíduos heterozigotos (Aa x Aa)." },
+                    { step: 2, action: "Duvidar", detail: "Qual é a chance exata de um casal heterozigoto ter um filho com fenótipo recessivo (aa)?" },
+                    { step: 3, action: "Teorizar", detail: "Demonstrar o cruzamento passo a passo: 1/4 (25%) AA, 2/4 (50%) Aa, 1/4 (25%) aa." }
                 ],
                 sampleQuestionTip: "Provas do CAEd pedem o cálculo da porcentagem ou proporção de descendentes com determinada característica."
             },
@@ -845,9 +845,9 @@
                 prerequisites: ["Variabilidade genética e adaptação ao meio"],
                 pitfalls: ["Acreditar que a seleção natural escolhe sempre 'o mais forte' e não o mais bem adaptado ao contexto ambiental."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Estudo de caso do marfartamento das mariposas de Manchester (melanismo industrial) durante a revolução industrial." },
+                    { step: 1, action: "Observar", detail: "Estudo de caso do melanismo industrial em mariposas durante a revolução industrial." },
                     { step: 2, action: "Duvidar", detail: "Por que as mariposas escuras passaram a ser a maioria quando os troncos ficaram cobertos de fuligem?" },
-                    { step: 3, action: "Teorizar", detail: "Sistematizar a Seleção Natural: Variabilidade aleatória $\\rightarrow$ Pressão do Meio $\\rightarrow$ Sobrevivência Diferencial $\\rightarrow$ Herança dos traços aos descendentes." }
+                    { step: 3, action: "Teorizar", detail: "Sistematizar a Seleção Natural: Variabilidade aleatória -> Pressão do Meio -> Sobrevivência Diferencial -> Herança dos traços aos descendentes." }
                 ],
                 sampleQuestionTip: "Explicar a resistência de bactérias a antibióticos ou pragas a pesticidas sob a ótica da seleção natural."
             },
@@ -866,7 +866,7 @@
                 methodologyRoute: [
                     { step: 1, action: "Observar", detail: "Exibir o exemplo dos tentilhões de Darwin nas ilhas Galápagos separados pelo oceano." },
                     { step: 2, action: "Duvidar", detail: "O que impede duas populações de uma mesma espécie separadas por um rio de voltarem a se cruzar após milhares de anos?" },
-                    { step: 3, action: "Teorizar", detail: "Etapas da Especiação Alopátrica: Espécie Ancestral $\\rightarrow$ Barreira Geográfica $\\rightarrow$ Acúmulo de Mutações $\\rightarrow$ Isolamento Reprodutivo $\\rightarrow$ Duas Espécies Novas." }
+                    { step: 3, action: "Teorizar", detail: "Etapas da Especiação Alopátrica: Espécie Ancestral -> Barreira Geográfica -> Acúmulo de Mutações -> Isolamento Reprodutivo -> Duas Espécies Novas." }
                 ],
                 sampleQuestionTip: "Identificar o papel da barreira geográfica no processo de formação de novas espécies biológicas."
             },
@@ -884,17 +884,19 @@
                 pitfalls: ["Confundir o destino final de estrelas de média massa (Anã Branca) com estrelas supermassivas (Buraco Negro/Estrela de Nêutrons)."],
                 methodologyRoute: [
                     { step: 1, action: "Observar", detail: "Imagens do telescópio espacial James Webb de nebulosas de nascimento de estrelas e supernovas." },
-                    { step: 2, action: "Duvidar", detail: "Do que as estrelas são feitas e o que acontece quando o 'combustível' de hidrogênio do seu núcleo acaba?" },
+                    { step: 2, action: "Duvidar", detail: "Do que as estrelas são feitas e o que acontece quando o combustível de hidrogênio do seu núcleo acaba?" },
                     { step: 3, action: "Teorizar", detail: "Montar o fluxograma da vida estelar comparando o destino do nosso Sol com o de estrelas gigantes." }
                 ],
                 sampleQuestionTip: "Provas do CAEd pedem para ordenar cronologicamente as etapas do nascimento, vida e morte de uma estrela."
             },
 
-            // ==========================================
-            // --- 8º ANO (PRESERVADO INTEGRALMENTE) ---
-            // ==========================================
+            // =========================================================================
+            // --- 8º ANO - CIÊNCIAS DA NATUREZA (CAED 2026 / CICLOS I, II E III) ---
+            // =========================================================================
+
+            // --- 8º ANO: CICLO I ---
             {
-                id: "7EF01_CN",
+                id: "7EF01_CN_8I",
                 bncc: "EF07CI01",
                 unit: "ME - Matéria e Energia",
                 grade: "8º Ano",
@@ -903,33 +905,132 @@
                 title: "Máquinas Simples, Força e Trabalho",
                 description: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples.",
                 focus: "Reconhecer como alavancas, roldanas e planos inclinados reduzem a força necessária para realizar um trabalho mecânico.",
-                prerequisites: ["Conceito de força e movimento"],
-                pitfalls: ["Acreditar que a máquina reduz o trabalho total em vez da força aplicada."],
+                prerequisites: ["Conceito intuitivo de força, movimento e esforço físico"],
+                pitfalls: ["Acreditar que a máquina simples reduz a quantidade total de trabalho (energia), e não apenas a força aplicada."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Demonstração de uso de tesoura, abridor de garrafas e rampa com peso." },
-                    { step: 2, action: "Duvidar", detail: "É mais fácil empurrar uma caixa subindo uma rampa ou levantando reto?" },
-                    { step: 3, action: "Teorizar", detail: "Formalização: $Trabalho = Força \\times Distância$." }
+                    { step: 1, action: "Observar", detail: "Utilizar uma tesoura, um abridor de garrafas ou uma rampa em sala de aula para levantar um livro pesado." },
+                    { step: 2, action: "Duvidar", detail: "É mais fácil empurrar uma caixa pesada direto para cima ou subindo por uma rampa? A altura final muda?" },
+                    { step: 3, action: "Teorizar", detail: "Formalizar o conceito: Trabalho = Força x Distância. A rampa aumenta a distância para diminuir a força necessária." }
                 ],
-                sampleQuestionTip: "Figuras de trabalhadores usando rampas ou roldanas para identificar a vantagem mecânica."
+                sampleQuestionTip: "Provas do CAEd mostram figuras de trabalhadores usando rampas ou roldanas e pedem para identificar a vantagem mecânica obtida."
             },
             {
-                id: "8EF01_CN",
+                id: "7EF04_CN_8I",
+                bncc: "EF07CI03",
+                unit: "ME - Matéria e Energia",
+                grade: "8º Ano",
+                applicationYear: "2026",
+                cycle: "Ciclo I",
+                title: "Formas de Propagação do Calor",
+                description: "Inferir, em situações cotidianas, as formas de propagação de calor envolvidas na utilização de determinados materiais e equipamentos.",
+                focus: "Diferenciar condução (sólidos), convecção (fluidos/ar/água) e irradiação (ondas eletromagnéticas/Sol).",
+                prerequisites: ["Diferença entre temperatura (agitação) e calor (energia em trânsito)"],
+                pitfalls: ["Acreditar que o frio passa para a mão ao segurar algo gelado (o calor é que sai da mão para o objeto)."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar uma colher de metal e uma de madeira colocadas em um copo com água quente." },
+                    { step: 2, action: "Duvidar", detail: "Por que o ar-condicionado fica na parte alta da parede e o aquecedor fica perto do chão?" },
+                    { step: 3, action: "Teorizar", detail: "Desenhar as correntes de convecção (ar frio desce por ser mais denso e ar quente sobe) e conceituar condução e irradiação." }
+                ],
+                sampleQuestionTip: "Questões mostram utensílios de cozinha ou garrafas térmicas e perguntam qual mecanismo de troca de calor está sendo evitado."
+            },
+            {
+                id: "7EF06_CN_8I",
+                bncc: "EF07CI04",
+                unit: "ME - Matéria e Energia",
+                grade: "8º Ano",
+                applicationYear: "2026",
+                cycle: "Ciclo I",
+                title: "Funcionamento de Máquinas Térmicas",
+                description: "Explicar o funcionamento de máquinas térmicas (conversão de calor em trabalho, fluxo de calor, equilíbrio térmico, fonte de energia, perdas de energia).",
+                focus: "Compreender que máquinas térmicas operam entre uma fonte quente e uma fonte fria, convertendo parte do calor em trabalho mecânico.",
+                prerequisites: ["Conservação da energia e propagação do calor"],
+                pitfalls: ["Acreditar que uma máquina térmica pode ter rendimento de 100% sem perda de calor para o ambiente."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Demonstrar o movimento da tampa de uma chaleira com água fervendo impulsionada pelo vapor." },
+                    { step: 2, action: "Duvidar", detail: "Como a queima do combustível no motor de um carro faz as rodas girarem?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear o esquema: Fonte Quente (Calor) -> Máquina (Trabalho) -> Fonte Fria (Perda de Calor)." }
+                ],
+                sampleQuestionTip: "Provas apresentam esquemas do ciclo de máquinas a vapor ou motores a combustão para identificar onde ocorre a realização de trabalho."
+            },
+
+            // --- 8º ANO: CICLO II ---
+            {
+                id: "8EF01_CN_8II",
                 bncc: "EF08CI01",
                 unit: "ME - Matéria e Energia",
                 grade: "8º Ano",
                 applicationYear: "2026",
-                cycle: "Ciclo III",
+                cycle: "Ciclo II",
                 title: "Classificação dos Recursos Energéticos",
                 description: "Classificar os recursos energéticos em renováveis e não renováveis.",
                 focus: "Categorizar recursos (Sol, vento, petróleo, carvão, biomassa) segundo o tempo de renovação natural.",
-                prerequisites: ["Fontes de energia"],
+                prerequisites: ["Fontes de energia do planeta"],
                 pitfalls: ["Confundir energia limpa com energia renovável."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Cartões ilustrados das matrizes energéticas." },
-                    { step: 2, action: "Duvidar", detail: "Velocidade de reposição da fonte na natureza." },
-                    { step: 3, action: "Teorizar", detail: "Tabela comparativa: Renováveis x Não Renováveis." }
+                    { step: 1, action: "Observar", detail: "Analisar cartões ilustrados das matrizes energéticas." },
+                    { step: 2, action: "Duvidar", detail: "Qual a velocidade de reposição de cada fonte na natureza?" },
+                    { step: 3, action: "Teorizar", detail: "Dividir quadro em Renováveis x Não Renováveis." }
                 ],
-                sampleQuestionTip: "Classificação de fontes em tabelas de consumo."
+                sampleQuestionTip: "Reconhecer a fonte primária utilizada na geração de energia."
+            },
+            {
+                id: "8EF16_CN_8II",
+                bncc: "EF08CI12",
+                unit: "TU - Terra e Universo",
+                grade: "8º Ano",
+                applicationYear: "2026",
+                cycle: "Ciclo II",
+                title: "Sol, Terra e Lua: Fases e Eclipses",
+                description: "Reconhecer as posições relativas entre Sol, Terra e Lua associadas às fases da Lua e à ocorrência de eclipses.",
+                focus: "Relacionar a iluminação da Lua observada da Terra às suas posições geométricas (Nova, Crescente, Cheia, Minguante) e ao alinhamento de eclipses.",
+                prerequisites: ["Movimento de revolução da Lua ao redor da Terra", "Sombra e penumbra"],
+                pitfalls: ["Acreditar que as fases da Lua são causadas pela sombra da Terra na Lua (confundir fase com eclipse)."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Demonstrar com uma bola de isopor (Lua), uma lanterna (Sol) e uma pessoa girando (Terra)." },
+                    { step: 2, action: "Duvidar", detail: "Por que a Lua Cheia só aparece à noite e quando está do lado oposto ao Sol?" },
+                    { step: 3, action: "Teorizar", detail: "Desenhar as 4 posições orbitais principais e os alinhamentos de Eclipse Solar (Sol-Lua-Terra) e Lunar (Sol-Terra-Lua)." }
+                ],
+                sampleQuestionTip: "Provas do CAEd mostram a órbita da Lua ao redor da Terra e pedem para indicar em qual posição ocorre o Eclipse Lunar ou a Lua Cheia."
+            },
+
+            // --- 8º ANO: CICLO III ---
+            {
+                id: "8EF04_CN_8III",
+                bncc: "EF08CI02",
+                unit: "ME - Matéria e Energia",
+                grade: "8º Ano",
+                applicationYear: "2026",
+                cycle: "Ciclo III",
+                title: "Componentes de um Circuito Elétrico",
+                description: "Reconhecer os componentes de um circuito elétrico.",
+                focus: "Identificar a função de geradores, condutores, chaves e receptores.",
+                prerequisites: ["Condutores e isolantes"],
+                pitfalls: ["Confundir a função da fonte com a do interruptor."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Demonstrar circuito simples com pilha e lâmpada." },
+                    { step: 2, action: "Duvidar", detail: "O que acontece ao abrir o interruptor?" },
+                    { step: 3, action: "Teorizar", detail: "Desenhar o esquema e identificar componentes." }
+                ],
+                sampleQuestionTip: "Identificar componente defeituoso no diagrama."
+            },
+            {
+                id: "8EF17_CN_8III",
+                bncc: "EF08CI13",
+                unit: "VE - Vida e Evolução",
+                grade: "8º Ano",
+                applicationYear: "2026",
+                cycle: "Ciclo III",
+                title: "Movimentos da Terra, Dias, Noites e Estações",
+                description: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.",
+                focus: "Relacionar Rotação ao dia/noite e Translação + Inclinação do Eixo às Estações.",
+                prerequisites: ["Eixo de rotação da Terra"],
+                pitfalls: ["Acreditar que o verão ocorre devido à proximidade física com o Sol."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Globo inclinado iluminado por lanterna." },
+                    { step: 2, action: "Duvidar", detail: "Por que é verão no Brasil quando é inverno nos EUA?" },
+                    { step: 3, action: "Teorizar", detail: "Associar inclinação do eixo com insolação desigual." }
+                ],
+                sampleQuestionTip: "Identificar a estação do ano em um hemisfério a partir do esquema de translação."
             },
 
             // ==========================================
@@ -996,7 +1097,6 @@
                 activeBtn.classList.remove('text-indigo-200');
             }
 
-            // Update Label Header
             const labelElem = document.getElementById('active-class-label');
             if (labelElem && tabName !== 'admin') {
                 labelElem.innerText = tabName;
