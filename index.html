@@ -13,7 +13,7 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         body { font-family: 'Inter', sans-serif; }
         @media print {
             .no-print { display: none !important; }
@@ -56,22 +56,11 @@
         
         <!-- View: Dashboard -->
         <div id="view-dashboard">
+            <!-- Barra de Filtros (Sem a caixa de busca por texto) -->
             <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 mb-6 no-print">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     
-                    <div class="md:col-span-5 relative">
-                        <label for="search-input" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
-                            Buscar por Código CAEd, BNCC ou Termo
-                        </label>
-                        <div class="relative">
-                            <i data-lucide="search" class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                            <input type="text" id="search-input" 
-                                placeholder="Ex: 8EF01_CN, 8EF08_CN, usinas, reprodução..." 
-                                class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all">
-                        </div>
-                    </div>
-
-                    <div class="md:col-span-4">
+                    <div>
                         <label for="filter-cycle" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
                             Ciclo da Prova CAEd
                         </label>
@@ -83,7 +72,7 @@
                         </select>
                     </div>
 
-                    <div class="md:col-span-3">
+                    <div>
                         <label for="filter-unit" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
                             Unidade Temática
                         </label>
@@ -104,7 +93,7 @@
                         <h2 class="text-sm font-bold text-slate-600 uppercase tracking-wider">Habilidades da Turma (<span id="active-class-label">8º Ano</span>)</h2>
                         <span id="results-count" class="text-xs bg-indigo-100 text-indigo-800 font-semibold px-2 py-0.5 rounded-full">0</span>
                     </div>
-                    <div id="skills-list" class="space-y-2 max-h-[600px] overflow-y-auto pr-1"></div>
+                    <div id="skills-list" class="space-y-2 max-h-[650px] overflow-y-auto pr-1"></div>
                 </div>
 
                 <div class="lg:col-span-8">
@@ -169,23 +158,33 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Título da Ação Didática</label>
-                        <input type="text" id="add-title" placeholder="Ex: Tipos de Usinas Elétricas" required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50">
+                        <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Descrição Oficial da Habilidade CAEd</label>
+                        <textarea id="add-description" rows="2" placeholder="Texto exato da habilidade do CAEd (ex: Classificar os recursos energéticos em renováveis e não renováveis)..." required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50"></textarea>
                     </div>
 
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Descrição Oficial da Habilidade</label>
-                        <textarea id="add-description" rows="2" placeholder="Texto exato da habilidade do CAEd..." required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50"></textarea>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Capítulo do Livro</label>
+                            <input type="text" id="add-book-chapter" placeholder="Ex: Capítulo 12" required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Tema / Conteúdo do Livro</label>
+                            <input type="text" id="add-book-theme" placeholder="Ex: Produção e Uso de Energia Elétrica" required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Página do Livro</label>
+                            <input type="text" id="add-book-page" placeholder="Ex: Páginas 227 a 235" required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50">
+                        </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Foco Primário da Avaliação</label>
-                            <textarea id="add-focus" rows="2" placeholder="Objetivo de cobrança do item..." required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50"></textarea>
+                            <textarea id="add-focus" rows="2" placeholder="Objetivo detalhado da cobrança no teste..." required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50"></textarea>
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Erros Comuns / Distratores</label>
-                            <textarea id="add-pitfalls" rows="2" placeholder="Erros frequentes cometidos pelos alunos..." required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50"></textarea>
+                            <textarea id="add-pitfalls" rows="2" placeholder="Erros frequentes comebitods pelos estudantes..." required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50"></textarea>
                         </div>
                     </div>
 
@@ -219,10 +218,8 @@
 
         let db = [
             // =========================================================================
-            // --- 8º ANO - CIÊNCIAS DA NATUREZA (CICLO III ATUALIZADO E COMPLETO) ---
+            // --- 8º ANO - CIÊNCIAS DA NATUREZA (CICLO III COMPLETO & MAPEADO) ---
             // =========================================================================
-
-            // --- 8º ANO: CICLO III (MATRIZ OFICIAL COMPLETA) ---
             {
                 id: "8EF01_CN",
                 bncc: "EF08CI01",
@@ -230,17 +227,19 @@
                 grade: "8º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo III",
-                title: "Classificação de Recursos Energéticos",
-                description: "Classificar os recursos energéticos em renováveis e não renováveis.",
-                focus: "Categorizar recursos (Sol, vento, água, biomassa x petróleo, gás natural, carvão mineral) conforme o seu tempo de recomposição na natureza.",
-                prerequisites: ["Fontes primárias de energia no planeta", "Noções de sustentabilidade"],
-                pitfalls: ["Confundir fonte de energia limpa/não poluidora com fonte de energia renovável."],
+                caedSkill: "Classificar os recursos energéticos em renováveis e não renováveis.",
+                bookTheme: "Recursos energéticos (renováveis e não renováveis)",
+                bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica",
+                bookPage: "Página 227",
+                focus: "Compreender e categorizar as fontes primárias de energia (Sol, vento, água, biomassa vs. petróleo, gás natural, carvão mineral) com base na sua capacidade e tempo de recomposição natural na Terra.",
+                prerequisites: ["Fontes primárias de energia no planeta", "Noções de sustentabilidade e esgotamento de recursos"],
+                pitfalls: ["Confundir o conceito de energia limpa (não poluidora) com o conceito de energia renovável."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Exibir amostras ou imagens de carvão vegetal, derivado de petróleo e placa fotovoltaica." },
-                    { step: 2, action: "Duvidar", detail: "Qual destas fontes se esgotará se continuarmos usando no ritmo atual? Quanto tempo a natureza leva para refazer cada uma?" },
-                    { step: 3, action: "Teorizar", detail: "Construir na lousa a tabela de classificação: Recursos Renováveis x Não Renováveis com seus respectivos impactos de consumo." }
+                    { step: 1, action: "Observar", detail: "Exibir amostras ou imagens de carvão vegetal, derivado de petróleo e placas solares fotovoltaicas." },
+                    { step: 2, action: "Duvidar", detail: "Qual destas fontes se esgotará se continuarmos utilizando no ritmo atual? Quanto tempo a natureza leva para refazer cada uma?" },
+                    { step: 3, action: "Teorizar", detail: "Construir no quadro a tabela de classificação comparativa: Recursos Renováveis x Não Renováveis." }
                 ],
-                sampleQuestionTip: "Itens pedem para o estudante classificar a fonte primária utilizada na matriz energética apresentada em tabelas ou infográficos. (Capítulo 12 - Pág. 227)"
+                sampleQuestionTip: "Itens do CAEd apresentam tabelas ou gráficos de matrizes energéticas e pedem para classificar a fonte primária utilizada."
             },
             {
                 id: "8EF04_CN",
@@ -249,17 +248,19 @@
                 grade: "8º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo III",
-                title: "Componentes de um Circuito Elétrico",
-                description: "Reconhecer os componentes de um circuito.",
-                focus: "Identificar a função e representação dos elementos básicos de um circuito elétrico: gerador (pilha/bateria), condutor (fio), receptor (lâmpada/motor) e chaves/interruptores.",
-                prerequisites: ["Corrente elétrica e condutividade dos materiais"],
-                pitfalls: ["Confundir a função do gerador de tensão com a do interruptor de passagem do circuito."],
+                caedSkill: "Reconhecer os componentes de um circuito.",
+                bookTheme: "Circuito elétrico e corrente elétrica",
+                bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica",
+                bookPage: "Página 214",
+                focus: "Identificar visualmente e funcionalmente os elementos fundamentais de um circuito elétrico simples: Gerador (pilhas/baterias), Condutores (fios), Receptor (lâmpada/motor) e Chave/Interruptor.",
+                prerequisites: ["Conceito de corrente elétrica e fluxo contínuo de cargas em meio condutor"],
+                pitfalls: ["Confundir a função do gerador de tensão (fornecer energia) com a do interruptor (abrir/fechar o circuito)."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Montar um circuito simples em sala utilizando uma pilha, fios condutores, um interruptor e uma lâmpada LED." },
-                    { step: 2, action: "Duvidar", detail: "O que acontece quando abrimos o interruptor? Qual elemento fornece a energia para movimentar os elétrons?" },
-                    { step: 3, action: "Teorizar", detail: "Desenhar os símbolos esquemáticos oficiais e definir o papel de cada componente (Gerador, Condutor, Receptor e Interruptor)." }
+                    { step: 1, action: "Observar", detail: "Demonstrar um circuito simples com pilha, fios de cobre, interruptor e uma lâmpada LED em funcionamento." },
+                    { step: 2, action: "Duvidar", detail: "O que acontece ao abrirmos o interruptor? Para onde vai a corrente elétrica quando a lâmpada se apaga?" },
+                    { step: 3, action: "Teorizar", detail: "Desenhar os símbolos esquemáticos oficiais do circuito e detalhar a função bi-unívoca de cada componente." }
                 ],
-                sampleQuestionTip: "Questões do CAEd mostram esquemas de circuitos elétricos residenciais ou de lanternas e pedem para identificar o componente responsável por interromper a corrente. (Capítulo 12 - Pág. 214)"
+                sampleQuestionTip: "Identificar qual componente do circuito é responsável por interromper a passagem de corrente elétrica em um diagrama."
             },
             {
                 id: "8EF05_CN",
@@ -268,17 +269,19 @@
                 grade: "8º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo III",
-                title: "Transformações de Energia em Aparellhos Residenciais",
-                description: "Classificar os processos de transformação da energia nos aparelhos residenciais.",
-                focus: "Reconhecer a conversão da energia elétrica em energia térmica (Efeito Joule - chuveiro, ferro), mecânica (música/movimento - ventilador, liquidificador), luminosa ou sonora.",
-                prerequisites: ["Princípio da Conservação da Energia (a energia não é criada nem destruída, apenas transformada)"],
-                pitfalls: ["Acreditar que a energia elétrica é 'gasta e destruída' no aparelho em vez de ser transformada em outra forma de energia."],
+                caedSkill: "Classificar os processos de transformação da energia nos aparelhos residenciais.",
+                bookTheme: "Energia elétrica e o uso doméstico de energia elétrica",
+                bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica",
+                bookPage: "Páginas 217 a 219",
+                focus: "Identificar a conversão da energia elétrica de entrada em outras formas de energia nos aparelhos domésticos: Térmica (Efeito Joule - chuveiro, ferro), Mecânica/Cinética (ventilador, liquidificador), Luminosa e Sonora.",
+                prerequisites: ["Princípio de Conservação da Energia (a energia se transforma, não se destrói)"],
+                pitfalls: ["Acreditar que a energia elétrica é 'consumida e extinta' dentro do aparelho e não transformada em outro tipo de energia."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar o funcionamento prático de um secador de cabelo, uma lâmpada acesa e um ventilador." },
-                    { step: 2, action: "Duvidar", detail: "A mesma energia elétrica que entra na tomada faz o chuveiro esquentar e o ventilador girar. Qual a diferença da transformação em cada um?" },
-                    { step: 3, action: "Teorizar", detail: "Classificar os eletrodomésticos em categorias de transformação: Térmicos (Efeito Joule), Mecânicos/Cinéticos e Luminosos/Sonoros." }
+                    { step: 1, action: "Observar", detail: "Analisar em sala o funcionamento de um secador de cabelo, uma lâmpada e um ventilador em funcionamento." },
+                    { step: 2, action: "Duvidar", detail: "A mesma eletricidade da tomada faz o chuveiro aquecer e o ventilador girar. O que muda no interior de cada aparelho?" },
+                    { step: 3, action: "Teorizar", detail: "Categorizar os aparelhos residenciais segundo a energia útil produzida: Aquecedores (Efeito Joule), Motores (Cinética) e Emissores (Luminosa/Sonora)." }
                 ],
-                sampleQuestionTip: "Associar o aparelho eletrodoméstico mostrado na imagem ao seu tipo principal de transformação de energia de saída. (Capítulo 12 - Pág. 217)"
+                sampleQuestionTip: "Questões apresentam a imagem de um eletrodoméstico e pedem para indicar a principal transformação de energia de saída."
             },
             {
                 id: "8EF06_CN",
@@ -287,17 +290,19 @@
                 grade: "8º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo III",
-                title: "Consumo de Energia Elétrica Residencial",
-                description: "Verificar o consumo de energia elétrica de aparelhos eletrônicos, assim como as grandezas e as ações que influenciam nesse consumo.",
-                focus: "Analisar as grandezas Potência (Watts) e Tempo de uso (horas) para calcular e comparar o consumo elétrico (kWh) e propor hábitos de consumo consciente.",
-                prerequisites: ["Unidades de medida (Watts, Kilowatts, horas)", "Leitura de tabelas e faturas elétricas"],
-                pitfalls: ["Confundir a voltagem da tomada (110V/220V) com a potência do aparelho (W) ao estimar o consumo de energia."],
+                caedSkill: "Verificar o consumo de energia elétrica de aparelhos eletrônicos, assim como as grandezas e as ações que influenciam nesse consumo.",
+                bookTheme: "O uso doméstico de energia elétrica e Segurança no uso da energia",
+                bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica",
+                bookPage: "Páginas 219 a 221",
+                focus: "Analisar e calcular o consumo em Quilowatt-hora (kWh) correlacionando a Potência (W/kW) do equipamento com o Tempo total de uso (horas), propondo hábitos de consumo sustentável.",
+                prerequisites: ["Leitura de tabelas, noções de grandezas elétricas e multiplicação simples"],
+                pitfalls: ["Confundir a tensão da tomada (110V/220V) com a potência do equipamento (Watts) ao calcular o consumo na conta de luz."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Exibir uma conta de luz real e a etiqueta do Inmetro/tabela de potência de diversos aparelhos." },
-                    { step: 2, action: "Duvidar", detail: "Por que um chuveiro elétrico usado por 20 minutos pode gastar mais energia do que uma lâmpada LED ligada a noite toda?" },
-                    { step: 3, action: "Teorizar", detail: "Aplicar a relação fundamental: Consumo (kWh) = (Potência em kW) x (Tempo de uso em h) e elaborar propostas de economia." }
+                    { step: 1, action: "Observar", detail: "Analisar uma fatura de energia elétrica real e a tabela de potências de equipamentos do Inmetro." },
+                    { step: 2, action: "Duvidar", detail: "Por que um chuveiro de 5500W usado por 15 minutos gasta mais energia do que uma lâmpada de 10W ligada o dia todo?" },
+                    { step: 3, action: "Teorizar", detail: "Aplicar a fórmula do consumo diário/mensal: Consumo (kWh) = Potência (kW) x Tempo (h) e listar hábitos de economia." }
                 ],
-                sampleQuestionTip: "A partir de uma tabela com potência e tempo de uso de vários eletrodomésticos, identificar qual aparelho traz o maior impacto no valor financeiro da conta. (Capítulo 12 - Pág. 219)"
+                sampleQuestionTip: "A partir de uma tabela com potência e tempo diário de uso de eletrodomésticos, apontar o maior consumidor da residência."
             },
             {
                 id: "8EF08_CN",
@@ -306,17 +311,19 @@
                 grade: "8º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo III",
-                title: "Mecanismo de Geração de Energia nas Usinas",
-                description: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas.",
-                focus: "Compreender o princípio físico comum da geração eletromagnética: rotação de uma turbina (energia mecânica) acoplada a um gerador elétrico nas usinas.",
-                prerequisites: ["Conversão de energia mecânica em elétrica", "Indução eletromagnética básica"],
-                pitfalls: ["Acreditar que a água na usina hidrelétrica cria eletricidade diretamente sem a necessidade do movimento da turbina e gerador."],
+                caedSkill: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas.",
+                bookTheme: "Recursos energéticos e O Brasil e a energia elétrica",
+                bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica",
+                bookPage: "Páginas 214, 227 e 235",
+                focus: "Compreender o princípio físico unificado da geração de eletricidade em larga escala: a transformação da energia mecânica de rotação da turbina em energia elétrica no gerador eletromagnético.",
+                prerequisites: ["Transformação de energia mecânica e indução eletromagnética básica"],
+                pitfalls: ["Acreditar que a água ou o vapor produzem eletricidade diretamente, ignorando o papel do gerador magnético."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Demonstrar um dínamo de bicicleta ou maquete interativa de gerador com ímãs e espiras." },
-                    { step: 2, action: "Duvidar", detail: "O que a água caindo na hidrelétrica, o vapor na termelétrica e o vento na usina eólica têm exatamente em comum?" },
-                    { step: 3, action: "Teorizar", detail: "Mapear a cadeia universal de geração: Fluido em movimento -> Giro da Turbina -> Ação do Gerador Magnético -> Energia Elétrica." }
+                    { step: 1, action: "Observar", detail: "Demonstrar o funcionamento de um dínamo de bicicleta ou maquete interativa com ímã e bobina de cobre." },
+                    { step: 2, action: "Duvidar", detail: "Qual o elemento em comum que conecta uma usina hidrelétrica, uma eólica e uma termelétrica a óleo?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear o fluxo universal: Energia do Fluido -> Movimento da Turbina -> Indução no Gerador -> Corrente Elétrica na Rede." }
                 ],
-                sampleQuestionTip: "Provas do CAEd apresentam o esquema estrutural de uma usina e pedem para identificar a etapa em que ocorre a transformação da energia mecânica em elétrica. (Capítulo 12 - Pág. 214/227)"
+                sampleQuestionTip: "Indicar a etapa exata em que a energia de movimento é convertida em energia elétrica em um esquema estrutural de usina."
             },
             {
                 id: "8EF09_CN",
@@ -325,17 +332,19 @@
                 grade: "8º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo III",
-                title: "Impactos Ambientais das Usinas de Energia",
-                description: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia elétrica.",
-                focus: "Identificar os prejuízos socioambientais específicos de cada usina: alagamento de áreas e deslocamento de populações (hidrelétrica), emissão de gases estufa (termelétrica), lixo radioativo (nuclear).",
-                prerequisites: ["Tipos de usinas de energia", "Impactos na biodiversidade e ecossistemas"],
-                pitfalls: ["Assumir que usinas hidrelétricas não causam nenhum tipo de impacto ambiental por usarem energia renovável."],
+                caedSkill: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia elétrica.",
+                bookTheme: "Recursos energéticos e O Brasil e a energia elétrica",
+                bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica",
+                bookPage: "Páginas 227 e 235",
+                focus: "Identificar os prejuízos e alterações ecológicas/sociais de cada usina: alagamento de florestas e deslocamento social (hidrelétrica), poluição atmosférica e efeito estufa (termelétrica), resíduos (nuclear).",
+                prerequisites: ["Conhecimento sobre os tipos de usinas e ecossistemas naturais"],
+                pitfalls: ["Acreditar que fontes renováveis como a hidrelétrica estão completamente isentas de causar impactos ambientais."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar fotos de grandes reservatórios de hidrelétricas mostrando árvores submersas e fotos de chaminés de termelétricas." },
-                    { step: 2, action: "Duvidar", detail: "Se a água da hidrelétrica é limpa e renovável, por que a construção da barragem causa problemas para os peixes e comunidades ribeirinhas?" },
-                    { step: 3, action: "Teorizar", detail: "Sistematizar a matriz de impactos: Hidrelétrica (Alagamento/Fauna), Termelétrica (Poluição do ar/Gases), Eólica (Ruído/Aves)." }
+                    { step: 1, action: "Observar", detail: "Exibir fotos comparativas de reservatórios de hidrelétricas com árvores submersas e de emissões em termelétricas." },
+                    { step: 2, action: "Duvidar", detail: "Se a água é uma fonte limpa e renovável, por que a construção de uma barragem pode prejudicar os peixes e comunidades do rio?" },
+                    { step: 3, action: "Teorizar", detail: "Construir no quadro a matriz de impactos ambientais específicos por modelo de usina elétrica." }
                 ],
-                sampleQuestionTip: "Associar o tipo de usina de geração elétrica ao impacto ambiental característico decorrente de sua instalação ou operação. (Capítulo 12 - Pág. 227/235)"
+                sampleQuestionTip: "Associar o tipo de usina de geração ao seu impacto socioambiental característico."
             },
             {
                 id: "8EF10_CN",
@@ -344,17 +353,19 @@
                 grade: "8º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo III",
-                title: "Tipos de Usinas de Geração de Energia Elétrica",
-                description: "Reconhecer os tipos de usinas de geração de energia elétrica.",
-                focus: "Diferenciar as usinas Hidrelétrica, Termelétrica, Eólica, Solar Fotovoltaica, Geotérmica e Nuclear de acordo com a fonte primária utilizada.",
-                prerequisites: ["Recursos energéticos e matriz elétrica"],
-                pitfalls: ["Confundir o funcionamento de painéis solares fotovoltaicos (geram eletricidade) com aquecedores solares térmicos de água."],
+                caedSkill: "Reconhecer os tipos de usinas de geração de energia elétrica.",
+                bookTheme: "Recursos energéticos e O Brasil e a energia elétrica",
+                bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica",
+                bookPage: "Páginas 227 e 235",
+                focus: "Diferenciar e identificar usinas Hidrelétricas, Termelétricas, Eólicas, Solares Fotovoltaicas, Termonucleares e Geotérmicas com base na fonte energética primária de acionamento.",
+                prerequisites: ["Matriz energética brasileira e fontes de energia"],
+                pitfalls: ["Confundir painéis fotovoltaicos (geram energia elétrica) com coletores térmicos (aquecem água de banho)."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Exibir um mapa da matriz elétrica brasileira e imagens dos diferentes parques de geração do país." },
-                    { step: 2, action: "Duvidar", detail: "Qual usina pode ser instalada em regiões secas com alto índice de insolação e qual exige grandes rios com desnível?" },
-                    { step: 3, action: "Teorizar", detail: "Classificar as usinas relacionando a fonte primária utilizada ao modelo tecnológico de transformação." }
+                    { step: 1, action: "Observar", detail: "Apresentar um mapa da distribuição das usinas geradoras no território nacional." },
+                    { step: 2, action: "Duvidar", detail: "Por que o Nordeste investe muito em eólica e o Sudeste tem forte presença de hidrelétricas?" },
+                    { step: 3, action: "Teorizar", detail: "Relacionar cada tipo de usina à fonte primária disponível na natureza (Água, Vento, Sol, Biomasse, Urânio)." }
                 ],
-                sampleQuestionTip: "Identificar em um texto descritivo ou mapa ilustrativo qual o tipo de usina instalada na região com base na fonte energética explorada. (Capítulo 12 - Pág. 227/235)"
+                sampleQuestionTip: "Identificar o tipo de usina instalada com base na descrição da fonte primária explorada."
             },
             {
                 id: "8EF11_CN",
@@ -363,17 +374,19 @@
                 grade: "8º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo III",
-                title: "Processos Reprodutivos dos Seres Vivos",
-                description: "Reconhecer os diferentes processos reprodutivos dos seres vivos.",
-                focus: "Diferenciar reprodução assexuada (brotamento, cissiparidade, fragmentação, esporulação) e sexuada (fusão de gametas/fecundação) em animais e plantas.",
-                prerequisites: ["Conceito de gametas (óvulo e espermatozoide)", "Variabilidade genética"],
-                pitfalls: ["Acreditar que organismos gerados por reprodução assexuada possuem variabilidade genética individual entre si."],
+                caedSkill: "Reconhecer os diferentes processos reprodutivos dos seres vivos.",
+                bookTheme: "Reprodução sexuada e assexuada em animais e plantas",
+                bookChapter: "Capítulo 5 (Pág. 90) e Capítulo 6 (Pág. 103)",
+                bookPage: "Páginas 90 e 103",
+                focus: "Diferenciar a reprodução Assexuada (brotamento, cissiparidade, estaquia - sem variabilidade) da Sexuada (encontro de gametas/fecundação - gera variabilidade genética) em animais e vegetais.",
+                prerequisites: ["Conceito de células reprodutivas (gametas) e genomas"],
+                pitfalls: ["Acreditar que os descendentes gerados por reprodução assexuada apresentam variabilidade genética entre si."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Comparar a reprodução de vegetais por estaquia (muda de planta) com a polinização de flores por abelhas." },
-                    { step: 2, action: "Duvidar", detail: "Em qual dessas formas de reprodução os descendentes serão clones exatos do indivíduo genitor? Qual delas ajuda a espécie a resistir a doenças?" },
-                    { step: 3, action: "Teorizar", detail: "Montar quadro comparativo: Assexuada (Sem gametas / Rápida / Clones) x Sexuada (Com gametas / Fecundação / Variabilidade Genética)." }
+                    { step: 1, action: "Observar", detail: "Comparar a brotação de uma muda de planta por estaquia com a formação de sementes via polinização de flores." },
+                    { step: 2, action: "Duvidar", detail: "Qual modalidade gera cópias idênticas (clones) e qual favorece a adaptação da espécie a mudanças no clima?" },
+                    { step: 3, action: "Teorizar", detail: "Elaborar quadro comparativo: Reprodução Assexuada (Mapeamento/Clones) x Sexuada (Gametas/Variabilidade)." }
                 ],
-                sampleQuestionTip: "Classificar a forma de reprodução apresentada em esquemas biológicos de plantas ou animais invertebrados. (Capítulo 5 - Pág. 90 e Capítulo 6 - Pág. 103)"
+                sampleQuestionTip: "Classificar a forma de reprodução retratada em esquemas biológicos de plantas ou animais."
             },
             {
                 id: "8EF13_CN",
@@ -382,17 +395,19 @@
                 grade: "8º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo III",
-                title: "Ação do Sistema Endócrino nas Características Sexuais",
-                description: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias.",
-                focus: "Relacionar a liberação de hormônios sexuais (Testosterona, Estrogênio e Progesterona) estimulados pela hipófise ao aparecimento dos caracteres sexuais secundários na puberdade.",
-                prerequisites: ["Noções sobre o sistema endócrino, glândulas e sangue"],
-                pitfalls: ["Trocar os hormônios produzidos pelos testículos com os produzidos pelos ovários e suas respectivas funções no corpo."],
+                caedSkill: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias.",
+                bookTheme: "Glândulas, sistema endócrino e hormônios sexuais na puberdade",
+                bookChapter: "Capítulo 7: Adolescência, Puberdade e Sistema Endócrino",
+                bookPage: "Páginas 132, 138 e 145",
+                focus: "Relacionar os estímulos da hipófise sobre as gônadas (testículos e ovários) à liberação dos hormônios sexuais (Testosterona e Estrogênio/Progesterona) e desenvolvimento dos caracteres sexuais secundários na puberdade.",
+                prerequisites: ["Mecanismos de atuação do sistema endócrino e transporte hormonal pelo sangue"],
+                pitfalls: ["Inverter os hormônios produzidos por testículos e ovários ou suas funções de transformação corporais."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar gráficos de crescimento corporal e esquemas das mudanças físicas durante a adolescência." },
-                    { step: 2, action: "Duvidar", detail: "Como os hormônios produzidos em uma glândula no cérebro ou nas gônadas conseguem alterar a voz, os pelos e o crescimento do corpo todo?" },
-                    { step: 3, action: "Teorizar", detail: "Sistematizar a cadeia hormonal: Hipófise -> Gônadas (Testículos/Ovários) -> Liberação de Testosterona/Estrogênio -> Surgimento de Caracteres Secundários." }
+                    { step: 1, action: "Observar", detail: "Analisar ilustrações com as modificações corporais características da puberdade em meninos e meninas." },
+                    { step: 2, action: "Duvidar", detail: "Como uma substância produzida em uma glândula no cérebro ou nas gônadas consegue alterar a voz, crescimento e pelos no corpo todo?" },
+                    { step: 3, action: "Teorizar", detail: "Sistematizar o eixo hormonal: Hipófise -> Gonadotrofinas -> Testículos/Ovários -> Hormônios Sexuais -> Caracteres Secundários." }
                 ],
-                sampleQuestionTip: "Associar o surgimento da característica física secundária na puberdade (ex: engrossamento da voz ou desenvolvimento de mamas) ao hormônio responsável. (Capítulo 7 - Pág. 132/139/145)"
+                sampleQuestionTip: "Atribuir a mudança corporal secundária na puberdade ao hormônio sexual diretamente responsável."
             },
             {
                 id: "8EF14_CN",
@@ -401,17 +416,19 @@
                 grade: "8º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo III",
-                title: "Princípio de Ação dos Métodos Contraceptivos",
-                description: "Reconhecer o princípio de ação dos métodos contraceptivos.",
-                focus: "Classificar os métodos contraceptivos segundo seu mecanismo de atuação: Barreira (preservativo, diafragma), Hormonal (pílula, injetável), Cirúrgico (laqueadura, vasectomia) e Comportamental.",
-                prerequisites: ["Anatomia do sistema genital humano", "Fecundação e ciclo menstrual"],
-                pitfalls: ["Confundir métodos que apenas impedem a gravidez (ex: pílula) com métodos que impedem também a transmissão de ISTs (preservativo)."],
+                caedSkill: "Reconhecer o princípio de ação dos métodos contraceptivos.",
+                bookTheme: "Contracepção e planejamento reprodutivo",
+                bookChapter: "Capítulo 9: Sexo, Saúde e Sociedade",
+                bookPage: "Página 164",
+                focus: "Classificar os métodos de contracepção segundo seu funcionamento mecânico e biológico: Métodos de Barreira (preservativo, diafragma), Hormonais (pílulas, injetáveis), Cirúrgicos (vasectomia, laqueadura) e Comportamentais.",
+                prerequisites: ["Anatomia do sistema reprodutor humano e ciclo menstrual"],
+                pitfalls: ["Confundir métodos exclusivamente anticoncepcionais (ex: pílula) com métodos de prevenção dupla que impedem também as ISTs (preservativo)."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Examinar folhetos de saúde reprodutiva e imagens dos principais métodos contraceptivos." },
-                    { step: 2, action: "Duvidar", detail: "Qual a diferença fundamental na forma de atuar entre a pílula anticoncepcional e o preservativo (camisinha)?" },
-                    { step: 3, action: "Teorizar", detail: "Classificar os métodos por seu princípio fisiológico: Barreira mecânica, Inibição hormonal da ovulação, Bloqueio cirúrgico dos canais." }
+                    { step: 1, action: "Observar", detail: "Analisar infográficos de saúde pública com os principais métodos contraceptivos." },
+                    { step: 2, action: "Duvidar", detail: "Qual a diferença biológica entre evitar que o espermatozoide encontre o óvulo e impedir que a mulher ovule?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar os métodos por mecanismo: Bloqueio físico (Barreira), Bloqueio da ovulação (Hormonal) e Interrupção de canais (Cirúrgico)." }
                 ],
-                sampleQuestionTip: "Identificar o método contraceptivo adequado de acordo com a descrição do seu princípio biológico de ação. (Capítulo 9 - Pág. 164)"
+                sampleQuestionTip: "Identificar o método contraceptivo adequado conforme a descrição do seu princípio fisiológico de atuação."
             },
             {
                 id: "8EF15_CN",
@@ -420,17 +437,19 @@
                 grade: "8º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo III",
-                title: "Características das Infecções Sexualmente Transmissíveis (IST)",
-                description: "Reconhecer as características das infecções sexualmente transmissíveis (IST).",
-                focus: "Identificar sintomas, agentes patogênicos (vírus, bactérias), formas de contágio e formas eficazes de prevenção (preservativo e vacinação contra HPV e Hepatite B).",
-                prerequisites: ["Microrganismos patogênicos", "Sistema imunológico"],
-                pitfalls: ["Acreditar que anticoncepcionais orais ou DIU oferecem proteção contra a transmissão de ISTs."],
+                caedSkill: "Reconhecer as características das infecções sexualmente transmissíveis (IST).",
+                bookTheme: "Infecções Sexualmente Transmissíveis (IST) e Aids",
+                bookChapter: "Capítulo 9: Sexo, Saúde e Sociedade",
+                bookPage: "Páginas 167 a 169",
+                focus: "Identificar agentes causadores (vírus, bactérias), formas de transmissão, sintomas principais e formas de prevenção de ISTs (uso do preservativo e vacinação contra HPV e Hepatite B).",
+                prerequisites: ["Microrganismos patogênicos e sistema de defesa do organismo"],
+                pitfalls: ["Acreditar que pílulas anticoncepcionais, DIU ou o método da tabelinha oferecem qualquer proteção contra ISTs."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar campanhas do Ministério da Saúde sobre vacinação contra HPV e prevenção combinada." },
-                    { step: 2, action: "Duvidar", detail: "Por que o uso do preservativo masculino ou feminino é considerado o único método de dupla proteção em uma relação?" },
-                    { step: 3, action: "Teorizar", detail: "Mapear as principais ISTs (HIV/Aids, Sífilis, Gonorreia, HPV), seus sintomas e as condutas de prevenção e tratamento." }
+                    { step: 1, action: "Observar", detail: "Examinar cartazes educativos de prevenção combinada e vacinação do Ministério da Saúde." },
+                    { step: 2, action: "Duvidar", detail: "Por que a camisinha é o único método que protege simultaneamente contra a gravidez não planejada e as ISTs?" },
+                    { step: 3, action: "Teorizar", detail: "Sistematizar as principais ISTs (HIV/Aids, Sífilis, HPV, Gonorreia), ressaltando a barreira física do preservativo e vacinas." }
                 ],
-                sampleQuestionTip: "Reconhecer o preservativo e a vacinação como medidas fundamentais de prevenção contra infecções sexualmente transmissíveis. (Capítulo 9 - Pág. 167)"
+                sampleQuestionTip: "Reconhecer o preservativo como medida preventiva eficaz na contenção da transmissão de ISTs."
             },
             {
                 id: "8EF17_CN",
@@ -439,20 +458,22 @@
                 grade: "8º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo III",
-                title: "Movimentos da Terra: Dias, Noites e Estações do Ano",
-                description: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.",
-                focus: "Relacionar o movimento de Rotação à alternância dos dias e noites e o movimento de Translação combinado à inclinação do eixo terrestre à ocorrência das Estações do Ano.",
-                prerequisites: ["Eixo de rotação inclinado do planeta Terra", "Luz solar e radiação"],
-                pitfalls: ["Acreditar incorretamente que as estações do ano ocorrem devido à distância física variável da Terra em relação ao Sol (periélio/afélio)."],
+                caedSkill: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.",
+                bookTheme: "As estações do ano e movimentos da Terra",
+                bookChapter: "Capítulo 11: Lua e Constelações",
+                bookPage: "Página 206",
+                focus: "Relacionar a Rotação (giro em torno do próprio eixo) à alternância do dia e da noite e a Translação (órbita ao redor do Sol) em conjunto com o Eixo Inclinado da Terra à ocorrência das Estações do Ano.",
+                prerequisites: ["Inclinação do eixo de rotação terrestre e incidência de luz solar"],
+                pitfalls: ["Acreditar incorretamente que o verão é provocado pela maior proximidade física da Terra ao Sol."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Demonstrar a iluminação solar usando um globo terrestre com eixo inclinado e uma lanterna em sala escura." },
-                    { step: 2, action: "Duvidar", detail: "Por que quando é verão no Brasil (Hemisfério Sul) é inverno nos Estados Unidos (Hemisfério Norte) se estamos no mesmo planeta?" },
-                    { step: 3, action: "Teorizar", detail: "Formalizar: Rotação = Dia/Noite (24h); Translação + Inclinação do Eixo = Incidência desigual de raios solares nos hemisférios ao longo do ano (Estações)." }
+                    { step: 1, action: "Observar", detail: "Demonstrar a iluminação com um globo terrestre inclinado e uma lanterna fixa em sala escura." },
+                    { step: 2, action: "Duvidar", detail: "Por que enquanto é Verão no Brasil (Hemisfério Sul) é Inverno nos Estados Unidos (Hemisfério Norte)?" },
+                    { step: 3, action: "Teorizar", detail: "Explicar a variação na quantidade de luz solar direta nos hemisférios ao longo do movimento de translação." }
                 ],
-                sampleQuestionTip: "Identificar a estação do ano em determinado hemisfério a partir de um esquema ilustrativo da órbita terrestre ao redor do Sol. (Capítulo 11 - Pág. 206)"
+                sampleQuestionTip: "Identificar a estação do ano no hemisfério a partir do esquema ilustrativo da órbita da Terra ao redor do Sol."
             },
 
-            // --- 8º ANO: CICLOS ANTERIORES (CICLO I E CICLO II MANTIDOS PARA HISTÓRICO) ---
+            // --- 8º ANO: CICLOS ANTERIORES (CICLOS I E II PRESERVADOS) ---
             {
                 id: "7EF01_CN_8I",
                 bncc: "EF07CI01",
@@ -460,10 +481,12 @@
                 grade: "8º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo I",
-                title: "Máquinas Simples, Força e Trabalho",
-                description: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples.",
+                caedSkill: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples.",
+                bookTheme: "Máquinas Simples, Força e Trabalho",
+                bookChapter: "Capítulo de Revisão do 7º Ano",
+                bookPage: "Conteúdo Complementar",
                 focus: "Reconhecer como alavancas, roldanas e planos inclinados reduzem a força necessária para realizar um trabalho mecânico.",
-                prerequisites: ["Conceito intuitivo de força e movimento"],
+                prerequisites: ["Conceito de força e movimento"],
                 pitfalls: ["Acreditar que a máquina simples reduz a quantidade total de trabalho."],
                 methodologyRoute: [
                     { step: 1, action: "Observar", detail: "Utilizar uma tesoura ou rampa para levantar um livro pesado." },
@@ -471,25 +494,6 @@
                     { step: 3, action: "Teorizar", detail: "Formalizar: Trabalho = Força x Distância." }
                 ],
                 sampleQuestionTip: "Provas mostram figuras de rampas e pedem para identificar a vantagem mecânica."
-            },
-            {
-                id: "8EF16_CN_8II",
-                bncc: "EF08CI12",
-                unit: "TU - Terra e Universo",
-                grade: "8º Ano",
-                applicationYear: "2026",
-                cycle: "Ciclo II",
-                title: "Sol, Terra e Lua: Fases e Eclipses",
-                description: "Reconhecer as posições relativas entre Sol, Terra e Lua associadas às fases da Lua e à ocorrência de eclipses.",
-                focus: "Relacionar a iluminação da Lua às suas posições geométricas e aos alinhamentos de eclipse.",
-                prerequisites: ["Movimento de revolução da Lua"],
-                pitfalls: ["Confundir fase de Lua Cheia/Nova com ocorrência de eclipse."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Demonstrar com bola de isopor e lanterna." },
-                    { step: 2, action: "Duvidar", detail: "Por que a Lua muda de formato ao longo do mês?" },
-                    { step: 3, action: "Teorizar", detail: "Desenhar as 4 posições orbitais e os eclipses." }
-                ],
-                sampleQuestionTip: "Indicar em qual posição orbital ocorre o eclipse lunar."
             },
 
             // ==========================================
@@ -502,17 +506,19 @@
                 grade: "9º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo II",
-                title: "Estados Físicos e Modelo Submicroscópico",
-                description: "Classificar, com base nos modelos de constituição submicroscópica, os estados físicos da matéria.",
-                focus: "Caracterizar os estados sólido, líquido e gasoso pela organização e agitação das partículas.",
+                caedSkill: "Classificar, com base nos modelos de constituição submicroscópica, os estados físicos da matéria.",
+                bookTheme: "Estados Físicos da Matéria e Modelo Submicroscópico",
+                bookChapter: "Capítulo 1: Matéria e Estados Físicos",
+                bookPage: "Páginas 14 a 22",
+                focus: "Caracterizar os estados sólido, líquido e gasoso pela organização, agitação e força de atração entre partículas.",
                 prerequisites: ["Estados físicos no cotidiano"],
-                pitfalls: ["Acreditar que no sólido as partículas estão completamente paradas."],
+                pitfalls: ["Acreditar que no estado sólido as partículas estão completamente imóveis."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Simulação de esferas agrupadas vs livres." },
-                    { step: 2, action: "Duvidar", detail: "Por que o gás se espalha e o sólido mantém a forma?" },
-                    { step: 3, action: "Teorizar", detail: "Classificação por força de atração e agitação." }
+                    { step: 1, action: "Observar", detail: "Simulação de esferas agrupadas em arranjo rígido vs dispersas." },
+                    { step: 2, action: "Duvidar", detail: "Por que conseguimos comprimir o ar dentro de uma seringa, mas não a água líquida?" },
+                    { step: 3, action: "Teorizar", detail: "Classificação por forças interparticulares e agitação." }
                 ],
-                sampleQuestionTip: "Representações visuais de arranjos de partículas."
+                sampleQuestionTip: "Representações visuais de arranjos de partículas em recipientes."
             },
             {
                 id: "7EF02_CN_C2",
@@ -521,17 +527,19 @@
                 grade: "7º Ano",
                 applicationYear: "2026",
                 cycle: "Ciclo II",
-                title: "Camada de Ozônio e Radiação UV",
-                description: "Discutir a estrutura, a composição e a localização da camada de ozônio.",
-                focus: "Reconhecer a função de filtro da camada de ozônio contra raios ultravioleta.",
-                prerequisites: ["Camadas da atmosfera"],
-                pitfalls: ["Confundir buraco na camada de ozônio com efeito estufa."],
+                caedSkill: "Discutir a estrutura, a composição e a localização da camada de ozônio.",
+                bookTheme: "Camada de Ozônio e Radiação UV",
+                bookChapter: "Capítulo 3: Atmosfera Terrestre",
+                bookPage: "Páginas 45 a 52",
+                focus: "Reconhecer a função de filtro da camada de ozônio (estratosfera) contra raios ultravioleta nocivos à vida.",
+                prerequisites: ["Camadas da atmosfera terrestre"],
+                pitfalls: ["Confundir a destruição da camada de ozônio com o aquecimento global / efeito estufa."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Protetor solar e radiação UV." },
-                    { step: 2, action: "Duvidar", detail: "Por que precisamos de filtro solar?" },
-                    { step: 3, action: "Teorizar", detail: "Estratosfera e filtro UV." }
+                    { step: 1, action: "Observar", detail: "Rótulos de protetor solar e lentes de óculos de sol com proteção UV." },
+                    { step: 2, action: "Duvidar", detail: "Por que precisamos de filtro solar se a atmosfera nos protege?" },
+                    { step: 3, action: "Teorizar", detail: "Estratosfera como filtro absorvedor de radiação UV." }
                 ],
-                sampleQuestionTip: "Localização da camada de ozônio no esquema da atmosfera."
+                sampleQuestionTip: "Localização da camada de ozônio em esquemas das camadas da atmosfera."
             },
             {
                 id: "6EF05_CN",
@@ -540,17 +548,19 @@
                 grade: "6º Ano",
                 applicationYear: "2025",
                 cycle: "Ciclo I",
-                title: "Níveis de Organização dos Seres Vivos",
-                description: "Explicar a organização básica das células em tecidos, órgãos e sistemas.",
+                caedSkill: "Explicar a organização básica das células e sua montagem em tecidos, órgãos e sistemas.",
+                bookTheme: "Níveis de Organização dos Seres Vivos",
+                bookChapter: "Capítulo 2: A Célula e Organização Biológica",
+                bookPage: "Páginas 30 a 38",
                 focus: "Ordenar hierarquicamente: Célula -> Tecido -> Órgão -> Sistema -> Organismo.",
-                prerequisites: ["Partes dos seres vivos"],
-                pitfalls: ["Inverter a ordem de tecidos e órgãos."],
+                prerequisites: ["Estruturas formadoras dos seres vivos"],
+                pitfalls: ["Inverter a ordem hierárquica entre tecidos e órgãos."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analogia do tijolo, parede, cômodo e casa." },
-                    { step: 2, action: "Duvidar", detail: "Um tijolo sozinho faz uma casa?" },
-                    { step: 3, action: "Teorizar", detail: "Pirâmide de organização dos seres vivos." }
+                    { step: 1, action: "Observar", detail: "Analogia da construção: Tijolo, Parede, Cômodo, Casa." },
+                    { step: 2, action: "Duvidar", detail: "Um tijolo sozinho consegue formar uma casa completa?" },
+                    { step: 3, action: "Teorizar", detail: "Pirâmide de complexidade dos níveis biológicos." }
                 ],
-                sampleQuestionTip: "Organizar imagens em ordem de complexidade."
+                sampleQuestionTip: "Organizar imagens biológicas em ordem crescente de complexidade."
             }
         ];
 
@@ -586,22 +596,15 @@
         }
 
         function renderList() {
-            const searchVal = document.getElementById('search-input').value.toLowerCase().trim();
             const cycleVal = document.getElementById('filter-cycle').value;
             const unitVal = document.getElementById('filter-unit').value;
 
             const filtered = db.filter(item => {
                 const matchTab = item.grade === currentTab;
-                const matchSearch = searchVal === '' || 
-                                    item.id.toLowerCase().includes(searchVal) ||
-                                    item.bncc.toLowerCase().includes(searchVal) ||
-                                    item.title.toLowerCase().includes(searchVal) ||
-                                    item.description.toLowerCase().includes(searchVal);
-                
                 const matchCycle = cycleVal === 'todos' || item.cycle === cycleVal;
                 const matchUnit = unitVal === 'todos' || item.unit === unitVal;
 
-                return matchTab && matchSearch && matchCycle && matchUnit;
+                return matchTab && matchCycle && matchUnit;
             });
 
             document.getElementById('results-count').innerText = filtered.length;
@@ -633,12 +636,12 @@
                 };
 
                 card.innerHTML = `
-                    <div class="flex items-center justify-between mb-1">
+                    <div class="flex items-center justify-between mb-1.5">
                         <span class="font-bold text-xs px-2 py-0.5 rounded ${isActive ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'}">${item.id}</span>
                         <span class="text-xs font-semibold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">${item.cycle || 'Ciclo III'}</span>
                     </div>
-                    <h3 class="text-sm font-semibold text-slate-800 line-clamp-1">${item.title}</h3>
-                    <p class="text-xs text-slate-500 mt-1 line-clamp-2">${item.description}</p>
+                    <h3 class="text-xs font-bold text-slate-900 line-clamp-2 mb-1">${item.caedSkill}</h3>
+                    <p class="text-[11px] text-slate-500 line-clamp-1">📖 ${item.bookTheme} (${item.bookChapter})</p>
                 `;
                 container.appendChild(card);
             });
@@ -669,9 +672,22 @@
                 </div>
 
                 <div class="mb-6">
-                    <h2 class="text-xl font-bold text-slate-900 mb-2">${item.title}</h2>
-                    <div class="bg-slate-50 p-3.5 rounded-lg border-l-4 border-indigo-500 text-sm text-slate-700">
-                        <strong>Habilidade Oficial CAEd:</strong> ${item.description}
+                    <!-- TÍTULO NOVO SOLICITADO: Destaque na Habilidade CAEd + Tema + Capítulo + Páginas -->
+                    <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-snug mb-3">
+                        ${item.caedSkill}
+                    </h2>
+                    
+                    <div class="bg-indigo-50/70 p-4 rounded-xl border border-indigo-100 space-y-2">
+                        <div class="flex items-center gap-2 text-indigo-900 font-bold text-xs uppercase tracking-wider">
+                            <i data-lucide="book-open" class="w-4 h-4 text-indigo-600"></i>
+                            <span>Alineamento no Livro Didático</span>
+                        </div>
+                        <p class="text-sm text-slate-800 font-medium">
+                            <strong>Tema:</strong> ${item.bookTheme}
+                        </p>
+                        <p class="text-xs text-slate-600">
+                            <strong>Localização:</strong> ${item.bookChapter} • <span class="bg-indigo-100 text-indigo-800 font-semibold px-2 py-0.5 rounded">${item.bookPage}</span>
+                        </p>
                     </div>
                 </div>
 
@@ -714,13 +730,13 @@
 
                 <div class="bg-indigo-50/40 border border-indigo-100 rounded-lg p-4 mb-6">
                     <h4 class="text-xs font-bold text-indigo-900 uppercase tracking-wider mb-2 flex items-center gap-1">
-                        <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-600"></i> Pré-requisitos & Alinhamento ao Livro Didático
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-600"></i> Pré-requisitos & Dica de Questão
                     </h4>
                     <ul class="list-disc list-inside text-xs sm:text-sm text-slate-700 space-y-1 mb-3">
                         ${item.prerequisites.map(req => `<li>${req}</li>`).join('')}
                     </ul>
                     <div class="pt-2 border-t border-indigo-100/80 text-xs text-indigo-900 italic">
-                        <strong>Dica de Item CAEd & Localização no Livro:</strong> ${item.sampleQuestionTip}
+                        <strong>Dica de Item CAEd:</strong> ${item.sampleQuestionTip}
                     </div>
                 </div>
 
@@ -749,8 +765,10 @@
                 grade: document.getElementById('add-grade').value,
                 applicationYear: document.getElementById('add-year').value.trim(),
                 cycle: document.getElementById('add-cycle').value,
-                title: document.getElementById('add-title').value.trim(),
-                description: document.getElementById('add-description').value.trim(),
+                caedSkill: document.getElementById('add-description').value.trim(),
+                bookTheme: document.getElementById('add-book-theme').value.trim(),
+                bookChapter: document.getElementById('add-book-chapter').value.trim(),
+                bookPage: document.getElementById('add-book-page').value.trim(),
                 focus: document.getElementById('add-focus').value.trim(),
                 prerequisites: ["Conceitos fundamentais da unidade temática"],
                 pitfalls: document.getElementById('add-pitfalls').value.split(',').map(s => s.trim()),
@@ -777,10 +795,13 @@
 Turma: ${item.grade} | Ciclo: ${item.cycle || 'Ciclo III'}
 Código CAEd: ${item.id} | Habilidade BNCC: ${item.bncc}
 Unidade Temática: ${item.unit}
-Título: ${item.title}
 
-DESCRITOR DA HABILIDADE:
-${item.description}
+HABILIDADE OFICIAL CAEd:
+${item.caedSkill}
+
+ALINHAMENTO COM LIVRO DIDÁTICO:
+Tema: ${item.bookTheme}
+Localização: ${item.bookChapter} (${item.bookPage})
 
 FOCO DA AVALIAÇÃO:
 ${item.focus}
@@ -797,7 +818,6 @@ ${item.methodologyRoute.map(r => `${r.step}. ${r.action}: ${r.detail}`).join('\n
             });
         }
 
-        document.getElementById('search-input').addEventListener('input', renderList);
         document.getElementById('filter-cycle').addEventListener('change', renderList);
         document.getElementById('filter-unit').addEventListener('change', renderList);
 
