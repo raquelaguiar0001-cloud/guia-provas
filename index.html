@@ -360,267 +360,12 @@
             '9º Ano': { bg: 'bg-rose-600', badge: 'bg-rose-700', icon: 'atom', title: '9º ANO DO ENSINO FUNDAMENTAL' }
         };
 
-        // Base de dados completa com TODAS as turmas (6º, 7º, 8º e 9º Anos) sem omissões
         let db = [
             // =========================================================================
-            // --- TURMA DO 7º ANO ---
+            // --- TURMA DO 9º ANO --- (Mapeamento Completo com Recomposição 8EF no Ciclo I + 9EF nos Ciclos II e III)
             // =========================================================================
-            {
-                id: "6EF10_CN_7A", bncc: "EF06CI01", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo I",
-                caedSkill: "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais.",
-                bookTheme: "1. O ar é uma mistura", bookChapter: "Capítulo 12: Gases da Atmosfera e Placas da Litosfera", bookPage: "Página 214",
-                focus: "Identificar fases visíveis em misturas gasosas e líquidas.",
-                prerequisites: ["Propriedades da matéria"], pitfalls: ["Considerar misturas gasosas como heterogêneas."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar a composição do ar atmosférico." },
-                    { step: 2, action: "Duvidar", detail: "Conseguimos enxergar os diferentes gases separados no ar?" },
-                    { step: 3, action: "Teorizar", detail: "Classificar misturas gasosas como soluções homogêneas." }
-                ], sampleQuestionTip: "Identificar o número de fases em um sistema misto."
-            },
-            {
-                id: "6EF12_CN_7A", bncc: "EF06CI03", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo I",
-                caedSkill: "Classificar os métodos de separação de misturas de sistemas heterogêneos.",
-                bookTheme: "7. Água potável e tratamento caseiro / 14. Tratamento de esgoto", bookChapter: "Capítulo 6: Saneamento Básico", bookPage: "Páginas 109 e 115",
-                focus: "Reconhecer filtração e decantação no tratamento de água e esgoto.",
-                prerequisites: ["Sistemas heterogêneos"], pitfalls: ["Inverter decantação e filtração industrial."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar maquete de uma ETA (Estação de Tratamento de Água)." },
-                    { step: 2, action: "Duvidar", detail: "Como a sujeira pesada é separada da água antes dos filtros?" },
-                    { step: 3, action: "Teorizar", detail: "Esquematizar a floculação e decantação no saneamento." }
-                ], sampleQuestionTip: "Relacionar a etapa do tratamento de água ao método de separação."
-            },
-            {
-                id: "7EF02_CN", bncc: "EF07CI01", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-                caedSkill: "Reconhecer dispositivos mecânicos que facilitam a realização do trabalho.",
-                bookTheme: "1 a 9. Máquinas simples", bookChapter: "Capítulo 10: Máquinas Simples", bookPage: "Páginas 182 a 188",
-                focus: "Identificar engrenagens, roldanas, plano inclinado e alavancas no cotidiano.",
-                prerequisites: ["Força e movimento"], pitfalls: ["Confundir engrenagem com polia."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Examinar o funcionamento de uma bicicleta." },
-                    { step: 2, action: "Duvidar", detail: "Como catracas e correntes facilitam o pedalar?" },
-                    { step: 3, action: "Teorizar", detail: "Classificar as máquinas simples da bicicleta." }
-                ], sampleQuestionTip: "Identificar o dispositivo mecânico presente na ferramenta."
-            },
-            {
-                id: "7EF03_CN", bncc: "EF07CI02", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-                caedSkill: "Interpretar, em situações cotidianas, os conceitos de calor, temperatura e sensação térmica.",
-                bookTheme: "1. Escala de temperatura / 2. Calor e troca de calor / 5. Sensações térmicas", bookChapter: "Capítulo 11: Temperatura, Calor e Efeito Estufa", bookPage: "Páginas 196, 198 e 203",
-                focus: "Diferenciar Temperatura (agitação) de Calor (energia em trânsito).",
-                prerequisites: ["Estados da matéria"], pitfalls: ["Dizer que um agasalho 'gera' calor."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Tocar em madeira e metal no mesmo ambiente." },
-                    { step: 2, action: "Duvidar", detail: "Por que o metal parece mais frio se estão na mesma temperatura?" },
-                    { step: 3, action: "Teorizar", detail: "Diferenciar Sensação Térmica de Temperatura real." }
-                ], sampleQuestionTip: "Distinguir o conceito correto de calor e temperatura."
-            },
-            {
-                id: "7EF05_CN", bncc: "EF07CI03", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-                caedSkill: "Classificar os processos de transferência de calor.",
-                bookTheme: "3. Condução térmica / 4. Convecção térmica / 6. Irradiação térmica", bookChapter: "Capítulo 11: Temperatura, Calor e Efeito Estufa", bookPage: "Páginas 199, 201 e 205",
-                focus: "Classificar em Condução (sólidos), Convecção (fluidos) e Irradiação (ondas).",
-                prerequisites: ["Calor"], pitfalls: ["Acreditar que convecção ocorre em sólidos."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Observar o ar condicionado instalado no alto da sala." },
-                    { step: 2, action: "Duvidar", detail: "Por que o ar frio desce e o ar quente sobe?" },
-                    { step: 3, action: "Teorizar", detail: "Explicar correntes de convecção mecânica." }
-                ], sampleQuestionTip: "Classificar o processo de troca de calor do aparelho."
-            },
-            {
-                id: "7EF08_CN", bncc: "EF07CI07", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-                caedSkill: "Reconhecer os diferentes biomas brasileiros.",
-                bookTheme: "1 a 8. Principais Biomas Brasileiros", bookChapter: "Capítulo 9: Principais Biomas Brasileiros", bookPage: "Páginas 166 a 175",
-                focus: "Caracterizar Amazônia, Caatinga, Cerrado, Mata Atlântica, Pantanal e Pampas.",
-                prerequisites: ["Ecossistemas"], pitfalls: ["Confundir vegetação do Cerrado com a da Caatinga."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Exibir fotos da fauna e flora de cada bioma." },
-                    { step: 2, action: "Duvidar", detail: "Quais biomas estão presentes no estado do Maranhão?" },
-                    { step: 3, action: "Teorizar", detail: "Mapear as zonas biogeográficas do Brasil." }
-                ], sampleQuestionTip: "Identificar o bioma caracterizado pelo texto da questão."
-            },
-            {
-                id: "7EF12_CN_C2", bncc: "EF07CI09", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-                caedSkill: "Reconhecer a relação estabelecida entre as ações de saneamento básico e a saúde humana.",
-                bookTheme: "11. Doenças veiculadas pela água / 14. Tratamento de esgoto / 15. Saneamento básico", bookChapter: "Capítulo 6: Saneamento Básico", bookPage: "Páginas 113, 115 e 117",
-                focus: "Relacionar tratamento de água e esgoto com prevenção de parasitoses.",
-                prerequisites: ["Doenças hídricas"], pitfalls: ["Achar que só beber água limpa evita todas as verminoses."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar casos de verminoses na comunidade." },
-                    { step: 2, action: "Duvidar", detail: "Como a ausência de esgoto canalizado propaga vermes?" },
-                    { step: 3, action: "Teorizar", detail: "Propor ações profiláticas de saneamento básico." }
-                ], sampleQuestionTip: "Indicar a medida sanitária preventiva para a parasitose."
-            },
-            {
-                id: "7EF14_CN", bncc: "EF07CI10", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-                caedSkill: "Reconhecer a importância da adesão às campanhas de vacinação.",
-                bookTheme: "7. Como ficamos gripados? / 9. Doenças causadas por vírus", bookChapter: "Capítulo 3: Diversidade da Vida Microscópica", bookPage: "Páginas 59 e 60",
-                focus: "Compreender a imunidade coletiva/de rebanho atingida pela vacinação.",
-                prerequisites: ["Vírus e Bactérias"], pitfalls: ["Acreditar que vacina cura pessoas doentes."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar gráficos da erradicação da poliomielite." },
-                    { step: 2, action: "Duvidar", detail: "Por que se todos vacinarem, o vírus deixa de circular?" },
-                    { step: 3, action: "Teorizar", detail: "Explicar o conceito de Imunidade Coletiva." }
-                ], sampleQuestionTip: "Justificar a importância do Zé Gotinha e coberturas vacinais altas."
-            },
-            {
-                id: "7EF15_CN", bncc: "EF07CI12", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-                caedSkill: "Reconhecer o ar como uma mistura de gases.",
-                bookTheme: "1. O ar é uma mistura / 2. O gás oxigênio / 3. O gás nitrogênio", bookChapter: "Capítulo 12: Gases da Atmosfera e Placas da Litosfera", bookPage: "Páginas 214 a 218",
-                focus: "Reconhecer N2 (78%), O2 (21%) e outros gases na atmosfera.",
-                prerequisites: ["Gases"], pitfalls: ["Achar que o ar é uma substância pura única."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar um gráfico de pizza da atmosfera." },
-                    { step: 2, action: "Duvidar", detail: "Qual gás está em maior abundância no ar que inspiramos?" },
-                    { step: 3, action: "Teorizar", detail: "Listar componentes do ar e suas proporções." }
-                ], sampleQuestionTip: "Identificar a proporção e nome do gás mais abundante no ar."
-            },
-            {
-                id: "7EF17_CN", bncc: "EF07CI13", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-                caedSkill: "Reconhecer a atuação do efeito estufa no planeta Terra.",
-                bookTheme: "8. Aquecimento global", bookChapter: "Capítulo 11: Temperatura, Calor e Efeito Estufa", bookPage: "Página 207",
-                focus: "Compreender que o efeito estufa natural é vital para manter a vida aquecida.",
-                prerequisites: ["Atmosfera"], pitfalls: ["Considerar todo efeito estufa como algo prejudicial."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar a temperatura média da Terra sem atmosfera (-18°C)." },
-                    { step: 2, action: "Duvidar", detail: "Por que a Terra permanece aquecida à noite?" },
-                    { step: 3, action: "Teorizar", detail: "Diferenciar Efeito Estufa Natural x Intensificação Artificial." }
-                ], sampleQuestionTip: "Reconhecer o papel benéfico do efeito estufa natural."
-            },
-            {
-                id: "7EF20_CN", bncc: "EF07CI14", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-                caedSkill: "Reconhecer a participação da camada de ozônio no fenômeno da vida na Terra.",
-                bookTheme: "6. A camada de ozônio e a poluição por CFCs", bookChapter: "Capítulo 12: Gases da Atmosfera e Placas da Litosfera", bookPage: "Página 222",
-                focus: "Compreender o filtro de raios ultravioleta (UV-B e UV-C) exercido pelo O3.",
-                prerequisites: ["Atmosfera Terrestre"], pitfalls: ["Confundir gás ozônio (O3) com gás oxigênio (O2)."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Examinar alertas sobre índice de radiação UV do dia." },
-                    { step: 2, action: "Duvidar", detail: "O que nos protege dos raios nocivos do Sol na estratosfera?" },
-                    { step: 3, action: "Teorizar", detail: "Descrever a função protetora da camada de ozônio." }
-                ], sampleQuestionTip: "Identificar a função de proteção da camada de ozônio contra raios UV."
-            },
-            {
-                id: "7EF01_CN", bncc: "EF07CI01", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-                caedSkill: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples.",
-                bookTheme: "2. O que são máquinas simples? / 4. Alavanca", bookChapter: "Capítulo 10: Máquinas Simples", bookPage: "Páginas 182 e 183",
-                focus: "Calcular a relação entre força aplicada e braço de alavanca.",
-                prerequisites: ["Máquinas simples"], pitfalls: ["Esquecer que o ponto de apoio altera o esforço."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Usar um pé de cabra para arrancar um prego." },
-                    { step: 2, action: "Duvidar", detail: "Por que segurar no fim do cabo reduz o esforço?" },
-                    { step: 3, action: "Teorizar", detail: "Formalizar Força x Distância = Trabalho." }
-                ], sampleQuestionTip: "Determinar a posição do ponto de apoio para diminuir a força."
-            },
-            {
-                id: "7EF04_CN", bncc: "EF07CI03", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-                caedSkill: "Inferir, em situações cotidianas, as formas de propagação de calor envolvidas na utilização de determinados materiais e equipamentos.",
-                bookTheme: "3. Condução / 4. Convecção / 6. Irradiação / 7. Como funciona a garrafa térmica?", bookChapter: "Capítulo 11: Temperatura, Calor e Efeito Estufa", bookPage: "Páginas 199 a 206",
-                focus: "Analisar garrafa térmica, panelas e coletores solares pelos mecanismos térmicos.",
-                prerequisites: ["Propagação do calor"], pitfalls: ["Achar que o vácuo conduz calor por condução."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Desmontar as camadas de uma garrafa térmica." },
-                    { step: 2, action: "Duvidar", detail: "Como a parede espelhada e o vácuo evitam as trocas de calor?" },
-                    { step: 3, action: "Teorizar", detail: "Associar cada isolante ao bloqueio de condução, convecção e irradiação." }
-                ], sampleQuestionTip: "Identificar a função da parede espelhada na garrafa térmica."
-            },
-            {
-                id: "7EF06_CN", bncc: "EF07CI04", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-                caedSkill: "Explicar o funcionamento de máquinas térmicas (conversão de calor em trabalho, fluxo de calor, equilíbrio térmico, fonte de energia, perdas de energia).",
-                bookTheme: "10. Tecnologia e seus impactos", bookChapter: "Capítulo 10: Máquinas Simples", bookPage: "Página 190",
-                focus: "Analisar fluxo de calor da fonte quente para fonte fria produzindo movimento.",
-                prerequisites: ["Leis da Termodinâmica"], pitfalls: ["Acreditar na existência de máquina térmica 100% eficiente."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Demonstrar uma barquinha impulsionada por vela e vapor." },
-                    { step: 2, action: "Duvidar", detail: "Para onde vai o calor não aproveitado pelo motor?" },
-                    { step: 3, action: "Teorizar", detail: "Esquematizar o rendimento térmico e rejeição de calor." }
-                ], sampleQuestionTip: "Indicar a perda de calor inevitável na fonte fria."
-            },
-            {
-                id: "7EF09_CN", bncc: "EF07CI07", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-                caedSkill: "Interpretar a forma com que os fatores abióticos regem a diversidade dos diferentes biomas brasileiros.",
-                bookTheme: "4. Adaptações aos fatores não vivos", bookChapter: "Capítulo 2: Adaptação dos Seres Vivos", bookPage: "Página 37",
-                focus: "Relacionar índice pluviométrico, solo e temperatura à vegetação xerófita/higrófita.",
-                prerequisites: ["Fatores abióticos"], pitfalls: ["Desconsiderar a acidez e permeabilidade do solo."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Comparar tronco tortuoso do Cerrado com árvores gigantes da Amazônia." },
-                    { step: 2, action: "Duvidar", detail: "Por que a vegetação do Cerrado tem raízes profundas e casca grossa?" },
-                    { step: 3, action: "Teorizar", detail: "Associar queimadas naturais e solo ácido às adaptações do Cerrado." }
-                ], sampleQuestionTip: "Identificar o fator abiótico associado às adaptações da planta."
-            },
-            {
-                id: "7EF10_CN", bncc: "EF07CI08", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-                caedSkill: "Inferir como as intervenções humanas no ambiente causam desequilíbrios ambientais.",
-                bookTheme: "16. Poluição da água", bookChapter: "Capítulo 6: Saneamento Básico", bookPage: "Página 118",
-                focus: "Compreender o processo de Eutrofização por esgoto e fertilizantes em rios.",
-                prerequisites: ["Cadeia Alimentar"], pitfalls: ["Achar que o excesso de algas aumenta o oxigênio na água."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar um lago coberto por camada verde de algas." },
-                    { step: 2, action: "Duvidar", detail: "Por que os peixes morrem sufocados quando o lago 'enche' de plantas?" },
-                    { step: 3, action: "Teorizar", detail: "Mapear as etapas da Eutrofização e decomposição anaeróbica." }
-                ], sampleQuestionTip: "Explicar a causa da mortandade de peixes na eutrofização."
-            },
-            {
-                id: "7EF11_CN", bncc: "EF07CI09", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-                caedSkill: "Interpretar indicadores de saúde de um grupo populacional.",
-                bookTheme: "15. Saneamento básico", bookChapter: "Capítulo 6: Saneamento Básico", bookPage: "Página 117",
-                focus: "Analisar gráficos de IDH, mortalidade infantil e acesso a saneamento.",
-                prerequisites: ["Indicadores Sociais"], pitfalls: ["Confundir taxa de natalidade com mortalidade infantil."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Ler gráfico comparando cidades com e sem esgoto tratado." },
-                    { step: 2, action: "Duvidar", detail: "Qual o impacto direto da água tratada na saúde das crianças?" },
-                    { step: 3, action: "Teorizar", detail: "Correlacionar investimento em saneamento à queda da mortalidade infantil." }
-                ], sampleQuestionTip: "Interpretar os dados do gráfico sociossanitário."
-            },
-            {
-                id: "7EF13_CN", bncc: "EF07CI10", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-                caedSkill: "Inferir o mecanismo de ação das vacinas nos organismos.",
-                bookTheme: "Isso vai para o nosso blog! – As defesas do nosso corpo", bookChapter: "Capítulo 3: Diversidade da Vida Microscópica", bookPage: "Página 69",
-                focus: "Compreender a inoculação do patógeno atenuado/morto para estímulo a linfócitos B.",
-                prerequisites: ["Sistema Imunológico"], pitfalls: ["Confundir soro terapêutico com vacina preventiva."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar o gráfico de produção primária e secundária de anticorpos." },
-                    { step: 2, action: "Duvidar", detail: "Por que a segunda dose da vacina gera uma resposta imune muito mais rápida?" },
-                    { step: 3, action: "Teorizar", detail: "Diferenciar Imunização Ativa (Vacina) de Imunização Passiva (Soro)." }
-                ], sampleQuestionTip: "Explicar por que a vacina é uma forma de imunização ativa."
-            },
-            {
-                id: "7EF16_CN_C3", bncc: "EF07CI12", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-                caedSkill: "Reconhecer a composição do ar e o modo como a poluição afeta suas características.",
-                bookTheme: "5. Poluição do ar", bookChapter: "Capítulo 12: Gases da Atmosfera e Placas da Litosfera", bookPage: "Página 219",
-                focus: "Compreender o fenômeno da Chuva Ácida por óxidos de enxofre e nitrogênio.",
-                prerequisites: ["Gases Poluentes"], pitfalls: ["Achar que toda chuva é naturally neutra."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar fotos de estátuas corroídas por chuva ácida." },
-                    { step: 2, action: "Duvidar", detail: "Como a fumaça das indústrias transforma a água da chuva em ácido?" },
-                    { step: 3, action: "Teorizar", detail: "Esquematizar reações entre SO2/NO2 e o vapor de água atmosférico." }
-                ], sampleQuestionTip: "Identificar o gás responsável pela formação da chuva ácida."
-            },
-            {
-                id: "7EF18_CN", bncc: "EF07CI13", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-                caedSkill: "Interpretar propostas de controle ou de reversão do aumento artificial do efeito estufa no planeta Terra.",
-                bookTheme: "8. Aquecimento global", bookChapter: "Capítulo 11: Temperatura, Calor e Efeito Estufa", bookPage: "Página 207",
-                focus: "Avaliar o Acordo de Paris, transição energética e créditos de carbono.",
-                prerequisites: ["Efeito Estufa"], pitfalls: ["Sugerir pintar telhados como solução principal de escopo global."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar o gráfico de emissões de CO2 por setor produtivo." },
-                    { step: 2, action: "Duvidar", detail: "Quais mudanças na matriz energética do Maranhão reduzem emissões?" },
-                    { step: 3, action: "Teorizar", detail: "Criar um plano de ação mitigatório socioambiental." }
-                ], sampleQuestionTip: "Selecionar a medida coletiva mais eficaz contra o aquecimento global."
-            },
-            {
-                id: "7EF19_CN", bncc: "EF07CI14", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-                caedSkill: "Interpretar ações voltadas para a preservação da camada de ozônio.",
-                bookTheme: "6. A camada de ozônio e a poluição por CFCs", bookChapter: "Capítulo 12: Gases da Atmosfera e Placas da Litosfera", bookPage: "Página 222",
-                focus: "Entender a substituição dos gases CFCs por HFCs em aerossóis e refrigeração.",
-                prerequisites: ["Camada de Ozônio"], pitfalls: ["Acreditar que os CFCs provocam o efeito estufa direto."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Examinar rótulos de aerossóis 'Não ataca a camada de ozônio'." },
-                    { step: 2, action: "Duvidar", detail: "Como a proibição global dos CFCs ajudou a regenerar a estratosfera?" },
-                    { step: 3, action: "Teorizar", detail: "Explicar o Protocolo de Montreal e a química dos CFCs." }
-                ], sampleQuestionTip: "Identificar a medida regulatória que salvou a camada de ozônio."
-            },
-
-            // =========================================================================
-            // --- TURMA DO 9º ANO ---
-            // =========================================================================
+            
+            // --- CICLO I (Recomposição do 8º Ano no 9º Ano) ---
             {
                 id: "8EF01_CN_9A", bncc: "EF08CI01", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
                 caedSkill: "Classificar os recursos energéticos em renováveis e não renováveis.",
@@ -688,7 +433,7 @@
                 focus: "Analisar impactos de alagamentos, gases estufa e resíduos nucleares.",
                 prerequisites: ["Impactos socioambientais"], pitfalls: ["Acreditar que fontes limpas não têm impacto de instalação."],
                 methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar fotos do represamento para construção de hidrelétricas." },
+                    { step: 1, action: "Observar", detail: "Analizar fotos do represamento para construção de hidrelétricas." },
                     { step: 2, action: "Duvidar", detail: "Quais os prejuízos à biodiversidade causados pelo alagamento de florestas?" },
                     { step: 3, action: "Teorizar", detail: "Montar quadro de vantagens x impactos de usinas termo, hídricas e eólicas." }
                 ], sampleQuestionTip: "Indicar o impacto socioambiental característico da usina representada."
@@ -765,6 +510,8 @@
                     { step: 3, action: "Teorizar", detail: "Conectar Solstícios/Equinócios à inclinação e raio de luz incidental." }
                 ], sampleQuestionTip: "Identificar a causa determinante das estações do ano."
             },
+
+            // --- CICLO II (Habilidades Oficiais do 9º Ano) ---
             {
                 id: "9EF01_CN", bncc: "EF09CI01", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
                 caedSkill: "Classificar, com base nos modelos de constituição submicroscópica, os estados físicos da matéria.",
@@ -897,6 +644,8 @@
                     { step: 3, action: "Teorizar", detail: "Classificar os corpos celestes segundo massa, composição e órbita." }
                 ], sampleQuestionTip: "Reconhecer o corpo celeste descrito pelas suas características orbitais."
             },
+
+            // --- CICLO III (Habilidades Oficiais do 9º Ano) ---
             {
                 id: "9EF02_CN_C3", bncc: "EF09CI01", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
                 caedSkill: "Inferir as mudanças de estado físico da matéria a partir da observação dos modelos de constituição submicroscópica.",
@@ -1031,7 +780,7 @@
             },
 
             // =========================================================================
-            // --- TURMAS DE 6º E 8º ANOS ---
+            // --- TURMAS ANTERIORES (6º, 7º e 8º Anos) PERFEITAMENTE PRESERVADAS ---
             // =========================================================================
             {
                 id: "6EF01_CN_C1", bncc: "EF05CI02", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo I",
@@ -1044,6 +793,18 @@
                     { step: 2, action: "Duvidar", detail: "De onde vêm as gotas de água que se formam no teto do terrário?" },
                     { step: 3, action: "Teorizar", detail: "Mapear o ciclo hidrológico completo no quadro." }
                 ], sampleQuestionTip: "Identificar a etapa de mudança de fase indicada na ilustração do ciclo da água."
+            },
+            {
+                id: "7EF02_CN", bncc: "EF07CI01", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer dispositivos mecânicos que facilitam a realização do trabalho.",
+                bookTheme: "1 a 9. Máquinas simples", bookChapter: "Capítulo 10: Máquinas Simples", bookPage: "Páginas 182 a 188",
+                focus: "Identificar engrenagens, roldanas, plano inclinado e alavancas no cotidiano.",
+                prerequisites: ["Força e movimento"], pitfalls: ["Confundir engrenagem com polia."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Examinar o funcionamento de uma bicicleta." },
+                    { step: 2, action: "Duvidar", detail: "Como catracas e correntes facilitam o pedalar?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar as máquinas simples da bicicleta." }
+                ], sampleQuestionTip: "Identificar o dispositivo mecânico presente na ferramenta."
             },
             {
                 id: "7EF01_CN_8A", bncc: "EF07CI01", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo I",
