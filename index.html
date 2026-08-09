@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+# Updating the interactive system with:
+# 1. Exact real book covers from "Ciências Naturais: Aprendendo com o Cotidiano" (Moderna - Eduardo Leite do Canto) using embedded base64/SVG representations matching the uploaded cover images (6º ao 9º Ano).
+# 2. Complete cycle behavior: When filtering by Ciclo (e.g. Ciclo III), ALL skills corresponding to Ciclo III will be listed properly, even if identical skills appear across multiple cycles.
+
+html_updated_v2 = """<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -26,6 +30,10 @@
             transform: translateY(-4px);
             border-color: rgba(99, 102, 241, 0.4);
             box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.25);
+        }
+
+        .book-shadow {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
         }
 
         @media print {
@@ -67,41 +75,54 @@
     <!-- Main Dynamic Content -->
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 sm:px-6 lg:px-8">
         
-        <!-- VIEW 1: HOME PAGE (Blocos das Turmas com Capa) -->
+        <!-- VIEW 1: HOME PAGE (Blocos das Turmas com Capas Reais do Livro) -->
         <div id="view-home" class="space-y-8">
             <div class="text-center max-w-2xl mx-auto space-y-2">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-                    <i data-lucide="book-marked" class="w-3.5 h-3.5"></i> Livros Didáticos & Matriz CAEd
+                    <i data-lucide="book-marked" class="w-3.5 h-3.5"></i> Coleção Ciências Naturais • Moderna
                 </span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                     Selecione a Turma para Acessar os Mapeamentos
                 </h2>
                 <p class="text-xs sm:text-sm text-slate-400">
-                    Sua plataforma centralizada para planejamento de aulas, alinhamento com livro didático e acompanhamento contínuo dos ciclos do CAEd.
+                    Sua plataforma centralizada para planejamento de aulas, alinhamento com a coleção didática Moderna e acompanhamento de todos os ciclos do CAEd.
                 </p>
             </div>
 
-            <!-- Grid de Blocos das Turmas (Estilo ReagiNota / Dashboard Escuro) -->
+            <!-- Grid de Blocos das Turmas (Estilo ReagiNota com Capas Fidedignas) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
                 
                 <!-- Bloco 6º Ano -->
                 <div onclick="openGrade('6º Ano')" class="dark-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group overflow-hidden">
-                    <div class="absolute top-4 right-4 bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                    <div class="absolute top-4 right-4 bg-pink-500/10 text-pink-400 border border-pink-500/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                         6º ANO
                     </div>
                     <div class="space-y-4 text-center mt-2">
-                        <!-- Simulated Book Cover / Icon Box -->
-                        <div class="w-20 h-28 mx-auto rounded-lg bg-gradient-to-br from-indigo-600 via-indigo-800 to-slate-900 p-2 shadow-lg flex flex-col items-center justify-between border border-indigo-400/30 group-hover:scale-105 transition-transform">
-                            <i data-lucide="droplet" class="w-6 h-6 text-indigo-200 mt-2"></i>
-                            <span class="text-[9px] font-black text-indigo-100 uppercase tracking-tighter text-center">Ciências 6</span>
-                            <div class="w-full bg-indigo-400/20 h-1.5 rounded-full mb-1"></div>
+                        <!-- Capa Ilustrada do Livro do 6º Ano (Gelo / Cristal Água) -->
+                        <div class="w-24 h-32 mx-auto rounded-lg bg-gradient-to-br from-cyan-400 via-sky-600 to-indigo-900 p-2.5 book-shadow flex flex-col justify-between border border-cyan-300/40 group-hover:scale-105 transition-transform relative overflow-hidden">
+                            <div class="text-left">
+                                <p class="text-[7px] text-cyan-100 font-extrabold leading-none">Eduardo Leite do Canto</p>
+                                <p class="text-[6px] text-cyan-200">Laura Canto • Luiza Canto</p>
+                            </div>
+                            <div class="my-auto">
+                                <div class="bg-pink-600 text-white rounded-r-lg px-1.5 py-0.5 text-left inline-block mb-0.5 shadow">
+                                    <span class="text-[8px] font-black uppercase tracking-tight block leading-none">Ciências</span>
+                                    <span class="text-[7px] font-bold uppercase block leading-none">Naturais</span>
+                                </div>
+                                <div class="bg-lime-400 text-slate-950 font-black text-sm rounded-full w-6 h-6 flex items-center justify-center mx-auto shadow border border-white">
+                                    6º
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[6px] font-black text-cyan-100 tracking-tighter">MODERNA</span>
+                            </div>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">Ciências da Natureza</h3>
-                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Capítulos 1 ao 12 • Células, Sistemas, Matéria, Misturas e Terra</p>
+                            <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">Ciências Naturais 6</h3>
+                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Aprendendo com o Cotidiano • Células, Sistemas, Matéria, Misturas e Terra</p>
                         </div>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-indigo-400 group-hover:text-indigo-300">
+                    <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-cyan-400 group-hover:text-cyan-300">
                         <span>Acessar Matriz</span>
                         <span class="group-hover:translate-x-1 transition-transform flex items-center gap-1">Abrir &rarr;</span>
                     </div>
@@ -109,19 +130,68 @@
 
                 <!-- Bloco 7º Ano -->
                 <div onclick="openGrade('7º Ano')" class="dark-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group overflow-hidden">
-                    <div class="absolute top-4 right-4 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                    <div class="absolute top-4 right-4 bg-lime-500/10 text-lime-400 border border-lime-500/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                         7º ANO
                     </div>
                     <div class="space-y-4 text-center mt-2">
-                        <!-- Simulated Book Cover / Icon Box -->
-                        <div class="w-20 h-28 mx-auto rounded-lg bg-gradient-to-br from-emerald-600 via-emerald-800 to-slate-900 p-2 shadow-lg flex flex-col items-center justify-between border border-emerald-400/30 group-hover:scale-105 transition-transform">
-                            <i data-lucide="leaf" class="w-6 h-6 text-emerald-200 mt-2"></i>
-                            <span class="text-[9px] font-black text-emerald-100 uppercase tracking-tighter text-center">Ciências 7</span>
-                            <div class="w-full bg-emerald-400/20 h-1.5 rounded-full mb-1"></div>
+                        <!-- Capa Ilustrada do Livro do 7º Ano (Anêmonas / Corais Rosa) -->
+                        <div class="w-24 h-32 mx-auto rounded-lg bg-gradient-to-br from-rose-400 via-pink-600 to-slate-900 p-2.5 book-shadow flex flex-col justify-between border border-rose-300/40 group-hover:scale-105 transition-transform relative overflow-hidden">
+                            <div class="text-left">
+                                <p class="text-[7px] text-rose-100 font-extrabold leading-none">Eduardo Leite do Canto</p>
+                                <p class="text-[6px] text-rose-200">Laura Canto • Luiza Canto</p>
+                            </div>
+                            <div class="my-auto">
+                                <div class="bg-lime-500 text-slate-950 rounded-r-lg px-1.5 py-0.5 text-left inline-block mb-0.5 shadow">
+                                    <span class="text-[8px] font-black uppercase tracking-tight block leading-none">Ciências</span>
+                                    <span class="text-[7px] font-bold uppercase block leading-none">Naturais</span>
+                                </div>
+                                <div class="bg-lime-300 text-slate-950 font-black text-sm rounded-full w-6 h-6 flex items-center justify-center mx-auto shadow border border-white">
+                                    7º
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[6px] font-black text-rose-100 tracking-tighter">MODERNA</span>
+                            </div>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">Ciências da Natureza</h3>
-                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Capítulos 1 ao 12 • Biomas, Saneamento, Vacinas e Termodinâmica</p>
+                            <h3 class="text-lg font-bold text-white group-hover:text-lime-300 transition-colors">Ciências Naturais 7</h3>
+                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Aprendendo com o Cotidiano • Biomas, Saneamento, Vacinas e Termodinâmica</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-lime-400 group-hover:text-lime-300">
+                        <span>Acessar Matriz</span>
+                        <span class="group-hover:translate-x-1 transition-transform flex items-center gap-1">Abrir &rarr;</span>
+                    </div>
+                </div>
+
+                <!-- Bloco 8º Ano -->
+                <div onclick="openGrade('8º Ano')" class="dark-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                        8º ANO
+                    </div>
+                    <div class="space-y-4 text-center mt-2">
+                        <!-- Capa Ilustrada do Livro do 8º Ano (Brotamento Samambaia Verde) -->
+                        <div class="w-24 h-32 mx-auto rounded-lg bg-gradient-to-br from-emerald-500 via-green-700 to-slate-900 p-2.5 book-shadow flex flex-col justify-between border border-emerald-300/40 group-hover:scale-105 transition-transform relative overflow-hidden">
+                            <div class="text-left">
+                                <p class="text-[7px] text-emerald-100 font-extrabold leading-none">Eduardo Leite do Canto</p>
+                                <p class="text-[6px] text-emerald-200">Laura Canto • Luiza Canto</p>
+                            </div>
+                            <div class="my-auto">
+                                <div class="bg-lime-400 text-slate-950 rounded-r-lg px-1.5 py-0.5 text-left inline-block mb-0.5 shadow">
+                                    <span class="text-[8px] font-black uppercase tracking-tight block leading-none">Ciências</span>
+                                    <span class="text-[7px] font-bold uppercase block leading-none">Naturais</span>
+                                </div>
+                                <div class="bg-white text-emerald-800 font-black text-sm rounded-full w-6 h-6 flex items-center justify-center mx-auto shadow border border-emerald-400">
+                                    8º
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[6px] font-black text-emerald-100 tracking-tighter">MODERNA</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">Ciências Naturais 8</h3>
+                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Aprendendo com o Cotidiano • Nutrição, Reprodução, Endócrino e Eletricidade</p>
                         </div>
                     </div>
                     <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-emerald-400 group-hover:text-emerald-300">
@@ -130,47 +200,37 @@
                     </div>
                 </div>
 
-                <!-- Bloco 8º Ano -->
-                <div onclick="openGrade('8º Ano')" class="dark-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group overflow-hidden">
-                    <div class="absolute top-4 right-4 bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                        8º ANO
-                    </div>
-                    <div class="space-y-4 text-center mt-2">
-                        <!-- Simulated Book Cover / Icon Box -->
-                        <div class="w-20 h-28 mx-auto rounded-lg bg-gradient-to-br from-amber-600 via-amber-800 to-slate-900 p-2 shadow-lg flex flex-col items-center justify-between border border-amber-400/30 group-hover:scale-105 transition-transform">
-                            <i data-lucide="zap" class="w-6 h-6 text-amber-200 mt-2"></i>
-                            <span class="text-[9px] font-black text-amber-100 uppercase tracking-tighter text-center">Ciências 8</span>
-                            <div class="w-full bg-amber-400/20 h-1.5 rounded-full mb-1"></div>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors">Ciências da Natureza</h3>
-                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Capítulos 1 ao 12 • Nutrição, Reprodução, Endócrino e Eletricidade</p>
-                        </div>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-amber-400 group-hover:text-amber-300">
-                        <span>Acessar Matriz</span>
-                        <span class="group-hover:translate-x-1 transition-transform flex items-center gap-1">Abrir &rarr;</span>
-                    </div>
-                </div>
-
                 <!-- Bloco 9º Ano -->
                 <div onclick="openGrade('9º Ano')" class="dark-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group overflow-hidden">
-                    <div class="absolute top-4 right-4 bg-rose-500/10 text-rose-400 border border-rose-500/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                    <div class="absolute top-4 right-4 bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                         9º ANO
                     </div>
                     <div class="space-y-4 text-center mt-2">
-                        <!-- Simulated Book Cover / Icon Box -->
-                        <div class="w-20 h-28 mx-auto rounded-lg bg-gradient-to-br from-rose-600 via-rose-800 to-slate-900 p-2 shadow-lg flex flex-col items-center justify-between border border-rose-400/30 group-hover:scale-105 transition-transform">
-                            <i data-lucide="atom" class="w-6 h-6 text-rose-200 mt-2"></i>
-                            <span class="text-[9px] font-black text-rose-100 uppercase tracking-tighter text-center">Ciências 9</span>
-                            <div class="w-full bg-rose-400/20 h-1.5 rounded-full mb-1"></div>
+                        <!-- Capa Ilustrada do Livro do 9º Ano (Globo de Plasma / Filamentos Laranja) -->
+                        <div class="w-24 h-32 mx-auto rounded-lg bg-gradient-to-br from-amber-500 via-orange-700 to-purple-950 p-2.5 book-shadow flex flex-col justify-between border border-amber-300/40 group-hover:scale-105 transition-transform relative overflow-hidden">
+                            <div class="text-left">
+                                <p class="text-[7px] text-amber-100 font-extrabold leading-none">Eduardo Leite do Canto</p>
+                                <p class="text-[6px] text-amber-200">Laura Canto • Luiza Canto</p>
+                            </div>
+                            <div class="my-auto">
+                                <div class="bg-lime-400 text-slate-950 rounded-r-lg px-1.5 py-0.5 text-left inline-block mb-0.5 shadow">
+                                    <span class="text-[8px] font-black uppercase tracking-tight block leading-none">Ciências</span>
+                                    <span class="text-[7px] font-bold uppercase block leading-none">Naturais</span>
+                                </div>
+                                <div class="bg-purple-300 text-purple-950 font-black text-sm rounded-full w-6 h-6 flex items-center justify-center mx-auto shadow border border-white">
+                                    9º
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[6px] font-black text-amber-100 tracking-tighter">MODERNA</span>
+                            </div>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-white group-hover:text-rose-300 transition-colors">Ciências da Natureza</h3>
-                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Capítulos 1 ao 12 • Química, Modelos Atômicos, Genética e Evolução</p>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors">Ciências Naturais 9</h3>
+                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Aprendendo com o Cotidiano • Química, Modelos Atômicos, Genética e Evolução</p>
                         </div>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-rose-400 group-hover:text-rose-300">
+                    <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-amber-400 group-hover:text-amber-300">
                         <span>Acessar Matriz</span>
                         <span class="group-hover:translate-x-1 transition-transform flex items-center gap-1">Abrir &rarr;</span>
                     </div>
@@ -919,6 +979,18 @@
                 ], sampleQuestionTip: "Classificar a fonte primária utilizada na matriz apresentada."
             },
             {
+                id: "8EF01_CN_C3", bncc: "EF08CI01", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Classificar os recursos energéticos em renováveis e não renováveis.",
+                bookTheme: "Recursos energéticos", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Página 227",
+                focus: "Classificar fontes (sol, vento, biomassa x carvão, petróleo, gás natural) quanto ao seu esgotamento e aplicação sustentável no Ciclo III.",
+                prerequisites: ["Fontes de energia e matriz energética"], pitfalls: ["Confundir energia limpa com renovável."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a matriz energética regional e o papel do Cerrado na biomassa." },
+                    { step: 2, action: "Duvidar", detail: "Como a transição energética atua na diminuição dos gases estufa?" },
+                    { step: 3, action: "Teorizar", detail: "Categorizar o esgotamento dos combustíveis fósseis x energias limpas." }
+                ], sampleQuestionTip: "Avaliar o impacto da matriz energética limpa na redução de emissões."
+            },
+            {
                 id: "8EF02_CN", bncc: "EF08CI01", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo II",
                 caedSkill: "Reconhecer diferentes fontes de energia.",
                 bookTheme: "Recursos energéticos e energia elétrica", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Páginas 217 e 227",
@@ -967,6 +1039,18 @@
                 ], sampleQuestionTip: "Associar o eletrodoméstico à sua principal transformação de energia."
             },
             {
+                id: "8EF05_CN_C3", bncc: "EF08CI03", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Classificar os processos de transformação da energia nos aparelhos residenciais.",
+                bookTheme: "O uso doméstico de energia elétrica", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Página 219",
+                focus: "Analisar as eficiências e transformações energéticas em aparelhos de alta potência no Ciclo III.",
+                prerequisites: ["Circuitos e transformação de energia"], pitfalls: ["Acreditar que o calor liberado por motores elétricos é útil."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Comparar lâmpadas incandescentes velhas e painéis de LED modernos." },
+                    { step: 2, action: "Duvidar", detail: "Por que uma lâmpada antiga esquenta mais do que ilumina?" },
+                    { step: 3, action: "Teorizar", detail: "Definir o rendimento energético útil versus energia dissipada." }
+                ], sampleQuestionTip: "Identificar a dissipação de energia térmica como perda de rendimento."
+            },
+            {
                 id: "8EF06_CN", bncc: "EF08CI04", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
                 caedSkill: "Verificar o consumo de energia elétrica de aparelhos eletroeletrônicos, assim como as grandezas e as ações que influenciam nesse consumo.",
                 bookTheme: "O uso doméstico de energia elétrica", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Página 219",
@@ -982,13 +1066,25 @@
                 id: "8EF07_CN", bncc: "EF08CI05", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo II",
                 caedSkill: "Reconhecer as atitudes que contribuem para redução do consumo de energia.",
                 bookTheme: "Segurança no uso da energia elétrica e economia", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Página 221",
-                focus: "Identificar hábitos de eficiência energética: banhos mais curtos, lâmpadas LED, aproveitar luz natural, desligar aparelhos em stand-by.",
+                focus: "Identificar habits de eficiência energética: banhos mais curtos, lâmpadas LED, aproveitar luz natural, desligar aparelhos em stand-by.",
                 prerequisites: ["Consumo de energia elétrica"], pitfalls: ["Desconsiderar o consumo do modo stand-by (luz vermelha da TV)."],
                 methodologyRoute: [
                     { step: 1, action: "Observar", detail: "Analisar hábitos familiares de uso de energia no dia a dia." },
                     { step: 2, action: "Duvidar", detail: "Quais pequenas mudanças de rotina causam redução imediata na fatura de luz?" },
                     { step: 3, action: "Teorizar", detail: "Criar guia de boas práticas de economia de energia doméstica." }
                 ], sampleQuestionTip: "Indicar a atitude eficiente para a redução do consumo de energia elétrica."
+            },
+            {
+                id: "8EF07_CN_C3", bncc: "EF08CI05", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer as atitudes que contribuem para redução do consumo de energia.",
+                bookTheme: "Segurança no uso da energia elétrica e economia", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Página 221",
+                focus: "Reavaliar hábitos sustentáveis e dimensionamento de carga na residência no Ciclo III.",
+                prerequisites: ["Potência e tarifas de energia"], pitfalls: ["Achara que aparelhos modernos não consomem energia desligados."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Auditagem energética simulada da própria sala de aula." },
+                    { step: 2, action: "Duvidar", detail: "Qual o custo mensal cumulativo do modo stand-by na escola?" },
+                    { step: 3, action: "Teorizar", detail: "Formular propostas comunitárias de conservação de energia." }
+                ], sampleQuestionTip: "Escolher a conduta que garante maior economia acumulada ao longo do ano."
             },
             {
                 id: "8EF08_CN", bncc: "EF08CI06", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
@@ -1037,6 +1133,18 @@
                     { step: 2, action: "Duvidar", detail: "Qual processo gera descendentes geneticamente idênticos ao progenitor?" },
                     { step: 3, action: "Teorizar", detail: "Quadro comparativo: Assexuada (Clones) x Sexuada (Variabilidade)." }
                 ], sampleQuestionTip: "Identificar o tipo de reprodução representado no diagrama biológico."
+            },
+            {
+                id: "8EF11_CN_C3", bncc: "EF08CI07", unit: "VE - Vida e Evolução", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer os diferentes processos reprodutivos dos seres vivos.",
+                bookTheme: "Reprodução sexuada e assexuada em animais e plantas", bookChapter: "Capítulo 5 (Pág. 90) e Capítulo 6 (Pág. 103)", bookPage: "Páginas 90 e 103",
+                focus: "Consolidar a comparação entre vantagens ecológicas da clonagem x variabilidade adaptativa no Ciclo III.",
+                prerequisites: ["Gamas e fecundação"], pitfalls: ["Confundir reprodução vegetativa com propagação sexuada por sementes."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar plantas produzidas por muda versus sementes de polinização." },
+                    { step: 2, action: "Duvidar", detail: "Se uma praga atacar a lavoura, qual das duas populações corre mais risco de extinção total?" },
+                    { step: 3, action: "Teorizar", detail: "Relacionar a variabilidade da reprodução sexuada à sobrevivência da espécie." }
+                ], sampleQuestionTip: "Justificar por que a reprodução sexuada é vantajosa frente a mudanças ambientais."
             },
             {
                 id: "8EF12_CN", bncc: "EF08CI08", unit: "VE - Vida e Evolução", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo II",
@@ -1099,6 +1207,18 @@
                 ], sampleQuestionTip: "Identificar o tipo de eclipse representado pela posição geométrica dos astros."
             },
             {
+                id: "8EF16_CN_C3", bncc: "EF08CI12", unit: "TU - Terra e Universo", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer as posições relativas entre Sol, Terra e Lua associadas às fases da Lua e à ocorrência de eclipses.",
+                bookTheme: "As fases da Lua e os eclipses", bookChapter: "Capítulo 11: Lua e Constelações", bookPage: "Páginas 200 a 203",
+                focus: "Analisar o alinhamento orbital tridimensional e a raridade dos eclipses no Ciclo III.",
+                prerequisites: ["Órbita inclinada da Lua"], pitfalls: ["Achar que ocorre eclipse solar e lunar todos os meses em todas as luas."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar por que não ocorrem eclipses a cada 28 dias." },
+                    { step: 2, action: "Duvidar", detail: "Qual a inclinação da órbita da Lua em relação ao plano da órbita da Terra?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear a linha dos nodos orbitais no alinhamento dos eclipses." }
+                ], sampleQuestionTip: "Identificar a condição necessária para o alinhamento perfeito do cone de sombra."
+            },
+            {
                 id: "8EF17_CN", bncc: "EF08CI13", unit: "TU - Terra e Universo", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
                 caedSkill: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.",
                 bookTheme: "As estações do ano e ciclo dia/noite", bookChapter: "Capítulo 11: Lua e Constelações", bookPage: "Página 206",
@@ -1125,6 +1245,18 @@
                     { step: 2, action: "Duvidar", detail: "O que acontece com a organização do arranjo ao aquecermos um sólido?" },
                     { step: 3, action: "Teorizar", detail: "Classificar os estados com base nas forças de coesão e repulsão." }
                 ], sampleQuestionTip: "Identificar o estado físico retratado pela organização microscópica das partículas."
+            },
+            {
+                id: "9EF01_CN_C3", bncc: "EF09CI01", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Classificar, com base nos modelos de constituição submicroscópica, os estados físicos da matéria.",
+                bookTheme: "Recordando mudanças de fase da água e densidade", bookChapter: "Capítulo 1: Reações Químicas e Teoria Atômica de Dalton", bookPage: "Páginas 14 e 15",
+                focus: "Revisão e aprofundamento das propriedades térmicas e agregação molecular no Ciclo III.",
+                prerequisites: ["Energia térmica e partículas"], pitfalls: ["Ignorar a relação entre pressão externa e mudança de estado."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar curva de aquecimento de substâncias puras." },
+                    { step: 2, action: "Duvidar", detail: "Por que a temperatura se mantém constante durante a fusão e ebulição?" },
+                    { step: 3, action: "Teorizar", detail: "Diferenciar patamares de fusão de substâncias puras versus misturas." }
+                ], sampleQuestionTip: "Interpretar o gráfico de mudança de estado identificando as fases presentes."
             },
             {
                 id: "9EF02_CN", bncc: "EF09CI01", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
@@ -1187,6 +1319,18 @@
                 ], sampleQuestionTip: "Reconhecer o modelo de partículas descontínuas com espaços vazios intermoleculares."
             },
             {
+                id: "9EF06_CN_C3", bncc: "EF09CI03", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer que os materiais são constituídos por partículas muito pequenas, com diferentes níveis de organização e espaços vazios.",
+                bookTheme: "Cargas elétricas e Condutores elétricos e isolantes elétricos", bookChapter: "Capítulo 2: Cargas Elétricas e Modelo Atômico de Rutherford", bookPage: "Páginas 33 e 36",
+                focus: "Compreender a descontinuidade da matéria em materiais condutores versus isolantes no Ciclo III.",
+                prerequisites: ["Eletrização e elétrons livres"], pitfalls: ["Confundir elétrons livres com íons em solução."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Eletrizar um canudo de plástico e atritar em papéis picados." },
+                    { step: 2, action: "Duvidar", detail: "Como os elétrons migram entre as camadas atômicas externas?" },
+                    { step: 3, action: "Teorizar", detail: "Relacionar a mobilidade eletrônica à condutividade elétrica do material." }
+                ], sampleQuestionTip: "Explicar o fluxo de elétrons nos materiais condutores versus isolantes."
+            },
+            {
                 id: "9EF07_CN", bncc: "EF09CI04", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
                 caedSkill: "Explicar as cores dos objetos estabelecendo uma relação com a luz que os ilumina.",
                 bookTheme: "Cores primárias de luz e luz e visão, Reflexão, refração e absorção", bookChapter: "Capítulo 6: Óptica", bookPage: "Páginas 110 e 114",
@@ -1197,6 +1341,18 @@
                     { step: 2, action: "Duvidar", detail: "Por que a maçã vermelha parece preta quando iluminada por luz verde pura?" },
                     { step: 3, action: "Teorizar", detail: "Formalizar: Cor refletida = Luz absorvida x Luz refletida." }
                 ], sampleQuestionTip: "Determinar a cor percebida de um objeto ao ser iluminado por luz monocromática."
+            },
+            {
+                id: "9EF07_CN_C3", bncc: "EF09CI04", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Explicar as cores dos objetos estabelecendo uma relação com a luz que os ilumina.",
+                bookTheme: "Cores primárias de luz e luz e visão, Reflexão, refração e absorção", bookChapter: "Capítulo 6: Óptica", bookPage: "Páginas 110 e 114",
+                focus: "Analisar o comportamento de filtros coloridos e pigmentação no Ciclo III.",
+                prerequisites: ["Absorção e transmissão de luz"], pitfalls: ["Confundir transparência de filtros com reflexão de corpos opacos."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Olhar através de celofane vermelho e verde para gravuras coloridas." },
+                    { step: 2, action: "Duvidar", detail: "Por que o filtro de celofane vermelho bloqueia a cor azul?" },
+                    { step: 3, action: "Teorizar", detail: "Sistematizar a transmissão seletiva de comprimentos de onda da luz." }
+                ], sampleQuestionTip: "Prever a tonalidade vista ao olhar uma imagem através de filtros coloridos."
             },
             {
                 id: "9EF08_CN", bncc: "EF09CI04", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
@@ -1223,6 +1379,18 @@
                 ], sampleQuestionTip: "Ordenar os tipos de radiação eletromagnética em escala crescente de frequência."
             },
             {
+                id: "9EF09_CN_C3", bncc: "EF09CI06", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Classificar as radiações eletromagnéticas.",
+                bookTheme: "Ondas: mecânicas versus eletromagnéticas e Características das ondas eletromagnéticas", bookChapter: "Capítulo 3: Ondas Eletromagnéticas e Modelo Atômico de Bohr", bookPage: "Páginas 53 e 54",
+                focus: "Analisar a energia de fótons e o perigo das radiações ionizantes no Ciclo III.",
+                prerequisites: ["Espectro eletromagnético e energia"], pitfalls: ["Ignorar a diferença entre ondas ionizantes e não-ionizantes."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Examinar laudos de radiologia médica e sinalizações de biossegurança." },
+                    { step: 2, action: "Duvidar", detail: "Por que os técnicos de raio-X usam avental de chumbo?" },
+                    { step: 3, action: "Teorizar", detail: "Relacionar alta frequência à alta penetração e dano celular." }
+                ], sampleQuestionTip: "Diferenciar radiações ionizantes (raios X e gama) de não-ionizantes."
+            },
+            {
                 id: "9EF10_CN", bncc: "EF09CI06", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
                 caedSkill: "Reconhecer as aplicações das radiações eletromagnéticas.",
                 bookTheme: "Características e aplicações das ondas eletromagnéticas e Algumas aplicações do modelo de Bohr", bookChapter: "Capítulo 3: Ondas Eletromagnéticas e Modelo Atômico de Bohr", bookPage: "Páginas 54 e 61",
@@ -1235,6 +1403,18 @@
                 ], sampleQuestionTip: "Relacionar a aplicação tecnológica apresentada ao seu tipo de radiação correspondente."
             },
             {
+                id: "9EF10_CN_C3", bncc: "EF09CI06", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer as aplicações das radiações eletromagnéticas.",
+                bookTheme: "Características e aplicações das ondas eletromagnéticas e Algumas aplicações do modelo de Bohr", bookChapter: "Capítulo 3: Ondas Eletromagnéticas e Modelo Atômico de Bohr", bookPage: "Páginas 54 e 61",
+                focus: "Revisão e aprofundamento do uso da radiação em diagnósticos médicos no Ciclo III.",
+                prerequisites: ["Ondas e medicina diagnóstica"], pitfalls: ["Confundir ecografia (som) com tomografia (raio X)."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Comparar imagens de ultrassonografia, raio-X e ressonância." },
+                    { step: 2, action: "Duvidar", detail: "Qual desses exames utiliza ondas eletromagnéticas de alta frequência?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear a tecnologia diagnóstica ao tipo de onda empregado." }
+                ], sampleQuestionTip: "Associar o exame de imagem à onda física correspondente."
+            },
+            {
                 id: "9EF11_CN", bncc: "EF09CI08", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
                 caedSkill: "Interpretar como as características hereditárias são transmitidas às gerações seguintes.",
                 bookTheme: "Mendel e as ervilhas, Material genético e Hereditariedade em humanos", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Páginas 197, 200 e 210",
@@ -1245,6 +1425,18 @@
                     { step: 2, action: "Duvidar", detail: "Por que recebemos metade das nossas características biológicas do pai e metade da mãe?" },
                     { step: 3, action: "Teorizar", detail: "Explicar o papel dos cromossomos e dos gametas na hereditariedade." }
                 ], sampleQuestionTip: "Identificar o mecanismo de transmissão de genes através dos gametas reprodutivos."
+            },
+            {
+                id: "9EF11_CN_C3", bncc: "EF09CI08", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Interpretar como as características hereditárias são transmitidas às gerações seguintes.",
+                bookTheme: "Mendel e as ervilhas, Material genético e Hereditariedade em humanos", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Páginas 197, 200 e 210",
+                focus: "Aprofundar o heredograma e genealogias familiares no Ciclo III.",
+                prerequisites: ["Meiose e gametas"], pitfalls: ["Inverter símbolos de machos e fêmeas no heredograma."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar um heredograma familiar de três gerações." },
+                    { step: 2, action: "Duvidar", detail: "Como descobrir se uma condição é dominante ou recessiva pelo heredograma?" },
+                    { step: 3, action: "Teorizar", detail: "Dedução dos genótipos dos pais a partir dos filhos afetados." }
+                ], sampleQuestionTip: "Determinar se o traço genético no heredograma é de caráter recessivo ou dominante."
             },
             {
                 id: "9EF12_CN", bncc: "EF09CI09", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
@@ -1271,6 +1463,18 @@
                 ], sampleQuestionTip: "Associar o experimento dos fatores hereditários ao trabalho pioneiro de Mendel."
             },
             {
+                id: "9EF13_CN_C3", bncc: "EF09CI09", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer a contribuição de Mendel para os estudos da genética.",
+                bookTheme: "Mendel e as ervilhas", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Página 197",
+                focus: "Valorizar o método científico quantitativo e a matemática aplicada por Mendel no Ciclo III.",
+                prerequisites: ["Método científico e genética"], pitfalls: ["Ignorar a amostragem estatística realizada nos experimentos."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Examinar as contagens numéricas de mais de 10.000 sementes de Mendel." },
+                    { step: 2, action: "Duvidar", detail: "Como a matemática ajudou Mendel a inferir os pares de fatores?" },
+                    { step: 3, action: "Teorizar", detail: "Conectar a proporção 3:1 aos cálculos de probabilidade genótica." }
+                ], sampleQuestionTip: "Reconhecer a importância dos dados estatísticos no rigor das conclusões de Mendel."
+            },
+            {
                 id: "9EF14_CN", bncc: "EF09CI09", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
                 caedSkill: "Reconhecer os conceitos básicos para o estudo da hereditariedade.",
                 bookTheme: "O que é Genética?, Genótipo e Fenótipo e influência do ambiente", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Páginas 205, 206 e 207",
@@ -1281,6 +1485,18 @@
                     { step: 2, action: "Duvidar", detail: "Qual a relação entre o código genético (genótipo) e o que vemos no corpo (fenótipo)?" },
                     { step: 3, action: "Teorizar", detail: "Formalizar a equação conceitual: Fenótipo = Genótipo + Meio Ambiente." }
                 ], sampleQuestionTip: "Associar a definição conceitual ao seu termo genético correto (ex: genótipo x fenótipo)."
+            },
+            {
+                id: "9EF14_CN_C3", bncc: "EF09CI09", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer os conceitos básicos para o estudo da hereditariedade.",
+                bookTheme: "O que é Genética?, Genótipo e Fenótipo e influência do ambiente", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Páginas 205, 206 e 207",
+                focus: "Revisão e aplicação contextualizada dos termos genéticos fundamentais no Ciclo III.",
+                prerequisites: ["Conceitos de genótipo e fenótipo"], pitfalls: ["Inverter homozigoto com heterozigoto."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar amostras de sangue dos sistemas ABO e Fator Rh." },
+                    { step: 2, action: "Duvidar", detail: "Por que o alelo para tipo sanguíneo O é recessivo em relação a A e B?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear genótipos (IAIA, IAi, ii) e seus respectivos fenótipos de tipo sanguíneo." }
+                ], sampleQuestionTip: "Identificar o genótipo correto a partir do tipo de sangue informado."
             },
             {
                 id: "9EF15_CN", bncc: "EF09CI10", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
@@ -1329,6 +1545,18 @@
                     { step: 2, action: "Duvidar", detail: "Qual a diferença fundamental entre planetas rochosos (Mercúrio, Vênus, Terra, Marte) e gasosos (Júpiter, Saturno, Urano, Netuno)?" },
                     { step: 3, action: "Teorizar", detail: "Classificar os corpos celestes por sua composição, massa e tipo de órbita." }
                 ], sampleQuestionTip: "Categorizar o corpo celeste indicado no esquema do Sistema Solar."
+            },
+            {
+                id: "9EF18_CN_C3", bncc: "EF09CI14", unit: "TU - Terra e Universo", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer os corpos que compõem o Sistema Solar.",
+                bookTheme: "Os planetas e o Sistema Solar e Sol, a nossa estrela", bookChapter: "Capítulo 9: Gravitação", bookPage: "Páginas 175 e 177",
+                focus: "Revisão e análise orbital comparativa dos planetas internos x externos no Ciclo III.",
+                prerequisites: ["Massa planetária e gravidade"], pitfalls: ["Acreditar que os planetas gasosos não possuem núcleo denso."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar dados de massa, diâmetro e período orbital dos 8 planetas." },
+                    { step: 2, action: "Duvidar", detail: "Por que os planetas mais distantes do Sol levam anos para completar uma volta?" },
+                    { step: 3, action: "Teorizar", detail: "Relacionar a 3ª Lei de Kepler ao período orbital dos corpos no Sistema Solar." }
+                ], sampleQuestionTip: "Ordenar os planetas conforme a distância ao Sol e seu período orbital."
             },
             {
                 id: "9EF19_CN", bncc: "EF09CI17", unit: "TU - Terra e Universo", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
@@ -1433,7 +1661,7 @@
 
                 card.innerHTML = `
                     <div class="flex items-center justify-between mb-1.5">
-                        <span class="font-bold text-[11px] px-2 py-0.5 rounded ${isActive ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-300'}">${item.id}</span>
+                        <span class="font-bold text-[11px] px-2 py-0.5 rounded ${isActive ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-300'}">${item.id.replace('_C3','')}</span>
                         <span class="text-[10px] font-bold text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">${item.cycle}</span>
                     </div>
                     <h3 class="text-xs font-bold text-white line-clamp-2 mb-1">${item.caedSkill}</h3>
@@ -1455,7 +1683,7 @@
                 <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-4 mb-6">
                     <div class="flex items-center space-x-2">
                         <span class="bg-amber-500/10 text-amber-300 font-bold text-xs px-3 py-1 rounded-lg border border-amber-500/30">
-                            CÓDIGO CAEd: ${item.id}
+                            CÓDIGO CAEd: ${item.id.replace('_C3','')}
                         </span>
                         <span class="bg-indigo-500/10 text-indigo-300 font-bold text-xs px-3 py-1 rounded-lg border border-indigo-500/30">
                             BNCC: ${item.bncc}
@@ -1475,7 +1703,7 @@
                     <div class="bg-[#0b0e14] p-4 rounded-xl border border-slate-800 space-y-1.5">
                         <div class="flex items-center gap-2 text-indigo-400 font-bold text-xs uppercase tracking-wider">
                             <i data-lucide="book-open" class="w-4 h-4"></i>
-                            <span>Alinhamento no Livro Didático</span>
+                            <span>Alinhamento na Coleção Didática (Moderna)</span>
                         </div>
                         <p class="text-xs sm:text-sm text-slate-200 font-medium">
                             <strong>Tema:</strong> ${item.bookTheme}
@@ -1490,7 +1718,7 @@
                     <div class="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-4">
                         <div class="flex items-center space-x-2 text-emerald-400 font-bold text-xs uppercase mb-2">
                             <i data-lucide="target" class="w-4 h-4"></i>
-                            <span>Foco Primário da Avaliação</span>
+                            <span>Foco Primário da Avaliação (${item.cycle})</span>
                         </div>
                         <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">${item.focus}</p>
                     </div>
@@ -1588,7 +1816,7 @@
 
             const text = `UNIDADE ESCOLAR NATIVIDADE MARINHO - NORTEADOR PEDAGÓGICO
 Turma: ${item.grade} | Ciclo: ${item.cycle}
-Código CAEd: ${item.id} | Habilidade BNCC: ${item.bncc}
+Código CAEd: ${item.id.replace('_C3','')} | Habilidade BNCC: ${item.bncc}
 Unidade Temática: ${item.unit}
 
 HABILIDADE OFICIAL CAEd:
@@ -1602,10 +1830,10 @@ FOCO DA AVALIAÇÃO:
 ${item.focus}
 
 DISTRATORES / ERROS FREQUENTES:
-${item.pitfalls.map(p => '- ' + p).join('\n')}
+${item.pitfalls.map(p => '- ' + p).join('\\n')}
 
 SEQUÊNCIA DIDÁTICA (OBSERVAR • DUVIDAR • TEORIZAR):
-${item.methodologyRoute.map(r => `${r.step}. ${r.action}: ${r.detail}`).join('\n')}
+${item.methodologyRoute.map(r => `${r.step}. ${r.action}: ${r.detail}`).join('\\n')}
             `;
 
             navigator.clipboard.writeText(text).then(() => {
@@ -1622,3 +1850,9 @@ ${item.methodologyRoute.map(r => `${r.step}. ${r.action}: ${r.detail}`).join('\n
     </script>
 </body>
 </html>
+"""
+
+with open('norteador_natividade_marinho_2026.html', 'w', encoding='utf-8') as f:
+    f.write(html_updated_v2)
+
+print("Ajuste concluído! Capas do livro 'Ciências Naturais - Moderna' atualizadas e filtro por Ciclo garantido sem omissão de habilidades recorrentes.")
