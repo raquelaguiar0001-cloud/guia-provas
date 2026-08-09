@@ -81,20 +81,17 @@
                 </p>
             </div>
 
-            <!-- Grid de Blocos das Turmas (Estilo ReagiNota / Dashboard Escuro) -->
+            <!-- Grid de Blocos das Turmas -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
                 
-                <!-- Bloco 6º Ano -->
+                <!-- Bloco 6º Ano (Com Capa Real do Livro) -->
                 <div onclick="openGrade('6º Ano')" class="dark-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group overflow-hidden">
-                    <div class="absolute top-4 right-4 bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                    <div class="absolute top-4 right-4 bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider z-10">
                         6º ANO
                     </div>
                     <div class="space-y-4 text-center mt-2">
-                        <!-- Simulated Book Cover / Icon Box -->
-                        <div class="w-20 h-28 mx-auto rounded-lg bg-gradient-to-br from-indigo-600 via-indigo-800 to-slate-900 p-2 shadow-lg flex flex-col items-center justify-between border border-indigo-400/30 group-hover:scale-105 transition-transform">
-                            <i data-lucide="droplet" class="w-6 h-6 text-indigo-200 mt-2"></i>
-                            <span class="text-[9px] font-black text-indigo-100 uppercase tracking-tighter text-center">Ciências 6</span>
-                            <div class="w-full bg-indigo-400/20 h-1.5 rounded-full mb-1"></div>
+                        <div class="w-24 h-32 mx-auto rounded-lg shadow-2xl overflow-hidden border border-indigo-400/30 group-hover:scale-105 transition-transform bg-slate-900">
+                            <img src="https://i.postimg.cc/mrm028J0/capa-livro-ciencias.png" alt="Capa Ciências 6º Ano" class="w-full h-full object-cover">
                         </div>
                         <div>
                             <h3 class="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">Ciências da Natureza</h3>
@@ -113,7 +110,6 @@
                         7º ANO
                     </div>
                     <div class="space-y-4 text-center mt-2">
-                        <!-- Simulated Book Cover / Icon Box -->
                         <div class="w-20 h-28 mx-auto rounded-lg bg-gradient-to-br from-emerald-600 via-emerald-800 to-slate-900 p-2 shadow-lg flex flex-col items-center justify-between border border-emerald-400/30 group-hover:scale-105 transition-transform">
                             <i data-lucide="leaf" class="w-6 h-6 text-emerald-200 mt-2"></i>
                             <span class="text-[9px] font-black text-emerald-100 uppercase tracking-tighter text-center">Ciências 7</span>
@@ -136,7 +132,6 @@
                         8º ANO
                     </div>
                     <div class="space-y-4 text-center mt-2">
-                        <!-- Simulated Book Cover / Icon Box -->
                         <div class="w-20 h-28 mx-auto rounded-lg bg-gradient-to-br from-amber-600 via-amber-800 to-slate-900 p-2 shadow-lg flex flex-col items-center justify-between border border-amber-400/30 group-hover:scale-105 transition-transform">
                             <i data-lucide="zap" class="w-6 h-6 text-amber-200 mt-2"></i>
                             <span class="text-[9px] font-black text-amber-100 uppercase tracking-tighter text-center">Ciências 8</span>
@@ -159,7 +154,6 @@
                         9º ANO
                     </div>
                     <div class="space-y-4 text-center mt-2">
-                        <!-- Simulated Book Cover / Icon Box -->
                         <div class="w-20 h-28 mx-auto rounded-lg bg-gradient-to-br from-rose-600 via-rose-800 to-slate-900 p-2 shadow-lg flex flex-col items-center justify-between border border-rose-400/30 group-hover:scale-105 transition-transform">
                             <i data-lucide="atom" class="w-6 h-6 text-rose-200 mt-2"></i>
                             <span class="text-[9px] font-black text-rose-100 uppercase tracking-tighter text-center">Ciências 9</span>
@@ -182,11 +176,9 @@
         <!-- VIEW 2: DASHBOARD DETALHADO POR TURMA -->
         <div id="view-dashboard" class="hidden">
             
-            <!-- Barra de Filtros e Seletor de Turmas -->
             <section class="bg-[#131722] rounded-2xl shadow-xl border border-slate-800 p-5 mb-6 no-print">
                 <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
                     
-                    <!-- Tabs Rápidas de Turmas na View Interna -->
                     <div class="flex items-center bg-[#0b0e14] p-1.5 rounded-xl border border-slate-800 w-full lg:w-auto overflow-x-auto">
                         <button onclick="switchTab('6º Ano')" id="tab-6º Ano" class="tab-btn px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white whitespace-nowrap">6º Ano</button>
                         <button onclick="switchTab('7º Ano')" id="tab-7º Ano" class="tab-btn px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white whitespace-nowrap">7º Ano</button>
@@ -209,7 +201,7 @@
 
                         <div>
                             <label for="filter-unit" class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">
-                                Unidade Temática
+                                Unidade Temática CAEd
                             </label>
                             <select id="filter-unit" class="w-full py-2 px-3 bg-[#0b0e14] border border-slate-800 rounded-lg text-xs text-white focus:outline-none focus:border-indigo-500 transition-all">
                                 <option value="todos">Todas as Unidades</option>
@@ -233,7 +225,7 @@
                     <div id="skills-list" class="space-y-2.5 max-h-[680px] overflow-y-auto pr-1"></div>
                 </div>
 
-                <!-- Coluna Direita: Cartão de Detalhe -->
+                <!-- Coluna Direita: Cartão de Detalhe Organizado -->
                 <div class="lg:col-span-8">
                     <div id="detail-card" class="bg-[#131722] rounded-2xl shadow-xl border border-slate-800 p-6 sm:p-8 text-slate-200"></div>
                 </div>
@@ -286,7 +278,7 @@
                             <input type="text" id="add-bncc" placeholder="Ex: EF06CI01" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Unidade Temática</label>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Unidade Temática CAEd</label>
                             <select id="add-unit" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
                                 <option value="ME - Matéria e Energia">ME - Matéria e Energia</option>
                                 <option value="VE - Vida e Evolução">VE - Vida e Evolução</option>
@@ -303,15 +295,15 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Capítulo do Livro</label>
-                            <input type="text" id="add-book-chapter" placeholder="Ex: Capítulo 10" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
+                            <input type="text" id="add-book-chapter" placeholder="Ex: Capítulo 10: Atmosfera" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Tema / Conteúdo do Livro</label>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Tema do Livro Didático</label>
                             <input type="text" id="add-book-theme" placeholder="Ex: Hidrosfera e ciclo da água" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Página do Livro</label>
-                            <input type="text" id="add-book-page" placeholder="Ex: Página 176" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
+                            <input type="text" id="add-book-page" placeholder="Ex: Páginas 176 a 180" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
                         </div>
                     </div>
 
@@ -362,7 +354,7 @@
                 id: "6EF01_CN", bncc: "EF05CI02", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo I",
                 caedSkill: "Interpretar o ciclo da água.",
                 bookTheme: "Hidrosfera e ciclo da água", bookChapter: "Capítulo 10: Atmosfera e Hidrosfera", bookPage: "Página 176",
-                focus: "Identificar as etapas de evaporação, condensação, precipitação, transpiracão e infiltração no ciclo da água.",
+                focus: "Identificar as etapas de evaporação, condensação, precipitação, transpiração e infiltração no ciclo da água.",
                 prerequisites: ["Mudanças de estado físico da água"], pitfalls: ["Confundir evaporação com condensação nas nuvens."],
                 methodologyRoute: [
                     { step: 1, action: "Observar", detail: "Analisar um ciclo da água em um terrário fechado." },
@@ -494,7 +486,7 @@
                 id: "6EF12_CN", bncc: "EF06CI03", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo II",
                 caedSkill: "Classificar os métodos de separação de misturas de sistemas heterogêneos.",
                 bookTheme: "Separação de misturas heterogêneas", bookChapter: "Capítulo 8: Substâncias Químicas", bookPage: "Página 142",
-                focus: "Identificar métodos físicos: catação, decantação, filtração, catação, separação magnética e ventilação.",
+                focus: "Identificar métodos físicos: catação, decantação, filtração, separação magnética e ventilação.",
                 prerequisites: ["Misturas heterogêneas"], pitfalls: ["Confundir filtração (sólido-líquido) com decantação."],
                 methodologyRoute: [
                     { step: 1, action: "Observar", detail: "Filtrar pó de café misturado na água em papel filtro." },
@@ -922,7 +914,7 @@
                 id: "8EF02_CN", bncc: "EF08CI01", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo II",
                 caedSkill: "Reconhecer diferentes fontes de energia.",
                 bookTheme: "Recursos energéticos e energia elétrica", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Páginas 217 e 227",
-                focus: "Identificar fontes hidráulica, eólica, solar, eólica, geotérmica, maremotriz, biomassa e fóssil.",
+                focus: "Identificar fontes hidráulica, eólica, solar, geotérmica, maremotriz, biomassa e fóssil.",
                 prerequisites: ["Energia e transformações"], pitfalls: ["Confundir energia solar térmica com fotovoltaica."],
                 methodologyRoute: [
                     { step: 1, action: "Observar", detail: "Apresentar fotos de usinas solares, parques eólicos e barragens." },
@@ -945,7 +937,7 @@
             {
                 id: "8EF04_CN", bncc: "EF08CI02", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
                 caedSkill: "Reconhecer os componentes de um circuito.",
-                bookTheme: "Circuito elétrico e corrente elérica", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Página 214",
+                bookTheme: "Circuito elétrico e corrente elétrica", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Página 214",
                 focus: "Identificar gerador (pilha/bateria), condutores (fios), receptores (lâmpada/motor) e interruptor.",
                 prerequisites: ["Corrente elétrica"], pitfalls: ["Confundir a função do interruptor com a do gerador."],
                 methodologyRoute: [
@@ -956,6 +948,18 @@
             },
             {
                 id: "8EF05_CN", bncc: "EF08CI03", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Classificar os processos de transformação da energia nos aparelhos residenciais.",
+                bookTheme: "O uso doméstico de energia elétrica", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Página 219",
+                focus: "Identificar transformações de energia elétrica em térmica (chuveiro/ferro - efeito Joule), mecânica (ventilador), sonora (rádio) e luminosa.",
+                prerequisites: ["Circuitos elétricos"], pitfalls: ["Acreditar que a energia elétrica 'some' após passar pelo aparelho."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Comparar o funcionamento de uma batedeira, um ferro e uma lâmpada LED." },
+                    { step: 2, action: "Duvidar", detail: "Qual o tipo de energia útil gerado por cada um desses aparelhos?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar os eletrodomésticos em resistivos, motores ou comunicadores." }
+                ], sampleQuestionTip: "Associar o eletrodoméstico à sua principal transformação de energia."
+            },
+            {
+                id: "8EF05_CN", bncc: "EF08CI03", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
                 caedSkill: "Classificar os processos de transformação da energia nos aparelhos residenciais.",
                 bookTheme: "O uso doméstico de energia elétrica", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Página 219",
                 focus: "Identificar transformações de energia elétrica em térmica (chuveiro/ferro - efeito Joule), mecânica (ventilador), sonora (rádio) e luminosa.",
@@ -1027,7 +1031,31 @@
                 ], sampleQuestionTip: "Classificar o tipo de usina retratado na imagem da prova."
             },
             {
+                id: "8EF10_CN", bncc: "EF08CI06", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer os tipos de usinas de geração de energia elétrica.",
+                bookTheme: "Recursos energéticos e matriz de usinas", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Página 227",
+                focus: "Identificar hidrelétricas, termelétricas, eólicas, fotovoltaicas, nucleares e biomassa.",
+                prerequisites: ["Fontes de energia"], pitfalls: ["Confundir usina termelétrica com usina termonuclear."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a distribuição de usinas no território brasileiro." },
+                    { step: 2, action: "Duvidar", detail: "Por que o Brasil tem predomínio de usinas hidrelétricas?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar as usinas pelo recurso utilizado e localização geográfica." }
+                ], sampleQuestionTip: "Classificar o tipo de usina retratado na imagem da prova."
+            },
+            {
                 id: "8EF11_CN", bncc: "EF08CI07", unit: "VE - Vida e Evolução", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer os diferentes processos reprodutivos dos seres vivos.",
+                bookTheme: "Reprodução sexuada e assexuada em animais e plantas", bookChapter: "Capítulo 5 (Pág. 90) e Capítulo 6 (Pág. 103)", bookPage: "Páginas 90 e 103",
+                focus: "Diferenciar reprodução assexuada (bipartição, brotamento, estaquia) e sexuada (gametas, variabilidade).",
+                prerequisites: ["Células e material genético"], pitfalls: ["Acreditar que a reprodução assexuada gera variabilidade genética."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Comparar a brotação de uma hidra/planta e a fecundação animal." },
+                    { step: 2, action: "Duvidar", detail: "Qual processo gera descendentes geneticamente idênticos ao progenitor?" },
+                    { step: 3, action: "Teorizar", detail: "Quadro comparativo: Assexuada (Clones) x Sexuada (Variabilidade)." }
+                ], sampleQuestionTip: "Identificar o tipo de reprodução representado no diagrama biológico."
+            },
+            {
+                id: "8EF11_CN", bncc: "EF08CI07", unit: "VE - Vida e Evolução", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
                 caedSkill: "Reconhecer os diferentes processos reprodutivos dos seres vivos.",
                 bookTheme: "Reprodução sexuada e assexuada em animais e plantas", bookChapter: "Capítulo 5 (Pág. 90) e Capítulo 6 (Pág. 103)", bookPage: "Páginas 90 e 103",
                 focus: "Diferenciar reprodução assexuada (bipartição, brotamento, estaquia) e sexuada (gametas, variabilidade).",
@@ -1437,7 +1465,7 @@
                         <span class="text-[10px] font-bold text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">${item.cycle}</span>
                     </div>
                     <h3 class="text-xs font-bold text-white line-clamp-2 mb-1">${item.caedSkill}</h3>
-                    <p class="text-[11px] text-slate-400 line-clamp-1">📖 ${item.bookTheme} (${item.bookChapter})</p>
+                    <p class="text-[11px] text-slate-400 line-clamp-1">📖 ${item.bookTheme}</p>
                 `;
                 container.appendChild(card);
             });
@@ -1452,6 +1480,7 @@
             if (!item) return;
 
             container.innerHTML = `
+                <!-- TOPO DO CARD: Códigos, Turma e Ciclo -->
                 <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-4 mb-6">
                     <div class="flex items-center space-x-2">
                         <span class="bg-amber-500/10 text-amber-300 font-bold text-xs px-3 py-1 rounded-lg border border-amber-500/30">
@@ -1467,25 +1496,37 @@
                     </div>
                 </div>
 
-                <div class="mb-6">
-                    <h2 class="text-lg sm:text-xl font-bold text-white leading-snug mb-3">
+                <!-- UNIDADE TEMÁTICA E HABILIDADE PRINCIPAL CAED (COM DESTAQUE) -->
+                <div class="mb-6 space-y-3">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 uppercase tracking-wide">
+                        <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+                        <span>Unidade Temática CAEd: ${item.unit}</span>
+                    </div>
+
+                    <h2 class="text-lg sm:text-xl font-black text-white leading-snug tracking-tight">
                         ${item.caedSkill}
                     </h2>
+                </div>
+
+                <!-- ALINHAMENTO NO LIVRO DIDÁTICO (TEMÁTICA DESTACADA + CAPÍTULO E PÁGINAS) -->
+                <div class="bg-[#0b0e14] p-4 sm:p-5 rounded-xl border border-indigo-500/20 space-y-2 mb-6">
+                    <div class="flex items-center gap-2 text-indigo-400 font-bold text-xs uppercase tracking-wider mb-1">
+                        <i data-lucide="book-open" class="w-4 h-4"></i>
+                        <span>Alinhamento no Livro Didático</span>
+                    </div>
                     
-                    <div class="bg-[#0b0e14] p-4 rounded-xl border border-slate-800 space-y-1.5">
-                        <div class="flex items-center gap-2 text-indigo-400 font-bold text-xs uppercase tracking-wider">
-                            <i data-lucide="book-open" class="w-4 h-4"></i>
-                            <span>Alinhamento no Livro Didático</span>
-                        </div>
-                        <p class="text-xs sm:text-sm text-slate-200 font-medium">
-                            <strong>Tema:</strong> ${item.bookTheme}
-                        </p>
-                        <p class="text-xs text-slate-400">
-                            <strong>Localização:</strong> ${item.bookChapter} • <span class="bg-indigo-500/20 text-indigo-300 font-semibold px-2 py-0.5 rounded border border-indigo-500/30">${item.bookPage}</span>
-                        </p>
+                    <div class="text-xs sm:text-sm text-slate-200">
+                        <span class="text-slate-400 font-semibold uppercase text-[11px] block mb-0.5">Tema do Livro:</span>
+                        <span class="text-sm font-bold text-indigo-200 bg-indigo-950/50 px-2.5 py-1 rounded border border-indigo-800/50 inline-block">${item.bookTheme}</span>
+                    </div>
+
+                    <div class="text-xs text-slate-300 pt-1">
+                        <strong class="text-slate-400">Localização:</strong> ${item.bookChapter} • 
+                        <span class="bg-indigo-500/20 text-indigo-300 font-bold px-2.5 py-0.5 rounded border border-indigo-500/30 inline-block ml-1">${item.bookPage}</span>
                     </div>
                 </div>
 
+                <!-- FOCO E DISTRATORES DA AVALIAÇÃO -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                     <div class="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-4">
                         <div class="flex items-center space-x-2 text-emerald-400 font-bold text-xs uppercase mb-2">
@@ -1506,6 +1547,7 @@
                     </div>
                 </div>
 
+                <!-- ROTA DIDÁTICA: OBSERVAR • DUVIDAR • TEORIZAR -->
                 <div class="mb-6">
                     <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
                         <i data-lucide="sparkles" class="w-4 h-4 text-indigo-400"></i> Sugestão Didática (OBSERVAR • DUVIDAR • TEORIZAR)
@@ -1523,6 +1565,7 @@
                     </div>
                 </div>
 
+                <!-- PRÉ-REQUISITOS E DICA DE QUESTÃO -->
                 <div class="bg-indigo-950/30 border border-indigo-500/20 rounded-xl p-4 mb-6">
                     <h4 class="text-xs font-bold text-indigo-300 uppercase tracking-wider mb-2 flex items-center gap-1">
                         <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400"></i> Pré-requisitos & Dica de Questão
@@ -1535,6 +1578,7 @@
                     </div>
                 </div>
 
+                <!-- BOTOES DE ACAO -->
                 <div class="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-slate-800 no-print">
                     <button onclick="copyLessonPlan()" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-xl border border-slate-700 transition-colors">
                         <i data-lucide="copy" class="w-4 h-4"></i>
@@ -1589,7 +1633,7 @@
             const text = `UNIDADE ESCOLAR NATIVIDADE MARINHO - NORTEADOR PEDAGÓGICO
 Turma: ${item.grade} | Ciclo: ${item.cycle}
 Código CAEd: ${item.id} | Habilidade BNCC: ${item.bncc}
-Unidade Temática: ${item.unit}
+Unidade Temática CAEd: ${item.unit}
 
 HABILIDADE OFICIAL CAEd:
 ${item.caedSkill}
