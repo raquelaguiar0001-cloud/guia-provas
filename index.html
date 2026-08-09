@@ -22,11 +22,8 @@
                 </div>
             </div>
             <div class="flex items-center gap-3">
-                <button onclick="window.location.reload()" class="px-4 py-2 bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-semibold rounded-lg transition">
+                <button onclick="resetaPainel()" class="px-4 py-2 bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-semibold rounded-lg transition">
                     Início / Turmas
-                </button>
-                <button onclick="abrirModalCadastro()" class="px-4 py-2 bg-amber-500/10 border border-amber-500/40 text-amber-400 hover:bg-amber-500/20 text-xs font-bold rounded-lg transition">
-                    + Cadastrar Habilidade
                 </button>
             </div>
         </div>
@@ -70,7 +67,7 @@
             </div>
         </section>
 
-        <!-- EXIBIÇÃO DA GRADE DE HABILIDADES -->
+        <!-- EXIBIÇÃO DA GRADE -->
         <section class="flex flex-col lg:flex-row gap-6 items-start w-full">
             
             <!-- LISTA ESQUERDA -->
@@ -83,148 +80,181 @@
                 </div>
 
                 <div id="containerListaHabilidades" class="space-y-2.5 max-h-[600px] overflow-y-auto pr-1">
-                    <!-- Cards inseridos via JS -->
+                    <!-- Cards de Habilidades -->
                 </div>
             </div>
 
-            <!-- PAINEL DIREITO -->
-            <div class="flex-1 w-full bg-[#0e1322] border border-slate-800/80 rounded-2xl p-8 min-h-[450px] flex flex-col justify-center items-center text-center shadow-xl" id="painelDetalhes">
-                <p class="text-sm font-medium text-slate-400">Nenhuma habilidade selecionada.</p>
+            <!-- PAINEL DIREITO (VISÃO DO LIVRO + DIRECIONAMENTO PROFESSOR) -->
+            <div class="flex-1 w-full bg-[#0e1322] border border-slate-800/80 rounded-2xl p-6 min-h-[500px] shadow-xl" id="painelDetalhes">
+                <!-- Conteúdo inicial do livro renderizado dinamicamente -->
             </div>
         </section>
     </main>
 
     <script>
-        // BASE DE DADOS COMPLETA DAS TURMAS (6º AO 9º ANO)
+        // INFOS DOS LIVROS
+        const livrosDidaticos = {
+            "6º Ano": {
+                titulo: "Ciências Naturais: Aprendendo com o Cotidiano - 6º Ano",
+                autor: "Eduardo Leite do Canto",
+                editora: "Moderna",
+                cor: "border-sky-500/30 bg-sky-950/20",
+                capitulos: ["Capítulo 1: Seres Vivos e Cadeias Alimentares", "Capítulo 2: Fotossíntese", "Capítulo 3: Teias Alimentares", "Capítulo 4: Níveis de Organização do Corpo Humano", "Capítulo 5: Ossos e Músculos", "Capítulo 6: Visão", "Capítulo 7: Sistema Nervoso", "Capítulo 8: Substâncias Químicas", "Capítulo 9: Transformações Químicas", "Capítulo 10: Atmosfera e Hidrosfera", "Capítulo 11: O Planeta Terra e Recursos Minerais", "Capítulo 12: Dia e Noite: Regularidades Celestes"]
+            },
+            "7º Ano": {
+                titulo: "Ciências Naturais: Aprendendo com o Cotidiano - 7º Ano",
+                autor: "Eduardo Leite do Canto",
+                editora: "Moderna",
+                cor: "border-emerald-500/30 bg-emerald-950/20",
+                capitulos: ["Capítulo 1: Biodiversidade", "Capítulo 2: Adaptação dos Seres Vivos", "Capítulo 3: Diversidade da Vida Microscópica", "Capítulo 4: Fungos", "Capítulo 5: Animais Invertebrados: Principais Grupos", "Capítulo 6: Saneamento Básico", "Capítulo 7: Peixes, Anfíbios e Répteis", "Capítulo 8: Aves e Mamíferos", "Capítulo 9: Principais Biomas Brasileiros", "Capítulo 10: Máquinas Simples", "Capítulo 11: Temperatura, Calor e Efeito Estufa", "Capítulo 12: Gases da Atmosfera e Placas da Litosfera"]
+            },
+            "8º Ano": {
+                titulo: "Ciências Naturais: Aprendendo com o Cotidiano - 8º Ano",
+                autor: "Eduardo Leite do Canto",
+                editora: "Moderna",
+                cor: "border-amber-500/30 bg-amber-950/20",
+                capitulos: ["Capítulo 1: Alimentos e Nutrientes", "Capítulo 2: Sistema Digestório", "Capítulo 3: Sistemas Circulatório, Linfático e Urinário", "Capítulo 4: Sistema Respiratório", "Capítulo 5: Reprodução Sexuada e Assexuada em Animais", "Capítulo 6: Reprodução Sexuada e Assexuada em Plantas", "Capítulo 7: Adolescência, Puberdade e Sistema Endócrino", "Capítulo 8: Reprodução Humana", "Capítulo 9: Sexo, Saúde e Sociedade", "Capítulo 10: Previsão do Tempo", "Capítulo 11: Lua e Constelações", "Capítulo 12: Produção e Uso de Energia Elétrica"]
+            },
+            "9º Ano": {
+                titulo: "Ciências Naturais: Aprendendo com o Cotidiano - 9º Ano",
+                autor: "Eduardo Leite do Canto",
+                editora: "Moderna",
+                cor: "border-indigo-500/30 bg-indigo-950/20",
+                capitulos: ["Capítulo 1: Reações Químicas e Teoria Atômica de Dalton", "Capítulo 2: Cargas Elétricas e Modelo Atômico de Rutherford", "Capítulo 3: Ondas Eletromagnéticas e Modelo Atômico de Bohr", "Capítulo 4: Ligações Químicas", "Capítulo 5: Acústica", "Capítulo 6: Óptica", "Capítulo 7: Cinemática", "Capítulo 8: Dinâmica", "Capítulo 9: Gravitação", "Capítulo 10: Genética e Hereditariedade", "Capítulo 11: Evolução dos Seres Vivos", "Capítulo 12: Desenvolvimento Sustentável"]
+            }
+        };
+
+        // MATRIZ COMPLETA DE HABILIDADES
         const bancoHabilidades = [
             // 6º ANO
-            { codigo: "6EF01_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF05CI02", ciclos: ["Ciclo I"], desc: "Interpretar o ciclo da água." },
-            { codigo: "6EF02_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF05CI03", ciclos: ["Ciclo I"], desc: "Explicar como a ação da água, a atividade dos seres vivos e a retirada de cobertura vegetal influenciam no processo de erosão." },
-            { codigo: "6EF03_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF05CI04", ciclos: ["Ciclo I"], desc: "Interpretar comportamentos voltados para a preservação dos recursos naturais." },
-            { codigo: "6EF04_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF05CI05", ciclos: ["Ciclo I", "Ciclo II"], desc: "Reconhecer as propriedades de materiais como plásticos, metais, papel e vidro que estão relacionados ao uso, reaproveitamento e reciclagem desses materiais." },
-            { codigo: "6EF05_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF05CI06, EF05CI07", ciclos: ["Ciclo I"], desc: "Interpretar as relações estabelecidas entre os diferentes sistemas do corpo humano para a execução das funções de nutrição, excreção, relação, reprodução e coordenação." },
-            { codigo: "6EF06_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF05CI08, EF05CI09", ciclos: ["Ciclo I", "Ciclo II"], desc: "Explicar a necessidade de ingestão de diferentes nutrientes frente às demandas do organismo humano." },
-            { codigo: "6EF07_CN", ano: "6º Ano", ut: "Terra e Universo", bncc: "EF05CI11", ciclos: ["Ciclo I"], desc: "Reconhecer os movimentos realizados pela Terra e pela Lua." },
-            { codigo: "6EF08_CN", ano: "6º Ano", ut: "Terra e Universo", bncc: "EF05CI12", ciclos: ["Ciclo I"], desc: "Reconhecer as fases da Lua." },
-            { codigo: "6EF09_CN", ano: "6º Ano", ut: "Terra e Universo", bncc: "EF05CI13", ciclos: ["Ciclo I", "Ciclo II"], desc: "Comparar instrumentos ópticos ao tipo de observação que ele proporciona." },
-            { codigo: "6EF10_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF06CI01", ciclos: ["Ciclo III"], desc: "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais." },
-            { codigo: "6EF11_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF06CI01", ciclos: ["Ciclo II"], desc: "Reconhecer, a partir de características observáveis, a ocorrência de misturas." },
-            { codigo: "6EF12_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF06CI03", ciclos: ["Ciclo II", "Ciclo III"], desc: "Classificar os métodos de separação de misturas de sistemas heterogêneos." },
-            { codigo: "6EF13_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF06CI03", ciclos: ["Ciclo III"], desc: "Classificar os métodos de separação de misturas de sistemas homogêneos." },
-            { codigo: "6EF14_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF06CI04", ciclos: ["Ciclo II"], desc: "Reconhecer a origem natural ou sintética de materiais." },
-            { codigo: "6EF15_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF06CI04", ciclos: ["Ciclo III"], desc: "Inferir a relação entre o uso de materiais sintéticos e seus impactos socioambientais." },
-            { codigo: "6EF16_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF06CI05", ciclos: ["Ciclo II"], desc: "Reconhecer a célula como a unidade morfofisiológica dos seres vivos." },
-            { codigo: "6EF17_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF06CI06", ciclos: ["Ciclo III"], desc: "Reconhecer os níveis de organização dos seres vivos." },
-            { codigo: "6EF18_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF06CI07", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer as estruturas que compõem o sistema nervoso." },
-            { codigo: "6EF19_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF06CI08", ciclos: ["Ciclo II"], desc: "Classificar os defeitos da visão." },
-            { codigo: "6EF20_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF06CI08", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer as estruturas do olho humano e suas funcionalidades." },
-            { codigo: "6EF21_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF06CI08", ciclos: ["Ciclo III"], desc: "Comparar as estruturas do olho humano ao princípio de funcionamento de instrumentos ópticos." },
-            { codigo: "6EF22_CN", ano: "6º Ano", ut: "Terra e Universo", bncc: "EF06CI11", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer a estrutura da Terra." },
-            { codigo: "6EF23_CN", ano: "6º Ano", ut: "Terra e Universo", bncc: "EF06CI13", ciclos: ["Ciclo II"], desc: "Reconhecer a forma esférica da Terra." },
-            { codigo: "6EF24_CN", ano: "6º Ano", ut: "Terra e Universo", bncc: "EF06CI13", ciclos: ["Ciclo III"], desc: "Explicar argumentos e evidências que demonstram a esfericidade da Terra." },
-            { codigo: "6EF25_CN", ano: "6º Ano", ut: "Terra e Universo", bncc: "EF06CI14", ciclos: ["Ciclo III"], desc: "Interpretar a relação entre os movimentos do planeta Terra e a mudança na sombra de objetos e instrumentos (gnómon)." },
+            { codigo: "6EF01_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF05CI02", ciclos: ["Ciclo I"], desc: "Interpretar o ciclo da água.", direcao: "Utilizar mapas conceituais do Capítulo 10 (Atmosfera e Hidrosfera) para conectar o ciclo hidrológico às mudanças de estado físico." },
+            { codigo: "6EF02_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF05CI03", ciclos: ["Ciclo I"], desc: "Explicar como a ação da água, a atividade dos seres vivos e a retirada de cobertura vegetal influenciam no processo de erosão.", direcao: "Analisar o Capítulo 11. Relacionar a ação das chuvas com a degradação de solos agrícolas e ocupações de encostas." },
+            { codigo: "6EF03_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF05CI04", ciclos: ["Ciclo I"], desc: "Interpretar comportamentos voltados para a preservação dos recursos naturais.", direcao: "Trabalhar com a seção de impacto socioambiental no Capítulo 11 e atividades do bloco 'Use o que Aprendeu'." },
+            { codigo: "6EF04_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF05CI05", ciclos: ["Ciclo I", "Ciclo II"], desc: "Reconhecer as propriedades de materiais como plásticos, metais, papel e vidro que estão relacionados ao uso, reaproveitamento e reciclagem desses materiais.", direcao: "Aplicar práticas do Capítulo 8 (Substâncias Químicas), diferenciando recicláveis por densidade e maleabilidade." },
+            { codigo: "6EF05_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF05CI06, EF05CI07", ciclos: ["Ciclo I"], desc: "Interpretar as relações estabelecidas entre os diferentes sistemas do corpo humano para a execução das funções de nutrição, excreção, relação, reprodução e coordenação.", direcao: "Utilizar o Capítulo 4 como base. Promover atividades em grupo que integrem sistema nervoso, digestório e muscular." },
+            { codigo: "6EF06_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF05CI08, EF05CI09", ciclos: ["Ciclo I", "Ciclo II"], desc: "Explicar a necessidade de ingestão de diferentes nutrientes frente às demandas do organismo humano.", direcao: "Analisar rótulos nutricionais e tabelas no Capítulo 1. Propor a construção de dietas equilibradas." },
+            { codigo: "6EF07_CN", ano: "6º Ano", ut: "Terra e Universo", bncc: "EF05CI11", ciclos: ["Ciclo I"], desc: "Reconhecer os movimentos realizados pela Terra e pela Lua.", direcao: "Aproveitar os esquemas ilustrados do Capítulo 12 (Dia e Noite) para simular translação e rotação." },
+            { codigo: "6EF08_CN", ano: "6º Ano", ut: "Terra e Universo", bncc: "EF05CI12", ciclos: ["Ciclo I"], desc: "Reconhecer as fases da Lua.", direcao: "Utilizar desenhos e maquetes conforme orientado nas seções práticas do Capítulo 12." },
+            { codigo: "6EF09_CN", ano: "6º Ano", ut: "Terra e Universo", bncc: "EF05CI13", ciclos: ["Ciclo I", "Ciclo II"], desc: "Comparar instrumentos ópticos ao tipo de observação que ele proporciona.", direcao: "Integrar o Capítulo 6 (Visão) com o uso de lupas, microscópios e telescópios." },
+            { codigo: "6EF10_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF06CI01", ciclos: ["Ciclo III"], desc: "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais.", direcao: "Realizar experimentos simples de misturas (água/óleo, água/sal) referentes ao Capítulo 8." },
+            { codigo: "6EF11_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF06CI01", ciclos: ["Ciclo II"], desc: "Reconhecer, a partir de características observáveis, a ocorrência de misturas.", direcao: "Trabalhar observação visual direta do capítulo 8 de misturas cotidianas." },
+            { codigo: "6EF12_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF06CI03", ciclos: ["Ciclo II", "Ciclo III"], desc: "Classificar os métodos de separação de misturas de sistemas heterogêneos.", direcao: "Filtração, decantação e catação. Prática de laboratório orientada pelo livro." },
+            { codigo: "6EF13_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF06CI03", ciclos: ["Ciclo III"], desc: "Classificar os métodos de separação de misturas de sistemas homogêneos.", direcao: "Destilação simples e fracionada. Abordar evaporadores em salinas." },
+            { codigo: "6EF14_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF06CI04", ciclos: ["Ciclo II"], desc: "Reconhecer a origem natural ou sintética de materiais.", direcao: "Comparar polímeros naturais e sintéticos no Capítulo 9." },
+            { codigo: "6EF15_CN", ano: "6º Ano", ut: "Matéria e Energia", bncc: "EF06CI04", ciclos: ["Ciclo III"], desc: "Inferir a relação entre o uso de materiais sintéticos e seus impactos socioambientais.", direcao: "Debate focado no descarte de plásticos e microplásticos nos oceanos." },
+            { codigo: "6EF16_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF06CI05", ciclos: ["Ciclo II"], desc: "Reconhecer a célula como a unidade morfofisiológica dos seres vivos.", direcao: "Capítulo 4. Identificar membrana, citoplasma e núcleo em modelos celulares." },
+            { codigo: "6EF17_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF06CI06", ciclos: ["Ciclo III"], desc: "Reconhecer os níveis de organização dos seres vivos.", direcao: "Sequenciar: Célula -> Tecido -> Órgão -> Sistema -> Organismo." },
+            { codigo: "6EF18_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF06CI07", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer as estruturas que compõem o sistema nervoso.", direcao: "Capítulo 7. Enfatizar a diferença entre SNC e SNP." },
+            { codigo: "6EF19_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF06CI08", ciclos: ["Ciclo II"], desc: "Classificar os defeitos da visão.", direcao: "Capítulo 6. Discutir miopia, hipermetropia e astigmatismo com apoio das imagens do livro." },
+            { codigo: "6EF20_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF06CI08", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer as estruturas do olho humano e suas funcionalidades.", direcao: "Mapear íris, pupila, cristalino e retina na Seção de Visão." },
+            { codigo: "6EF21_CN", ano: "6º Ano", ut: "Vida e Evolução", bncc: "EF06CI08", ciclos: ["Ciclo III"], desc: "Comparar as estruturas do olho humano ao princípio de funcionamento de instrumentos ópticos.", direcao: "Comparar o olho humano com uma câmara fotográfica." },
+            { codigo: "6EF22_CN", ano: "6º Ano", ut: "Terra e Universo", bncc: "EF06CI11", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer a estrutura da Terra.", direcao: "Capítulo 11. Crosta, manto e núcleo." },
+            { codigo: "6EF23_CN", ano: "6º Ano", ut: "Terra e Universo", bncc: "EF06CI13", ciclos: ["Ciclo II"], desc: "Reconhecer a forma esférica da Terra.", direcao: "Capítulo 12. Observações de navios no horizonte e sombras." },
+            { codigo: "6EF24_CN", ano: "6º Ano", ut: "Terra e Universo", bncc: "EF06CI13", ciclos: ["Ciclo III"], desc: "Explicar argumentos e evidências que demonstram a esfericidade da Terra.", direcao: "Análise do experimento de Eratóstenes." },
+            { codigo: "6EF25_CN", ano: "6º Ano", ut: "Terra e Universo", bncc: "EF06CI14", ciclos: ["Ciclo III"], desc: "Interpretar a relação entre os movimentos do planeta Terra e a mudança na sombra de objetos e instrumentos (gnómon).", direcao: "Atividade prática de medição de sombras com o Gnómon ao longo do dia." },
 
             // 7º ANO
-            { codigo: "6EF10_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF06CI01", ciclos: ["Ciclo I"], desc: "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais." },
-            { codigo: "6EF12_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF06CI03", ciclos: ["Ciclo I"], desc: "Classificar os métodos de separação de misturas de sistemas heterogêneos." },
-            { codigo: "6EF13_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF06CI03", ciclos: ["Ciclo I"], desc: "Classificar os métodos de separação de misturas de sistemas homogêneos." },
-            { codigo: "6EF15_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF06CI04", ciclos: ["Ciclo I"], desc: "Inferir a relação entre o uso de materiais sintéticos e seus impactos socioambientais." },
-            { codigo: "6EF17_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF06CI06", ciclos: ["Ciclo I"], desc: "Reconhecer os níveis de organização dos seres vivos." },
-            { codigo: "6EF18_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF06CI07", ciclos: ["Ciclo I"], desc: "Reconhecer as estruturas que compõem o sistema nervoso." },
-            { codigo: "6EF20_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF06CI08", ciclos: ["Ciclo I"], desc: "Reconhecer as estruturas do olho humano e suas funcionalidades." },
-            { codigo: "6EF21_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF06CI08", ciclos: ["Ciclo I"], desc: "Comparar as estruturas do olho humano ao princípio de funcionamento de instrumentos ópticos." },
-            { codigo: "6EF22_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF06CI11", ciclos: ["Ciclo I"], desc: "Reconhecer a estrutura da Terra." },
-            { codigo: "6EF24_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF06CI13", ciclos: ["Ciclo I"], desc: "Explicar argumentos e evidências que demonstram a esfericidade da Terra." },
-            { codigo: "6EF25_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF06CI14", ciclos: ["Ciclo I"], desc: "Interpretar a relação entre os movimentos do planeta Terra e a mudança na sombra de objetos e instrumentos (gnómon)." },
-            { codigo: "7EF01_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF07CI01", ciclos: ["Ciclo III"], desc: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples." },
-            { codigo: "7EF02_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF07CI01", ciclos: ["Ciclo II"], desc: "Reconhecer dispositivos mecânicos que facilitam a realização do trabalho." },
-            { codigo: "7EF03_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF07CI02", ciclos: ["Ciclo II"], desc: "Interpretar, em situações cotidianas, os conceitos de calor, temperatura e sensação térmica." },
-            { codigo: "7EF04_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF07CI03", ciclos: ["Ciclo III"], desc: "Inferir, em situações cotidianas, as formas de propagação de calor envolvidas na utilização de determinados materiais e equipamentos." },
-            { codigo: "7EF05_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF07CI03", ciclos: ["Ciclo II"], desc: "Classificar os processos de transferência de calor." },
-            { codigo: "7EF06_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF07CI04", ciclos: ["Ciclo III"], desc: "Explicar o funcionamento de máquinas térmicas (conversão de calor em trabalho, fluxo de calor, equilíbrio térmico, fonte de energia, perdas de energia)." },
-            { codigo: "7EF07_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF07CI05", ciclos: ["Ciclo II", "Ciclo III"], desc: "Interpretar o papel dos combustíveis em máquinas térmicas." },
-            { codigo: "7EF08_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF07CI07", ciclos: ["Ciclo II"], desc: "Reconhecer os diferentes biomas brasileiros." },
-            { codigo: "7EF09_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF07CI07", ciclos: ["Ciclo III"], desc: "Interpretar a forma com que os fatores abióticos regem a diversidade dos diferentes biomas brasileiros." },
-            { codigo: "7EF10_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF07CI08", ciclos: ["Ciclo III"], desc: "Inferir como as intervenções humanas no ambiente causam desequilíbrios ambientais." },
-            { codigo: "7EF11_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF07CI09", ciclos: ["Ciclo III"], desc: "Interpretar indicadores de saúde de um grupo populacional." },
-            { codigo: "7EF12_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF07CI09", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer a relação estabelecida entre as ações de saneamento básico e a saúde humana." },
-            { codigo: "7EF13_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF07CI10", ciclos: ["Ciclo III"], desc: "Inferir o mecanismo de ação das vacinas nos organismos." },
-            { codigo: "7EF14_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF07CI10", ciclos: ["Ciclo II"], desc: "Reconhecer a importância da adesão às campanhas de vacinação." },
-            { codigo: "7EF15_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF07CI12", ciclos: ["Ciclo II"], desc: "Reconhecer o ar como uma mistura de gases." },
-            { codigo: "7EF16_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF07CI12", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer a composição do ar e o modo como a poluição afeta suas características." },
-            { codigo: "7EF17_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF07CI13", ciclos: ["Ciclo II"], desc: "Reconhecer a atuação do efeito estufa no planeta Terra." },
-            { codigo: "7EF18_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF07CI13", ciclos: ["Ciclo III"], desc: "Interpretar propostas de controle ou de reversão do aumento artificial do efeito estufa no planeta Terra." },
-            { codigo: "7EF19_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF07CI14", ciclos: ["Ciclo III"], desc: "Interpretar ações voltadas para a preservação da camada de ozônio." },
-            { codigo: "7EF20_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF07CI14", ciclos: ["Ciclo II"], desc: "Reconhecer a participação da camada de ozônio no fenômeno da vida na Terra." },
+            { codigo: "6EF10_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF06CI01", ciclos: ["Ciclo I"], desc: "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais.", direcao: "Revisão diagnóstica inicial do Ciclo I." },
+            { codigo: "6EF12_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF06CI03", ciclos: ["Ciclo I"], desc: "Classificar os métodos de separação de misturas de sistemas heterogêneos.", direcao: "Exercícios de fixação do livro." },
+            { codigo: "6EF13_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF06CI03", ciclos: ["Ciclo I"], desc: "Classificar os métodos de separação de misturas de sistemas homogêneos.", direcao: "Analisar processos industriais no Maranhão." },
+            { codigo: "6EF15_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF06CI04", ciclos: ["Ciclo I"], desc: "Inferir a relação entre o uso de materiais sintéticos e seus impactos socioambientais.", direcao: "Propor projetos de reciclagem na escola." },
+            { codigo: "6EF17_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF06CI06", ciclos: ["Ciclo I"], desc: "Reconhecer os níveis de organização dos seres vivos.", direcao: "Revisar estrutura celular antes de entrar nos biomas." },
+            { codigo: "6EF18_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF06CI07", ciclos: ["Ciclo I"], desc: "Reconhecer as estruturas que compõem o sistema nervoso.", direcao: "Revisão prática com modelos anatômicos." },
+            { codigo: "6EF20_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF06CI08", ciclos: ["Ciclo I"], desc: "Reconhecer as estruturas do olho humano e suas funcionalidades.", direcao: "Exercícios visuais com lentes de aumento." },
+            { codigo: "6EF21_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF06CI08", ciclos: ["Ciclo I"], desc: "Comparar as estruturas do olho humano ao princípio de funcionamento de instrumentos ópticos.", direcao: "Experimento de câmara escura." },
+            { codigo: "6EF22_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF06CI11", ciclos: ["Ciclo I"], desc: "Reconhecer a estrutura da Terra.", direcao: "Capítulo 12 (Placas da Litosfera)." },
+            { codigo: "6EF24_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF06CI13", ciclos: ["Ciclo I"], desc: "Explicar argumentos e evidências que demonstram a esfericidade da Terra.", direcao: "Uso de dados de satélite." },
+            { codigo: "6EF25_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF06CI14", ciclos: ["Ciclo I"], desc: "Interpretar a relação entre os movimentos do planeta Terra e a mudança na sombra de objetos e instrumentos (gnómon).", direcao: "Cálculo de variação angular." },
+            { codigo: "7EF01_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF07CI01", ciclos: ["Ciclo III"], desc: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples.", direcao: "Capítulo 10. Alavancas, roldanas e plano inclinado." },
+            { codigo: "7EF02_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF07CI01", ciclos: ["Ciclo II"], desc: "Reconhecer dispositivos mecânicos que facilitam a realização do trabalho.", direcao: "Análise de ferramentas do cotidiano." },
+            { codigo: "7EF03_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF07CI02", ciclos: ["Ciclo II"], desc: "Interpretar, em situações cotidianas, os conceitos de calor, temperatura e sensação térmica.", direcao: "Capítulo 11. Diferenciar calor de temperatura." },
+            { codigo: "7EF04_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF07CI03", ciclos: ["Ciclo III"], desc: "Inferir, em situações cotidianas, as formas de propagação de calor envolvidas na utilização de determinados materiais e equipamentos.", direcao: "Condução, convecção e irradiação." },
+            { codigo: "7EF05_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF07CI03", ciclos: ["Ciclo II"], desc: "Classificar os processos de transferência de calor.", direcao: "Experimento da garrafa térmica." },
+            { codigo: "7EF06_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF07CI04", ciclos: ["Ciclo III"], desc: "Explicar o funcionamento de máquinas térmicas (conversão de calor em trabalho, fluxo de calor, equilíbrio térmico, fonte de energia, perdas de energia).", direcao: "Análise histórica de motores a vapor e motores a combustão." },
+            { codigo: "7EF07_CN", ano: "7º Ano", ut: "Matéria e Energia", bncc: "EF07CI05", ciclos: ["Ciclo II", "Ciclo III"], desc: "Interpretar o papel dos combustíveis em máquinas térmicas.", direcao: "Combustíveis fósseis vs renováveis." },
+            { codigo: "7EF08_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF07CI07", ciclos: ["Ciclo II"], desc: "Reconhecer os diferentes biomas brasileiros.", direcao: "Capítulo 9. Foco em Cerrado, Amazônia e Caatinga." },
+            { codigo: "7EF09_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF07CI07", ciclos: ["Ciclo III"], desc: "Interpretar a forma com que os fatores abióticos regem a diversidade dos diferentes biomas brasileiros.", direcao: "Relação clima-solo-vegetação." },
+            { codigo: "7EF10_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF07CI08", ciclos: ["Ciclo III"], desc: "Inferir como as intervenções humanas no ambiente causam desequilíbrios ambientais.", direcao: "Estudo sobre desmatamento e queimadas no estado." },
+            { codigo: "7EF11_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF07CI09", ciclos: ["Ciclo III"], desc: "Interpretar indicadores de saúde de um grupo populacional.", direcao: "Capítulo 6. Análise de tabelas de mortalidade infantil e saneamento." },
+            { codigo: "7EF12_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF07CI09", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer a relação estabelecida entre as ações de saneamento básico e a saúde humana.", direcao: "Doenças de veiculação hídrica (Capítulo 6)." },
+            { codigo: "7EF13_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF07CI10", ciclos: ["Ciclo III"], desc: "Inferir o mecanismo de ação das vacinas nos organismos.", direcao: "Imunização ativa e anticorpos (Capítulo 3)." },
+            { codigo: "7EF14_CN", ano: "7º Ano", ut: "Vida e Evolução", bncc: "EF07CI10", ciclos: ["Ciclo II"], desc: "Reconhecer a importância da adesão às campanhas de vacinação.", direcao: "Análise de cartões de vacina e fake news sobre vacinas." },
+            { codigo: "7EF15_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF07CI12", ciclos: ["Ciclo II"], desc: "Reconhecer o ar como uma mistura de gases.", direcao: "Capítulo 12. Oxigênio, nitrogênio e gás carbônico." },
+            { codigo: "7EF16_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF07CI12", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer a composição do ar e o modo como a poluição afeta suas características.", direcao: "Fontes poluidoras e qualidade do ar." },
+            { codigo: "7EF17_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF07CI13", ciclos: ["Ciclo II"], desc: "Reconhecer a atuação do efeito estufa no planeta Terra.", direcao: "Diferença entre efeito estufa natural e agravado." },
+            { codigo: "7EF18_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF07CI13", ciclos: ["Ciclo III"], desc: "Interpretar propostas de controle ou de reversão do aumento artificial do efeito estufa no planeta Terra.", direcao: "Acordos internacionais de clima." },
+            { codigo: "7EF19_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF07CI14", ciclos: ["Ciclo III"], desc: "Interpretar ações voltadas para a preservação da camada de ozônio.", direcao: "Protocolo de Montreal e gases CFCs." },
+            { codigo: "7EF20_CN", ano: "7º Ano", ut: "Terra e Universo", bncc: "EF07CI14", ciclos: ["Ciclo II"], desc: "Reconhecer a participação da camada de ozônio no fenômeno da vida na Terra.", direcao: "Filtragem de raios ultravioleta UV-B e UV-C." },
 
             // 8º ANO
-            { codigo: "7EF01_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF07CI01", ciclos: ["Ciclo I"], desc: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples." },
-            { codigo: "7EF04_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF07CI03", ciclos: ["Ciclo I"], desc: "Inferir, em situações cotidianas, as formas de propagação de calor envolvidas na utilização de determinados materiais e equipamentos." },
-            { codigo: "7EF06_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF07CI04", ciclos: ["Ciclo I"], desc: "Explicar o funcionamento de máquinas térmicas (conversão de calor em trabalho, fluxo de calor, equilíbrio térmico, fonte de energia, perdas de energia)." },
-            { codigo: "7EF07_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF07CI05", ciclos: ["Ciclo I"], desc: "Interpretar o papel dos combustíveis em máquinas térmicas." },
-            { codigo: "7EF09_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF07CI07", ciclos: ["Ciclo I"], desc: "Interpretar a forma com que os fatores abióticos regem a diversidade dos diferentes biomas brasileiros." },
-            { codigo: "7EF10_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF07CI08", ciclos: ["Ciclo I"], desc: "Inferir como as intervenções humanas no ambiente causam desequilíbrios ambientais." },
-            { codigo: "7EF11_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF07CI09", ciclos: ["Ciclo I"], desc: "Interpretar indicadores de saúde de um grupo populacional." },
-            { codigo: "7EF12_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF07CI09", ciclos: ["Ciclo I"], desc: "Reconhecer a relação estabelecida entre as ações de saneamento básico e a saúde humana." },
-            { codigo: "7EF13_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF07CI10", ciclos: ["Ciclo I"], desc: "Inferir o mecanismo de ação das vacinas nos organismos." },
-            { codigo: "7EF16_CN", ano: "8º Ano", ut: "Terra e Universo", bncc: "EF07CI12", ciclos: ["Ciclo I"], desc: "Reconhecer a composição do ar e o modo como a poluição afeta suas características." },
-            { codigo: "7EF18_CN", ano: "8º Ano", ut: "Terra e Universo", bncc: "EF07CI13", ciclos: ["Ciclo I"], desc: "Interpretar propostas de controle ou de reversão do aumento artificial do efeito estufa no planeta Terra." },
-            { codigo: "7EF19_CN", ano: "8º Ano", ut: "Terra e Universo", bncc: "EF07CI14", ciclos: ["Ciclo I"], desc: "Interpretar ações voltadas para a preservação da camada de ozônio." },
-            { codigo: "8EF01_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI01", ciclos: ["Ciclo II", "Ciclo III"], desc: "Classificar os recursos energéticos em renováveis e não renováveis." },
-            { codigo: "8EF02_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI01", ciclos: ["Ciclo II"], desc: "Reconhecer diferentes fontes de energia." },
-            { codigo: "8EF03_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI01", ciclos: ["Ciclo II"], desc: "Reconhecer diferentes tipos de energia." },
-            { codigo: "8EF04_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI02", ciclos: ["Ciclo III"], desc: "Reconhecer os componentes de um circuito." },
-            { codigo: "8EF05_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI03", ciclos: ["Ciclo II", "Ciclo III"], desc: "Classificar os processos de transformação da energia nos aparelhos residenciais." },
-            { codigo: "8EF06_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI04", ciclos: ["Ciclo III"], desc: "Verificar o consumo de energia elétrica de aparelhos eletroeletrônicos, assim como as grandezas e as ações que influenciam nesse consumo." },
-            { codigo: "8EF07_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI05", ciclos: ["Ciclo II"], desc: "Reconhecer as atitudes que contribuem para redução do consumo de energia." },
-            { codigo: "8EF08_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI06", ciclos: ["Ciclo III"], desc: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas." },
-            { codigo: "8EF09_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI06", ciclos: ["Ciclo III"], desc: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia elétrica." },
-            { codigo: "8EF10_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI06", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer os tipos de usinas de geração de energia elétrica." },
-            { codigo: "8EF11_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF08CI07", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer os diferentes processos reprodutivos dos seres vivos." },
-            { codigo: "8EF12_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF08CI08", ciclos: ["Ciclo II"], desc: "Reconhecer as estruturas que compõem o sistema endócrino." },
-            { codigo: "8EF13_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF08CI08", ciclos: ["Ciclo III"], desc: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias." },
-            { codigo: "8EF14_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF08CI09", ciclos: ["Ciclo III"], desc: "Reconhecer o princípio de ação dos métodos contraceptivos." },
-            { codigo: "8EF15_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF08CI10", ciclos: ["Ciclo III"], desc: "Reconhecer as características das infecções sexualmente transmissíveis (IST)." },
-            { codigo: "8EF16_CN", ano: "8º Ano", ut: "Terra e Universo", bncc: "EF08CI12", ciclos: ["Ciclo II"], desc: "Reconhecer as posições relativas entre Sol, Terra e Lua associadas às fases da Lua e à ocorrência de eclipses." },
-            { codigo: "8EF17_CN", ano: "8º Ano", ut: "Terra e Universo", bncc: "EF08CI13", ciclos: ["Ciclo III"], desc: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano." },
+            { codigo: "7EF01_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF07CI01", ciclos: ["Ciclo I"], desc: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples.", direcao: "Revisão diagnóstica inicial do 8º ano." },
+            { codigo: "7EF04_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF07CI03", ciclos: ["Ciclo I"], desc: "Inferir, em situações cotidianas, as formas de propagação de calor envolvidas na utilização de determinados materiais e equipamentos.", direcao: "Atividade prática de transferência térmica." },
+            { codigo: "7EF06_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF07CI04", ciclos: ["Ciclo I"], desc: "Explicar o funcionamento de máquinas térmicas (conversão de calor em trabalho, fluxo de calor, equilíbrio térmico, fonte de energia, perdas de energia).", direcao: "Revisão de motores." },
+            { codigo: "7EF07_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF07CI05", ciclos: ["Ciclo I"], desc: "Interpretar o papel dos combustíveis em máquinas térmicas.", direcao: "Impactos ambientais dos fósseis." },
+            { codigo: "7EF09_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF07CI07", ciclos: ["Ciclo I"], desc: "Interpretar a forma com que os fatores abióticos regem a diversidade dos diferentes biomas brasileiros.", direcao: "Análise de ecossistemas." },
+            { codigo: "7EF10_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF07CI08", ciclos: ["Ciclo I"], desc: "Inferir como as intervenções humanas no ambiente causam desequilíbrios ambientais.", direcao: "Debates socioambientais." },
+            { codigo: "7EF11_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF07CI09", ciclos: ["Ciclo I"], desc: "Interpretar indicadores de saúde de um grupo populacional.", direcao: "Cálculos de IDH e saneamento." },
+            { codigo: "7EF12_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF07CI09", ciclos: ["Ciclo I"], desc: "Reconhecer a relação estabelecida entre as ações de saneamento básico e a saúde humana.", direcao: "Projetos de conscientização pública." },
+            { codigo: "7EF13_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF07CI10", ciclos: ["Ciclo I"], desc: "Inferir o mecanismo de ação das vacinas nos organismos.", direcao: "Estudo do sistema imunológico." },
+            { codigo: "7EF16_CN", ano: "8º Ano", ut: "Terra e Universo", bncc: "EF07CI12", ciclos: ["Ciclo I"], desc: "Reconhecer a composição do ar e o modo como a poluição afeta suas características.", direcao: "Medição de índice de qualidade do ar." },
+            { codigo: "7EF18_CN", ano: "8º Ano", ut: "Terra e Universo", bncc: "EF07CI13", ciclos: ["Ciclo I"], desc: "Interpretar propostas de controle ou de reversão do aumento artificial do efeito estufa no planeta Terra.", direcao: "Neutralização de carbono." },
+            { codigo: "7EF19_CN", ano: "8º Ano", ut: "Terra e Universo", bncc: "EF07CI14", ciclos: ["Ciclo I"], desc: "Interpretar ações voltadas para a preservação da camada de ozônio.", direcao: "Revisão sobre radiação UV." },
+            { codigo: "8EF01_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI01", ciclos: ["Ciclo II", "Ciclo III"], desc: "Classificar os recursos energéticos em renováveis e não renováveis.", direcao: "Capítulo 12. Matriz energética brasileira." },
+            { codigo: "8EF02_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI01", ciclos: ["Ciclo II"], desc: "Reconhecer diferentes fontes de energia.", direcao: "Solar, eólica, hídrica, biomassa." },
+            { codigo: "8EF03_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI01", ciclos: ["Ciclo II"], desc: "Reconhecer diferentes tipos de energia.", direcao: "Energia cinética, potencial, térmica e elétrica." },
+            { codigo: "8EF04_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI02", ciclos: ["Ciclo III"], desc: "Reconhecer os componentes de um circuito.", direcao: "Capítulo 12. Gerador, condutor, chave e resistor." },
+            { codigo: "8EF05_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI03", ciclos: ["Ciclo II", "Ciclo III"], desc: "Classificar os processos de transformação da energia nos aparelhos residenciais.", direcao: "Efeito Joule em eletrodomésticos." },
+            { codigo: "8EF06_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI04", ciclos: ["Ciclo III"], desc: "Verificar o consumo de energia elétrica de aparelhos eletroeletrônicos, assim como as grandezas e as ações que influenciam nesse consumo.", direcao: "Cálculo da conta de luz em kWh." },
+            { codigo: "8EF07_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI05", ciclos: ["Ciclo II"], desc: "Reconhecer as atitudes que contribuem para redução do consumo de energia.", direcao: "Selo Procel e consumo consciente." },
+            { codigo: "8EF08_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI06", ciclos: ["Ciclo III"], desc: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas.", direcao: "Funcionamento das usinas hidrelétricas e eólicas." },
+            { codigo: "8EF09_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI06", ciclos: ["Ciclo III"], desc: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia elétrica.", direcao: "Alagamento de áreas em hidrelétricas." },
+            { codigo: "8EF10_CN", ano: "8º Ano", ut: "Matéria e Energia", bncc: "EF08CI06", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer os tipos de usinas de geração de energia elétrica.", direcao: "Comparação entre matrizes limpas e poluentes." },
+            { codigo: "8EF11_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF08CI07", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer os diferentes processos reprodutivos dos seres vivos.", direcao: "Capítulos 5 e 6. Reprodução sexuada e assexuada." },
+            { codigo: "8EF12_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF08CI08", ciclos: ["Ciclo II"], desc: "Reconhecer as estruturas que compõem o sistema endócrino.", direcao: "Capítulo 7. Glândulas hipófise, tireoide e pâncreas." },
+            { codigo: "8EF13_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF08CI08", ciclos: ["Ciclo III"], desc: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias.", direcao: "Hormônios testosterona, estrogênio e progesterona." },
+            { codigo: "8EF14_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF08CI09", ciclos: ["Ciclo III"], desc: "Reconhecer o princípio de ação dos métodos contraceptivos.", direcao: "Capítulo 9. Métodos de barreira, hormonais e cirúrgicos." },
+            { codigo: "8EF15_CN", ano: "8º Ano", ut: "Vida e Evolução", bncc: "EF08CI10", ciclos: ["Ciclo III"], desc: "Reconhecer as características das infecções sexualmente transmissíveis (IST).", direcao: "Prevenção, sintomas e uso do preservativo." },
+            { codigo: "8EF16_CN", ano: "8º Ano", ut: "Terra e Universo", bncc: "EF08CI12", ciclos: ["Ciclo II"], desc: "Reconhecer as posições relativas entre Sol, Terra e Lua associadas às fases da Lua e à ocorrência de eclipses.", direcao: "Capítulo 11. Eclipse solar e lunar." },
+            { codigo: "8EF17_CN", ano: "8º Ano", ut: "Terra e Universo", bncc: "EF08CI13", ciclos: ["Ciclo III"], desc: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.", direcao: "Inclinação do eixo terrestre e solstícios/equinócios." },
 
             // 9º ANO
-            { codigo: "8EF01_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF08CI01", ciclos: ["Ciclo I"], desc: "Classificar os recursos energéticos em renováveis e não renováveis." },
-            { codigo: "8EF04_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF08CI02", ciclos: ["Ciclo I"], desc: "Reconhecer os componentes de um circuito." },
-            { codigo: "8EF05_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF08CI03", ciclos: ["Ciclo I"], desc: "Classificar os processos de transformação da energia nos aparelhos residenciais." },
-            { codigo: "8EF06_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF08CI04", ciclos: ["Ciclo I"], desc: "Verificar o consumo de energia elétrica de aparelhos eletroeletrônicos, assim como as grandezas e as ações que influenciam nesse consumo." },
-            { codigo: "8EF08_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF08CI06", ciclos: ["Ciclo I"], desc: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas." },
-            { codigo: "8EF09_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF08CI06", ciclos: ["Ciclo I"], desc: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia elétrica." },
-            { codigo: "8EF10_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF08CI06", ciclos: ["Ciclo I"], desc: "Reconhecer os tipos de usinas de geração de energia elétrica." },
-            { codigo: "8EF11_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF08CI07", ciclos: ["Ciclo I"], desc: "Reconhecer os diferentes processos reprodutivos dos seres vivos." },
-            { codigo: "8EF13_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF08CI08", ciclos: ["Ciclo I"], desc: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias." },
-            { codigo: "8EF14_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF08CI09", ciclos: ["Ciclo I"], desc: "Reconhecer o princípio de ação dos métodos contraceptivos." },
-            { codigo: "8EF15_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF08CI10", ciclos: ["Ciclo I"], desc: "Reconhecer as características das infecções sexualmente transmissíveis (IST)." },
-            { codigo: "8EF17_CN", ano: "9º Ano", ut: "Terra e Universo", bncc: "EF08CI13", ciclos: ["Ciclo I"], desc: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano." },
-            { codigo: "9EF01_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI01", ciclos: ["Ciclo II"], desc: "Classificar, com base nos modelos de constituição submicroscópica, os estados físicos da matéria." },
-            { codigo: "9EF02_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI01", ciclos: ["Ciclo II", "Ciclo III"], desc: "Inferir as mudanças de estado físico da matéria a partir da observação dos modelos de constituição submicroscópica." },
-            { codigo: "9EF03_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI02", ciclos: ["Ciclo III"], desc: "Inferir, em situações que ocorrem transformações químicas, a relação estabelecida entre a conservação das massas e as propriedades dos átomos." },
-            { codigo: "9EF04_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI02", ciclos: ["Ciclo III"], desc: "Interpretar, em uma equação química, a conservação da massa entre reagentes e produtos." },
-            { codigo: "9EF05_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI03", ciclos: ["Ciclo III"], desc: "Interpretar, a partir da evolução histórica de teorias e de tecnologias, os diferentes modelos atômicos." },
-            { codigo: "9EF06_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI03", ciclos: ["Ciclo II"], desc: "Reconhecer que os materiais são constituídos por partículas muito pequenas, com diferentes níveis de organização e espaços vazios." },
-            { codigo: "9EF07_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI04", ciclos: ["Ciclo II", "Ciclo III"], desc: "Explicar as cores dos objetos estabelecendo uma relação com a luz que os ilumina." },
-            { codigo: "9EF08_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI04", ciclos: ["Ciclo II"], desc: "Reconhecer as cores primárias e secundárias." },
-            { codigo: "9EF09_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI06", ciclos: ["Ciclo II"], desc: "Classificar as radiações eletromagnéticas." },
-            { codigo: "9EF10_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI06", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer as aplicações das radiações eletromagnéticas." },
-            { codigo: "9EF11_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF09CI08", ciclos: ["Ciclo II"], desc: "Interpretar como as características hereditárias são transmitidas às gerações seguintes." },
-            { codigo: "9EF12_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF09CI09", ciclos: ["Ciclo III"], desc: "Verificar, a partir da aplicação da 1ª lei de Mendel, a expressão de características genéticas em uma população." },
-            { codigo: "9EF13_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF09CI09", ciclos: ["Ciclo II"], desc: "Reconhecer a contribuição de Mendel para os estudos da genética." },
-            { codigo: "9EF14_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF09CI09", ciclos: ["Ciclo II"], desc: "Reconhecer os conceitos básicos para o estudo da hereditariedade." },
-            { codigo: "9EF15_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF09CI10", ciclos: ["Ciclo III"], desc: "Comparar as ideias evolucionistas de Lamarck e Darwin." },
-            { codigo: "9EF16_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF09CI11", ciclos: ["Ciclo III"], desc: "Explicar o processo de evolução e o fenômeno da biodiversidade com base no conceito de seleção natural." },
-            { codigo: "9EF17_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF09CI11", ciclos: ["Ciclo III"], desc: "Reconhecer fatores que determinam o processo de especiação." },
-            { codigo: "9EF18_CN", ano: "9º Ano", ut: "Terra e Universo", bncc: "EF09CI14", ciclos: ["Ciclo II"], desc: "Reconhecer os corpos que compõem o Sistema Solar." },
-            { codigo: "9EF19_CN", ano: "9º Ano", ut: "Terra e Universo", bncc: "EF09CI17", ciclos: ["Ciclo III"], desc: "Organizar o ciclo evolutivo de uma estrela." }
+            { codigo: "8EF01_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF08CI01", ciclos: ["Ciclo I"], desc: "Classificar os recursos energéticos em renováveis e não renováveis.", direcao: "Revisão inicial do 9º Ano." },
+            { codigo: "8EF04_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF08CI02", ciclos: ["Ciclo I"], desc: "Reconhecer os componentes de um circuito.", direcao: "Revisão de eletricidade." },
+            { codigo: "8EF05_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF08CI03", ciclos: ["Ciclo I"], desc: "Classificar os processos de transformação da energia nos aparelhos residenciais.", direcao: "Transformações térmicas e luminosas." },
+            { codigo: "8EF06_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF08CI04", ciclos: ["Ciclo I"], desc: "Verificar o consumo de energia elétrica de aparelhos eletroeletrônicos, assim como as grandezas e as ações que influenciam nesse consumo.", direcao: "Análise de potência em Watts." },
+            { codigo: "8EF08_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF08CI06", ciclos: ["Ciclo I"], desc: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas.", direcao: "Revisão de turbinas e geradores." },
+            { codigo: "8EF09_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF08CI06", ciclos: ["Ciclo I"], desc: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia elétrica.", direcao: "Impactos ecológicos locais." },
+            { codigo: "8EF10_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF08CI06", ciclos: ["Ciclo I"], desc: "Reconhecer os tipos de usinas de geração de energia elétrica.", direcao: "Classificação das fontes energéticas." },
+            { codigo: "8EF11_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF08CI07", ciclos: ["Ciclo I"], desc: "Reconhecer os diferentes processos reprodutivos dos seres vivos.", direcao: "Base para genética mendeliana." },
+            { codigo: "8EF13_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF08CI08", ciclos: ["Ciclo I"], desc: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias.", direcao: "Regulação hormonal." },
+            { codigo: "8EF14_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF08CI09", ciclos: ["Ciclo I"], desc: "Reconhecer o princípio de ação dos métodos contraceptivos.", direcao: "Conscientização em saúde reprodutiva." },
+            { codigo: "8EF15_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF08CI10", ciclos: ["Ciclo I"], desc: "Reconhecer as características das infecções sexualmente transmissíveis (IST).", direcao: "Prevenção e saúde coletiva." },
+            { codigo: "8EF17_CN", ano: "9º Ano", ut: "Terra e Universo", bncc: "EF08CI13", ciclos: ["Ciclo I"], desc: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.", direcao: "Revisão astronômica básica." },
+            { codigo: "9EF01_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI01", ciclos: ["Ciclo II"], desc: "Classificar, com base nos modelos de constituição submicroscópica, os estados físicos da matéria.", direcao: "Capítulo 1. Sólido, líquido e gasoso no nível atômico." },
+            { codigo: "9EF02_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI01", ciclos: ["Ciclo II", "Ciclo III"], desc: "Inferir as mudanças de estado físico da matéria a partir da observação dos modelos de constituição submicroscópica.", direcao: "Aumento de agitação molecular e temperatura." },
+            { codigo: "9EF03_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI02", ciclos: ["Ciclo III"], desc: "Inferir, em situações que ocorrem transformações químicas, a relação estabelecida entre a conservação das massas e as propriedades dos átomos.", direcao: "Lei de Lavoisier: 'Nada se perde, tudo se transforma'." },
+            { codigo: "9EF04_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI02", ciclos: ["Ciclo III"], desc: "Interpretar, em uma equação química, a conservação da massa entre reagentes e produtos.", direcao: "Balanceamento de reações simples no Capítulo 1." },
+            { codigo: "9EF05_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI03", ciclos: ["Ciclo III"], desc: "Interpretar, a partir da evolução histórica de teorias e de tecnologias, os diferentes modelos atômicos.", direcao: "Capítulos 1, 2 e 3 (Dalton, Thomson, Rutherford e Bohr)." },
+            { codigo: "9EF06_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI03", ciclos: ["Ciclo II"], desc: "Reconhecer que os materiais são constituídos por partículas muito pequenas, com diferentes níveis de organização e espaços vazios.", direcao: "Estrutura atômica e eletrosfera." },
+            { codigo: "9EF07_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI04", ciclos: ["Ciclo II", "Ciclo III"], desc: "Explicar as cores dos objetos estabelecendo uma relação com a luz que os ilumina.", direcao: "Capítulo 6 (Óptica). Reflexão e absorção de frequências." },
+            { codigo: "9EF08_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI04", ciclos: ["Ciclo II"], desc: "Reconhecer as cores primárias e secundárias.", direcao: "Mistura aditiva de luz (RGB)." },
+            { codigo: "9EF09_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI06", ciclos: ["Ciclo II"], desc: "Classificar as radiações eletromagnéticas.", direcao: "Capítulo 3. Espectro eletromagnético (rádio a gama)." },
+            { codigo: "9EF10_CN", ano: "9º Ano", ut: "Matéria e Energia", bncc: "EF09CI06", ciclos: ["Ciclo II", "Ciclo III"], desc: "Reconhecer as aplicações das radiações eletromagnéticas.", direcao: "Uso em exames médicos (Raio-X), micro-ondas e telecomunicações." },
+            { codigo: "9EF11_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF09CI08", ciclos: ["Ciclo II"], desc: "Interpretar como as características hereditárias são transmitidas às gerações seguintes.", direcao: "Capítulo 10. DNA, cromossomos e genes." },
+            { codigo: "9EF12_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF09CI09", ciclos: ["Ciclo III"], desc: "Verificar, a partir da aplicação da 1ª lei de Mendel, a expressão de características genéticas em uma população.", direcao: "Cruzamentos genéticos simples (Quadros de Punnett)." },
+            { codigo: "9EF13_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF09CI09", ciclos: ["Ciclo II"], desc: "Reconhecer a contribuição de Mendel para os estudos da genética.", direcao: "Histórico dos experimentos com ervilhas." },
+            { codigo: "9EF14_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF09CI09", ciclos: ["Ciclo II"], desc: "Reconhecer os conceitos básicos para o estudo da hereditariedade.", direcao: "Genótipo, fenótipo, dominante e recessivo." },
+            { codigo: "9EF15_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF09CI10", ciclos: ["Ciclo III"], desc: "Comparar as ideias evolucionistas de Lamarck e Darwin.", direcao: "Capítulo 11. Uso e desuso vs Seleção Natural." },
+            { codigo: "9EF16_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF09CI11", ciclos: ["Ciclo III"], desc: "Explicar o processo de evolução e o fenômeno da biodiversidade com base no conceito de seleção natural.", direcao: "Adaptabilidade e sobrevivência do mais apto." },
+            { codigo: "9EF17_CN", ano: "9º Ano", ut: "Vida e Evolução", bncc: "EF09CI11", ciclos: ["Ciclo III"], desc: "Reconhecer fatores que determinam o processo de especiação.", direcao: "Isolamento geográfico e reprodutivo." },
+            { codigo: "9EF18_CN", ano: "9º Ano", ut: "Terra e Universo", bncc: "EF09CI14", ciclos: ["Ciclo II"], desc: "Reconhecer os corpos que compõem o Sistema Solar.", direcao: "Capítulo 9. Planetas, cometas, asteroides e o Sol." },
+            { codigo: "9EF19_CN", ano: "9º Ano", ut: "Terra e Universo", bncc: "EF09CI17", ciclos: ["Ciclo III"], desc: "Organizar o ciclo evolutivo de uma estrela.", direcao: "Nébulas, gigante vermelha, supernovas e buracos negros." }
         ];
 
         let anoSelecionado = "9º Ano";
 
         document.addEventListener("DOMContentLoaded", () => {
+            resetaPainel();
             renderizarHabilidades();
         });
 
@@ -240,6 +270,7 @@
             const btn = document.getElementById(idBtn);
             if(btn) btn.className = "btn-ano px-5 py-2 text-xs font-bold rounded-lg transition text-white bg-indigo-600 shadow-md";
 
+            resetaPainel();
             renderizarHabilidades();
         }
 
@@ -248,7 +279,6 @@
             const unidade = document.getElementById("filtroUnidade").value;
             const container = document.getElementById("containerListaHabilidades");
 
-            // FILTRAGEM MULTI-CICLO
             const filtradas = bancoHabilidades.filter(item => {
                 const mAno = item.ano === anoSelecionado;
                 const mCiclo = ciclo === "Todos os Ciclos" || item.ciclos.includes(ciclo);
@@ -264,7 +294,6 @@
                     <div class="p-4 bg-[#0e1322] border border-slate-800/80 rounded-xl text-center">
                         <p class="text-xs text-slate-400">Nenhuma habilidade encontrada para os filtros selecionados no <strong>${anoSelecionado}</strong>.</p>
                     </div>`;
-                resetaPainel();
                 return;
             }
 
@@ -286,16 +315,16 @@
             });
         }
 
+        // DETALHES DE UMA HABILIDADE SELECIONADA
         function verDetalhes(hab) {
             const painel = document.getElementById("painelDetalhes");
-            painel.className = "flex-1 w-full bg-[#0e1322] border border-slate-800/80 rounded-2xl p-8 min-h-[450px] flex flex-col justify-between text-left shadow-xl";
             painel.innerHTML = `
-                <div class="space-y-5">
+                <div class="space-y-6">
                     <div class="flex justify-between items-start border-b border-slate-800/80 pb-4">
                         <div>
                             <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">${hab.ano} • ${hab.ut}</span>
                             <h3 class="text-2xl font-black text-white mt-1">${hab.codigo}</h3>
-                            <span class="text-xs text-slate-400 font-medium">Habilidade BNCC: ${hab.bncc}</span>
+                            <span class="text-xs text-slate-400 font-medium">BNCC: ${hab.bncc}</span>
                         </div>
                         <div class="flex gap-1.5">
                             ${hab.ciclos.map(c => `<span class="px-3 py-1 rounded-lg text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">${c}</span>`).join('')}
@@ -303,25 +332,59 @@
                     </div>
 
                     <div class="space-y-2">
-                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Descrição da Habilidade</h4>
-                        <p class="text-sm text-slate-200 leading-relaxed bg-[#070913] p-5 rounded-xl border border-slate-800">${hab.desc}</p>
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Descrição da Habilidade CAEd</h4>
+                        <p class="text-sm text-slate-200 leading-relaxed bg-[#070913] p-4 rounded-xl border border-slate-800/80">${hab.desc}</p>
                     </div>
-                </div>
 
-                <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-500">
-                    <span>Norteador Pedagógico CAEd 2026</span>
+                    <!-- DIRECIONAMENTO PEDAGÓGICO AO PROFESSOR -->
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-compass"></i> Direcionamento Pedagógico & Aplicação em Aula
+                        </h4>
+                        <div class="bg-amber-500/10 border border-amber-500/20 p-4 rounded-xl text-xs text-slate-200 leading-relaxed">
+                            ${hab.direcao}
+                        </div>
+                    </div>
                 </div>
             `;
         }
 
+        // TELA INICIAL COM AS CAPAS E SUMÁRIOS
         function resetaPainel() {
+            const livro = livrosDidaticos[anoSelecionado];
             const painel = document.getElementById("painelDetalhes");
-            painel.className = "flex-1 w-full bg-[#0e1322] border border-slate-800/80 rounded-2xl p-8 min-h-[450px] flex flex-col justify-center items-center text-center shadow-xl";
-            painel.innerHTML = `<p class="text-sm font-medium text-slate-400">Nenhuma habilidade selecionada.</p>`;
-        }
 
-        function abrirModalCadastro() {
-            alert("Modo de exibição das matrizes ativado.");
+            painel.innerHTML = `
+                <div class="space-y-6">
+                    <!-- CARTÃO DA CAPA DO LIVRO -->
+                    <div class="p-6 rounded-2xl border ${livro.cor} flex flex-col sm:flex-row items-center gap-6 shadow-2xl">
+                        <div class="w-24 h-32 bg-slate-800 rounded-xl border border-slate-700 flex flex-col justify-center items-center text-center p-2 shrink-0 shadow-lg">
+                            <i class="fa-solid fa-book-open text-3xl text-indigo-400 mb-2"></i>
+                            <span class="text-[9px] font-black uppercase text-slate-300">${anoSelecionado}</span>
+                        </div>
+                        <div class="space-y-1 text-center sm:text-left">
+                            <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">Livro Didático Adotado</span>
+                            <h3 class="text-lg font-black text-white">${livro.titulo}</h3>
+                            <p class="text-xs text-slate-300"><strong>Autor:</strong> ${livro.autor} | <strong>Editora:</strong> ${livro.editora}</p>
+                        </div>
+                    </div>
+
+                    <!-- SUMÁRIO DO LIVRO -->
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-list-ol"></i> Estrutura de Capítulos (${anoSelecionado})
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 max-h-[280px] overflow-y-auto pr-1">
+                            ${livro.capitulos.map(cap => `
+                                <div class="p-3 bg-[#070913] border border-slate-800/80 rounded-xl text-xs text-slate-300 font-medium flex items-center gap-2">
+                                    <i class="fa-solid fa-bookmark text-indigo-500 text-[10px]"></i>
+                                    <span>${cap}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
         }
     </script>
 </body>
