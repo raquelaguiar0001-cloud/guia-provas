@@ -3,133 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Norteador Pedagógico - Avaliações Externas & CAEd 2026</title>
+    <title>Unidade Escolar Natividade Marinho - Norteador Pedagógico 2026</title>
     
     <!-- Favicon Pedagógico -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><polygon points='16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76'/></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236366f1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><polygon points='16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76'/></svg>">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        body { font-family: 'Inter', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        .dark-card {
+            background: linear-gradient(145deg, #131722, #0d1017);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dark-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.25);
+        }
+
         @media print {
             .no-print { display: none !important; }
             .print-only { display: block !important; }
             .shadow-lg, .shadow-md, .shadow-sm { box-shadow: none !important; }
-            body { background: white !important; }
+            body { background: white !important; color: black !important; }
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+<body class="bg-[#0b0e14] text-slate-100 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
 
-    <!-- Header / Navbar -->
-    <header class="bg-indigo-900 text-white shadow-md no-print">
-        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-3">
-                <div class="bg-indigo-700 p-2 rounded-lg">
-                    <i data-lucide="compass" class="w-7 h-7 text-indigo-200"></i>
+    <!-- Top Navigation Header -->
+    <header class="bg-[#11151c]/90 backdrop-blur-md border-b border-slate-800/80 sticky top-0 z-50 no-print">
+        <div class="max-w-7xl mx-auto px-4 py-3.5 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="showHome()">
+                <div class="bg-indigo-600/20 p-2 rounded-xl border border-indigo-500/30">
+                    <i data-lucide="school" class="w-6 h-6 text-indigo-400"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl font-bold tracking-tight">Norteador Pedagógico</h1>
-                    <p class="text-xs text-indigo-200">CAEd 2026 • Ciências da Natureza • 6º ao 9º Ano Integrados</p>
+                    <h1 class="text-base font-extrabold tracking-tight text-white uppercase flex items-center gap-2">
+                        UNIDADE ESCOLAR NATIVIDADE MARINHO
+                    </h1>
+                    <p class="text-xs text-indigo-300 font-medium">Norteador Pedagógico • Ciências da Natureza • CAEd 2026</p>
                 </div>
             </div>
             
-            <!-- Class Tabs / Navigation -->
-            <div class="flex items-center bg-indigo-950 p-1 rounded-lg border border-indigo-700/50 text-xs font-semibold">
-                <button onclick="switchTab('6º Ano')" id="tab-6º Ano" class="tab-btn px-3 py-1.5 rounded-md transition-colors text-indigo-200 hover:text-white">6º Ano</button>
-                <button onclick="switchTab('7º Ano')" id="tab-7º Ano" class="tab-btn px-3 py-1.5 rounded-md transition-colors text-indigo-200 hover:text-white">7º Ano</button>
-                <button onclick="switchTab('8º Ano')" id="tab-8º Ano" class="tab-btn px-3 py-1.5 rounded-md transition-colors text-indigo-200 hover:text-white">8º Ano</button>
-                <button onclick="switchTab('9º Ano')" id="tab-9º Ano" class="tab-btn px-3 py-1.5 rounded-md transition-colors text-indigo-200 hover:text-white">9º Ano</button>
-                <button onclick="switchTab('admin')" id="tab-admin" class="tab-btn px-3 py-1.5 rounded-md bg-amber-500 text-slate-950 hover:bg-amber-400 ml-1 flex items-center gap-1">
-                    <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> Cadastrar
+            <div class="flex items-center space-x-2">
+                <button onclick="showHome()" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700/60 hover:bg-slate-700/80 transition-all flex items-center gap-1.5">
+                    <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i> Início / Turmas
+                </button>
+                <button onclick="switchTab('admin')" id="nav-btn-admin" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 border border-amber-500/30 transition-all flex items-center gap-1.5">
+                    <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> Cadastrar Habilidade
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6 sm:px-6 lg:px-8">
+    <!-- Main Dynamic Content -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 sm:px-6 lg:px-8">
         
-        <!-- View: Dashboard -->
-        <div id="view-dashboard">
-            <!-- Barra de Filtros -->
-            <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 mb-6 no-print">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- VIEW 1: HOME PAGE (Blocos das Turmas com Capa) -->
+        <div id="view-home" class="space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                    <i data-lucide="book-marked" class="w-3.5 h-3.5"></i> Livros Didáticos & Matriz CAEd
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                    Selecione a Turma para Acessar os Mapeamentos
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-400">
+                    Sua plataforma centralizada para planejamento de aulas, alinhamento com livro didático e acompanhamento contínuo dos ciclos do CAEd.
+                </p>
+            </div>
+
+            <!-- Grid de Blocos das Turmas (Estilo ReagiNota / Dashboard Escuro) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
+                
+                <!-- Bloco 6º Ano -->
+                <div onclick="openGrade('6º Ano')" class="dark-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                        6º ANO
+                    </div>
+                    <div class="space-y-4 text-center mt-2">
+                        <!-- Simulated Book Cover / Icon Box -->
+                        <div class="w-20 h-28 mx-auto rounded-lg bg-gradient-to-br from-indigo-600 via-indigo-800 to-slate-900 p-2 shadow-lg flex flex-col items-center justify-between border border-indigo-400/30 group-hover:scale-105 transition-transform">
+                            <i data-lucide="droplet" class="w-6 h-6 text-indigo-200 mt-2"></i>
+                            <span class="text-[9px] font-black text-indigo-100 uppercase tracking-tighter text-center">Ciências 6</span>
+                            <div class="w-full bg-indigo-400/20 h-1.5 rounded-full mb-1"></div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">Ciências da Natureza</h3>
+                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Capítulos 1 ao 12 • Células, Sistemas, Matéria, Misturas e Terra</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-indigo-400 group-hover:text-indigo-300">
+                        <span>Acessar Matriz</span>
+                        <span class="group-hover:translate-x-1 transition-transform flex items-center gap-1">Abrir &rarr;</span>
+                    </div>
+                </div>
+
+                <!-- Bloco 7º Ano -->
+                <div onclick="openGrade('7º Ano')" class="dark-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                        7º ANO
+                    </div>
+                    <div class="space-y-4 text-center mt-2">
+                        <!-- Simulated Book Cover / Icon Box -->
+                        <div class="w-20 h-28 mx-auto rounded-lg bg-gradient-to-br from-emerald-600 via-emerald-800 to-slate-900 p-2 shadow-lg flex flex-col items-center justify-between border border-emerald-400/30 group-hover:scale-105 transition-transform">
+                            <i data-lucide="leaf" class="w-6 h-6 text-emerald-200 mt-2"></i>
+                            <span class="text-[9px] font-black text-emerald-100 uppercase tracking-tighter text-center">Ciências 7</span>
+                            <div class="w-full bg-emerald-400/20 h-1.5 rounded-full mb-1"></div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">Ciências da Natureza</h3>
+                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Capítulos 1 ao 12 • Biomas, Saneamento, Vacinas e Termodinâmica</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-emerald-400 group-hover:text-emerald-300">
+                        <span>Acessar Matriz</span>
+                        <span class="group-hover:translate-x-1 transition-transform flex items-center gap-1">Abrir &rarr;</span>
+                    </div>
+                </div>
+
+                <!-- Bloco 8º Ano -->
+                <div onclick="openGrade('8º Ano')" class="dark-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                        8º ANO
+                    </div>
+                    <div class="space-y-4 text-center mt-2">
+                        <!-- Simulated Book Cover / Icon Box -->
+                        <div class="w-20 h-28 mx-auto rounded-lg bg-gradient-to-br from-amber-600 via-amber-800 to-slate-900 p-2 shadow-lg flex flex-col items-center justify-between border border-amber-400/30 group-hover:scale-105 transition-transform">
+                            <i data-lucide="zap" class="w-6 h-6 text-amber-200 mt-2"></i>
+                            <span class="text-[9px] font-black text-amber-100 uppercase tracking-tighter text-center">Ciências 8</span>
+                            <div class="w-full bg-amber-400/20 h-1.5 rounded-full mb-1"></div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors">Ciências da Natureza</h3>
+                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Capítulos 1 ao 12 • Nutrição, Reprodução, Endócrino e Eletricidade</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-amber-400 group-hover:text-amber-300">
+                        <span>Acessar Matriz</span>
+                        <span class="group-hover:translate-x-1 transition-transform flex items-center gap-1">Abrir &rarr;</span>
+                    </div>
+                </div>
+
+                <!-- Bloco 9º Ano -->
+                <div onclick="openGrade('9º Ano')" class="dark-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-rose-500/10 text-rose-400 border border-rose-500/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                        9º ANO
+                    </div>
+                    <div class="space-y-4 text-center mt-2">
+                        <!-- Simulated Book Cover / Icon Box -->
+                        <div class="w-20 h-28 mx-auto rounded-lg bg-gradient-to-br from-rose-600 via-rose-800 to-slate-900 p-2 shadow-lg flex flex-col items-center justify-between border border-rose-400/30 group-hover:scale-105 transition-transform">
+                            <i data-lucide="atom" class="w-6 h-6 text-rose-200 mt-2"></i>
+                            <span class="text-[9px] font-black text-rose-100 uppercase tracking-tighter text-center">Ciências 9</span>
+                            <div class="w-full bg-rose-400/20 h-1.5 rounded-full mb-1"></div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-rose-300 transition-colors">Ciências da Natureza</h3>
+                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Capítulos 1 ao 12 • Química, Modelos Atômicos, Genética e Evolução</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-rose-400 group-hover:text-rose-300">
+                        <span>Acessar Matriz</span>
+                        <span class="group-hover:translate-x-1 transition-transform flex items-center gap-1">Abrir &rarr;</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- VIEW 2: DASHBOARD DETALHADO POR TURMA -->
+        <div id="view-dashboard" class="hidden">
+            
+            <!-- Barra de Filtros e Seletor de Turmas -->
+            <section class="bg-[#131722] rounded-2xl shadow-xl border border-slate-800 p-5 mb-6 no-print">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
                     
-                    <div>
-                        <label for="filter-cycle" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
-                            Ciclo da Prova CAEd
-                        </label>
-                        <select id="filter-cycle" class="w-full py-2.5 px-3 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all">
-                            <option value="todos">Todos os Ciclos</option>
-                            <option value="Ciclo I">Ciclo I</option>
-                            <option value="Ciclo II">Ciclo II</option>
-                            <option value="Ciclo III">Ciclo III</option>
-                        </select>
+                    <!-- Tabs Rápidas de Turmas na View Interna -->
+                    <div class="flex items-center bg-[#0b0e14] p-1.5 rounded-xl border border-slate-800 w-full lg:w-auto overflow-x-auto">
+                        <button onclick="switchTab('6º Ano')" id="tab-6º Ano" class="tab-btn px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white whitespace-nowrap">6º Ano</button>
+                        <button onclick="switchTab('7º Ano')" id="tab-7º Ano" class="tab-btn px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white whitespace-nowrap">7º Ano</button>
+                        <button onclick="switchTab('8º Ano')" id="tab-8º Ano" class="tab-btn px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white whitespace-nowrap">8º Ano</button>
+                        <button onclick="switchTab('9º Ano')" id="tab-9º Ano" class="tab-btn px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white whitespace-nowrap">9º Ano</button>
                     </div>
 
-                    <div>
-                        <label for="filter-unit" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
-                            Unidade Temática
-                        </label>
-                        <select id="filter-unit" class="w-full py-2.5 px-3 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all">
-                            <option value="todos">Todas as Unidades</option>
-                            <option value="ME - Matéria e Energia">ME - Matéria e Energia</option>
-                            <option value="VE - Vida e Evolução">VE - Vida e Evolução</option>
-                            <option value="TU - Terra e Universo">TU - Terra e Universo</option>
-                        </select>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full lg:w-auto flex-1 max-w-2xl">
+                        <div>
+                            <label for="filter-cycle" class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                                Ciclo da Prova CAEd
+                            </label>
+                            <select id="filter-cycle" class="w-full py-2 px-3 bg-[#0b0e14] border border-slate-800 rounded-lg text-xs text-white focus:outline-none focus:border-indigo-500 transition-all">
+                                <option value="todos">Todos os Ciclos</option>
+                                <option value="Ciclo I">Ciclo I</option>
+                                <option value="Ciclo II">Ciclo II</option>
+                                <option value="Ciclo III">Ciclo III</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="filter-unit" class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                                Unidade Temática
+                            </label>
+                            <select id="filter-unit" class="w-full py-2 px-3 bg-[#0b0e14] border border-slate-800 rounded-lg text-xs text-white focus:outline-none focus:border-indigo-500 transition-all">
+                                <option value="todos">Todas as Unidades</option>
+                                <option value="ME - Matéria e Energia">ME - Matéria e Energia</option>
+                                <option value="VE - Vida e Evolução">VE - Vida e Evolução</option>
+                                <option value="TU - Terra e Universo">TU - Terra e Universo</option>
+                            </select>
+                        </div>
                     </div>
 
                 </div>
             </section>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Coluna Esquerda: Lista de Habilidades -->
                 <div class="lg:col-span-4 space-y-3 no-print">
-                    <div class="flex items-center justify-between mb-2">
-                        <h2 class="text-sm font-bold text-slate-600 uppercase tracking-wider">Habilidades da Turma (<span id="active-class-label">6º Ano</span>)</h2>
-                        <span id="results-count" class="text-xs bg-indigo-100 text-indigo-800 font-semibold px-2 py-0.5 rounded-full">0</span>
+                    <div class="flex items-center justify-between mb-2 px-1">
+                        <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Habilidades (<span id="active-class-label">6º Ano</span>)</h2>
+                        <span id="results-count" class="text-xs bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-bold px-2.5 py-0.5 rounded-full">0</span>
                     </div>
-                    <div id="skills-list" class="space-y-2 max-h-[650px] overflow-y-auto pr-1"></div>
+                    <div id="skills-list" class="space-y-2.5 max-h-[680px] overflow-y-auto pr-1"></div>
                 </div>
 
+                <!-- Coluna Direita: Cartão de Detalhe -->
                 <div class="lg:col-span-8">
-                    <div id="detail-card" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8"></div>
+                    <div id="detail-card" class="bg-[#131722] rounded-2xl shadow-xl border border-slate-800 p-6 sm:p-8 text-slate-200"></div>
                 </div>
             </div>
         </div>
 
-        <!-- View: Admin -->
+        <!-- VIEW 3: FORMULÁRIO DE CADASTRO -->
         <div id="view-admin" class="hidden">
-            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8 max-w-4xl mx-auto">
-                <div class="border-b border-slate-200 pb-4 mb-6 flex items-center justify-between">
+            <div class="bg-[#131722] rounded-2xl shadow-2xl border border-slate-800 p-6 sm:p-8 max-w-4xl mx-auto">
+                <div class="border-b border-slate-800 pb-4 mb-6 flex items-center justify-between">
                     <div>
-                        <h2 class="text-xl font-bold text-slate-900">Cadastrar Nova Habilidade / Prova CAEd</h2>
-                        <p class="text-xs text-slate-500">Adicione novas habilidades sem alterar ou perder os dados já cadastrados.</p>
+                        <h2 class="text-xl font-bold text-white">Cadastrar Nova Habilidade / Prova CAEd</h2>
+                        <p class="text-xs text-slate-400">Adicione novas habilidades mantendo e preservando todos os dados cadastrados.</p>
                     </div>
-                    <span class="bg-amber-100 text-amber-900 text-xs font-bold px-3 py-1 rounded-full border border-amber-200">Painel do Professor</span>
+                    <span class="bg-amber-500/10 text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/30">Painel do Professor</span>
                 </div>
 
                 <form id="add-skill-form" onsubmit="handleAddSkill(event)" class="space-y-4">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Ano da Prova</label>
-                            <input type="text" id="add-year" value="2026" required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50">
+                            <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Ano da Prova</label>
+                            <input type="text" id="add-year" value="2026" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Ciclo da Prova</label>
-                            <select id="add-cycle" required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50">
+                            <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Ciclo da Prova</label>
+                            <select id="add-cycle" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
                                 <option value="Ciclo I">Ciclo I</option>
                                 <option value="Ciclo II">Ciclo II</option>
                                 <option value="Ciclo III" selected>Ciclo III</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Turma / Ano Escolar</label>
-                            <select id="add-grade" required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50">
+                            <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Turma / Ano Escolar</label>
+                            <select id="add-grade" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
                                 <option value="6º Ano">6º Ano</option>
                                 <option value="7º Ano">7º Ano</option>
                                 <option value="8º Ano">8º Ano</option>
@@ -140,16 +278,16 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Código CAEd</label>
-                            <input type="text" id="add-id" placeholder="Ex: 6EF01_CN" required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50">
+                            <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Código CAEd</label>
+                            <input type="text" id="add-id" placeholder="Ex: 6EF01_CN" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Habilidade BNCC</label>
-                            <input type="text" id="add-bncc" placeholder="Ex: EF06CI01" required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50">
+                            <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Habilidade BNCC</label>
+                            <input type="text" id="add-bncc" placeholder="Ex: EF06CI01" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Unidade Temática</label>
-                            <select id="add-unit" required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50">
+                            <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Unidade Temática</label>
+                            <select id="add-unit" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
                                 <option value="ME - Matéria e Energia">ME - Matéria e Energia</option>
                                 <option value="VE - Vida e Evolução">VE - Vida e Evolução</option>
                                 <option value="TU - Terra e Universo">TU - Terra e Universo</option>
@@ -158,48 +296,48 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Descrição Oficial da Habilidade CAEd</label>
-                        <textarea id="add-description" rows="2" placeholder="Texto exato da habilidade do CAEd..." required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50"></textarea>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Descrição Oficial da Habilidade CAEd</label>
+                        <textarea id="add-description" rows="2" placeholder="Texto exato da habilidade do CAEd..." required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white"></textarea>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Capítulo do Livro</label>
-                            <input type="text" id="add-book-chapter" placeholder="Ex: Capítulo 10" required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50">
+                            <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Capítulo do Livro</label>
+                            <input type="text" id="add-book-chapter" placeholder="Ex: Capítulo 10" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Tema / Conteúdo do Livro</label>
-                            <input type="text" id="add-book-theme" placeholder="Ex: Hidrosfera e ciclo da água" required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50">
+                            <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Tema / Conteúdo do Livro</label>
+                            <input type="text" id="add-book-theme" placeholder="Ex: Hidrosfera e ciclo da água" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Página do Livro</label>
-                            <input type="text" id="add-book-page" placeholder="Ex: Página 176" required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50">
+                            <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Página do Livro</label>
+                            <input type="text" id="add-book-page" placeholder="Ex: Página 176" required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Foco Primário da Avaliação</label>
-                            <textarea id="add-focus" rows="2" placeholder="Objetivo de cobrança do item..." required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50"></textarea>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Foco Primário da Avaliação</label>
+                            <textarea id="add-focus" rows="2" placeholder="Objetivo de cobrança do item..." required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white"></textarea>
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Erros Comuns / Distratores</label>
-                            <textarea id="add-pitfalls" rows="2" placeholder="Erros frequentes dos estudantes..." required class="w-full p-2.5 border rounded-lg text-sm bg-slate-50"></textarea>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Erros Comuns / Distratores</label>
+                            <textarea id="add-pitfalls" rows="2" placeholder="Erros frequentes dos estudantes..." required class="w-full p-2.5 border border-slate-800 rounded-xl text-xs bg-[#0b0e14] text-white"></textarea>
                         </div>
                     </div>
 
-                    <div class="bg-indigo-50/50 p-4 rounded-lg border border-indigo-100 space-y-3">
-                        <h3 class="text-xs font-bold text-indigo-900 uppercase">Sugestão Didática de Sala de Aula (OBSERVAR • DUVIDAR • TEORIZAR)</h3>
+                    <div class="bg-[#0b0e14] p-4 rounded-xl border border-indigo-500/20 space-y-3">
+                        <h3 class="text-xs font-bold text-indigo-400 uppercase">Sugestão Didática (OBSERVAR • DUVIDAR • TEORIZAR)</h3>
                         <div>
-                            <input type="text" id="add-step1" placeholder="1. OBSERVAR: Prática/Imagens de impacto inicial..." required class="w-full p-2 border rounded-lg text-sm mb-2 bg-white">
-                            <input type="text" id="add-step2" placeholder="2. DUVIDAR: Pergunta disparadora para debate..." required class="w-full p-2 border rounded-lg text-sm mb-2 bg-white">
-                            <input type="text" id="add-step3" placeholder="3. TEORIZAR: Formalização conceitual na lousa..." required class="w-full p-2 border rounded-lg text-sm bg-white">
+                            <input type="text" id="add-step1" placeholder="1. OBSERVAR: Prática/Imagens de impacto inicial..." required class="w-full p-2 border border-slate-800 rounded-lg text-xs mb-2 bg-[#131722] text-white">
+                            <input type="text" id="add-step2" placeholder="2. DUVIDAR: Pergunta disparadora para debate..." required class="w-full p-2 border border-slate-800 rounded-lg text-xs mb-2 bg-[#131722] text-white">
+                            <input type="text" id="add-step3" placeholder="3. TEORIZAR: Formalização conceitual na lousa..." required class="w-full p-2 border border-slate-800 rounded-lg text-xs bg-[#131722] text-white">
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-end space-x-3 pt-4">
-                        <button type="button" onclick="switchTab('6º Ano')" class="px-5 py-2.5 border rounded-lg text-sm font-semibold text-slate-600 hover:bg-slate-100">Cancelar</button>
-                        <button type="submit" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-semibold shadow-sm">Salvar Habilidade</button>
+                    <div class="flex items-center justify-end space-x-3 pt-4 border-t border-slate-800">
+                        <button type="button" onclick="showHome()" class="px-5 py-2.5 border border-slate-700 rounded-xl text-xs font-semibold text-slate-300 hover:bg-slate-800">Cancelar</button>
+                        <button type="submit" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-indigo-600/30">Salvar Habilidade</button>
                     </div>
                 </form>
             </div>
@@ -207,9 +345,9 @@
 
     </main>
 
-    <footer class="bg-white border-t border-slate-200 py-4 mt-8 no-print">
+    <footer class="bg-[#11151c] border-t border-slate-800 py-4 mt-8 no-print">
         <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
-            Norteador Pedagógico • Matrizes CAEd 2026 Integradas por Turma (6º ao 9º Ano).
+            Unidade Escolar Natividade Marinho • Norteador Pedagógico • Matrizes CAEd 2026 Integradas (6º ao 9º Ano).
         </div>
     </footer>
 
@@ -1208,33 +1346,49 @@
 
         let selectedId = "6EF01_CN";
 
+        function showHome() {
+            document.getElementById('view-home').classList.remove('hidden');
+            document.getElementById('view-dashboard').classList.add('hidden');
+            document.getElementById('view-admin').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openGrade(gradeName) {
+            currentTab = gradeName;
+            switchTab(gradeName);
+        }
+
         function switchTab(tabName) {
+            if (tabName === 'admin') {
+                document.getElementById('view-home').classList.add('hidden');
+                document.getElementById('view-dashboard').classList.add('hidden');
+                document.getElementById('view-admin').classList.remove('hidden');
+                return;
+            }
+
             currentTab = tabName;
-            
+
+            document.getElementById('view-home').classList.add('hidden');
+            document.getElementById('view-admin').classList.add('hidden');
+            document.getElementById('view-dashboard').classList.remove('hidden');
+
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('bg-indigo-700', 'text-white', 'shadow-sm');
-                btn.classList.add('text-indigo-200');
+                btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-md');
+                btn.classList.add('text-slate-400');
             });
 
             const activeBtn = document.getElementById(`tab-${tabName}`);
-            if (activeBtn && tabName !== 'admin') {
-                activeBtn.classList.add('bg-indigo-700', 'text-white', 'shadow-sm');
-                activeBtn.classList.remove('text-indigo-200');
+            if (activeBtn) {
+                activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-md');
+                activeBtn.classList.remove('text-slate-400');
             }
 
             const labelElem = document.getElementById('active-class-label');
-            if (labelElem && tabName !== 'admin') {
+            if (labelElem) {
                 labelElem.innerText = tabName;
             }
 
-            if (tabName === 'admin') {
-                document.getElementById('view-dashboard').classList.add('hidden');
-                document.getElementById('view-admin').classList.remove('hidden');
-            } else {
-                document.getElementById('view-dashboard').classList.remove('hidden');
-                document.getElementById('view-admin').classList.add('hidden');
-                renderList();
-            }
+            renderList();
         }
 
         function renderList() {
@@ -1254,8 +1408,8 @@
             container.innerHTML = '';
 
             if (filtered.length === 0) {
-                container.innerHTML = `<div class="p-4 bg-white rounded-lg border border-slate-200 text-center text-slate-500 text-sm">Nenhuma habilidade encontrada para os filtros selecionados na turma do <strong>${currentTab}</strong>.</div>`;
-                document.getElementById('detail-card').innerHTML = `<div class="text-center text-slate-400 py-12">Nenhuma habilidade selecionada.</div>`;
+                container.innerHTML = `<div class="p-4 bg-[#131722] rounded-xl border border-slate-800 text-center text-slate-400 text-xs">Nenhuma habilidade encontrada para os filtros selecionados no <strong>${currentTab}</strong>.</div>`;
+                document.getElementById('detail-card').innerHTML = `<div class="text-center text-slate-500 py-12 text-sm">Nenhuma habilidade selecionada.</div>`;
                 return;
             }
 
@@ -1266,10 +1420,10 @@
             filtered.forEach(item => {
                 const isActive = item.id === selectedId;
                 const card = document.createElement('div');
-                card.className = `p-3.5 rounded-lg border transition-all cursor-pointer ${
+                card.className = `p-3.5 rounded-xl border transition-all cursor-pointer ${
                     isActive 
-                    ? 'bg-indigo-50 border-indigo-500 shadow-sm' 
-                    : 'bg-white border-slate-200 hover:border-indigo-300 hover:bg-slate-50'
+                    ? 'bg-indigo-950/60 border-indigo-500 shadow-lg shadow-indigo-500/10' 
+                    : 'bg-[#131722] border-slate-800/80 hover:border-slate-700 hover:bg-slate-800/50'
                 }`;
                 card.onclick = () => {
                     selectedId = item.id;
@@ -1279,11 +1433,11 @@
 
                 card.innerHTML = `
                     <div class="flex items-center justify-between mb-1.5">
-                        <span class="font-bold text-xs px-2 py-0.5 rounded ${isActive ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'}">${item.id}</span>
-                        <span class="text-xs font-semibold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">${item.cycle}</span>
+                        <span class="font-bold text-[11px] px-2 py-0.5 rounded ${isActive ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-300'}">${item.id}</span>
+                        <span class="text-[10px] font-bold text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">${item.cycle}</span>
                     </div>
-                    <h3 class="text-xs font-bold text-slate-900 line-clamp-2 mb-1">${item.caedSkill}</h3>
-                    <p class="text-[11px] text-slate-500 line-clamp-1">📖 ${item.bookTheme} (${item.bookChapter})</p>
+                    <h3 class="text-xs font-bold text-white line-clamp-2 mb-1">${item.caedSkill}</h3>
+                    <p class="text-[11px] text-slate-400 line-clamp-1">📖 ${item.bookTheme} (${item.bookChapter})</p>
                 `;
                 container.appendChild(card);
             });
@@ -1298,95 +1452,95 @@
             if (!item) return;
 
             container.innerHTML = `
-                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4 mb-6">
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-4 mb-6">
                     <div class="flex items-center space-x-2">
-                        <span class="bg-amber-100 text-amber-900 font-extrabold text-sm px-3 py-1 rounded-md border border-amber-200">
+                        <span class="bg-amber-500/10 text-amber-300 font-bold text-xs px-3 py-1 rounded-lg border border-amber-500/30">
                             CÓDIGO CAEd: ${item.id}
                         </span>
-                        <span class="bg-indigo-100 text-indigo-900 font-extrabold text-sm px-3 py-1 rounded-md border border-indigo-200">
+                        <span class="bg-indigo-500/10 text-indigo-300 font-bold text-xs px-3 py-1 rounded-lg border border-indigo-500/30">
                             BNCC: ${item.bncc}
                         </span>
                     </div>
                     <div class="flex items-center space-x-2 text-xs font-semibold">
-                        <span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded border">${item.grade}</span>
-                        <span class="bg-amber-100 text-amber-900 px-2.5 py-1 rounded border border-amber-300 font-bold">${item.cycle}</span>
+                        <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700">${item.grade}</span>
+                        <span class="bg-amber-500/20 text-amber-300 px-2.5 py-1 rounded-lg border border-amber-500/30 font-bold">${item.cycle}</span>
                     </div>
                 </div>
 
                 <div class="mb-6">
-                    <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-snug mb-3">
+                    <h2 class="text-lg sm:text-xl font-bold text-white leading-snug mb-3">
                         ${item.caedSkill}
                     </h2>
                     
-                    <div class="bg-indigo-50/70 p-4 rounded-xl border border-indigo-100 space-y-2">
-                        <div class="flex items-center gap-2 text-indigo-900 font-bold text-xs uppercase tracking-wider">
-                            <i data-lucide="book-open" class="w-4 h-4 text-indigo-600"></i>
+                    <div class="bg-[#0b0e14] p-4 rounded-xl border border-slate-800 space-y-1.5">
+                        <div class="flex items-center gap-2 text-indigo-400 font-bold text-xs uppercase tracking-wider">
+                            <i data-lucide="book-open" class="w-4 h-4"></i>
                             <span>Alinhamento no Livro Didático</span>
                         </div>
-                        <p class="text-sm text-slate-800 font-medium">
+                        <p class="text-xs sm:text-sm text-slate-200 font-medium">
                             <strong>Tema:</strong> ${item.bookTheme}
                         </p>
-                        <p class="text-xs text-slate-600">
-                            <strong>Localização:</strong> ${item.bookChapter} • <span class="bg-indigo-100 text-indigo-800 font-semibold px-2 py-0.5 rounded">${item.bookPage}</span>
+                        <p class="text-xs text-slate-400">
+                            <strong>Localização:</strong> ${item.bookChapter} • <span class="bg-indigo-500/20 text-indigo-300 font-semibold px-2 py-0.5 rounded border border-indigo-500/30">${item.bookPage}</span>
                         </p>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <div class="bg-emerald-50/60 border border-emerald-200 rounded-lg p-4">
-                        <div class="flex items-center space-x-2 text-emerald-800 font-bold text-sm mb-2">
+                    <div class="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-4">
+                        <div class="flex items-center space-x-2 text-emerald-400 font-bold text-xs uppercase mb-2">
                             <i data-lucide="target" class="w-4 h-4"></i>
                             <span>Foco Primário da Avaliação</span>
                         </div>
-                        <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed">${item.focus}</p>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">${item.focus}</p>
                     </div>
 
-                    <div class="bg-rose-50/60 border border-rose-200 rounded-lg p-4">
-                        <div class="flex items-center space-x-2 text-rose-800 font-bold text-sm mb-2">
+                    <div class="bg-rose-500/5 border border-rose-500/20 rounded-xl p-4">
+                        <div class="flex items-center space-x-2 text-rose-400 font-bold text-xs uppercase mb-2">
                             <i data-lucide="alert-triangle" class="w-4 h-4"></i>
                             <span>Distratores & Erros Frequentes</span>
                         </div>
-                        <ul class="list-disc list-inside text-xs sm:text-sm text-rose-950 space-y-1">
+                        <ul class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-1">
                             ${item.pitfalls.map(p => `<li>${p}</li>`).join('')}
                         </ul>
                     </div>
                 </div>
 
                 <div class="mb-6">
-                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-                        <i data-lucide="sparkles" class="w-4 h-4 text-indigo-600"></i> Sugestão Didática de Sala de Aula (OBSERVAR • DUVIDAR • TEORIZAR)
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-indigo-400"></i> Sugestão Didática (OBSERVAR • DUVIDAR • TEORIZAR)
                     </h3>
                     <div class="space-y-2.5">
                         ${item.methodologyRoute.map(r => `
-                            <div class="flex items-start space-x-3 bg-slate-50 p-3.5 rounded-lg border border-slate-200">
+                            <div class="flex items-start space-x-3 bg-[#0b0e14] p-3.5 rounded-xl border border-slate-800">
                                 <span class="bg-indigo-600 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5">${r.step}</span>
                                 <div class="text-xs sm:text-sm">
-                                    <strong class="text-indigo-900 uppercase font-bold">${r.action}:</strong> 
-                                    <span class="text-slate-700 leading-relaxed">${r.detail}</span>
+                                    <strong class="text-indigo-400 uppercase font-bold">${r.action}:</strong> 
+                                    <span class="text-slate-300 leading-relaxed">${r.detail}</span>
                                 </div>
                             </div>
                         `).join('')}
                     </div>
                 </div>
 
-                <div class="bg-indigo-50/40 border border-indigo-100 rounded-lg p-4 mb-6">
-                    <h4 class="text-xs font-bold text-indigo-900 uppercase tracking-wider mb-2 flex items-center gap-1">
-                        <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-600"></i> Pré-requisitos & Dica de Questão
+                <div class="bg-indigo-950/30 border border-indigo-500/20 rounded-xl p-4 mb-6">
+                    <h4 class="text-xs font-bold text-indigo-300 uppercase tracking-wider mb-2 flex items-center gap-1">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400"></i> Pré-requisitos & Dica de Questão
                     </h4>
-                    <ul class="list-disc list-inside text-xs sm:text-sm text-slate-700 space-y-1 mb-3">
+                    <ul class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-1 mb-3">
                         ${item.prerequisites.map(req => `<li>${req}</li>`).join('')}
                     </ul>
-                    <div class="pt-2 border-t border-indigo-100/80 text-xs text-indigo-900 italic">
+                    <div class="pt-2 border-t border-indigo-500/20 text-xs text-indigo-200 italic">
                         <strong>Dica de Item CAEd:</strong> ${item.sampleQuestionTip}
                     </div>
                 </div>
 
-                <div class="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-slate-100 no-print">
-                    <button onclick="copyLessonPlan()" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition-colors">
+                <div class="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-slate-800 no-print">
+                    <button onclick="copyLessonPlan()" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-xl border border-slate-700 transition-colors">
                         <i data-lucide="copy" class="w-4 h-4"></i>
                         <span>Copiar para Plano de Aula</span>
                     </button>
-                    <button onclick="window.print()" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-lg shadow-sm transition-colors">
+                    <button onclick="window.print()" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl shadow-lg shadow-indigo-600/30 transition-colors">
                         <i data-lucide="printer" class="w-4 h-4"></i>
                         <span>Imprimir / Gerar PDF</span>
                     </button>
@@ -1432,7 +1586,7 @@
             const item = db.find(i => i.id === selectedId);
             if (!item) return;
 
-            const text = `NORTEADOR PEDAGÓGICO - CAEd 2026
+            const text = `UNIDADE ESCOLAR NATIVIDADE MARINHO - NORTEADOR PEDAGÓGICO
 Turma: ${item.grade} | Ciclo: ${item.cycle}
 Código CAEd: ${item.id} | Habilidade BNCC: ${item.bncc}
 Unidade Temática: ${item.unit}
@@ -1462,7 +1616,9 @@ ${item.methodologyRoute.map(r => `${r.step}. ${r.action}: ${r.detail}`).join('\n
         document.getElementById('filter-cycle').addEventListener('change', renderList);
         document.getElementById('filter-unit').addEventListener('change', renderList);
 
-        switchTab('6º Ano');
+        // Inicializa na Home Page
+        showHome();
+        lucide.createIcons();
     </script>
 </body>
 </html>
