@@ -68,7 +68,7 @@
     <!-- Conteúdo Principal -->
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6 sm:px-6 lg:px-8">
         
-        <!-- VIEW 1: HOME PAGE INTACTA -->
+        <!-- VIEW 1: HOME PAGE -->
         <div id="view-home" class="space-y-8 py-4">
             <div class="text-center max-w-2xl mx-auto space-y-2">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700 border border-indigo-200">
@@ -82,7 +82,7 @@
                 </p>
             </div>
 
-            <!-- Grid de Turmas com Totais Atualizados -->
+            <!-- Grid de Turmas -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-2">
                 <!-- 6º Ano -->
                 <div onclick="openGrade('6º Ano')" class="light-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group">
@@ -166,11 +166,12 @@
             </div>
         </div>
 
-        <!-- VIEW 2: DASHBOARD DA TURMA -->
+        <!-- VIEW 2: DASHBOARD DA TURMA COM BANNER REORGANIZADO -->
         <div id="view-dashboard" class="hidden space-y-6">
-            <div id="class-banner" class="rounded-2xl p-6 text-white shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 transition-all">
+            <!-- Banner Colorido Integrando Título e Filtros no Canto Direito -->
+            <div id="class-banner" class="rounded-2xl p-6 text-white shadow-sm flex flex-col lg:flex-row items-center justify-between gap-6 transition-all">
                 <div class="flex items-center space-x-4">
-                    <div id="class-icon-bg" class="p-3 bg-white/20 backdrop-blur-md rounded-xl">
+                    <div id="class-icon-bg" class="p-3 bg-white/20 backdrop-blur-md rounded-xl shrink-0">
                         <i id="class-icon" data-lucide="book-open" class="w-8 h-8 text-white"></i>
                     </div>
                     <div>
@@ -179,14 +180,12 @@
                         <p id="class-subtitle" class="text-xs text-white/80 mt-0.5">Ciências da Natureza • Alinhamento Livro Didático & CAEd 2026</p>
                     </div>
                 </div>
-            </div>
 
-            <!-- Filtros -->
-            <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 no-print">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label for="filter-cycle" class="block text-[11px] font-extrabold text-slate-500 uppercase tracking-wider mb-1.5">CICLO DA PROVA CAED</label>
-                        <select id="filter-cycle" class="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 font-semibold focus:outline-none focus:border-indigo-500 transition-all">
+                <!-- Filtros Reorganizados Dentro do Canto Direito do Banner -->
+                <div class="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto no-print">
+                    <div class="w-full sm:w-48">
+                        <label for="filter-cycle" class="block text-[10px] font-extrabold text-white/90 uppercase tracking-wider mb-1">CICLO DA PROVA CAED</label>
+                        <select id="filter-cycle" class="w-full py-2 px-3 bg-white text-slate-800 rounded-xl text-xs font-bold focus:outline-none focus:ring-2 focus:ring-white/50 shadow-sm border-0 cursor-pointer">
                             <option value="todos">Todos os Ciclos</option>
                             <option value="Ciclo I">Ciclo I</option>
                             <option value="Ciclo II">Ciclo II</option>
@@ -194,9 +193,9 @@
                         </select>
                     </div>
 
-                    <div>
-                        <label for="filter-unit" class="block text-[11px] font-extrabold text-slate-500 uppercase tracking-wider mb-1.5">UNIDADE TEMÁTICA</label>
-                        <select id="filter-unit" class="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 font-semibold focus:outline-none focus:border-indigo-500 transition-all">
+                    <div class="w-full sm:w-52">
+                        <label for="filter-unit" class="block text-[10px] font-extrabold text-white/90 uppercase tracking-wider mb-1">UNIDADE TEMÁTICA</label>
+                        <select id="filter-unit" class="w-full py-2 px-3 bg-white text-slate-800 rounded-xl text-xs font-bold focus:outline-none focus:ring-2 focus:ring-white/50 shadow-sm border-0 cursor-pointer">
                             <option value="todos">Todas as Unidades</option>
                             <option value="ME - Matéria e Energia">ME - Matéria e Energia</option>
                             <option value="VE - Vida e Evolução">VE - Vida e Evolução</option>
@@ -204,7 +203,7 @@
                         </select>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <!-- Coluna Esquerda: Lista -->
@@ -346,11 +345,10 @@
             '9º Ano': { bg: 'bg-rose-600', badge: 'bg-rose-700', icon: 'atom', title: '9º ANO DO ENSINO FUNDAMENTAL', colorClass: 'rose' }
         };
 
-        // GERADOR DA BASE COMPLETA COM CONTAGEM EXATA SOLICITADA
+        // GERADOR DA BASE COMPLETA COM CONTAGEM EXATA
         function buildExactDatabase() {
             const list = [];
 
-            // Helper para criar objeto completo
             function createObj(id, bncc, unit, grade, cycle, name, theme, chap, page) {
                 return {
                     id: id,
@@ -375,9 +373,7 @@
                 };
             }
 
-            // ==========================================
             // 1. TURMA 6º ANO -> 32 HABILIDADES
-            // ==========================================
             const raw6 = [
                 ["6EF01_CN", "EF05CI02", "ME - Matéria e Energia", "Ciclo I", "Interpretar o ciclo da água.", "8. Hidrosfera e ciclo da água", "Capítulo 10", "Página 176"],
                 ["6EF02_CN", "EF05CI03", "ME - Matéria e Energia", "Ciclo I", "Explicar como a ação da água, seres vivos e desmatamento causam erosão.", "5. Rochas sedimentares", "Capítulo 11", "Página 194"],
@@ -414,10 +410,7 @@
             ];
             raw6.forEach(r => list.push(createObj(r[0], r[1], r[2], "6º Ano", r[3], r[4], r[5], r[6], r[7])));
 
-            // ==========================================
             // 2. TURMA 7º ANO -> 34 HABILIDADES
-            // ==========================================
-            // Recomposição (15 itens do 6º ano) + 19 do 7º ano
             raw6.slice(0, 15).forEach(r => {
                 list.push(createObj(r[0] + "_7A", r[1], r[2], "7º Ano", "Ciclo I", r[4], r[5], r[6], r[7]));
             });
@@ -445,10 +438,7 @@
             ];
             raw7.forEach(r => list.push(createObj(r[0], r[1], r[2], "7º Ano", r[3], r[4], r[5], r[6], r[7])));
 
-            // ==========================================
             // 3. TURMA 8º ANO -> 33 HABILIDADES
-            // ==========================================
-            // Recomposição (15 itens do 6º ano) + 18 itens do 8º ano
             raw6.slice(0, 15).forEach(r => {
                 list.push(createObj(r[0] + "_8A", r[1], r[2], "8º Ano", "Ciclo I", r[4], r[5], r[6], r[7]));
             });
@@ -475,10 +465,7 @@
             ];
             raw8.forEach(r => list.push(createObj(r[0], r[1], r[2], "8º Ano", r[3], r[4], r[5], r[6], r[7])));
 
-            // ==========================================
             // 4. TURMA 9º ANO -> 34 HABILIDADES
-            // ==========================================
-            // Recomposição (15 itens do 8º ano) + 19 itens do 9º ano
             const raw8Recomp = [
                 ["8EF01_CN_9A", "EF08CI01", "ME - Matéria e Energia", "Classificar recursos energéticos em renováveis e não renováveis.", "4. Recursos renováveis", "Capítulo 12", "Página 247"],
                 ["8EF02_CN_9A", "EF08CI02", "ME - Matéria e Energia", "Reconhecer componentes de circuitos elétricos.", "1. Cargas e circuitos", "Capítulo 2", "Página 33"],
@@ -524,7 +511,6 @@
             return list;
         }
 
-        // Garante carregamento com os totais exatos por turma
         let db = buildExactDatabase();
         localStorage.setItem('caed_db', JSON.stringify(db));
 
@@ -562,7 +548,7 @@
 
             const theme = gradeThemes[tabName] || gradeThemes['6º Ano'];
             const banner = document.getElementById('class-banner');
-            banner.className = `rounded-2xl p-6 text-white shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 transition-all ${theme.bg}`;
+            banner.className = `rounded-2xl p-6 text-white shadow-sm flex flex-col lg:flex-row items-center justify-between gap-6 transition-all ${theme.bg}`;
             document.getElementById('class-icon').setAttribute('data-lucide', theme.icon);
             document.getElementById('class-title').innerText = theme.title;
             document.getElementById('active-class-label').innerText = tabName.toUpperCase();
