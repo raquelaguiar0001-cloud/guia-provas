@@ -129,14 +129,16 @@
                     </div>
                 </div>
 
-                <!-- 8º Ano (Capa) -->
+                <!-- 8º Ano -->
                 <div onclick="openGrade('8º Ano')" class="light-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group">
                     <div class="absolute top-4 right-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                         8º ANO
                     </div>
                     <div class="space-y-4 text-center mt-2">
-                        <div class="w-20 h-28 mx-auto rounded-lg overflow-hidden shadow-md border border-slate-200 group-hover:scale-105 transition-transform bg-slate-100 flex items-center justify-center">
-                            <img src="capa-ciencias-8ano.png" alt="Capa Ciências 8º Ano" class="w-full h-full object-cover" onerror="this.outerHTML='<div class=\'p-2 text-[9px] font-extrabold text-amber-800 bg-amber-100 flex flex-col items-center justify-center h-full text-center\'>CIÊNCIAS NATURAIS<br><span class=\'text-amber-900 text-[11px] mt-1\'>8º ANO</span></div>'">
+                        <div class="w-20 h-28 mx-auto rounded-lg bg-amber-600 p-2 shadow-md flex flex-col items-center justify-between text-white group-hover:scale-105 transition-transform">
+                            <i data-lucide="zap" class="w-6 h-6 mt-2"></i>
+                            <span class="text-[9px] font-black uppercase tracking-tighter text-center">Ciências 8</span>
+                            <div class="w-full bg-white/30 h-1 rounded-full mb-1"></div>
                         </div>
                         <div>
                             <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">Ciências da Natureza</h3>
@@ -185,7 +187,7 @@
                     </div>
                     <div>
                         <span id="class-badge" class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/20">Matriz de Referência</span>
-                        <h2 id="class-title" class="text-2xl font-black tracking-tight">7º ANO DO ENSINO FUNDAMENTAL</h2>
+                        <h2 id="class-title" class="text-2xl font-black tracking-tight">TURMA SELECIONADA</h2>
                         <p id="class-subtitle" class="text-xs text-white/80 mt-0.5">Ciências da Natureza • Alinhamento Livro Didático & CAEd 2026</p>
                     </div>
                 </div>
@@ -225,7 +227,7 @@
                 <div class="lg:col-span-4 space-y-3 no-print">
                     <div class="flex items-center justify-between mb-1 px-1">
                         <h2 class="text-xs font-extrabold text-slate-600 uppercase tracking-wider">
-                            HABILIDADES DA TURMA (<span id="active-class-label">7º ANO</span>)
+                            HABILIDADES DA TURMA (<span id="active-class-label">TURMA</span>)
                         </h2>
                         <span id="results-count" class="text-xs bg-indigo-100 text-indigo-700 font-bold px-2.5 py-0.5 rounded-full">0</span>
                     </div>
@@ -268,9 +270,9 @@
                             <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Turma / Ano Escolar</label>
                             <select id="add-grade" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
                                 <option value="6º Ano">6º Ano</option>
-                                <option value="7º Ano" selected>7º Ano</option>
+                                <option value="7º Ano">7º Ano</option>
                                 <option value="8º Ano">8º Ano</option>
-                                <option value="9º Ano">9º Ano</option>
+                                <option value="9º Ano" selected>9º Ano</option>
                             </select>
                         </div>
                     </div>
@@ -278,11 +280,11 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Código CAEd</label>
-                            <input type="text" id="add-id" placeholder="Ex: 7EF01_CN" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
+                            <input type="text" id="add-id" placeholder="Ex: 9EF01_CN" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Habilidade BNCC</label>
-                            <input type="text" id="add-bncc" placeholder="Ex: EF07CI01" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
+                            <input type="text" id="add-bncc" placeholder="Ex: EF09CI01" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Unidade Temática</label>
@@ -302,15 +304,15 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Capítulo do Livro</label>
-                            <input type="text" id="add-book-chapter" placeholder="Ex: Capítulo 10" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
+                            <input type="text" id="add-book-chapter" placeholder="Ex: Capítulo 1" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Tema / Conteúdo do Livro</label>
-                            <input type="text" id="add-book-theme" placeholder="Ex: Máquinas simples" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
+                            <input type="text" id="add-book-theme" placeholder="Ex: Reações Químicas" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Página do Livro</label>
-                            <input type="text" id="add-book-page" placeholder="Ex: Página 182" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
+                            <input type="text" id="add-book-page" placeholder="Ex: Página 14" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
                         </div>
                     </div>
 
@@ -351,21 +353,324 @@
     </footer>
 
     <script>
-        let currentTab = '7º Ano';
+        let currentTab = '6º Ano';
 
         const gradeThemes = {
-            '6º Ano': { bg: 'bg-indigo-600', badge: 'bg-indigo-700', icon: 'droplet', title: '6º ANO DO ENSINO FUNDAMENTAL' },
-            '7º Ano': { bg: 'bg-emerald-600', badge: 'bg-emerald-700', icon: 'leaf', title: '7º ANO DO ENSINO FUNDAMENTAL' },
-            '8º Ano': { bg: 'bg-amber-600', badge: 'bg-amber-700', icon: 'zap', title: '8º ANO DO ENSINO FUNDAMENTAL' },
-            '9º Ano': { bg: 'bg-rose-600', badge: 'bg-rose-700', icon: 'atom', title: '9º ANO DO ENSINO FUNDAMENTAL' }
+            '6º Ano': { bg: 'bg-indigo-600', badge: 'bg-indigo-700', icon: 'droplet', title: '6º ANO DO ENSINO FUNDAMENTAL', colorClass: 'indigo' },
+            '7º Ano': { bg: 'bg-emerald-600', badge: 'bg-emerald-700', icon: 'leaf', title: '7º ANO DO ENSINO FUNDAMENTAL', colorClass: 'emerald' },
+            '8º Ano': { bg: 'bg-amber-600', badge: 'bg-amber-700', icon: 'zap', title: '8º ANO DO ENSINO FUNDAMENTAL', colorClass: 'amber' },
+            '9º Ano': { bg: 'bg-rose-600', badge: 'bg-rose-700', icon: 'atom', title: '9º ANO DO ENSINO FUNDAMENTAL', colorClass: 'rose' }
         };
 
-        let db = [
+        // BASE DE DADOS COMPLETA (6º, 7º, 8º E 9º ANOS INTEGRADOS)
+        const initialDb = [
             // =========================================================================
-            // --- TURMA DO 7º ANO --- (Com Recomposição 6EF no Ciclo I + 7EF nos Ciclos II e III)
+            // --- TURMA DO 6º ANO ---
             // =========================================================================
-            
-            // --- CICLO I (Recomposição 6º Ano no 7º Ano) ---
+            {
+                id: "6EF01_CN", bncc: "EF05CI02", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Interpretar o ciclo da água.",
+                bookTheme: "8. Hidrosfera e ciclo da água", bookChapter: "Capítulo 10: Atmosfera e Hidrosfera", bookPage: "Página 176",
+                focus: "Identificar as etapas de evaporação, condensação, precipitação, transpiração e infiltração no ciclo da água.",
+                prerequisites: ["Mudanças de estado físico da água"], pitfalls: ["Confundir evaporação com condensação nas nuvens."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar um ciclo da água em um terrário ou maquete fechada." },
+                    { step: 2, action: "Duvidar", detail: "De onde vêm as gotas de água que se formam no teto do terrário?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear as etapas do ciclo hidrológico e mudanças de estado associadas." }
+                ], sampleQuestionTip: "Identificar a etapa de mudança de fase indicada no esquema do ciclo da água."
+            },
+            {
+                id: "6EF02_CN", bncc: "EF05CI03", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Explicar como a ação da água, a atividade dos seres vivos e a retirada de cobertura vegetal influenciam no processo de erosão.",
+                bookTheme: "5. Rochas sedimentares / 7. Os fósseis e a história da Terra", bookChapter: "Capítulo 11: O Planeta Terra e os Recursos Minerais", bookPage: "Página 194",
+                focus: "Compreender o intemperismo e a proteção exercida pelas raízes e cobertura vegetal contra o desmoronamento do solo.",
+                prerequisites: ["Tipos de solo e relevo"], pitfalls: ["Acreditar que o desmatamento aumenta a fertilidade e retenção do solo."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Comparar o escoamento da água em uma garrafa com grama e outra com solo exposto." },
+                    { step: 2, action: "Duvidar", detail: "Por que a água sai barrenta e carrega a terra na garrafa sem vegetação?" },
+                    { step: 3, action: "Teorizar", detail: "Conectar a retirada da cobertura vegetal ao aumento da erosão pluvial." }
+                ], sampleQuestionTip: "Relacionar a ausência de vegetação à formação de voçorocas e erosões."
+            },
+            {
+                id: "6EF03_CN", bncc: "EF05CI04", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Interpretar comportamentos voltados para a preservação dos recursos naturais.",
+                bookTheme: "1. Como é a Terra por dentro? / 11. Ferro, Alumínio, Vidro e Ouro", bookChapter: "Capítulo 11: O Planeta Terra e os Recursos Minerais", bookPage: "Páginas 191 a 205",
+                focus: "Reconhecer consumo consciente, redução de extrativismo e conservação dos bens minerais e hídricos.",
+                prerequisites: ["Recursos Renováveis e Não Renováveis"], pitfalls: ["Acreditar que minérios de ferro e alumínio se regeneram rapidamente."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar embalagens de alumínio, vidro e materiais extraídos da litosfera." },
+                    { step: 2, action: "Duvidar", detail: "O que acontece com as jazidas minerais se o ritmo de extração for ilimitado?" },
+                    { step: 3, action: "Teorizar", detail: "Propor ações de consumo consciente e reaproveitamento de minérios." }
+                ], sampleQuestionTip: "Indicar a atitude de preservação ambiental diante da extração mineral."
+            },
+            {
+                id: "6EF04_CN", bncc: "EF05CI05", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Reconhecer as propriedades de materiais como plásticos, metais, papel e vidro que estão relacionados ao uso, reaproveitamento e reciclagem desses materiais.",
+                bookTheme: "5. Substâncias químicas / 6. Misturas / 7. Separação de misturas", bookChapter: "Capítulo 8: Substâncias Químicas", bookPage: "Páginas 138 a 142",
+                focus: "Identificar densidade, dureza, condutibilidade e maleabilidade para triagem na reciclagem.",
+                prerequisites: ["Propriedades da matéria"], pitfalls: ["Confundir reciclagem com simples descarte em aterro sanitário."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Testar a flutuabilidade e flexibilidade de amostras de plástico, papel e metal." },
+                    { step: 2, action: "Duvidar", detail: "Como os centros de triagem separam plásticos e metais de forma eficiente?" },
+                    { step: 3, action: "Teorizar", detail: "Associar propriedades físicas (densidade, magnetismo) às técnicas de reciclagem." }
+                ], sampleQuestionTip: "Selecionar a propriedade física adequada para a separação dos materiais recicláveis."
+            },
+            {
+                id: "6EF05_CN", bncc: "EF05CI06", unit: "VE - Vida e Evolução", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Interpretar as relações estabelecidas entre os diferentes sistemas do corpo humano para a execução das funções de nutrição, excreção, relação, reprodução e coordenação.",
+                bookTheme: "1. Os níveis de organização do corpo humano / 10. A integração entre os sistemas", bookChapter: "Capítulo 4: Níveis de Organização do Corpo Humano", bookPage: "Páginas 56 e 66",
+                focus: "Compreender o corpo humano de forma integrada (Digestório + Circulatório + Respiratório + Nervoso).",
+                prerequisites: ["Sistemas corporais"], pitfalls: ["Analisar os órgãos como se funcionassem isoladamente."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar o que ocorre com os batimentos e respiração após corrida." },
+                    { step: 2, action: "Duvidar", detail: "Por que o sistema respiratório acelera quando o músculo precisa de energia?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear a cooperação entre os sistemas digestório, circulatório e respiratório." }
+                ], sampleQuestionTip: "Explicar como o oxigênio e os nutrientes chegam juntos às células do corpo."
+            },
+            {
+                id: "6EF06_CN", bncc: "EF05CI08", unit: "VE - Vida e Evolução", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Explicar a necessidade de ingestão de diferentes nutrientes frente às demandas do organismo humano.",
+                bookTheme: "1. Os seres vivos precisam de energia / 9. Produtores e consumidores", bookChapter: "Capítulo 1: Seres Vivos e Cadeias Alimentares", bookPage: "Páginas 17 e 22",
+                focus: "Reconhecer carboidratos, proteínas, lipídios, vitaminas e sais minerais para a manutenção metabólica.",
+                prerequisites: ["Alimentação e saúde"], pitfalls: ["Acreditar que apenas carboidratos são necessários para a saúde."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar rótulos nutricionais de alimentos consumidos no lanche." },
+                    { step: 2, action: "Duvidar", detail: "Por que o corpo precisa tanto de alimentos construtores quanto energéticos?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar a função metabólica das principais classes de nutrientes." }
+                ], sampleQuestionTip: "Relacionar o nutriente com sua função principal no organismo."
+            },
+            {
+                id: "6EF07_CN", bncc: "EF05CI11", unit: "TU - Terra e Universo", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Reconhecer os movimentos realizados pela Terra e pela Lua.",
+                bookTheme: "1. Ciclo dia/noite / 7. As estações do ano / 12. O nascente e o poente da Lua", bookChapter: "Capítulo 12: Dia e Noite: Regularidades Celestes", bookPage: "Páginas 211 a 225",
+                focus: "Diferenciar rotação terrestre, translação e revolução lunar em torno da Terra.",
+                prerequisites: ["Corpos celestes"], pitfalls: ["Confundir o tempo de rotação do Sol com o da Terra."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Usar globo terrestre e lanterna para simular a rotação." },
+                    { step: 2, action: "Duvidar", detail: "Como a rotação da Terra produz a alternância do dia e da noite?" },
+                    { step: 3, action: "Teorizar", detail: "Esquematizar os períodos dos movimentos orbitais da Terra e da Lua." }
+                ], sampleQuestionTip: "Associar o movimento de rotação à alternância diária do Sol no céu."
+            },
+            {
+                id: "6EF08_CN", bncc: "EF05CI12", unit: "TU - Terra e Universo", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Reconhecer as fases da Lua.",
+                bookTheme: "12. O nascente e o poente das demais estrelas e da Lua", bookChapter: "Capítulo 12: Dia e Noite: Regularidades Celestes", bookPage: "Página 225",
+                focus: "Identificar Nova, Crescente, Cheia e Minguante conforme a posição relativa Sol-Terra-Lua.",
+                prerequisites: ["Luz e sombra"], pitfalls: ["Acreditar que a fase da Lua é provocada pela sombra da Terra."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar fotos das quatro fases principais da Lua ao longo do mês." },
+                    { step: 2, action: "Duvidar", detail: "Por que a porção iluminada da Lua visível da Terra muda periodicamente?" },
+                    { step: 3, action: "Teorizar", detail: "Desenhar as posições orbitais do sistema Sol-Terra-Lua." }
+                ], sampleQuestionTip: "Identificar a fase da Lua demonstrada no diagrama orbital."
+            },
+            {
+                id: "6EF09_CN", bncc: "EF05CI13", unit: "TU - Terra e Universo", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Comparar instrumentos ópticos ao tipo de observação que ele proporciona.",
+                bookTheme: "2. O sentido da visão / 3. A lente do olho e a 'focalização' / 6. Correção de distúrbios", bookChapter: "Capítulo 6: Visão", bookPage: "Páginas 91 a 99",
+                focus: "Diferenciar lupas, microscópios, telescópios e óculos de grau pela ampliação/foco.",
+                prerequisites: ["Luz e visão"], pitfalls: ["Confundir telescópio (astronômico) com microscópio (celular)."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Examinar objetos pequenos usando lentes de aumento e lupas." },
+                    { step: 2, action: "Duvidar", detail: "Qual instrumento óptico é adequado para enxergar detalhes de células x crateras da Lua?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar os instrumentos em amplicadores de objetos micro e macroscópicos." }
+                ], sampleQuestionTip: "Indicar o instrumento óptico correto para a observação solicitada."
+            },
+            {
+                id: "6EF10_CN", bncc: "EF06CI01", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais.",
+                bookTheme: "6. Misturas", bookChapter: "Capítulo 8: Substâncias Químicas", bookPage: "Página 139",
+                focus: "Identificar sistemas monofásicos (soluções) e polifásicos (duas ou mais fases visíveis).",
+                prerequisites: ["Misturas"], pitfalls: ["Achar que água com açúcar dissolvido é heterogênea por ter dois componentes."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Misturar água + sal e água + óleo em copos transparentes." },
+                    { step: 2, action: "Duvidar", detail: "Por que em uma mistura enxergamos apenas uma fase e na outra duas?" },
+                    { step: 3, action: "Teorizar", detail: "Definir fase visual e classificar em homogênea e heterogênea." }
+                ], sampleQuestionTip: "Contar o número de fases em um recipiente com água, areia e óleo."
+            },
+            {
+                id: "6EF11_CN", bncc: "EF06CI01", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer, a partir de características observáveis, a ocorrência de misturas.",
+                bookTheme: "6. Misturas", bookChapter: "Capítulo 8: Substâncias Químicas", bookPage: "Página 139",
+                focus: "Identificar presença de solutos, sedimentos e variação de propriedades físicas.",
+                prerequisites: ["Matéria e Substâncias"], pitfalls: ["Acreditar que água potável é uma substância pura."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Examinar o rótulo de uma garrafa de água mineral." },
+                    { step: 2, action: "Duvidar", detail: "A água que bebemos é pura ou contém sais dissolvidos?" },
+                    { step: 3, action: "Teorizar", detail: "Reconhecer que a maioria dos materiais na natureza é formada por misturas." }
+                ], sampleQuestionTip: "Identificar o exemplo que representa uma mistura no cotidiano."
+            },
+            {
+                id: "6EF12_CN", bncc: "EF06CI03", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Classificar os métodos de separação de misturas de sistemas heterogêneos.",
+                bookTheme: "7. Separação de misturas", bookChapter: "Capítulo 8: Substâncias Químicas", bookPage: "Página 142",
+                focus: "Reconhecer catação, decantação, filtração, catação e separação magnética.",
+                prerequisites: ["Sistemas heterogêneos"], pitfalls: ["Inverter decantação com filtração mecânica."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Demonstrar o preparo do café com coador de papel." },
+                    { step: 2, action: "Duvidar", detail: "Qual o papel do filtro na retenção do pó não dissolvido?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar o método como filtração de mistura sólido-líquido." }
+                ], sampleQuestionTip: "Selecionar a técnica de separação para retirar areia da água."
+            },
+            {
+                id: "6EF13_CN", bncc: "EF06CI03", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Classificar os métodos de separação de misturas de sistemas homogêneos.",
+                bookTheme: "7. Separação de misturas", bookChapter: "Capítulo 8: Substâncias Químicas", bookPage: "Página 142",
+                focus: "Compreender destilação simples, destilação fracionada e evaporação.",
+                prerequisites: ["Misturas homogêneas"], pitfalls: ["Tentar usar filtro de papel para separar sal dissolvido na água."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a obtenção do sal marinho nas salinas." },
+                    { step: 2, action: "Duvidar", detail: "Como o sal é recuperado quando a água do mar evapora?" },
+                    { step: 3, action: "Teorizar", detail: "Diferenciar evaporação simples de destilação com condensador." }
+                ], sampleQuestionTip: "Indicar o método de destilação para recuperar a água pura da solução."
+            },
+            {
+                id: "6EF14_CN", bncc: "EF06CI04", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer a origem natural ou sintética de materiais.",
+                bookTheme: "4. O petróleo / 5. Carvão mineral", bookChapter: "Capítulo 9: Transformações Químicas", bookPage: "Páginas 158 e 162",
+                focus: "Diferenciar recursos extraídos prontos da natureza de polímeros/plásticos transformados industrialmente.",
+                prerequisites: ["Matéria primas"], pitfalls: ["Classificar plásticos como materiais de origem natural direta."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Comparar um objeto de madeira dura com uma garrafa PET." },
+                    { step: 2, action: "Duvidar", detail: "Qual desses materiais passou por transformação química industrial complexa?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar os polímeros como materiais sintéticos derivados do petróleo." }
+                ], sampleQuestionTip: "Identificar o material sintético na lista de suprimentos."
+            },
+            {
+                id: "6EF15_CN", bncc: "EF06CI04", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Inferir a relação entre o uso de materiais sintéticos e seus impactos socioambientais.",
+                bookTheme: "4. O petróleo", bookChapter: "Capítulo 9: Transformações Químicas", bookPage: "Página 158",
+                focus: "Analisar persistência de resíduos plásticos, contaminação marinha e poluição.",
+                prerequisites: ["Materiais sintéticos"], pitfalls: ["Desconsiderar o longo tempo de decomposição dos plásticos."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Examinar notícias sobre microplásticos em organismos aquáticos." },
+                    { step: 2, action: "Duvidar", detail: "Por que o descarte incorreto do plástico afeta a cadeia alimentar humana?" },
+                    { step: 3, action: "Teorizar", detail: "Avaliar o impacto socioambiental de descartáveis e propor alternativas." }
+                ], sampleQuestionTip: "Selecionar a medida de redução do impacto do lixo plástico no meio ambiente."
+            },
+            {
+                id: "6EF16_CN", bncc: "EF06CI05", unit: "VE - Vida e Evolução", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer a célula como a unidade morfofisiológica dos seres vivos.",
+                bookTheme: "2. Célula: a unidade que compõe a diversidade / 4. Estrutura da célula animal", bookChapter: "Capítulo 4: Níveis de Organização do Corpo Humano", bookPage: "Páginas 57 a 61",
+                focus: "Compreender a célula como menor estrutura viva, dotada de membrana, citoplasma e material genético.",
+                prerequisites: ["Estrutura dos seres vivos"], pitfalls: ["Confundir organelas com tecidos do corpo."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar células da epiderme de cebola ao microscópio ou em lâminas." },
+                    { step: 2, action: "Duvidar", detail: "Por que todos os seres vivos (de bactérias a humanos) são constituídos por células?" },
+                    { step: 3, action: "Teorizar", detail: "Formular a Teoria Celular: a célula como unidade da vida." }
+                ], sampleQuestionTip: "Identificar a membrana, citoplasma e núcleo no esquema celular."
+            },
+            {
+                id: "6EF17_CN", bncc: "EF06CI06", unit: "VE - Vida e Evolução", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer os níveis de organização dos seres vivos.",
+                bookTheme: "1. Os níveis de organização do corpo humano / 7. Tecidos / 8. Órgãos / 9. Sistemas", bookChapter: "Capítulo 4: Níveis de Organização do Corpo Humano", bookPage: "Páginas 56 a 65",
+                focus: "Identificar Célula -> Tecido -> Órgão -> Sistema -> Organismo.",
+                prerequisites: ["Células"], pitfalls: ["Inverter a ordem de complexidade entre tecido e órgão."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar o estômago, tecido muscular e célula muscular em infográfico." },
+                    { step: 2, action: "Duvidar", detail: "Como células semelhantes se organizam para formar um órgão funcional?" },
+                    { step: 3, action: "Teorizar", detail: "Construir a hierarquia dos níveis de organização biológica." }
+                ], sampleQuestionTip: "Ordenar corretamente os níveis hierárquicos do corpo humano."
+            },
+            {
+                id: "6EF18_CN", bncc: "EF06CI07", unit: "VE - Vida e Evolução", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer as estruturas que compõem o sistema nervoso.",
+                bookTheme: "3. Estrutura geral do sistema nervoso / 5. Medula espinal / 6. Encéfalo", bookChapter: "Capítulo 7: Sistema Nervoso", bookPage: "Páginas 111 a 115",
+                focus: "Identificar Encéfalo (Cérebro, Cerebelo, Tronco), Medula Espinal e Nervos (SNC e SNP).",
+                prerequisites: ["Sistemas do corpo"], pitfalls: ["Acreditar que os nervos funcionam de forma autônoma sem a medula/encéfalo."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Examinar modelo anatômico do cérebro e medula espinal." },
+                    { step: 2, action: "Duvidar", detail: "Como os impulsos elétricos caminham do pé até o cérebro?" },
+                    { step: 3, action: "Teorizar", detail: "Diferenciar Sistema Nervoso Central (SNC) de Sistema Nervoso Periférico (SNP)." }
+                ], sampleQuestionTip: "Nomear o órgão do sistema nervoso encarregado do equilíbrio e coordenação."
+            },
+            {
+                id: "6EF19_CN", bncc: "EF06CI08", unit: "VE - Vida e Evolução", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Classificar os defeitos da visão.",
+                bookTheme: "6. A correção de alguns distúrbios visuais", bookChapter: "Capítulo 6: Visão", bookPage: "Página 99",
+                focus: "Diferenciar Miopia (imagem antes da retina), Hipermetropia (imagem depois da retina) e Astigmatismo.",
+                prerequisites: ["Olho humano e luz"], pitfalls: ["Confundir a lente corretiva divergente (miopia) com convergente (hipermetropia)."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar o ponto de formação de imagem em esquemas de olhos míopes e hipermetropes." },
+                    { step: 2, action: "Duvidar", detail: "Por que a pessoa com miopia enxerga mal de longe e bem de perto?" },
+                    { step: 3, action: "Teorizar", detail: "Relacionar a curvatura do olho e cristalino ao tipo de lente de óculos usada." }
+                ], sampleQuestionTip: "Identificar o distúrbio visual no qual a imagem se forma antes da retina."
+            },
+            {
+                id: "6EF20_CN", bncc: "EF06CI08", unit: "VE - Vida e Evolução", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer as estruturas do olho humano e suas funcionalidades.",
+                bookTheme: "2. O sentido da visão / 3. A lente do olho e a 'focalização' de imagens", bookChapter: "Capítulo 6: Visão", bookPage: "Páginas 91 e 94",
+                focus: "Identificar Córnea, Íris, Pupila, Cristalino, Retina e Nervo Óptico.",
+                prerequisites: ["Órgãos dos sentidos"], pitfalls: ["Confundir a função da íris (abertura) com a da retina (receptora de luz)."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Observar a dilatação e contração da pupila sob variação de luz." },
+                    { step: 2, action: "Duvidar", detail: "Qual estrutura do olho funciona como a tela onde a imagem se projeta?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear o trajeto da luz desde a córnea até a retina e nervo óptico." }
+                ], sampleQuestionTip: "Nomear a estrutura ocular responsável por captar a luz e enviar sinais ao cérebro."
+            },
+            {
+                id: "6EF21_CN", bncc: "EF06CI08", unit: "VE - Vida e Evolução", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Comparar as estruturas do olho humano ao princípio de funcionamento de instrumentos ópticos.",
+                bookTheme: "5. O cinema / 6. A correção de alguns distúrbios visuais", bookChapter: "Capítulo 6: Visão", bookPage: "Páginas 98 e 99",
+                focus: "Relacionar Córnea/Cristalino -> Lente; Pupila -> Diafragma; Retina -> Sensor digital/Filme.",
+                prerequisites: ["Visão e Óptica"], pitfalls: ["Confundir a retina com o diafragma de abertura da câmera."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Comparar o diagrama de uma câmara escura com o do olho humano." },
+                    { step: 2, action: "Duvidar", detail: "Qual componente da máquina fotográfica faz o mesmo papel da pupila?" },
+                    { step: 3, action: "Teorizar", detail: "Construir tabela de equivalência funcional entre olho e câmara fotográfica." }
+                ], sampleQuestionTip: "Indicar a estrutura fotográfica correspondente à retina humana."
+            },
+            {
+                id: "6EF22_CN", bncc: "EF06CI11", unit: "TU - Terra e Universo", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer a estrutura da Terra.",
+                bookTheme: "1. Como é a Terra por dentro? / 3. Vulcões no mundo", bookChapter: "Capítulo 11: O Planeta Terra e os Recursos Minerais", bookPage: "Páginas 191 e 193",
+                focus: "Identificar Crosta terrestre (Litosfera), Manto (magma) e Núcleo (externo e interno).",
+                prerequisites: ["Planeta Terra"], pitfalls: ["Confundir a composição sólida da crosta com o estado pastoso do manto."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar modelo cortado da estrutura interna da Terra." },
+                    { step: 2, action: "Duvidar", detail: "De qual camada profunda da Terra vem o magma expelido pelos vulcões?" },
+                    { step: 3, action: "Teorizar", detail: "Caracterizar Crosta, Manto e Núcleo quanto a temperatura e composição." }
+                ], sampleQuestionTip: "Nomear a camada mais interna e quente do planeta Terra."
+            },
+            {
+                id: "6EF23_CN", bncc: "EF06CI13", unit: "TU - Terra e Universo", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer a forma esférica da Terra.",
+                bookTheme: "11. Evidências da esfericidade da Terra", bookChapter: "Capítulo 12: Dia e Noite: Regularidades Celestes", bookPage: "Página 224",
+                focus: "Compreender que o planeta possui formato geoidal arredondado e levemente achatado nos polos.",
+                prerequisites: ["Planeta Terra"], pitfalls: ["Considerar a Terra como uma esfera perfeita sem achatamento polar."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar imagens da Terra tiradas do espaço por satélites." },
+                    { step: 2, action: "Duvidar", detail: "Por que a sombra da Terra projetada na Lua durante um eclipse é sempre curva?" },
+                    { step: 3, action: "Teorizar", detail: "Definir o formato geoidal da Terra e suas implicações." }
+                ], sampleQuestionTip: "Reconhecer a forma correta do planeta Terra apresentada na questão."
+            },
+            {
+                id: "6EF24_CN", bncc: "EF06CI13", unit: "TU - Terra e Universo", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Explicar argumentos e evidências que demonstram a esfericidade da Terra.",
+                bookTheme: "11. Evidências da esfericidade da Terra", bookChapter: "Capítulo 12: Dia e Noite: Regularidades Celestes", bookPage: "Página 224",
+                focus: "Analisar o desaparecimento gradual de navios no horizonte, sombras de Eratóstenes e eclipses.",
+                prerequisites: ["Esfericidade da Terra"], pitfalls: ["Acreditar que a curvatura do horizonte é uma ilusão de ótica."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a ilustração de um barco se afastando no mar (mastro somes por último)." },
+                    { step: 2, action: "Duvidar", detail: "Por que enxergamos o topo do mastro antes do casco quando o navio se aproxima?" },
+                    { step: 3, action: "Teorizar", detail: "Explicar as evidências históricas e físicas da curvatura terrestre." }
+                ], sampleQuestionTip: "Selecionar o argumento histórico que comprova o formato esférico da Terra."
+            },
+            {
+                id: "6EF25_CN", bncc: "EF06CI14", unit: "TU - Terra e Universo", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Interpretar a relação entre os movimentos do planeta Terra e a mudança na sombra de objetos e instrumentos (gnômon).",
+                bookTheme: "10. A trajetória diária aparente do Sol", bookChapter: "Capítulo 12: Dia e Noite: Regularidades Celestes", bookPage: "Página 222",
+                focus: "Relacionar o movimento de rotação à mudança de tamanho e posição da sombra do gnômon ao longo do dia.",
+                prerequisites: ["Rotação da Terra e Luz"], pitfalls: ["Achar que a sombra fica mais curta no início da manhã ou final da tarde."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Medir a sombra de uma vareta (gnômon) no pátio às 8h, 12h e 16h." },
+                    { step: 2, action: "Duvidar", detail: "Por que a sombra é menor ao meio-dia e mais longa no início e fim do dia?" },
+                    { step: 3, action: "Teorizar", detail: "Correlacionar a trajetória aparente do Sol com a projeção de sombras." }
+                ], sampleQuestionTip: "Interpretar a posição do Sol com base no tamanho da sombra projetada no gnômon."
+            },
+
+            // =========================================================================
+            // --- TURMA DO 7º ANO ---
+            // =========================================================================
             {
                 id: "6EF10_CN_7A", bncc: "EF06CI01", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo I",
                 caedSkill: "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais.",
@@ -390,116 +695,6 @@
                     { step: 3, action: "Teorizar", detail: "Esquematizar a floculação e decantação no saneamento." }
                 ], sampleQuestionTip: "Relacionar a etapa do tratamento de água ao método de separação."
             },
-            {
-                id: "6EF13_CN_7A", bncc: "EF06CI03", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo I",
-                caedSkill: "Classificar os métodos de separação de misturas de sistemas homogêneos.",
-                bookTheme: "7. Água potável e tratamento caseiro", bookChapter: "Capítulo 6: Saneamento Básico", bookPage: "Página 109",
-                focus: "Compreender evaporação e destilação no tratamento hídrico.",
-                prerequisites: ["Misturas homogêneas"], pitfalls: ["Tentar filtrar substâncias dissolvidas."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar processo de dessalinização de água salobra." },
-                    { step: 2, action: "Duvidar", detail: "É possível separar o sal da água por meio de um filtro comum?" },
-                    { step: 3, action: "Teorizar", detail: "Diferenciar destilação simples de evaporação direta." }
-                ], sampleQuestionTip: "Indicar o método para obtenção de água pura a partir de uma solução."
-            },
-            {
-                id: "6EF15_CN_7A", bncc: "EF06CI04", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo I",
-                caedSkill: "Inferir a relação entre o uso de materiais sintéticos e seus impactos socioambientais.",
-                bookTheme: "10. Tecnologia e seus impactos", bookChapter: "Capítulo 10: Máquinas Simples", bookPage: "Página 190",
-                focus: "Avaliar descarte de plásticos e resíduos sintéticos no ambiente.",
-                prerequisites: ["Impactos ambientais"], pitfalls: ["Desconsiderar a persistência do plástico no ecossistema."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Ver imagens de poluição por polímeros em rios locais." },
-                    { step: 2, action: "Duvidar", detail: "Qual a consequência do descarte de sintéticos na fauna aquática?" },
-                    { step: 3, action: "Teorizar", detail: "Discutir a pegada ecológica de materiais não biodegradáveis." }
-                ], sampleQuestionTip: "Avaliar a proposta de mitigação para resíduos plásticos."
-            },
-            {
-                id: "6EF17_CN_7A", bncc: "EF06CI06", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo I",
-                caedSkill: "Reconhecer os níveis de organização dos seres vivos.",
-                bookTheme: "10. Recordando: células são estruturas vivas", bookChapter: "Capítulo 1: Biodiversidade", bookPage: "Página 21",
-                focus: "Identificar Célula -> Tecido -> Órgão -> Sistema -> Organismo.",
-                prerequisites: ["Organização celular"], pitfalls: ["Confundir tecido com órgão."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Examinar esquemas de organização biológica." },
-                    { step: 2, action: "Duvidar", detail: "Como células semelhantes se agrupam para executar funções?" },
-                    { step: 3, action: "Teorizar", detail: "Construir o mapa de hierarquia biológica." }
-                ], sampleQuestionTip: "Ordenar corretamente os níveis hierárquicos."
-            },
-            {
-                id: "6EF18_CN_7A", bncc: "EF06CI07", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo I",
-                caedSkill: "Reconhecer as estruturas que compõem o sistema nervoso.",
-                bookTheme: "Isso vai para o nosso blog! – As defesas do nosso corpo", bookChapter: "Capítulo 3: Diversidade da Vida Microscópica", bookPage: "Página 69",
-                focus: "Compreender a integração nervosa com a resposta imune e motora.",
-                prerequisites: ["Sistemas corporais"], pitfalls: ["Separar o controle nervoso das respostas involuntárias."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar o reflexo de retração ao dor." },
-                    { step: 2, action: "Duvidar", detail: "Como o estímulo chega à medula espinal?" },
-                    { step: 3, action: "Teorizar", detail: "Esquematizar o arco reflexo." }
-                ], sampleQuestionTip: "Identificar o componente nervoso da resposta rápida."
-            },
-            {
-                id: "6EF20_CN_7A", bncc: "EF06CI08", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo I",
-                caedSkill: "Reconhecer as estruturas do olho humano e suas funcionalidades.",
-                bookTheme: "4. Adaptações aos fatores não vivos", bookChapter: "Capítulo 2: Adaptação dos Seres Vivos", bookPage: "Página 37",
-                focus: "Relacionar captação de luz com visibilidade nos ecossistemas.",
-                prerequisites: ["Órgãos dos sentidos"], pitfalls: ["Inverter íris e pupila."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar olhos de animais noturnos e diurnos." },
-                    { step: 2, action: "Duvidar", detail: "Como a entrada de luz é regulada no olho?" },
-                    { step: 3, action: "Teorizar", detail: "Explicar o controle de abertura pupilar." }
-                ], sampleQuestionTip: "Associar a estrutura ocular à regulação luminosa."
-            },
-            {
-                id: "6EF21_CN_7A", bncc: "EF06CI08", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo I",
-                caedSkill: "Comparar as estruturas do olho humano ao princípio de funcionamento de instrumentos ópticos.",
-                bookTheme: "10. Tecnologia e seus impactos", bookChapter: "Capítulo 10: Máquinas Simples", bookPage: "Página 190",
-                focus: "Analisar a física do olho e de dispositivos de captura de imagem.",
-                prerequisites: ["Lentes"], pitfalls: ["Confundir retina com diafragma."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Comparar um olho esquemático com uma câmera." },
-                    { step: 2, action: "Duvidar", detail: "Onde se forma a imagem na câmera e no olho?" },
-                    { step: 3, action: "Teorizar", detail: "Relacionar retina ao sensor digital." }
-                ], sampleQuestionTip: "Indicar a equivalência funcional entre olho e equipamento."
-            },
-            {
-                id: "6EF22_CN_7A", bncc: "EF06CI11", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo I",
-                caedSkill: "Reconhecer a estrutura da Terra.",
-                bookTheme: "7. Placas litosféricas / 8. Vulcões, terremotos e tsunamis", bookChapter: "Capítulo 12: Gases da Atmosfera e Placas da Litosfera", bookPage: "Páginas 223 e 228",
-                focus: "Compreender a dinâmica da litosfera e o manto terrestre.",
-                prerequisites: ["Camadas da Terra"], pitfalls: ["Achar que terremotos ocorrem fora das falhas tectônicas."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Mapear falhas tectônicas no globo." },
-                    { step: 2, action: "Duvidar", detail: "Por que as placas se movimentam sobre o manto?" },
-                    { step: 3, action: "Teorizar", detail: "Explicar correntes de convecção no manto." }
-                ], sampleQuestionTip: "Identificar a camada responsável pelos abalos sísmicos."
-            },
-            {
-                id: "6EF24_CN_7A", bncc: "EF06CI13", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo I",
-                caedSkill: "Explicar argumentos e evidências que demonstram a esfericidade da Terra.",
-                bookTheme: "7. Placas litosféricas", bookChapter: "Capítulo 12: Gases da Atmosfera e Placas da Litosfera", bookPage: "Página 223",
-                focus: "Reconhecer evidências geofísicas e astronômicas do formato terrestre.",
-                prerequisites: ["Planeta Terra"], pitfalls: ["Ignorar a gravidade no formato terrestre."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar sombras da Terra em eclipses." },
-                    { step: 2, action: "Duvidar", detail: "Como a gravidade molda planetas em formato esférico?" },
-                    { step: 3, action: "Teorizar", detail: "Sistematizar provas físicas do formato geoidal." }
-                ], sampleQuestionTip: "Selecionar a evidência científica correta."
-            },
-            {
-                id: "6EF25_CN_7A", bncc: "EF06CI14", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo I",
-                caedSkill: "Interpretar a relação entre os movimentos do planeta Terra e a mudança na sombra de objetos e instrumentos (gnômon).",
-                bookTheme: "8. Aquecimento global", bookChapter: "Capítulo 11: Temperatura, Calor e Efeito Estufa", bookPage: "Página 207",
-                focus: "Entender insolação e variação de sombras ao longo do ano.",
-                prerequisites: ["Movimentos da Terra"], pitfalls: ["Confundir horário de sombra com estação do ano."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar gráficos de incidência de luz solar." },
-                    { step: 2, action: "Duvidar", detail: "Como o ângulo solar afeta o tamanho das sombras?" },
-                    { step: 3, action: "Teorizar", detail: "Conectar altura solar e projecção de sombra." }
-                ], sampleQuestionTip: "Interpretar o gráfico de sombra do gnômon."
-            },
-
-            // --- CICLO II (Habilidades Oficiais do 7º Ano) ---
             {
                 id: "7EF02_CN", bncc: "EF07CI01", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
                 caedSkill: "Reconhecer dispositivos mecânicos que facilitam a realização do trabalho.",
@@ -535,18 +730,6 @@
                     { step: 2, action: "Duvidar", detail: "Por que o ar frio desce e o ar quente sobe?" },
                     { step: 3, action: "Teorizar", detail: "Explicar correntes de convecção mecânica." }
                 ], sampleQuestionTip: "Classificar o processo de troca de calor do aparelho."
-            },
-            {
-                id: "7EF07_CN_C2", bncc: "EF07CI05", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-                caedSkill: "Interpretar o papel dos combustíveis em máquinas térmicas.",
-                bookTheme: "10. Tecnologia e seus impactos", bookChapter: "Capítulo 10: Máquinas Simples", bookPage: "Página 190",
-                focus: "Entender que a queima libera energia química para produzir trabalho.",
-                prerequisites: ["Reações de combustão"], pitfalls: ["Confundir fonte de calor com gerador mecânico."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar o motor a vapor e a combustão interna." },
-                    { step: 2, action: "Duvidar", detail: "O que gera a pressão para mover os pistões?" },
-                    { step: 3, action: "Teorizar", detail: "Mapear a transformação de energia química em mecânica." }
-                ], sampleQuestionTip: "Identificar a função do combustível na máquina térmica."
             },
             {
                 id: "7EF08_CN", bncc: "EF07CI07", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
@@ -597,18 +780,6 @@
                 ], sampleQuestionTip: "Identificar a proporção e nome do gás mais abundante no ar."
             },
             {
-                id: "7EF16_CN_C2", bncc: "EF07CI12", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-                caedSkill: "Reconhecer a composição do ar e o modo como a poluição afeta suas características.",
-                bookTheme: "4. O gás carbônico / 5. Poluição do ar", bookChapter: "Capítulo 12: Gases da Atmosfera e Placas da Litosfera", bookPage: "Páginas 218 e 219",
-                focus: "Mapear fuligem, monóxido de carbono e dióxido de enxofre como poluentes.",
-                prerequisites: ["Composição do Ar"], pitfalls: ["Confundir vapor de água com poluição."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Examinar filtro de ar sujo por fumaça de veículos." },
-                    { step: 2, action: "Duvidar", detail: "Como a queima de combustíveis altera o ar das cidades?" },
-                    { step: 3, action: "Teorizar", detail: "Classificar os principais poluentes gasosos." }
-                ], sampleQuestionTip: "Identificar o impacto do gás poluente no sistema respiratório."
-            },
-            {
                 id: "7EF17_CN", bncc: "EF07CI13", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
                 caedSkill: "Reconhecer a atuação do efeito estufa no planeta Terra.",
                 bookTheme: "8. Aquecimento global", bookChapter: "Capítulo 11: Temperatura, Calor e Efeito Estufa", bookPage: "Página 207",
@@ -632,8 +803,6 @@
                     { step: 3, action: "Teorizar", detail: "Descrever a função protetora da camada de ozônio." }
                 ], sampleQuestionTip: "Identificar a função de proteção da camada de ozônio contra raios UV."
             },
-
-            // --- CICLO III (Habilidades Oficiais do 7º Ano) ---
             {
                 id: "7EF01_CN", bncc: "EF07CI01", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
                 caedSkill: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples.",
@@ -671,18 +840,6 @@
                 ], sampleQuestionTip: "Indicar a perda de calor inevitável na fonte fria."
             },
             {
-                id: "7EF07_CN_C3", bncc: "EF07CI05", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-                caedSkill: "Interpretar o papel dos combustíveis em máquinas térmicas.",
-                bookTheme: "10. Tecnologia e seus impactos", bookChapter: "Capítulo 10: Máquinas Simples", bookPage: "Página 190",
-                focus: "Comparar combustíveis fósseis e renováveis em termos de rendimento e emissões.",
-                prerequisites: ["Combustíveis"], pitfalls: ["Achar que biocombustíveis não produzem calor na queima."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Comparar o uso de carvão x etanol nos motores." },
-                    { step: 2, action: "Duvidar", detail: "Qual combustível gera menor impacto na camada de carbono?" },
-                    { step: 3, action: "Teorizar", detail: "Analisar balanço de carbono de combustíveis." }
-                ], sampleQuestionTip: "Selecionar o combustível mais sustentável para a máquina térmica."
-            },
-            {
                 id: "7EF09_CN", bncc: "EF07CI07", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
                 caedSkill: "Interpretar a forma com que os fatores abióticos regem a diversidade dos diferentes biomas brasileiros.",
                 bookTheme: "4. Adaptações aos fatores não vivos", bookChapter: "Capítulo 2: Adaptação dos Seres Vivos", bookPage: "Página 37",
@@ -717,18 +874,6 @@
                     { step: 2, action: "Duvidar", detail: "Qual o impacto direto da água tratada na saúde das crianças?" },
                     { step: 3, action: "Teorizar", detail: "Correlacionar investimento em saneamento à queda da mortalidade infantil." }
                 ], sampleQuestionTip: "Interpretar os dados do gráfico sociossanitário."
-            },
-            {
-                id: "7EF12_CN_C3", bncc: "EF07CI09", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-                caedSkill: "Reconhecer a relação estabelecida entre as ações de saneamento básico e a saúde humana.",
-                bookTheme: "15. Saneamento básico / 11. Doenças veiculadas pela água", bookChapter: "Capítulo 6: Saneamento Básico", bookPage: "Páginas 113 e 117",
-                focus: "Associar descarte correto de lixo e esgoto à interrupção de ciclos de vetores.",
-                prerequisites: ["Saneamento Básico"], pitfalls: ["Acreditar que verminoses se pegam pelo ar."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Examinar o ciclo de vida do Ascaris lumbricoides." },
-                    { step: 2, action: "Duvidar", detail: "Em qual etapa o tratamento de água rompe a transmissão da lombriga?" },
-                    { step: 3, action: "Teorizar", detail: "Propor barreiras sanitárias comunitárias." }
-                ], sampleQuestionTip: "Indicar a intervenção de saneamento que previne o contágio."
             },
             {
                 id: "7EF13_CN", bncc: "EF07CI10", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
@@ -780,28 +925,12 @@
             },
 
             // =========================================================================
-            // --- TURMA DO 6º ANO --- (Mapeamento Mantido na Íntegra)
-            // =========================================================================
-            {
-                id: "6EF01_CN_C1", bncc: "EF05CI02", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo I",
-                caedSkill: "Interpretar o ciclo da água.",
-                bookTheme: "8. Hidrosfera e ciclo da água", bookChapter: "Capítulo 10: Atmosfera e Hidrosfera", bookPage: "Página 176",
-                focus: "Identificar as etapas de evaporação, condensação, precipitação, transpiração e infiltração no ciclo da água.",
-                prerequisites: ["Mudanças de estado físico da água"], pitfalls: ["Confundir evaporação com condensação nas nuvens."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: "Analisar um ciclo da água em um terrário fechado." },
-                    { step: 2, action: "Duvidar", detail: "De onde vêm as gotas de água que se formam no teto do terrário?" },
-                    { step: 3, action: "Teorizar", detail: "Mapear o ciclo hidrológico completo no quadro." }
-                ], sampleQuestionTip: "Identificar a etapa de mudança de fase indicada na ilustração do ciclo da água."
-            },
-
-            // =========================================================================
-            // --- TURMA DO 8º ANO --- (Mapeamento Mantido na Íntegra)
+            // --- TURMA DO 8º ANO ---
             // =========================================================================
             {
                 id: "7EF01_CN_8A", bncc: "EF07CI01", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo I",
                 caedSkill: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples.",
-                bookTheme: "O que são máquinas simples?", bookChapter: "Capítulo 10: Máquinas Simples", bookPage: "Página 182",
+                bookTheme: "O que são máquinas simples?", bookChapter: "Capítulo 10: Previsão do Tempo / Alavancas", bookPage: "Página 182",
                 focus: "Compreender que máquinas simples multiplicam forças facilitando o trabalho.",
                 prerequisites: ["Força e movimento"], pitfalls: ["Acreditar que máquinas criam energia."],
                 methodologyRoute: [
@@ -809,10 +938,548 @@
                     { step: 2, action: "Duvidar", detail: "Por que a alavanca diminui a força requerida?" },
                     { step: 3, action: "Teorizar", detail: "Calcular Trabalho = Força x Distância." }
                 ], sampleQuestionTip: "Calcular vantagem mecânica de uma alavanca."
+            },
+            {
+                id: "8EF05_CN", bncc: "EF08CI03", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Classificar os processos de transformação da energia nos aparelhos residenciais.",
+                bookTheme: "3. Energia elétrica / 4. O uso doméstico de energia elétrica", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Páginas 217 e 219",
+                focus: "Reconhecer transformações de eletricidade em luz, calor (Efeito Joule), som e movimento.",
+                prerequisites: ["Energia elétrica"], pitfalls: ["Considerar que a energia destruída no processo desaparece."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Comparar o funcionamento de um chuveiro e um ventilador." },
+                    { step: 2, action: "Duvidar", detail: "Em qual forma de energia o resistor transforma a corrente elétrica?" },
+                    { step: 3, action: "Teorizar", detail: "Categorizar aparelhos em térmicos, mecânicos e luminosos." }
+                ], sampleQuestionTip: "Associar o eletrodoméstico à transformação de energia realizada."
+            },
+            {
+                id: "8EF06_CN", bncc: "EF08CI04", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Verificar o consumo de energia elétrica de aparelhos eletroeletrônicos, assim como as grandezas e as ações que influenciam nesse consumo.",
+                bookTheme: "4. O uso doméstico de energia elétrica", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Página 219",
+                focus: "Calcular consumo em kWh relacionando potência (Watts) e tempo de uso (horas).",
+                prerequisites: ["Potência e tempo"], pitfalls: ["Confundir voltagem (Volts) com potência elétrica (Watts)."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a potência impressa no ferro elétrico x lâmpada LED." },
+                    { step: 2, action: "Duvidar", detail: "Por que aparelhos com resistências térmicas consomem mais kWh?" },
+                    { step: 3, action: "Teorizar", detail: "Calcular o consumo usando Consumo = (Potência x Tempo) / 1000." }
+                ], sampleQuestionTip: "Determinar o eletrodoméstico de maior consumo mensal na tabela."
+            },
+            {
+                id: "8EF07_CN", bncc: "EF08CI05", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer as atitudes que contribuem para redução do consumo de energia.",
+                bookTheme: "4. O uso doméstico de energia elétrica / 5. Segurança no uso da energia elétrica", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Páginas 219 e 221",
+                focus: "Identificar práticas de eficiência energética e escolha de selo Procel A.",
+                prerequisites: ["Consumo de energia"], pitfalls: ["Desconsiderar o consumo do modo Stand-by."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a etiqueta do Selo Procel em eletrodomésticos." },
+                    { step: 2, action: "Duvidar", detail: "Como pequenas atitudes cotidianas reduzem o valor da conta de luz?" },
+                    { step: 3, action: "Teorizar", detail: "Elaborar manual de economia de energia para a comunidade escolar." }
+                ], sampleQuestionTip: "Indicar a atitude que promove economia eficaz de energia elétrica."
+            },
+            {
+                id: "8EF08_CN", bncc: "EF08CI06", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas.",
+                bookTheme: "6. Recursos energéticos", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Página 227",
+                focus: "Compreender o papel da força mecânica para acionamento das turbinas e geradores.",
+                prerequisites: ["Indução eletromagnética"], pitfalls: ["Achar que a água gera luz sem passar por turbinas/geradores."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar o funcionamento de um dínamo de bicicleta." },
+                    { step: 2, action: "Duvidar", detail: "Como o movimento da água ou do vapor se transforma em eletricidade?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear o fluxo: Recurso -> Turbina -> Gerador -> Rede." }
+                ], sampleQuestionTip: "Identificar a função da turbina no esquema da usina hidrelétrica."
+            },
+            {
+                id: "8EF09_CN", bncc: "EF08CI06", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia elétrica.",
+                bookTheme: "13. Alterações climáticas provocadas pelo ser humano", bookChapter: "Capítulo 10: Previsão do Tempo", bookPage: "Página 190",
+                focus: "Analisar alagamentos, emissão de gases estufa e contaminação hídrica.",
+                prerequisites: ["Usinas de energia"], pitfalls: ["Acreditar que fontes limpas não provocam impactos na instalação."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar fotos de alagamentos para reservatórios hidrelétricos." },
+                    { step: 2, action: "Duvidar", detail: "Quais os prejuízos à fauna e flora provocados pela inundação?" },
+                    { step: 3, action: "Teorizar", detail: "Montar quadro comparativo de vantagens e impactos das usinas." }
+                ], sampleQuestionTip: "Indicar o impacto ambiental direto da instalação de hidrelétricas."
+            },
+            {
+                id: "8EF10_CN", bncc: "EF08CI06", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer os tipos de usinas de geração de energia elétrica.",
+                bookTheme: "6. Recursos energéticos", bookChapter: "Capítulo 12: Produção e Uso de Energia Elétrica", bookPage: "Página 227",
+                focus: "Identificar Usinas Hidrelétricas, Termelétricas, Eólicas, Solares e Nucleares.",
+                prerequisites: ["Fontes de energia"], pitfalls: ["Confundir usinas eólicas com termelétricas."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Exibir infográficos sobre parques eólicos e painéis solares." },
+                    { step: 2, action: "Duvidar", detail: "Qual usina depende da queima de carvão ou gás natural?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar as usinas segundo a fonte primária utilizada." }
+                ], sampleQuestionTip: "Reconhecer a usina elétrica exibida na ilustração."
+            },
+            {
+                id: "8EF11_CN", bncc: "EF08CI07", unit: "VE - Vida e Evolução", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer os diferentes processos reprodutivos dos seres vivos.",
+                bookTheme: "4. Reprodução sexuada em animais / 5. Reprodução assexuada em animais", bookChapter: "Capítulo 5: Reprodução Sexuada e Assexuada em Animais", bookPage: "Páginas 95 e 98",
+                focus: "Diferenciar reprodução sexuada (com variabilidade) e assexuada (brotamento/regeneração).",
+                prerequisites: ["Gametas"], pitfalls: ["Achar que reprodução assexuada gera variabilidade genética."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Comparar o brotamento na hidra com a fecundação de peixes." },
+                    { step: 2, action: "Duvidar", detail: "Por que os descendentes de reprodução assexuada são clones do genitor?" },
+                    { step: 3, action: "Teorizar", detail: "Relacionar mitose/meiose ao tipo de reprodução." }
+                ], sampleQuestionTip: "Classificar a forma de reprodução indicada no esquema do organismo."
+            },
+            {
+                id: "8EF12_CN", bncc: "EF08CI08", unit: "VE - Vida e Evolução", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer as estruturas que compõem o sistema endócrino.",
+                bookTheme: "8. Glândulas: exócrinas e endócrinas / 9. O sistema endócrino", bookChapter: "Capítulo 7: Adolescência, Puberdade e Sistema Endócrino", bookPage: "Páginas 138 e 139",
+                focus: "Identificar Hipófise, Tireoide, Pâncreas, Suprarrenais e Gônadas.",
+                prerequisites: ["Hormônios"], pitfalls: ["Confundir glândulas exócrinas (suor) com endócrinas (hormônios no sangue)."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar mapa do corpo humano com a localização das glândulas." },
+                    { step: 2, action: "Duvidar", detail: "Como os hormônios secretados pelas glândulas alcançam órgãos distantes?" },
+                    { step: 3, action: "Teorizar", detail: "Diferenciar glândulas exócrinas e endócrinas e seu meio de transporte." }
+                ], sampleQuestionTip: "Nomear a glândula responsável pelo controle metabólico ou de glicose."
+            },
+            {
+                id: "8EF13_CN", bncc: "EF08CI08", unit: "VE - Vida e Evolução", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias.",
+                bookTheme: "13. Hormônios sexuais e mudanças na puberdade", bookChapter: "Capítulo 7: Adolescência, Puberdade e Sistema Endócrino", bookPage: "Página 145",
+                focus: "Compreender a atuação da Testosterona, Estrogênio e Progesterona na puberdade.",
+                prerequisites: ["Sistema Endócrino"], pitfalls: ["Atribuir as mudanças da puberdade unicamente a hormônios não sexuais."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Listar transformações corporais ocorridas na adolescência." },
+                    { step: 2, action: "Duvidar", detail: "Quais mensageiros químicos estimulam o surgimento de pelos, mamas e engrossamento da voz?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear o eixo Hipófise -> Testículos/Ovários -> Hormônios sexuais." }
+                ], sampleQuestionTip: "Associar o hormônio sexual à transformação corporal desencadeada."
+            },
+            {
+                id: "8EF14_CN", bncc: "EF08CI09", unit: "VE - Vida e Evolução", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer o princípio de ação dos métodos contraceptivos.",
+                bookTheme: "1. Contracepção", bookChapter: "Capítulo 9: Sexo, Saúde e Sociedade", bookPage: "Página 164",
+                focus: "Classificar em métodos de barreira, hormonais, intrauterinos e cirúrgicos.",
+                prerequisites: ["Fisiologia reprodutiva"], pitfalls: ["Acreditar que anticoncepcionais orais protegem contra infecções."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar amostras e imagens de camisinhas, pílulas e DIU." },
+                    { step: 2, action: "Duvidar", detail: "Como a pílula impede a ovulação e a camisinha impede a fecundação?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar os contraceptivos segundo a forma de bloqueio." }
+                ], sampleQuestionTip: "Indicar o método de prevenção de barreira adequado."
+            },
+            {
+                id: "8EF15_CN", bncc: "EF08CI10", unit: "VE - Vida e Evolução", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer as características das infecções sexualmente transmissíveis (IST).",
+                bookTheme: "2. Infecções Sexualmente Transmissíveis (IST) / 3. Aids", bookChapter: "Capítulo 9: Sexo, Saúde e Sociedade", bookPage: "Páginas 167 e 169",
+                focus: "Identificar agentes causadores (vírus/bactérias), contágio e prevenção com preservativo.",
+                prerequisites: ["Sistema Imunológico e Patógenos"], pitfalls: ["Acreditar na transmissão de ISTs pelo uso de talheres ou banheiros."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar folhetos informativos do Ministério da Saúde sobre HIV e Sífilis." },
+                    { step: 2, action: "Duvidar", detail: "Por que a camisinha é o único método que previne ao mesmo tempo gravidez e ISTs?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar as principais ISTs quanto à prevenção e tratamento." }
+                ], sampleQuestionTip: "Selecionar a medida eficaz de prevenção contra o contágio por ISTs."
+            },
+            {
+                id: "8EF16_CN", bncc: "EF08CI12", unit: "TU - Terra e Universo", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer as posições relativas entre Sol, Terra e Lua associadas às fases da Lua e à ocorrência de eclipses.",
+                bookTheme: "1. As fases da Lua / 3. As fases da Lua e os eclipses", bookChapter: "Capítulo 11: Lua e Constelações", bookPage: "Páginas 200 e 203",
+                focus: "Diferenciar Eclipse Solar (Lua entre Sol e Terra) e Eclipse Lunar (Terra entre Sol e Lua).",
+                prerequisites: ["Luz e Sombra"], pitfalls: ["Confundir alinhamento de eclipse solar com o de eclipse lunar."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Simular eclipses com esferas e lanterna no escuro." },
+                    { step: 2, action: "Duvidar", detail: "Onde fica a Lua durante o eclipse solar total?" },
+                    { step: 3, action: "Teorizar", detail: "Esquematizar os cones de sombra e penumbra dos eclipses." }
+                ], sampleQuestionTip: "Identificar o tipo de eclipse com base no alinhamento ilustrado."
+            },
+            {
+                id: "8EF17_CN", bncc: "EF08CI13", unit: "TU - Terra e Universo", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.",
+                bookTheme: "4. As estações do ano", bookChapter: "Capítulo 11: Lua e Constelações", bookPage: "Página 206",
+                focus: "Relacionar rotação (24h) e translação + inclinação do eixo terrestre (estações).",
+                prerequisites: ["Movimentos terrestres"], pitfalls: ["Atribuir as estações do ano à distância variável entre a Terra e o Sol."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Usar globo inclinado orbitando uma lâmpada para ver a insolação dos hemisférios." },
+                    { step: 2, action: "Duvidar", detail: "Por que quando é verão no Hemisfério Sul é inverno no Hemisfério Norte?" },
+                    { step: 3, action: "Teorizar", detail: "Associar Solstícios e Equinócios à inclinação e posição orbital." }
+                ], sampleQuestionTip: "Identificar a causa determinante para o surgimento das estações do ano."
+            },
+
+            // =========================================================================
+            // --- TURMA DO 9º ANO ---
+            // =========================================================================
+            {
+                id: "8EF01_CN_9A", bncc: "EF08CI01", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Classificar os recursos energéticos em renováveis e não renováveis.",
+                bookTheme: "4. Recursos renováveis e recursos não renováveis", bookChapter: "Capítulo 12: Desenvolvimento Sustentável", bookPage: "Página 247",
+                focus: "Classificar as fontes energéticas pelo seu ritmo de regeneração na natureza.",
+                prerequisites: ["Fontes energéticas"], pitfalls: ["Confundir fonte limpa com fonte renovável."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a matriz energética global x brasileira." },
+                    { step: 2, action: "Duvidar", detail: "Quais recursos se esgotarão se continuarmos o ritmo atual de consumo?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar petróleos e fósseis x solar, eólica e biomassa." }
+                ], sampleQuestionTip: "Identificar a fonte renovável na lista apresentada."
+            },
+            {
+                id: "8EF04_CN_9A", bncc: "EF08CI02", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Reconhecer os componentes de um circuito.",
+                bookTheme: "1. Eletricidade / 4. Condutores elétricos e isolantes elétricos", bookChapter: "Capítulo 2: Cargas Elétricas e Modelo Atômico de Rutherford", bookPage: "Páginas 33 e 36",
+                focus: "Identificar geradores, fios condutores, receptores e chaves nos circuitos elétricos.",
+                prerequisites: ["Corrente elétrica"], pitfalls: ["Confundir condutores térmicos com condutores elétricos."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Montar um circuito elétrico simples com lâmpada e pilha." },
+                    { step: 2, action: "Duvidar", detail: "O que acontece ao interromper a continuidade do fio condutor?" },
+                    { step: 3, action: "Teorizar", detail: "Representar o circuito com simbologia padronizada." }
+                ], sampleQuestionTip: "Nomear a função do componente indicado no esquema elétrico."
+            },
+            {
+                id: "8EF05_CN_9A", bncc: "EF08CI03", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Classificar os processos de transformação da energia nos aparelhos residenciais.",
+                bookTheme: "1. Eletricidade", bookChapter: "Capítulo 2: Cargas Elétricas e Modelo Atômico de Rutherford", bookPage: "Página 33",
+                focus: "Reconhecer transformações de eletricidade em luz, calor (Efeito Joule), som e movimento.",
+                prerequisites: ["Energia elétrica"], pitfalls: ["Considerar que a energia acumulada é destruída no processo."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Comparar o funcionamento de uma torradeira e um ventilador." },
+                    { step: 2, action: "Duvidar", detail: "Em qual forma útil de energia o chuveiro transforma a eletricidade?" },
+                    { step: 3, action: "Teorizar", detail: "Categorizar aparelhos receptores em térmicos, mecânicos e luminosos." }
+                ], sampleQuestionTip: "Associar o eletrodoméstico à transformação principal realizada."
+            },
+            {
+                id: "8EF06_CN_9A", bncc: "EF08CI04", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Verificar o consumo de energia elétrica de aparelhos eletroeletrônicos, assim como as grandezas e as ações que influenciam nesse consumo.",
+                bookTheme: "1. Eletricidade", bookChapter: "Capítulo 2: Cargas Elétricas e Modelo Atômico de Rutherford", bookPage: "Página 33",
+                focus: "Calcular consumo em kWh relacionando potência (Watts) e tempo de uso (horas).",
+                prerequisites: ["Potência e tempo"], pitfalls: ["Confundir voltagem (Volts) com potência elétrica (Watts)."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a potência impressa em uma lâmpada LED x incandescente." },
+                    { step: 2, action: "Duvidar", detail: "Por que aparelhos com resistências térmicas consomem mais energia?" },
+                    { step: 3, action: "Teorizar", detail: "Calcular o gasto mensal usando Consumo = (Potência x Tempo) / 1000." }
+                ], sampleQuestionTip: "Determinar o eletrodoméstico responsável pelo maior consumo na tabela."
+            },
+            {
+                id: "8EF08_CN_9A", bncc: "EF08CI06", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas.",
+                bookTheme: "1. Eletricidade", bookChapter: "Capítulo 2: Cargas Elétricas e Modelo Atômico de Rutherford", bookPage: "Página 33",
+                focus: "Compreender o papel do movimento da turbina para acionamento do gerador elétrico.",
+                prerequisites: ["Indução magnética"], pitfalls: ["Achar que a água gera luz diretamente sem gerador."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar um modelo de gerador manual (dínamo de bicicleta)." },
+                    { step: 2, action: "Duvidar", detail: "Como a força mecânica de rotação se converte em eletricidade?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear o fluxo: Fonte -> Turbina -> Gerador -> Rede elétrica." }
+                ], sampleQuestionTip: "Identificar a etapa crucial do gerador no esquema da usina."
+            },
+            {
+                id: "8EF09_CN_9A", bncc: "EF08CI06", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia elétrica.",
+                bookTheme: "2. Ação humana e desequilíbrios ambientais", bookChapter: "Capítulo 12: Desenvolvimento Sustentável", bookPage: "Página 244",
+                focus: "Analisar impactos de alagamentos, gases estufa e resíduos nucleares.",
+                prerequisites: ["Impactos socioambientais"], pitfalls: ["Acreditar que fontes limpas não têm impacto de instalação."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar fotos do represamento para construção de hidrelétricas." },
+                    { step: 2, action: "Duvidar", detail: "Quais os prejuízos à biodiversidade causados pelo alagamento de florestas?" },
+                    { step: 3, action: "Teorizar", detail: "Montar quadro de vantagens x impactos de usinas termo, hídricas e eólicas." }
+                ], sampleQuestionTip: "Indicar o impacto socioambiental característico da usina representada."
+            },
+            {
+                id: "8EF10_CN_9A", bncc: "EF08CI06", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Reconhecer os tipos de usinas de geração de energia elétrica.",
+                bookTheme: "1. Eletricidade", bookChapter: "Capítulo 2: Cargas Elétricas e Modelo Atômico de Rutherford", bookPage: "Página 33",
+                focus: "Identificar Usinas Hidrelétricas, Termelétricas, Nucleares, Eólicas e Solares Fotovoltaicas.",
+                prerequisites: ["Fontes de energia"], pitfalls: ["Inverter usinas solares térmicas com fotovoltaicas."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Exibir infográficos sobre os tipos de matrizes elétricas." },
+                    { step: 2, action: "Duvidar", detail: "Qual usina utiliza a queima de biomassa para gerar vapor?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar as usinas segundo o recurso primário utilizado." }
+                ], sampleQuestionTip: "Reconhecer a usina elétrica apresentada na ilustração."
+            },
+            {
+                id: "8EF11_CN_9A", bncc: "EF08CI07", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Reconhecer os diferentes processos reprodutivos dos seres vivos.",
+                bookTheme: "4. Cromossomos e reprodução humana", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Página 203",
+                focus: "Diferenciar reprodução sexuada (com variabilidade) e assexuada (mitótica/brotamento).",
+                prerequisites: ["Gametas e fertilização"], pitfalls: ["Confundir recombinação genética com clonagem natural."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Comparar a divisão por cissiparidade de bactérias com a fecundação humana." },
+                    { step: 2, action: "Duvidar", detail: "Por que filhos de reprodução sexuada não são idênticos aos pais?" },
+                    { step: 3, action: "Teorizar", detail: "Relacionar meiose e fecundação à variabilidade genética." }
+                ], sampleQuestionTip: "Classificar a forma reprodutiva do organismo conforme a variabilidade."
+            },
+            {
+                id: "8EF13_CN_9A", bncc: "EF08CI08", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias.",
+                bookTheme: "4. Cromossomos e reprodução humana", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Página 203",
+                focus: "Compreender a atuação do eixo Hipófise-Gônadas (LH, FSH, Testosterona, Estrogênio).",
+                prerequisites: ["Glândulas sexuais"], pitfalls: ["Confundir hormônios sexuais com hormônios metabólicos."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar gráficos de picos hormonais na puberdade." },
+                    { step: 2, action: "Duvidar", detail: "Qual sinal químico induz o aparecimento de pelos e voz grave?" },
+                    { step: 3, action: "Teorizar", detail: "Esquematizar a produção e ação dos hormônios gonadotróficos." }
+                ], sampleQuestionTip: "Associar o hormônio à transformação corporal secundária induzida."
+            },
+            {
+                id: "8EF14_CN_9A", bncc: "EF08CI09", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Reconhecer o princípio de ação dos métodos contraceptivos.",
+                bookTheme: "4. Cromossomos e reprodução humana", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Página 203",
+                focus: "Classificar métodos em barreira, hormonais, intrauterinos e cirúrgicos.",
+                prerequisites: ["Fisiologia reprodutiva"], pitfalls: ["Acreditar que anticoncepcionais orais protegem de infecções."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar amostras físicas e imagens de preservativos e DIUs." },
+                    { step: 2, action: "Duvidar", detail: "Como a pílula impede o encontro dos gametas?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar os métodos pelo bloqueio de ovulação ou encontro gamético." }
+                ], sampleQuestionTip: "Indicar o método de prevenção de barreira adequado."
+            },
+            {
+                id: "8EF15_CN_9A", bncc: "EF08CI10", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Reconhecer as características das infecções sexualmente transmissíveis (IST).",
+                bookTheme: "4. Cromossomos e reprodução humana", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Página 203",
+                focus: "Identificar formas de contágio, agente causador (vírus/bactéria) e prevenção de ISTs.",
+                prerequisites: ["Patógenos e vacinas"], pitfalls: ["Mitos de transmissão por compartilhamento de utensílios sem fluido."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar cartazes educativos sobre Sífilis, HPV e HIV." },
+                    { step: 2, action: "Duvidar", detail: "Por que o uso do preservativo é insubstituível na prevenção das ISTs?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear contágio, prevenção primária e tratamento das principais ISTs." }
+                ], sampleQuestionTip: "Indicar a medida preventiva correta contra infecções sexuais."
+            },
+            {
+                id: "8EF17_CN_9A", bncc: "EF08CI13", unit: "TU - Terra e Universo", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.",
+                bookTheme: "5. Os planetas e o Sistema Solar", bookChapter: "Capítulo 9: Gravitação", bookPage: "Página 175",
+                focus: "Relacionar rotação (24h) e translação + inclinação do eixo terrestre (estações).",
+                prerequisites: ["Eixo terrestre e órbita"], pitfalls: ["Atribuir as estações do ano à distância entre a Terra e o Sol."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Simular a órbita inclinada da Terra em torno de uma lâmpada focal." },
+                    { step: 2, action: "Duvidar", detail: "Por que quando é verão no Hemisfério Sul é inverno no Hemisfério Norte?" },
+                    { step: 3, action: "Teorizar", detail: "Conectar Solstícios/Equinócios à inclinação e raio de luz incidental." }
+                ], sampleQuestionTip: "Identificar a causa determinante das estações do ano."
+            },
+            {
+                id: "9EF01_CN", bncc: "EF09CI01", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Classificar, com base nos modelos de constituição submicroscópica, os estados físicos da matéria.",
+                bookTheme: "1. Recordando mudanças de fase da água", bookChapter: "Capítulo 1: Reações Químicas e Teoria Atômica de Dalton", bookPage: "Página 14",
+                focus: "Relacionar arranjo molecular, coesão e energia cinética aos estados sólido, líquido e gasoso.",
+                prerequisites: ["Estados físicos"], pitfalls: ["Considerar que moléculas de gás possuem alta força de atração."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Acompanhar simulação digital do arranjo de partículas ao aquecer." },
+                    { step: 2, action: "Duvidar", detail: "Como o espaço entre as partículas varia entre o gelo e o vapor?" },
+                    { step: 3, action: "Teorizar", detail: "Representar submicroscopicamente a agitação e a força de coesão." }
+                ], sampleQuestionTip: "Identificar o modelo atômico-molecular correspondente ao estado gasoso."
+            },
+            {
+                id: "9EF02_CN", bncc: "EF09CI01", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Inferir as mudanças de estado físico da matéria a partir da observação dos modelos de constituição submicroscópica.",
+                bookTheme: "1. Recordando mudanças de fase da água", bookChapter: "Capítulo 1: Reações Químicas e Teoria Atômica de Dalton", bookPage: "Página 14",
+                focus: "Identificar fusão, vaporização, condensação e solidificação no nível molecular.",
+                prerequisites: ["Mudança de fase"], pitfalls: ["Acreditar que na ebulição as moléculas se quebram em átomos livres."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar o gráfico de curva de aquecimento de substância pura." },
+                    { step: 2, action: "Duvidar", detail: "O que acontece com a energia absorvida durante o patamar de fusão?" },
+                    { step: 3, action: "Teorizar", detail: "Descrever o rompimento das interações moleculares na transição." }
+                ], sampleQuestionTip: "Associar o esquema molecular à mudança de fase por ganho de calor."
+            },
+            {
+                id: "9EF03_CN", bncc: "EF09CI02", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Inferir, em situações que ocorrem transformações químicas, a relação estabelecida entre a conservação das massas e as propriedades dos átomos.",
+                bookTheme: "4. A Lei da Conservação da Massa / 9. Explicação para as Leis de Lavoisier e de Proust", bookChapter: "Capítulo 1: Reações Químicas e Teoria Atômica de Dalton", bookPage: "Páginas 18 e 24",
+                focus: "Compreender que em reações em sistemas fechados a massa se conserva pois os átomos são rearranjados.",
+                prerequisites: ["Reações Químicas"], pitfalls: ["Acreditar que a massa 'some' em reações com liberação de gás."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Pesar comprimido efervescente em água num frasco aberto x num frasco fechado." },
+                    { step: 2, action: "Duvidar", detail: "Por que a balança marca menos massa quando o frasco fica aberto?" },
+                    { step: 3, action: "Teorizar", detail: "Enunciar a Lei de Lavoisier ('Na natureza nada se cria, nada se perde...')." }
+                ], sampleQuestionTip: "Calcular a massa do produto obtido aplicando a Lei de Lavoisier."
+            },
+            {
+                id: "9EF04_CN", bncc: "EF09CI02", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Interpretar, em uma equação química, a conservação da massa entre reagentes e produtos.",
+                bookTheme: "8. Equação química", bookChapter: "Capítulo 1: Reações Químicas e Teoria Atômica de Dalton", bookPage: "Página 23",
+                focus: "Verificar se o número de átomos de cada elemento é igual nos reagentes e produtos (balanceamento).",
+                prerequisites: ["Símbolos e Fórmulas"], pitfalls: ["Alterar os subíndices da fórmula para tentar balancear a reação."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a equação não balanceada: H2 + O2 -> H2O." },
+                    { step: 2, action: "Duvidar", detail: "Para onde foi o segundo átomo de Oxigênio do reagente?" },
+                    { step: 3, action: "Teorizar", detail: "Ajustar os coeficientes estequiométricos (2 H2 + O2 -> 2 H2O)." }
+                ], sampleQuestionTip: "Identificar os coeficientes corretos que garantem a conservação da massa."
+            },
+            {
+                id: "9EF05_CN", bncc: "EF09CI03", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Interpretar, a partir da evolução histórica de teorias e de tecnologias, os diferentes modelos atômicos.",
+                bookTheme: "8. Modelo atômico de Rutherford / Cap. 3: 4. Modelo atômico de Bohr", bookChapter: "Capítulo 2 e 3", bookPage: "Páginas 39 e 59",
+                focus: "Diferenciar modelos de Dalton (bola de bilhar), Thomson (pudim de ameixas), Rutherford (planetário) e Bohr (órbitas quantizadas).",
+                prerequisites: ["Eletricidade e Cargas"], pitfalls: ["Acreditar que o modelo de Dalton já possuía elétrons."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a experiência de Rutherford com o folheto de ouro e partículas alfa." },
+                    { step: 2, action: "Duvidar", detail: "Por que algumas partículas alfa ricochetearam enquanto a maioria atravessou?" },
+                    { step: 3, action: "Teorizar", detail: "Construir linha do tempo comparativa da evolução dos modelos atômicos." }
+                ], sampleQuestionTip: "Associar o cientista ao postulado do seu modelo atômico."
+            },
+            {
+                id: "9EF06_CN", bncc: "EF09CI03", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer que os materiais são constituídos por partículas muito pequenas, com diferentes níveis de organização e espaços vazios.",
+                bookTheme: "6. A Teoria Atômica de Dalton", bookChapter: "Capítulo 1: Reações Químicas e Teoria Atômica de Dalton", bookPage: "Página 20",
+                focus: "Compreender a matéria descontínua formada por átomos e moléculas separadas por vazios.",
+                prerequisites: ["Conceito de Átomo"], pitfalls: ["Acreditar que a matéria é contínua e maciça em escala microscópica."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Misturar 50mL de água e 50mL de álcool e medir o volume final (<100mL)." },
+                    { step: 2, action: "Duvidar", detail: "Para onde foi o volume 'desaparecido' na mistura?" },
+                    { step: 3, action: "Teorizar", detail: "Explicar o preenchimento dos espaços vazios entre as partículas." }
+                ], sampleQuestionTip: "Selecionar a afirmação que descreve a descontinuidade da matéria."
+            },
+            {
+                id: "9EF07_CN", bncc: "EF09CI04", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Explicar as cores dos objetos estabelecendo uma relação com a luz que os ilumina.",
+                bookTheme: "2. As componentes da luz branca / 4. Cores primárias de luz e visão / 6. Reflexão, refração e absorção", bookChapter: "Capítulo 6: Óptica", bookPage: "Páginas 109 a 114",
+                focus: "Compreender a cor por reflexão seletiva e absorção das demais frequências de luz.",
+                prerequisites: ["Reflexão da luz"], pitfalls: ["Acreditar que o objeto 'possui' cor no escuro absoluto."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Iluminar uma maçã vermelha com luz verde dentro da câmara escura." },
+                    { step: 2, action: "Duvidar", detail: "Por que a maçã parece preta sob a iluminação verde?" },
+                    { step: 3, action: "Teorizar", detail: "Explicar que enxergamos a cor do comprimento de luz refletido." }
+                ], sampleQuestionTip: "Indicar a cor percebida do objeto sob luz monocromática."
+            },
+            {
+                id: "9EF08_CN", bncc: "EF09CI04", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer as cores primárias e secundárias.",
+                bookTheme: "3. Cores primárias de luz / 5. Cores primárias de corantes", bookChapter: "Capítulo 6: Óptica", bookPage: "Páginas 110 e 112",
+                focus: "Diferenciar síntese aditiva da luz (RGB) e síntese subtrativa de pigmentos (CMY).",
+                prerequisites: ["Luz e cores"], pitfalls: ["Confundir as cores primárias de luz com as de tinta/pigmento."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Projetar lanternas Vermelha, Verde e Azul sobre superfície branca." },
+                    { step: 2, action: "Duvidar", detail: "Qual cor resulta da sobreposição das três luzes primárias?" },
+                    { step: 3, action: "Teorizar", detail: "Montar diagrama do sistema aditivo (Vermelho + Verde = Amarelo)." }
+                ], sampleQuestionTip: "Identificar a cor resultante da mistura de feixes de luz primários."
+            },
+            {
+                id: "9EF09_CN", bncc: "EF09CI06", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Classificar as radiações eletromagnéticas.",
+                bookTheme: "2. Ondas: mecânicas versus eletromagnéticas", bookChapter: "Capítulo 3: Ondas Eletromagnéticas e Modelo de Bohr", bookPage: "Página 53",
+                focus: "Ordenar o espectro eletromagnético por frequência e comprimento de onda.",
+                prerequisites: ["Ondas"], pitfalls: ["Confundir ondas sonoras (mecânicas) com ondas de rádio (eletromagnéticas)."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Examinar a escala do espectro (Rádio, Micro-ondas, UV, Raio-X)." },
+                    { step: 2, action: "Duvidar", detail: "Qual radiação possui maior energia e menor comprimento de onda?" },
+                    { step: 3, action: "Teorizar", detail: "Sistematizar a relação inversa entre Frequência e Comprimento de onda." }
+                ], sampleQuestionTip: "Classificar a radiação apontada conforme sua posição no espectro."
+            },
+            {
+                id: "9EF10_CN", bncc: "EF09CI06", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer as aplicações das radiações eletromagnéticas.",
+                bookTheme: "3. Características e aplicações das ondas eletromagnéticas", bookChapter: "Capítulo 3: Ondas Eletromagnéticas e Modelo de Bohr", bookPage: "Página 54",
+                focus: "Associar Raio-X à radiografia, Infravermelho ao controle remoto, UV à esterilização e Micro-ondas às telecomunicações.",
+                prerequisites: ["Espectro eletromagnético"], pitfalls: ["Atribuir radiação ionizante nociva a ondas de rádio e Wi-Fi."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar imagens de exames de Raio-X e termografia por infravermelho." },
+                    { step: 2, action: "Duvidar", detail: "Por que o técnico de radiologia utiliza um avental de chumbo?" },
+                    { step: 3, action: "Teorizar", detail: "Diferenciar radiações ionizantes de não ionizantes e seus usos." }
+                ], sampleQuestionTip: "Relacionar o tipo de radiação eletromagnética ao seu uso tecnológico correto."
+            },
+            {
+                id: "9EF11_CN", bncc: "EF09CI08", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Interpretar como as características hereditárias são transmitidas às gerações seguintes.",
+                bookTheme: "9. Hereditariedade em humanos", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Página 210",
+                focus: "Compreender a transmissão do DNA por meio dos gametas na fecundação.",
+                prerequisites: ["Células e Núcleo"], pitfalls: ["Acreditar que características adquiridas em vida são herdadas."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar heredogramas familiares simples de tipo sanguíneo ou cor dos olhos." },
+                    { step: 2, action: "Duvidar", detail: "Como um traço biológico 'pula' uma geração e reaparece nos netos?" },
+                    { step: 3, action: "Teorizar", detail: "Esquematizar a união dos alelos maternos e paternos no zigoto." }
+                ], sampleQuestionTip: "Interpretar a probabilidade de transmissão do alelo no heredograma."
+            },
+            {
+                id: "9EF12_CN", bncc: "EF09CI09", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Verificar, a partir da aplicação da 1ª lei de Mendel, a expressão de características genéticas em uma população.",
+                bookTheme: "1. Mendel e as ervilhas / 6. Alelos localizam-se em cromossomos homólogos", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Páginas 197 e 205",
+                focus: "Resolver cruzamentos monohíbridos utilizando o Quadro de Punnett (proporções 3:1 e 1:2:1).",
+                prerequisites: ["Alelos dominantes e recessivos"], pitfalls: ["Errar o preenchimento dos gametas nas linhas do Quadro de Punnett."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Cruzamento entre dois indivíduos heterozigotos para o albinismo (Aa x Aa)." },
+                    { step: 2, action: "Duvidar", detail: "Qual a porcentagem de chance de o casal ter uma criança albina (aa)?" },
+                    { step: 3, action: "Teorizar", detail: "Desenhar o Quadro de Punnett e calcular genótipos (25% aa) e fenótipos." }
+                ], sampleQuestionTip: "Calcular a probabilidade genotípica resultante do cruzamento."
+            },
+            {
+                id: "9EF13_CN", bncc: "EF09CI09", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer a contribuição de Mendel para os estudos da genética.",
+                bookTheme: "1. Mendel e as ervilhas", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Página 197",
+                focus: "Compreender os experimentos de hibridização de Pisum sativum e a segregação dos fatores.",
+                prerequisites: ["Hereditariedade"], pitfalls: ["Atribuir a Mendel o descobrimento da estrutura em hélice do DNA."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Revisar o cruzamento entre ervilhas amarelas e verdes puras (Geração P e F1)." },
+                    { step: 2, action: "Duvidar", detail: "Por que na geração F2 a cor verde reapareceu na proporção de 3:1?" },
+                    { step: 3, action: "Teorizar", detail: "Formular a Primeira Lei de Mendel (Princípio da Segregação dos Fatores)." }
+                ], sampleQuestionTip: "Identificar a conclusão histórica de Mendel nos seus experimentos."
+            },
+            {
+                id: "9EF14_CN", bncc: "EF09CI09", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer os conceitos básicos para o estudo da hereditariedade.",
+                bookTheme: "5. O que é Genética? / 7. Genótipo / 8. Fenótipo", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Páginas 205 a 207",
+                focus: "Diferenciar Genótipo, Fenótipo, Alelo Dominante, Recessivo, Homozigoto e Heterozigoto.",
+                prerequisites: ["Cromossomos"], pitfalls: ["Confundir Genótipo (genes) com Fenótipo (característica expressa)."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar frases: 'Ele possui sangue tipo O' x 'Genótipo ii'." },
+                    { step: 2, action: "Duvidar", detail: "O ambiente pode alterar o fenótipo sem mudar o genótipo?" },
+                    { step: 3, action: "Teorizar", detail: "Elaborar um glossário dos termos fundamentais da genética." }
+                ], sampleQuestionTip: "Classificar a constituição genética (Aa/aa) no conceito correto."
+            },
+            {
+                id: "9EF15_CN", bncc: "EF09CI10", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Comparar as ideias evolucionistas de Lamarck e Darwin.",
+                bookTheme: "3. A explicação lamarckista / 4. A explicação darwinista", bookChapter: "Capítulo 11: Evolução dos Seres Vivos", bookPage: "Página 223",
+                focus: "Diferenciar Uso/Desuso e Transmissão de Caracteres Adquiridos (Lamarck) de Variabilidade e Seleção Natural (Darwin).",
+                prerequisites: ["Conceito de evolução"], pitfalls: ["Acreditar que a seleção natural induz mutações propositais para o ambiente."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar o caso clássico do pescoço das girafas em ilustrações das duas teorias." },
+                    { step: 2, action: "Duvidar", detail: "O pescoço esticou pelo uso contínuo ou sobreviveram as girafas que já nasceram com pescoço longo?" },
+                    { step: 3, action: "Teorizar", detail: "Tabela comparativa: Lamarckismo (transformismo ativo) x Darwinismo (seleção do mais apto)." }
+                ], sampleQuestionTip: "Diferenciar o argumento lamarckista do argumento darwinista no texto."
+            },
+            {
+                id: "9EF16_CN", bncc: "EF09CI11", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Explicar o processo de evolução e o fenômeno da biodiversidade com base no conceito de seleção natural.",
+                bookTheme: "4. A explicação darwinista para a evolução", bookChapter: "Capítulo 11: Evolução dos Seres Vivos", bookPage: "Página 223",
+                focus: "Compreender que o meio seleciona as variantes genéticas mais adaptadas à sobrevivência e reprodução.",
+                prerequisites: ["Variabilidade genética"], pitfalls: ["Dizer que 'o mais forte' sempre vence, em vez do 'mais adaptado'."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a resistência de bactérias a antibióticos ou mariposas de Manchester." },
+                    { step: 2, action: "Duvidar", detail: "O antibiótico 'cria' bactérias resistentes ou apenas elimina as sensíveis?" },
+                    { step: 3, action: "Teorizar", detail: "Explicar a Seleção Natural como filtro ecológico de populações." }
+                ], sampleQuestionTip: "Explicar o surgimento de populações resistentes pela Seleção Natural."
+            },
+            {
+                id: "9EF17_CN", bncc: "EF09CI11", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer fatores que determinam o processo de especiação.",
+                bookTheme: "5. Como se formam novas espécies?", bookChapter: "Capítulo 11: Evolução dos Seres Vivos", bookPage: "Página 224",
+                focus: "Identificar o Isolamento Geográfico e o posterior Isolamento Reprodutivo na origem de novas espécies.",
+                prerequisites: ["Conceito de Espécie"], pitfalls: ["Achar que o isolamento geográfico sozinho já define duas novas espécies sem interrupção reprodutiva."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar o surgimento de um rio separando uma população inicial de roedores." },
+                    { step: 2, action: "Duvidar", detail: "O que acontece se após milhares de anos o rio secar e as duas populações se reencontrarem?" },
+                    { step: 3, action: "Teorizar", detail: "Esquematizar as etapas da Especiação Alopátrica." }
+                ], sampleQuestionTip: "Identificar a etapa crucial de isolamento geográfico no processo."
+            },
+            {
+                id: "9EF18_CN", bncc: "EF09CI14", unit: "TU - Terra e Universo", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer os corpos que compõem o Sistema Solar.",
+                bookTheme: "5. Os planetas e o Sistema Solar", bookChapter: "Capítulo 9: Gravitação", bookPage: "Página 175",
+                focus: "Identificar o Sol, planetas rochosos e gasosos, satélites, cometas e asteroides.",
+                prerequisites: ["Astronomia básica"], pitfalls: ["Classificar a Lua ou cometas como planetas."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Examinar modelo em escala das órbitas planetárias." },
+                    { step: 2, action: "Duvidar", detail: "O que diferencia um planeta rochoso de um gigante gasoso?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar os corpos celestes segundo massa, composição e órbita." }
+                ], sampleQuestionTip: "Reconhecer o corpo celeste descrito pelas suas características orbitais."
+            },
+            {
+                id: "9EF19_CN", bncc: "EF09CI17", unit: "TU - Terra e Universo", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Organizar o ciclo evolutivo de uma estrela.",
+                bookTheme: "9. Ciclo de vida das estrelas", bookChapter: "Capítulo 9: Gravitação", bookPage: "Página 186",
+                focus: "Mapear a evolução estelar: Nebulosa -> Estrela (Fusão) -> Gigante Vermelha -> Anã Branca ou Supernova -> Buraco Negro.",
+                prerequisites: ["Estrelas e Fusão Nuclear"], pitfalls: ["Acreditar que estrelas de pequena massa como o Sol viram buracos negros."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar fotos da Nebulosa de Órion e de uma Supernova gravadas pelo Hubble." },
+                    { step: 2, action: "Duvidar", detail: "Qual o 'combustível' que a estrela queima no seu núcleo e o que ocorre quando ele acaba?" },
+                    { step: 3, action: "Teorizar", detail: "Montar o fluxograma da evolução estelar segundo a massa da estrela." }
+                ], sampleQuestionTip: "Ordenar as fases do ciclo de vida de uma estrela semelhante ao Sol."
             }
         ];
 
-        let selectedId = "7EF02_CN";
+        // Carrega do localStorage ou usa a base inicial completa
+        let db = JSON.parse(localStorage.getItem('caed_db')) || initialDb;
+        let selectedId = "6EF01_CN";
+
+        function saveToStorage() {
+            localStorage.setItem('caed_db', JSON.stringify(db));
+        }
 
         function showHome() {
             document.getElementById('view-home').classList.remove('hidden');
@@ -840,8 +1507,7 @@
             document.getElementById('view-admin').classList.add('hidden');
             document.getElementById('view-dashboard').classList.remove('hidden');
 
-            // Banner por turma
-            const theme = gradeThemes[tabName] || gradeThemes['7º Ano'];
+            const theme = gradeThemes[tabName] || gradeThemes['6º Ano'];
             const banner = document.getElementById('class-banner');
             banner.className = `rounded-2xl p-6 text-white shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 transition-all ${theme.bg}`;
             document.getElementById('class-icon').setAttribute('data-lucide', theme.icon);
@@ -850,6 +1516,10 @@
 
             lucide.createIcons();
             renderList();
+        }
+
+        function cleanDisplayCode(code) {
+            return code.split('_')[0].replace(/(C[1-3]|[789]A)/g, '');
         }
 
         function renderList() {
@@ -878,12 +1548,14 @@
                 selectedId = filtered[0].id;
             }
 
+            const theme = gradeThemes[currentTab] || gradeThemes['6º Ano'];
+
             filtered.forEach(item => {
                 const isActive = item.id === selectedId;
                 const card = document.createElement('div');
                 card.className = `p-3.5 rounded-xl border transition-all cursor-pointer ${
                     isActive 
-                    ? 'bg-emerald-50/70 border-emerald-600 shadow-sm ring-1 ring-emerald-600' 
+                    ? `bg-${theme.colorClass}-50/70 border-${theme.colorClass}-600 shadow-sm ring-1 ring-${theme.colorClass}-600` 
                     : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/80'
                 }`;
                 card.onclick = () => {
@@ -892,11 +1564,11 @@
                     renderDetail();
                 };
 
-                const cleanCode = item.id.split('_')[0].replace('C1', '').replace('C2', '').replace('C3', '').replace('7A', '').replace('8A', '');
+                const displayCode = cleanDisplayCode(item.id);
 
                 card.innerHTML = `
                     <div class="flex items-center justify-between mb-1.5">
-                        <span class="font-bold text-[11px] px-2 py-0.5 rounded ${isActive ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-700'}">${cleanCode}</span>
+                        <span class="font-bold text-[11px] px-2 py-0.5 rounded ${isActive ? `bg-${theme.colorClass}-600 text-white` : 'bg-slate-100 text-slate-700'}">${displayCode}</span>
                         <span class="text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded border border-amber-200">${item.cycle}</span>
                     </div>
                     <h3 class="text-xs font-bold text-slate-900 line-clamp-2 mb-1">${item.caedSkill}</h3>
@@ -914,13 +1586,14 @@
 
             if (!item) return;
 
-            const cleanCode = item.id.split('_')[0].replace('C1', '').replace('C2', '').replace('C3', '').replace('7A', '').replace('8A', '');
+            const theme = gradeThemes[item.grade] || gradeThemes['6º Ano'];
+            const displayCode = cleanDisplayCode(item.id);
 
             container.innerHTML = `
                 <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4 mb-6">
                     <div class="flex items-center space-x-2">
                         <span class="bg-amber-100 text-amber-900 font-extrabold text-xs px-3 py-1.5 rounded-lg border border-amber-200">
-                            CÓDIGO CAEd: ${cleanCode}
+                            CÓDIGO CAEd: ${displayCode}
                         </span>
                         <span class="bg-indigo-100 text-indigo-800 font-extrabold text-xs px-3 py-1.5 rounded-lg border border-indigo-200">
                             BNCC: ${item.bncc}
@@ -937,16 +1610,16 @@
                         ${item.caedSkill}
                     </h2>
                     
-                    <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100/80 space-y-1.5">
-                        <div class="flex items-center gap-2 text-emerald-900 font-bold text-xs uppercase tracking-wider">
-                            <i data-lucide="book-open" class="w-4 h-4 text-emerald-600"></i>
+                    <div class="bg-${theme.colorClass}-50/50 p-4 rounded-xl border border-${theme.colorClass}-100/80 space-y-1.5">
+                        <div class="flex items-center gap-2 text-${theme.colorClass}-900 font-bold text-xs uppercase tracking-wider">
+                            <i data-lucide="book-open" class="w-4 h-4 text-${theme.colorClass}-600"></i>
                             <span>ALINHAMENTO NO LIVRO DIDÁTICO</span>
                         </div>
                         <p class="text-xs sm:text-sm text-slate-800 font-medium">
                             <strong>Tema:</strong> ${item.bookTheme}
                         </p>
                         <p class="text-xs text-slate-600">
-                            <strong>Localização:</strong> ${item.bookChapter} • <span class="bg-emerald-100 text-emerald-900 font-bold px-2 py-0.5 rounded">${item.bookPage}</span>
+                            <strong>Localização:</strong> ${item.bookChapter} • <span class="bg-${theme.colorClass}-100 text-${theme.colorClass}-900 font-bold px-2 py-0.5 rounded">${item.bookPage}</span>
                         </p>
                     </div>
                 </div>
@@ -973,14 +1646,14 @@
 
                 <div class="mb-6">
                     <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-                        <i data-lucide="sparkles" class="w-4 h-4 text-emerald-600"></i> Sugestão Didática (OBSERVAR • DUVIDAR • TEORIZAR)
+                        <i data-lucide="sparkles" class="w-4 h-4 text-${theme.colorClass}-600"></i> Sugestão Didática (OBSERVAR • DUVIDAR • TEORIZAR)
                     </h3>
                     <div class="space-y-2">
                         ${item.methodologyRoute.map(r => `
                             <div class="flex items-start space-x-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
-                                <span class="bg-emerald-600 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5">${r.step}</span>
+                                <span class="bg-${theme.colorClass}-600 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5">${r.step}</span>
                                 <div class="text-xs sm:text-sm">
-                                    <strong class="text-emerald-900 uppercase font-bold">${r.action}:</strong> 
+                                    <strong class="text-${theme.colorClass}-900 uppercase font-bold">${r.action}:</strong> 
                                     <span class="text-slate-700 leading-relaxed">${r.detail}</span>
                                 </div>
                             </div>
@@ -1005,7 +1678,7 @@
                         <i data-lucide="copy" class="w-4 h-4"></i>
                         <span>Copiar para Plano de Aula</span>
                     </button>
-                    <button onclick="window.print()" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl shadow-md shadow-emerald-600/20 transition-colors">
+                    <button onclick="window.print()" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-${theme.colorClass}-600 hover:bg-${theme.colorClass}-500 text-white text-xs font-bold rounded-xl shadow-md shadow-${theme.colorClass}-600/20 transition-colors">
                         <i data-lucide="printer" class="w-4 h-4"></i>
                         <span>Imprimir / Gerar PDF</span>
                     </button>
@@ -1041,6 +1714,7 @@
             };
 
             db.unshift(newSkill);
+            saveToStorage();
             alert(`Habilidade ${newSkill.id} salva com sucesso para a turma do ${newSkill.grade}!`);
             
             document.getElementById('add-skill-form').reset();
@@ -1051,11 +1725,11 @@
             const item = db.find(i => i.id === selectedId);
             if (!item) return;
 
-            const cleanCode = item.id.split('_')[0].replace('C1', '').replace('C2', '').replace('C3', '').replace('7A', '').replace('8A', '');
+            const displayCode = cleanDisplayCode(item.id);
 
             const text = `UNIDADE ESCOLAR NATIVIDADE MARINHO - NORTEADOR PEDAGÓGICO
 Turma: ${item.grade} | Ciclo: ${item.cycle}
-Código CAEd: ${cleanCode} | Habilidade BNCC: ${item.bncc}
+Código CAEd: ${displayCode} | Habilidade BNCC: ${item.bncc}
 Unidade Temática: ${item.unit}
 
 HABILIDADE OFICIAL CAEd:
@@ -1083,8 +1757,8 @@ ${item.methodologyRoute.map(r => `${r.step}. ${r.action}: ${r.detail}`).join('\n
         document.getElementById('filter-cycle').addEventListener('change', renderList);
         document.getElementById('filter-unit').addEventListener('change', renderList);
 
-        // Inicialização na Matriz do 7º Ano
-        switchTab('7º Ano');
+        // Inicialização na Matriz do 6º Ano
+        switchTab('6º Ano');
     </script>
 </body>
 </html>
