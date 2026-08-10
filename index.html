@@ -1,374 +1,1098 @@
-// Base de Dados com todas as Habilidades e Descritores das Turmas (6º, 7º, 8º e 9º Anos)
-let db = [
-    // =========================================================================
-    // --- TURMA DO 7º ANO ---
-    // =========================================================================
-    {
-        id: "6EF10_CN_7A", bncc: "EF06CI01", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo I",
-        caedSkill: "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais.",
-        bookTheme: "1. O ar é uma mistura", bookChapter: "Capítulo 12: Gases da Atmosfera e Placas da Litosfera", bookPage: "Página 214",
-        focus: "Identificar fases visíveis em misturas gasosas e líquidas.",
-        prerequisites: ["Propriedades da matéria"], pitfalls: ["Considerar misturas gasosas como heterogêneas."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Analisar a composição do ar atmosférico." },
-            { step: 2, action: "Duvidar", detail: "Conseguimos enxergar os diferentes gases separados no ar?" },
-            { step: 3, action: "Teorizar", detail: "Classificar misturas gasosas como soluções homogêneas." }
-        ], sampleQuestionTip: "Identificar o número de fases em um sistema misto."
-    },
-    {
-        id: "6EF12_CN_7A", bncc: "EF06CI03", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo I",
-        caedSkill: "Classificar os métodos de separação de misturas de sistemas heterogêneos.",
-        bookTheme: "7. Água potável e tratamento caseiro / 14. Tratamento de esgoto", bookChapter: "Capítulo 6: Saneamento Básico", bookPage: "Páginas 109 e 115",
-        focus: "Reconhecer filtração e decantação no tratamento de água e esgoto.",
-        prerequisites: ["Sistemas heterogêneos"], pitfalls: ["Inverter decantação e filtração industrial."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Analisar maquete de uma ETA (Estação de Tratamento de Água)." },
-            { step: 2, action: "Duvidar", detail: "Como a sujeira pesada é separada da água antes dos filtros?" },
-            { step: 3, action: "Teorizar", detail: "Esquematizar a floculação e decantação no saneamento." }
-        ], sampleQuestionTip: "Relacionar a etapa do tratamento de água ao método de separação."
-    },
-    {
-        id: "7EF02_CN", bncc: "EF07CI01", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-        caedSkill: "Reconhecer dispositivos mecânicos que facilitam a realização do trabalho.",
-        bookTheme: "1 a 9. Máquinas simples", bookChapter: "Capítulo 10: Máquinas Simples", bookPage: "Páginas 182 a 188",
-        focus: "Identificar engrenagens, roldanas, plano inclinado e alavancas no cotidiano.",
-        prerequisites: ["Força e movimento"], pitfalls: ["Confundir engrenagem com polia."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Examinar o funcionamento de uma bicicleta." },
-            { step: 2, action: "Duvidar", detail: "Como catracas e correntes facilitam o pedalar?" },
-            { step: 3, action: "Teorizar", detail: "Classificar as máquinas simples da bicicleta." }
-        ], sampleQuestionTip: "Identificar o dispositivo mecânico presente na ferramenta."
-    },
-    {
-        id: "7EF03_CN", bncc: "EF07CI02", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-        caedSkill: "Interpretar, em situações cotidianas, os conceitos de calor, temperatura e sensação térmica.",
-        bookTheme: "1. Escala de temperatura / 2. Calor e troca de calor / 5. Sensações térmicas", bookChapter: "Capítulo 11: Temperatura, Calor e Efeito Estufa", bookPage: "Páginas 196, 198 e 203",
-        focus: "Diferenciar Temperatura (agitação) de Calor (energia em trânsito).",
-        prerequisites: ["Estados da matéria"], pitfalls: ["Dizer que um agasalho 'gera' calor."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Tocar em madeira e metal no mesmo ambiente." },
-            { step: 2, action: "Duvidar", detail: "Por que o metal parece mais frio se estão na mesma temperatura?" },
-            { step: 3, action: "Teorizar", detail: "Diferenciar Sensação Térmica de Temperatura real." }
-        ], sampleQuestionTip: "Distinguir o conceito correto de calor e temperatura."
-    },
-    {
-        id: "7EF05_CN", bncc: "EF07CI03", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-        caedSkill: "Classificar os processos de transferência de calor.",
-        bookTheme: "3. Condução térmica / 4. Convecção térmica / 6. Irradiação térmica", bookChapter: "Capítulo 11: Temperatura, Calor e Efeito Estufa", bookPage: "Páginas 199, 201 e 205",
-        focus: "Classificar em Condução (sólidos), Convecção (fluidos) e Irradiação (ondas).",
-        prerequisites: ["Calor"], pitfalls: ["Acreditar que convecção ocorre em sólidos."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Observar o ar condicionado instalado no alto da sala." },
-            { step: 2, action: "Duvidar", detail: "Por que o ar frio desce e o ar quente sobe?" },
-            { step: 3, action: "Teorizar", detail: "Explicar correntes de convecção mecânica." }
-        ], sampleQuestionTip: "Classificar o processo de troca de calor do aparelho."
-    },
-    {
-        id: "7EF08_CN", bncc: "EF07CI07", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-        caedSkill: "Reconhecer os diferentes biomas brasileiros.",
-        bookTheme: "1 a 8. Principais Biomas Brasileiros", bookChapter: "Capítulo 9: Principais Biomas Brasileiros", bookPage: "Páginas 166 a 175",
-        focus: "Caracterizar Amazônia, Caatinga, Cerrado, Mata Atlântica, Pantanal e Pampas.",
-        prerequisites: ["Ecossistemas"], pitfalls: ["Confundir vegetação do Cerrado com a da Caatinga."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Exibir fotos da fauna e flora de cada bioma." },
-            { step: 2, action: "Duvidar", detail: "Quais biomas estão presentes no estado do Maranhão?" },
-            { step: 3, action: "Teorizar", detail: "Mapear as zonas biogeográficas do Brasil." }
-        ], sampleQuestionTip: "Identificar o bioma caracterizado pelo texto da questão."
-    },
-    {
-        id: "7EF12_CN_C2", bncc: "EF07CI09", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-        caedSkill: "Reconhecer a relação estabelecida entre as ações de saneamento básico e a saúde humana.",
-        bookTheme: "11. Doenças veiculadas pela água / 14. Tratamento de esgoto / 15. Saneamento básico", bookChapter: "Capítulo 6: Saneamento Básico", bookPage: "Páginas 113, 115 e 117",
-        focus: "Relacionar tratamento de água e esgoto com prevenção de parasitoses.",
-        prerequisites: ["Doenças hídricas"], pitfalls: ["Achar que só beber água limpa evita todas as verminoses."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Analisar casos de verminoses na comunidade." },
-            { step: 2, action: "Duvidar", detail: "Como a ausência de esgoto canalizado propaga vermes?" },
-            { step: 3, action: "Teorizar", detail: "Propor ações profiláticas de saneamento básico." }
-        ], sampleQuestionTip: "Indicar a medida sanitária preventiva para a parasitose."
-    },
-    {
-        id: "7EF14_CN", bncc: "EF07CI10", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-        caedSkill: "Reconhecer a importância da adesão às campanhas de vacinação.",
-        bookTheme: "7. Como ficamos gripados? / 9. Doenças causadas por vírus", bookChapter: "Capítulo 3: Diversidade da Vida Microscópica", bookPage: "Páginas 59 e 60",
-        focus: "Compreender a imunidade coletiva/de rebanho atingida pela vacinação.",
-        prerequisites: ["Vírus e Bactérias"], pitfalls: ["Acreditar que vacina cura pessoas doentes."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Analisar gráficos da erradicação da poliomielite." },
-            { step: 2, action: "Duvidar", detail: "Por que se todos vacinarem, o vírus deixa de circular?" },
-            { step: 3, action: "Teorizar", detail: "Explicar o conceito de Imunidade Coletiva." }
-        ], sampleQuestionTip: "Justificar a importância do Zé Gotinha e coberturas vacinais altas."
-    },
-    {
-        id: "7EF15_CN", bncc: "EF07CI12", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-        caedSkill: "Reconhecer o ar como uma mistura de gases.",
-        bookTheme: "1. O ar é uma mistura / 2. O gás oxigênio / 3. O gás nitrogênio", bookChapter: "Capítulo 12: Gases da Atmosfera e Placas da Litosfera", bookPage: "Páginas 214 a 218",
-        focus: "Reconhecer N2 (78%), O2 (21%) e outros gases na atmosfera.",
-        prerequisites: ["Gases"], pitfalls: ["Achar que o ar é uma substância pura única."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Analisar um gráfico de pizza da atmosfera." },
-            { step: 2, action: "Duvidar", detail: "Qual gás está em maior abundância no ar que inspiramos?" },
-            { step: 3, action: "Teorizar", detail: "Listar componentes do ar e suas proporções." }
-        ], sampleQuestionTip: "Identificar a proporção e nome do gás mais abundante no ar."
-    },
-    {
-        id: "7EF17_CN", bncc: "EF07CI13", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-        caedSkill: "Reconhecer a atuação do efeito estufa no planeta Terra.",
-        bookTheme: "8. Aquecimento global", bookChapter: "Capítulo 11: Temperatura, Calor e Efeito Estufa", bookPage: "Página 207",
-        focus: "Compreender que o efeito estufa natural é vital para manter a vida aquecida.",
-        prerequisites: ["Atmosfera"], pitfalls: ["Considerar todo efeito estufa como algo prejudicial."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Analisar a temperatura média da Terra sem atmosfera (-18°C)." },
-            { step: 2, action: "Duvidar", detail: "Por que a Terra permanece aquecida à noite?" },
-            { step: 3, action: "Teorizar", detail: "Diferenciar Efeito Estufa Natural x Intensificação Artificial." }
-        ], sampleQuestionTip: "Reconhecer o papel benéfico do efeito estufa natural."
-    },
-    {
-        id: "7EF20_CN", bncc: "EF07CI14", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
-        caedSkill: "Reconhecer a participação da camada de ozônio no fenômeno da vida na Terra.",
-        bookTheme: "6. A camada de ozônio e a poluição por CFCs", bookChapter: "Capítulo 12: Gases da Atmosfera e Placas da Litosfera", bookPage: "Página 222",
-        focus: "Compreender o filtro de raios ultravioleta (UV-B e UV-C) exercido pelo O3.",
-        prerequisites: ["Atmosfera Terrestre"], pitfalls: ["Confundir gás ozônio (O3) com gás oxigênio (O2)."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Examinar alertas sobre índice de radiação UV do dia." },
-            { step: 2, action: "Duvidar", detail: "O que nos protege dos raios nocivos do Sol na estratosfera?" },
-            { step: 3, action: "Teorizar", detail: "Descrever a função protetora da camada de ozônio." }
-        ], sampleQuestionTip: "Identificar a função de proteção da camada de ozônio contra raios UV."
-    },
-    {
-        id: "7EF01_CN", bncc: "EF07CI01", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-        caedSkill: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples.",
-        bookTheme: "2. O que são máquinas simples? / 4. Alavanca", bookChapter: "Capítulo 10: Máquinas Simples", bookPage: "Páginas 182 e 183",
-        focus: "Calcular a relação entre força aplicada e braço de alavanca.",
-        prerequisites: ["Máquinas simples"], pitfalls: ["Esquecer que o ponto de apoio altera o esforço."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Usar um pé de cabra para arrancar um prego." },
-            { step: 2, action: "Duvidar", detail: "Por que segurar no fim do cabo reduz o esforço?" },
-            { step: 3, action: "Teorizar", detail: "Formalizar Força x Distância = Trabalho." }
-        ], sampleQuestionTip: "Determinar a posição do ponto de apoio para diminuir a força."
-    },
-    {
-        id: "7EF04_CN", bncc: "EF07CI03", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-        caedSkill: "Inferir, em situações cotidianas, as formas de propagação de calor envolvidas na utilização de determinados materiais e equipamentos.",
-        bookTheme: "3. Condução / 4. Convecção / 6. Irradiação / 7. Como funciona a garrafa térmica?", bookChapter: "Capítulo 11: Temperatura, Calor e Efeito Estufa", bookPage: "Páginas 199 a 206",
-        focus: "Analisar garrafa térmica, panelas e coletores solares pelos mecanismos térmicos.",
-        prerequisites: ["Propagação do calor"], pitfalls: ["Achar que o vácuo conduz calor por condução."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Desmontar as camadas de uma garrafa térmica." },
-            { step: 2, action: "Duvidar", detail: "Como a parede espelhada e o vácuo evitam as trocas de calor?" },
-            { step: 3, action: "Teorizar", detail: "Associar cada isolante ao bloqueio de condução, convecção e irradiação." }
-        ], sampleQuestionTip: "Identificar a função da parede espelhada na garrafa térmica."
-    },
-    {
-        id: "7EF06_CN", bncc: "EF07CI04", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-        caedSkill: "Explicar o funcionamento de máquinas térmicas (conversão de calor em trabalho, fluxo de calor, equilíbrio térmico, fonte de energia, perdas de energia).",
-        bookTheme: "10. Tecnologia e seus impactos", bookChapter: "Capítulo 10: Máquinas Simples", bookPage: "Página 190",
-        focus: "Analisar fluxo de calor da fonte quente para fonte fria produzindo movimento.",
-        prerequisites: ["Leis da Termodinâmica"], pitfalls: ["Acreditar na existência de máquina térmica 100% eficiente."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Demonstrar uma barquinha impulsionada por vela e vapor." },
-            { step: 2, action: "Duvidar", detail: "Para onde vai o calor não aproveitado pelo motor?" },
-            { step: 3, action: "Teorizar", detail: "Esquematizar o rendimento térmico e rejeição de calor." }
-        ], sampleQuestionTip: "Indicar a perda de calor inevitável na fonte fria."
-    },
-    {
-        id: "7EF09_CN", bncc: "EF07CI07", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-        caedSkill: "Interpretar a forma com que os fatores abióticos regem a diversidade dos diferentes biomas brasileiros.",
-        bookTheme: "4. Adaptações aos fatores não vivos", bookChapter: "Capítulo 2: Adaptação dos Seres Vivos", bookPage: "Página 37",
-        focus: "Relacionar índice pluviométrico, solo e temperatura à vegetação xerófita/higrófita.",
-        prerequisites: ["Fatores abióticos"], pitfalls: ["Desconsiderar a acidez e permeabilidade do solo."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Comparar tronco tortuoso do Cerrado com árvores gigantes da Amazônia." },
-            { step: 2, action: "Duvidar", detail: "Por que a vegetação do Cerrado tem raízes profundas e casca grossa?" },
-            { step: 3, action: "Teorizar", detail: "Associar queimadas naturais e solo ácido às adaptações do Cerrado." }
-        ], sampleQuestionTip: "Identificar o fator abiótico associado às adaptações da planta."
-    },
-    {
-        id: "7EF10_CN", bncc: "EF07CI08", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-        caedSkill: "Inferir como as intervenções humanas no ambiente causam desequilíbrios ambientais.",
-        bookTheme: "16. Poluição da água", bookChapter: "Capítulo 6: Saneamento Básico", bookPage: "Página 118",
-        focus: "Compreender o processo de Eutrofização por esgoto e fertilizantes em rios.",
-        prerequisites: ["Cadeia Alimentar"], pitfalls: ["Achar que o excesso de algas aumenta o oxigênio na água."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Analisar um lago coberto por camada verde de algas." },
-            { step: 2, action: "Duvidar", detail: "Por que os peixes morrem sufocados quando o lago 'enche' de plantas?" },
-            { step: 3, action: "Teorizar", detail: "Mapear as etapas da Eutrofização e decomposição anaeróbica." }
-        ], sampleQuestionTip: "Explicar a causa da mortandade de peixes na eutrofização."
-    },
-    {
-        id: "7EF11_CN", bncc: "EF07CI09", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-        caedSkill: "Interpretar indicadores de saúde de um grupo populacional.",
-        bookTheme: "15. Saneamento básico", bookChapter: "Capítulo 6: Saneamento Básico", bookPage: "Página 117",
-        focus: "Analisar gráficos de IDH, mortalidade infantil e acesso a saneamento.",
-        prerequisites: ["Indicadores Sociais"], pitfalls: ["Confundir taxa de natalidade com mortalidade infantil."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Ler gráfico comparando cidades com e sem esgoto tratado." },
-            { step: 2, action: "Duvidar", detail: "Qual o impacto direto da água tratada na saúde das crianças?" },
-            { step: 3, action: "Teorizar", detail: "Correlacionar investimento em saneamento à queda da mortalidade infantil." }
-        ], sampleQuestionTip: "Interpretar os dados do gráfico sociossanitário."
-    },
-    {
-        id: "7EF13_CN", bncc: "EF07CI10", unit: "VE - Vida e Evolução", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-        caedSkill: "Inferir o mecanismo de ação das vacinas nos organismos.",
-        bookTheme: "Isso vai para o nosso blog! – As defesas do nosso corpo", bookChapter: "Capítulo 3: Diversidade da Vida Microscópica", bookPage: "Página 69",
-        focus: "Compreender a inoculação do patógeno atenuado/morto para estímulo a linfócitos B.",
-        prerequisites: ["Sistema Imunológico"], pitfalls: ["Confundir soro terapêutico com vacina preventiva."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Analisar o gráfico de produção primária e secundária de anticorpos." },
-            { step: 2, action: "Duvidar", detail: "Por que a segunda dose da vacina gera uma resposta imune muito mais rápida?" },
-            { step: 3, action: "Teorizar", detail: "Diferenciar Imunização Ativa (Vacina) de Imunização Passiva (Soro)." }
-        ], sampleQuestionTip: "Explicar por que a vacina é uma forma de imunização ativa."
-    },
-    {
-        id: "7EF16_CN_C3", bncc: "EF07CI12", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-        caedSkill: "Reconhecer a composição do ar e o modo como a poluição afeta suas características.",
-        bookTheme: "5. Poluição do ar", bookChapter: "Capítulo 12: Gases da Atmosfera e Placas da Litosfera", bookPage: "Página 219",
-        focus: "Compreender o fenômeno da Chuva Ácida por óxidos de enxofre e nitrogênio.",
-        prerequisites: ["Gases Poluentes"], pitfalls: ["Achar que toda chuva é naturalmente neutra."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Analisar fotos de estátuas corroídas por chuva ácida." },
-            { step: 2, action: "Duvidar", detail: "Como a fumaça das indústrias transforma a água da chuva em ácido?" },
-            { step: 3, action: "Teorizar", detail: "Esquematizar reações entre SO2/NO2 e o vapor de água atmosférico." }
-        ], sampleQuestionTip: "Identificar o gás responsável pela formação da chuva ácida."
-    },
-    {
-        id: "7EF18_CN", bncc: "EF07CI13", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-        caedSkill: "Interpretar propostas de controle ou de reversão do aumento artificial do efeito estufa no planeta Terra.",
-        bookTheme: "8. Aquecimento global", bookChapter: "Capítulo 11: Temperatura, Calor e Efeito Estufa", bookPage: "Página 207",
-        focus: "Avaliar o Acordo de Paris, transição energética e créditos de carbono.",
-        prerequisites: ["Efeito Estufa"], pitfalls: ["Sugerir pintar telhados como solução principal de escopo global."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Analisar o gráfico de emissões de CO2 por setor produtivo." },
-            { step: 2, action: "Duvidar", detail: "Quais mudanças na matriz energética do Maranhão reduzem emissões?" },
-            { step: 3, action: "Teorizar", detail: "Criar um plano de ação mitigatório socioambiental." }
-        ], sampleQuestionTip: "Selecionar a medida coletiva mais eficaz contra o aquecimento global."
-    },
-    {
-        id: "7EF19_CN", bncc: "EF07CI14", unit: "TU - Terra e Universo", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo III",
-        caedSkill: "Interpretar ações voltadas para a preservação da camada de ozônio.",
-        bookTheme: "6. A camada de ozônio e a poluição por CFCs", bookChapter: "Capítulo 12: Gases da Atmosfera e Placas da Litosfera", bookPage: "Página 222",
-        focus: "Entender a substituição dos gases CFCs por HFCs em aerossóis e refrigeração.",
-        prerequisites: ["Camada de Ozônio"], pitfalls: ["Acreditar que os CFCs provocam o efeito estufa direto."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Examinar rótulos de aerossóis 'Não ataca a camada de ozônio'." },
-            { step: 2, action: "Duvidar", detail: "Como a proibição global dos CFCs ajudou a regenerar a estratosfera?" },
-            { step: 3, action: "Teorizar", detail: "Explicar o Protocolo de Montreal e a química dos CFCs." }
-        ], sampleQuestionTip: "Identificar a medida regulatória que salvou a camada de ozônio."
-    },
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidade Escolar Natividade Marinho - Norteador Pedagógico 2026</title>
+    
+    <!-- Favicon Pedagógico -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><polygon points='16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76'/></svg>">
 
-    // =========================================================================
-    // --- TURMA DO 9º ANO ---
-    // =========================================================================
-    {
-        id: "8EF01_CN_9A", bncc: "EF08CI01", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
-        caedSkill: "Classificar os recursos energéticos em renováveis e não renováveis.",
-        bookTheme: "4. Recursos renováveis e recursos não renováveis", bookChapter: "Capítulo 12: Desenvolvimento Sustentável", bookPage: "Página 247",
-        focus: "Classificar as fontes energéticas pelo seu ritmo de regeneração na natureza.",
-        prerequisites: ["Fontes energéticas"], pitfalls: ["Confundir fonte limpa com fonte renovável."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Analisar a matriz energética global x brasileira." },
-            { step: 2, action: "Duvidar", detail: "Quais recursos se esgotarão se continuarmos o ritmo atual de consumo?" },
-            { step: 3, action: "Teorizar", detail: "Classificar petróleos e fósseis x solar, eólica e biomassa." }
-        ], sampleQuestionTip: "Identificar a fonte renovável na lista apresentada."
-    },
-    {
-        id: "8EF04_CN_9A", bncc: "EF08CI02", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
-        caedSkill: "Reconhecer os componentes de um circuito.",
-        bookTheme: "1. Eletricidade / 4. Condutores elétricos e isolantes elétricos", bookChapter: "Capítulo 2: Cargas Elétricas e Modelo Atômico", bookPage: "Páginas 33 e 36",
-        focus: "Identificar geradores, fios condutores, receptores e chaves nos circuitos elétricos.",
-        prerequisites: ["Corrente elétrica"], pitfalls: ["Confundir condutores térmicos com condutores elétricos."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Montar um circuito elétrico simples com lâmpada e pilha." },
-            { step: 2, action: "Duvidar", detail: "O que acontece ao interromper a continuidade do fio condutor?" },
-            { step: 3, action: "Teorizar", detail: "Representar o circuito com simbologia padronizada." }
-        ], sampleQuestionTip: "Nomear a função do componente indicado no esquema elétrico."
-    },
-    {
-        id: "9EF01_CN", bncc: "EF09CI01", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
-        caedSkill: "Classificar, com base nos modelos de constituição submicroscópica, os estados físicos da matéria.",
-        bookTheme: "1. Recordando mudanças de fase da água", bookChapter: "Capítulo 1: Reações Químicas e Teoria Atômica de Dalton", bookPage: "Página 14",
-        focus: "Relacionar arranjo molecular, coesão e energia cinética aos estados sólido, líquido e gasoso.",
-        prerequisites: ["Estados físicos"], pitfalls: ["Considerar que moléculas de gás possuem alta força de atração."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Acompanhar simulação digital do arranjo de partículas ao aquecer." },
-            { step: 2, action: "Duvidar", detail: "Como o espaço entre as partículas varia entre o gelo e o vapor?" },
-            { step: 3, action: "Teorizar", detail: "Representar submicroscopicamente a agitação e a força de coesão." }
-        ], sampleQuestionTip: "Identificar o modelo atômico-molecular correspondente ao estado gasoso."
-    },
-    {
-        id: "9EF03_CN", bncc: "EF09CI02", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
-        caedSkill: "Inferir, em situações que ocorrem transformações químicas, a relação estabelecida entre a conservação das massas e as propriedades dos átomos.",
-        bookTheme: "4. A Lei da Conservação da Massa / 9. Explicação para as Leis de Lavoisier e de Proust", bookChapter: "Capítulo 1: Reações Químicas e Teoria Atômica de Dalton", bookPage: "Páginas 18 e 24",
-        focus: "Compreender que em reações em sistemas fechados a massa se conserva pois os átomos são rearranjados.",
-        prerequisites: ["Reações Químicas"], pitfalls: ["Acreditar que a massa 'some' em reações com liberação de gás."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Pesar comprimido efervescente em água num frasco aberto x num frasco fechado." },
-            { step: 2, action: "Duvidar", detail: "Por que a balança marca menos massa quando o frasco fica aberto?" },
-            { step: 3, action: "Teorizar", detail: "Enunciar a Lei de Lavoisier ('Na natureza nada se cria, nada se perde...')." }
-        ], sampleQuestionTip: "Calcular a massa do produto obtido aplicando a Lei de Lavoisier."
-    },
-    {
-        id: "9EF05_CN", bncc: "EF09CI03", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
-        caedSkill: "Interpretar, a partir da evolução histórica de teorias e de tecnologias, os diferentes modelos atômicos.",
-        bookTheme: "8. Modelo atômico de Rutherford / Cap. 3: 4. Modelo atômico de Bohr", bookChapter: "Capítulo 2 e 3", bookPage: "Páginas 39 e 59",
-        focus: "Diferenciar modelos de Dalton, Thomson, Rutherford e Bohr.",
-        prerequisites: ["Eletricidade e Cargas"], pitfalls: ["Acreditar que o modelo de Dalton já possuía elétrons."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Analisar a experiência de Rutherford com o folheto de ouro e partículas alfa." },
-            { step: 2, action: "Duvidar", detail: "Por que algumas partículas alfa ricochetearam enquanto a maioria atravessou?" },
-            { step: 3, action: "Teorizar", detail: "Construir linha do tempo comparativa da evolução dos modelos atômicos." }
-        ], sampleQuestionTip: "Associar o cientista ao postulado do seu modelo atômico."
-    },
-    {
-        id: "9EF12_CN", bncc: "EF09CI09", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
-        caedSkill: "Verificar, a partir da aplicação da 1ª lei de Mendel, a expressão de características genéticas em uma população.",
-        bookTheme: "1. Mendel e as ervilhas / 6. Alelos localizam-se em cromossomos homólogos", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Páginas 197 e 205",
-        focus: "Resolver cruzamentos monohíbridos utilizando o Quadro de Punnett.",
-        prerequisites: ["Alelos dominantes e recessivos"], pitfalls: ["Errar o preenchimento dos gametas no Quadro de Punnett."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Cruzamento entre dois indivíduos heterozigotos para o albinismo (Aa x Aa)." },
-            { step: 2, action: "Duvidar", detail: "Qual a porcentagem de chance de o casal ter uma criança albina (aa)?" },
-            { step: 3, action: "Teorizar", detail: "Desenhar o Quadro de Punnett e calcular genótipos e fenótipos." }
-        ], sampleQuestionTip: "Calcular a probabilidade genotípica resultante do cruzamento."
-    },
-    {
-        id: "9EF15_CN", bncc: "EF09CI10", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
-        caedSkill: "Comparar as ideias evolucionistas de Lamarck e Darwin.",
-        bookTheme: "3. A explicação lamarckista / 4. A explicação darwinista", bookChapter: "Capítulo 11: Evolução dos Seres Vivos", bookPage: "Página 223",
-        focus: "Diferenciar Uso/Desuso e Caracteres Adquiridos de Seleção Natural.",
-        prerequisites: ["Conceito de evolução"], pitfalls: ["Acreditar que a seleção natural induz mutações propositais."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Analisar o caso clássico do pescoço das girafas nas duas teorias." },
-            { step: 2, action: "Duvidar", detail: "O pescoço esticou pelo uso contínuo ou sobreviveram as girafas de pescoço longo?" },
-            { step: 3, action: "Teorizar", detail: "Tabela comparativa: Lamarckismo x Darwinismo." }
-        ], sampleQuestionTip: "Diferenciar o argumento lamarckista do argumento darwinista no texto."
-    },
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        .light-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.2s ease-in-out;
+        }
+        .light-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+            border-color: #cbd5e1;
+        }
 
-    // =========================================================================
-    // --- TURMAS DE 6º E 8º ANOS ---
-    // =========================================================================
-    {
-        id: "6EF01_CN_C1", bncc: "EF05CI02", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo I",
-        caedSkill: "Interpretar o ciclo da água.",
-        bookTheme: "8. Hidrosfera e ciclo da água", bookChapter: "Capítulo 10: Atmosfera e Hidrosfera", bookPage: "Página 176",
-        focus: "Identificar as etapas de evaporação, condensação, precipitação e infiltração.",
-        prerequisites: ["Mudanças de estado físico da água"], pitfalls: ["Confundir evaporação com condensação."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Analisar um ciclo da água em um terrário fechado." },
-            { step: 2, action: "Duvidar", detail: "De onde vêm as gotas de água no teto do terrário?" },
-            { step: 3, action: "Teorizar", detail: "Mapear o ciclo hidrológico completo no quadro." }
-        ], sampleQuestionTip: "Identificar a etapa de mudança de fase no ciclo."
-    },
-    {
-        id: "7EF01_CN_8A", bncc: "EF07CI01", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo I",
-        caedSkill: "Inferir os conceitos de força e trabalho em máquinas simples.",
-        bookTheme: "O que são máquinas simples?", bookChapter: "Capítulo 10: Máquinas Simples", bookPage: "Página 182",
-        focus: "Compreender que máquinas simples multiplicam forças facilitando o trabalho.",
-        prerequisites: ["Força e movimento"], pitfalls: ["Acreditar que máquinas criam energia."],
-        methodologyRoute: [
-            { step: 1, action: "Observar", detail: "Levantar bloco usando uma alavanca." },
-            { step: 2, action: "Duvidar", detail: "Por que a alavanca diminui a força requerida?" },
-            { step: 3, action: "Teorizar", detail: "Calcular Trabalho = Força x Distância." }
-        ], sampleQuestionTip: "Calcular vantagem mecânica de uma alavanca."
-    }
-];
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            .shadow-lg, .shadow-md, .shadow-sm, .shadow-xl { box-shadow: none !important; }
+            body { background: white !important; color: black !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-800 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+
+    <!-- Header Superior -->
+    <header class="bg-[#312e81] text-white shadow-md sticky top-0 z-50 no-print">
+        <div class="max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="showHome()">
+                <div class="bg-indigo-500/20 p-2 rounded-xl border border-indigo-400/30">
+                    <i data-lucide="compass" class="w-6 h-6 text-indigo-200"></i>
+                </div>
+                <div>
+                    <h1 class="text-base font-extrabold tracking-tight uppercase flex items-center gap-2 text-white">
+                        Norteador Pedagógico
+                    </h1>
+                    <p class="text-xs text-indigo-200 font-medium">CAEd 2026 • Ciências da Natureza • 6º ao 9º Ano Integrados</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-2">
+                <button onclick="switchTab('6º Ano')" class="px-3 py-1.5 rounded-lg text-xs font-bold text-indigo-100 hover:bg-indigo-700/50 transition-all">6º Ano</button>
+                <button onclick="switchTab('7º Ano')" class="px-3 py-1.5 rounded-lg text-xs font-bold text-indigo-100 hover:bg-indigo-700/50 transition-all">7º Ano</button>
+                <button onclick="switchTab('8º Ano')" class="px-3 py-1.5 rounded-lg text-xs font-bold text-indigo-100 hover:bg-indigo-700/50 transition-all">8º Ano</button>
+                <button onclick="switchTab('9º Ano')" class="px-3 py-1.5 rounded-lg text-xs font-bold text-indigo-100 hover:bg-indigo-700/50 transition-all">9º Ano</button>
+                <button onclick="switchTab('admin')" id="nav-btn-admin" class="ml-2 px-3.5 py-1.5 rounded-lg text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-900 transition-all flex items-center gap-1 shadow-sm">
+                    <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> Cadastrar
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6 sm:px-6 lg:px-8">
+        
+        <!-- VIEW 1: HOME PAGE INTACTA -->
+        <div id="view-home" class="space-y-8 py-4">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700 border border-indigo-200">
+                    <i data-lucide="book-marked" class="w-3.5 h-3.5"></i> Livros Didáticos & Matriz CAEd
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                    Selecione a Turma para Acessar os Mapeamentos
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-600">
+                    Sua plataforma centralizada para planejamento de aulas, alinhamento com livro didático e acompanhamento contínuo dos ciclos do CAEd.
+                </p>
+            </div>
+
+            <!-- Grid de Turmas -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-2">
+                
+                <!-- 6º Ano -->
+                <div onclick="openGrade('6º Ano')" class="light-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group">
+                    <div class="absolute top-4 right-4 bg-indigo-50 text-indigo-700 border border-indigo-200 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                        6º ANO
+                    </div>
+                    <div class="space-y-4 text-center mt-2">
+                        <div class="w-20 h-28 mx-auto rounded-lg bg-indigo-600 p-2 shadow-md flex flex-col items-center justify-between text-white group-hover:scale-105 transition-transform">
+                            <i data-lucide="droplet" class="w-6 h-6 mt-2"></i>
+                            <span class="text-[9px] font-black uppercase tracking-tighter text-center">Ciências 6</span>
+                            <div class="w-full bg-white/30 h-1 rounded-full mb-1"></div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">Ciências da Natureza</h3>
+                            <p class="text-xs text-slate-500 mt-1 line-clamp-2">Capítulos 1 ao 12 • Células, Sistemas, Matéria, Misturas e Terra</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-indigo-600">
+                        <span>Acessar Matriz</span>
+                        <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    </div>
+                </div>
+
+                <!-- 7º Ano -->
+                <div onclick="openGrade('7º Ano')" class="light-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group">
+                    <div class="absolute top-4 right-4 bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                        7º ANO
+                    </div>
+                    <div class="space-y-4 text-center mt-2">
+                        <div class="w-20 h-28 mx-auto rounded-lg bg-emerald-600 p-2 shadow-md flex flex-col items-center justify-between text-white group-hover:scale-105 transition-transform">
+                            <i data-lucide="leaf" class="w-6 h-6 mt-2"></i>
+                            <span class="text-[9px] font-black uppercase tracking-tighter text-center">Ciências 7</span>
+                            <div class="w-full bg-white/30 h-1 rounded-full mb-1"></div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Ciências da Natureza</h3>
+                            <p class="text-xs text-slate-500 mt-1 line-clamp-2">Capítulos 1 ao 12 • Biomas, Saneamento, Vacinas e Termodinâmica</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-emerald-600">
+                        <span>Acessar Matriz</span>
+                        <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    </div>
+                </div>
+
+                <!-- 8º Ano (Capa) -->
+                <div onclick="openGrade('8º Ano')" class="light-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group">
+                    <div class="absolute top-4 right-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                        8º ANO
+                    </div>
+                    <div class="space-y-4 text-center mt-2">
+                        <div class="w-20 h-28 mx-auto rounded-lg overflow-hidden shadow-md border border-slate-200 group-hover:scale-105 transition-transform bg-slate-100 flex items-center justify-center">
+                            <img src="capa-ciencias-8ano.png" alt="Capa Ciências 8º Ano" class="w-full h-full object-cover" onerror="this.outerHTML='<div class=\'p-2 text-[9px] font-extrabold text-amber-800 bg-amber-100 flex flex-col items-center justify-center h-full text-center\'>CIÊNCIAS NATURAIS<br><span class=\'text-amber-900 text-[11px] mt-1\'>8º ANO</span></div>'">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">Ciências da Natureza</h3>
+                            <p class="text-xs text-slate-500 mt-1 line-clamp-2">Capítulos 1 ao 12 • Alimentos, Sistemas, Reprodução, Hormônios e Energia</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-amber-600">
+                        <span>Acessar Matriz</span>
+                        <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    </div>
+                </div>
+
+                <!-- 9º Ano -->
+                <div onclick="openGrade('9º Ano')" class="light-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group">
+                    <div class="absolute top-4 right-4 bg-rose-50 text-rose-700 border border-rose-200 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                        9º ANO
+                    </div>
+                    <div class="space-y-4 text-center mt-2">
+                        <div class="w-20 h-28 mx-auto rounded-lg bg-rose-600 p-2 shadow-md flex flex-col items-center justify-between text-white group-hover:scale-105 transition-transform">
+                            <i data-lucide="atom" class="w-6 h-6 mt-2"></i>
+                            <span class="text-[9px] font-black uppercase tracking-tighter text-center">Ciências 9</span>
+                            <div class="w-full bg-white/30 h-1 rounded-full mb-1"></div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-rose-600 transition-colors">Ciências da Natureza</h3>
+                            <p class="text-xs text-slate-500 mt-1 line-clamp-2">Capítulos 1 ao 12 • Química, Atômica, Genética e Evolução</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-rose-600">
+                        <span>Acessar Matriz</span>
+                        <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- VIEW 2: DASHBOARD CLARO DA TURMA -->
+        <div id="view-dashboard" class="hidden space-y-6">
+            
+            <!-- Banner Identidade Visual da Turma -->
+            <div id="class-banner" class="rounded-2xl p-6 text-white shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 transition-all">
+                <div class="flex items-center space-x-4">
+                    <div id="class-icon-bg" class="p-3 bg-white/20 backdrop-blur-md rounded-xl">
+                        <i id="class-icon" data-lucide="book-open" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <span id="class-badge" class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/20">Matriz de Referência</span>
+                        <h2 id="class-title" class="text-2xl font-black tracking-tight">9º ANO DO ENSINO FUNDAMENTAL</h2>
+                        <p id="class-subtitle" class="text-xs text-white/80 mt-0.5">Ciências da Natureza • Alinhamento Livro Didático & CAEd 2026</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Barra de Filtros Branca -->
+            <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 no-print">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="filter-cycle" class="block text-[11px] font-extrabold text-slate-500 uppercase tracking-wider mb-1.5">
+                            CICLO DA PROVA CAED
+                        </label>
+                        <select id="filter-cycle" class="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 font-semibold focus:outline-none focus:border-indigo-500 transition-all">
+                            <option value="todos">Todos os Ciclos</option>
+                            <option value="Ciclo I">Ciclo I</option>
+                            <option value="Ciclo II">Ciclo II</option>
+                            <option value="Ciclo III">Ciclo III</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="filter-unit" class="block text-[11px] font-extrabold text-slate-500 uppercase tracking-wider mb-1.5">
+                            UNIDADE TEMÁTICA
+                        </label>
+                        <select id="filter-unit" class="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 font-semibold focus:outline-none focus:border-indigo-500 transition-all">
+                            <option value="todos">Todas as Unidades</option>
+                            <option value="ME - Matéria e Energia">ME - Matéria e Energia</option>
+                            <option value="VE - Vida e Evolução">VE - Vida e Evolução</option>
+                            <option value="TU - Terra e Universo">TU - Terra e Universo</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Coluna Esquerda: Lista de Habilidades -->
+                <div class="lg:col-span-4 space-y-3 no-print">
+                    <div class="flex items-center justify-between mb-1 px-1">
+                        <h2 class="text-xs font-extrabold text-slate-600 uppercase tracking-wider">
+                            HABILIDADES DA TURMA (<span id="active-class-label">9º ANO</span>)
+                        </h2>
+                        <span id="results-count" class="text-xs bg-indigo-100 text-indigo-700 font-bold px-2.5 py-0.5 rounded-full">0</span>
+                    </div>
+                    <div id="skills-list" class="space-y-2.5 max-h-[680px] overflow-y-auto pr-1"></div>
+                </div>
+
+                <!-- Coluna Direita: Cartão do Item -->
+                <div class="lg:col-span-8">
+                    <div id="detail-card" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 text-slate-800"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 3: FORMULÁRIO DE CADASTRO -->
+        <div id="view-admin" class="hidden">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 max-w-4xl mx-auto">
+                <div class="border-b border-slate-100 pb-4 mb-6 flex items-center justify-between">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900">Cadastrar Nova Habilidade / Prova CAEd</h2>
+                        <p class="text-xs text-slate-500">Adicione novas habilidades mantendo e preservando os dados salvos.</p>
+                    </div>
+                    <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full border border-amber-200">Painel do Professor</span>
+                </div>
+
+                <form id="add-skill-form" onsubmit="handleAddSkill(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Ano da Prova</label>
+                            <input type="text" id="add-year" value="2026" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Ciclo da Prova</label>
+                            <select id="add-cycle" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
+                                <option value="Ciclo I">Ciclo I</option>
+                                <option value="Ciclo II">Ciclo II</option>
+                                <option value="Ciclo III" selected>Ciclo III</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Turma / Ano Escolar</label>
+                            <select id="add-grade" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
+                                <option value="6º Ano">6º Ano</option>
+                                <option value="7º Ano">7º Ano</option>
+                                <option value="8º Ano">8º Ano</option>
+                                <option value="9º Ano" selected>9º Ano</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Código CAEd</label>
+                            <input type="text" id="add-id" placeholder="Ex: 9EF01_CN" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Habilidade BNCC</label>
+                            <input type="text" id="add-bncc" placeholder="Ex: EF09CI01" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Unidade Temática</label>
+                            <select id="add-unit" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
+                                <option value="ME - Matéria e Energia">ME - Matéria e Energia</option>
+                                <option value="VE - Vida e Evolução">VE - Vida e Evolução</option>
+                                <option value="TU - Terra e Universo">TU - Terra e Universo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Descrição Oficial da Habilidade CAEd</label>
+                        <textarea id="add-description" rows="2" placeholder="Texto exato da habilidade do CAEd..." required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800"></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Capítulo do Livro</label>
+                            <input type="text" id="add-book-chapter" placeholder="Ex: Capítulo 1" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Tema / Conteúdo do Livro</label>
+                            <input type="text" id="add-book-theme" placeholder="Ex: Reações Químicas" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Página do Livro</label>
+                            <input type="text" id="add-book-page" placeholder="Ex: Página 14" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Foco Primário da Avaliação</label>
+                            <textarea id="add-focus" rows="2" placeholder="Objetivo de cobrança..." required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Erros Comuns / Distratores</label>
+                            <textarea id="add-pitfalls" rows="2" placeholder="Erros frequentes..." required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="bg-indigo-50/50 p-4 rounded-xl border border-indigo-100 space-y-3">
+                        <h3 class="text-xs font-bold text-indigo-700 uppercase">Sugestão Didática (OBSERVAR • DUVIDAR • TEORIZAR)</h3>
+                        <div>
+                            <input type="text" id="add-step1" placeholder="1. OBSERVAR: Imagens/Situações..." required class="w-full p-2 border border-slate-200 rounded-lg text-xs mb-2 bg-white">
+                            <input type="text" id="add-step2" placeholder="2. DUVIDAR: Pergunta disparadora..." required class="w-full p-2 border border-slate-200 rounded-lg text-xs mb-2 bg-white">
+                            <input type="text" id="add-step3" placeholder="3. TEORIZAR: Formalização..." required class="w-full p-2 border border-slate-200 rounded-lg text-xs bg-white">
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-end space-x-3 pt-4 border-t border-slate-100">
+                        <button type="button" onclick="showHome()" class="px-5 py-2.5 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100">Cancelar</button>
+                        <button type="submit" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow-md shadow-indigo-600/20">Salvar Habilidade</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-4 mt-8 no-print">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
+            Unidade Escolar Natividade Marinho • Norteador Pedagógico • Matrizes CAEd 2026 Integradas.
+        </div>
+    </footer>
+
+    <script>
+        let currentTab = '9º Ano';
+
+        const gradeThemes = {
+            '6º Ano': { bg: 'bg-indigo-600', badge: 'bg-indigo-700', icon: 'droplet', title: '6º ANO DO ENSINO FUNDAMENTAL' },
+            '7º Ano': { bg: 'bg-emerald-600', badge: 'bg-emerald-700', icon: 'leaf', title: '7º ANO DO ENSINO FUNDAMENTAL' },
+            '8º Ano': { bg: 'bg-amber-600', badge: 'bg-amber-700', icon: 'zap', title: '8º ANO DO ENSINO FUNDAMENTAL' },
+            '9º Ano': { bg: 'bg-rose-600', badge: 'bg-rose-700', icon: 'atom', title: '9º ANO DO ENSINO FUNDAMENTAL' }
+        };
+
+        let db = [
+            // =========================================================================
+            // --- TURMA DO 9º ANO --- (Mapeamento Completo com Recomposição 8EF no Ciclo I + 9EF nos Ciclos II e III)
+            // =========================================================================
+            
+            // --- CICLO I (Recomposição do 8º Ano no 9º Ano) ---
+            {
+                id: "8EF01_CN_9A", bncc: "EF08CI01", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Classificar os recursos energéticos em renováveis e não renováveis.",
+                bookTheme: "4. Recursos renováveis e recursos não renováveis", bookChapter: "Capítulo 12: Desenvolvimento Sustentável", bookPage: "Página 247",
+                focus: "Classificar as fontes energéticas pelo seu ritmo de regeneração na natureza.",
+                prerequisites: ["Fontes energéticas"], pitfalls: ["Confundir fonte limpa com fonte renovável."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a matriz energética global x brasileira." },
+                    { step: 2, action: "Duvidar", detail: "Quais recursos se esgotarão se continuarmos o ritmo atual de consumo?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar petróleos e fósseis x solar, eólica e biomassa." }
+                ], sampleQuestionTip: "Identificar a fonte renovável na lista apresentada."
+            },
+            {
+                id: "8EF04_CN_9A", bncc: "EF08CI02", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Reconhecer os componentes de um circuito.",
+                bookTheme: "1. Eletricidade / 4. Condutores elétricos e isolantes elétricos", bookChapter: "Capítulo 2: Cargas Elétricas e Modelo Atômico", bookPage: "Páginas 33 e 36",
+                focus: "Identificar geradores, fios condutores, receptores e chaves nos circuitos elétricos.",
+                prerequisites: ["Corrente elétrica"], pitfalls: ["Confundir condutores térmicos com condutores elétricos."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Montar um circuito elétrico simples com lâmpada e pilha." },
+                    { step: 2, action: "Duvidar", detail: "O que acontece ao interromper a continuidade do fio condutor?" },
+                    { step: 3, action: "Teorizar", detail: "Representar o circuito com simbologia padronizada." }
+                ], sampleQuestionTip: "Nomear a função do componente indicado no esquema elétrico."
+            },
+            {
+                id: "8EF05_CN_9A", bncc: "EF08CI03", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Classificar os processos de transformação da energia nos aparelhos residenciais.",
+                bookTheme: "1. Eletricidade", bookChapter: "Capítulo 2: Cargas Elétricas e Modelo Atômico", bookPage: "Página 33",
+                focus: "Reconhecer transformações de eletricidade em luz, calor (Efeito Joule), som e movimento.",
+                prerequisites: ["Energia elétrica"], pitfalls: ["Considerar que a energia acumulada é destruída no processo."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Comparar o funcionamento de uma torradeira e um ventilador." },
+                    { step: 2, action: "Duvidar", detail: "Em qual forma útil de energia o chuveiro transforma a eletricidade?" },
+                    { step: 3, action: "Teorizar", detail: "Categorizar aparelhos receptores em térmicos, mecânicos e luminosos." }
+                ], sampleQuestionTip: "Associar o eletrodoméstico à transformação principal realizada."
+            },
+            {
+                id: "8EF06_CN_9A", bncc: "EF08CI04", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Verificar o consumo de energia elétrica de aparelhos eletroeletrônicos, assim como as grandezas e as ações que influenciam nesse consumo.",
+                bookTheme: "1. Eletricidade", bookChapter: "Capítulo 2: Cargas Elétricas e Modelo Atômico", bookPage: "Página 33",
+                focus: "Calcular consumo em kWh relacionando potência (Watts) e tempo de uso (horas).",
+                prerequisites: ["Potência e tempo"], pitfalls: ["Confundir voltagem (Volts) com potência elétrica (Watts)."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a potência impressa em uma lâmpada LED x incandescente." },
+                    { step: 2, action: "Duvidar", detail: "Por que aparelhos com resistências térmicas consomem mais energia?" },
+                    { step: 3, action: "Teorizar", detail: "Calcular o gasto mensal usando Consumo = (Potência x Tempo) / 1000." }
+                ], sampleQuestionTip: "Determinar o eletrodoméstico responsável pelo maior consumo na tabela."
+            },
+            {
+                id: "8EF08_CN_9A", bncc: "EF08CI06", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas.",
+                bookTheme: "1. Eletricidade", bookChapter: "Capítulo 2: Cargas Elétricas e Modelo Atômico", bookPage: "Página 33",
+                focus: "Compreender o papel do movimento da turbina para acionamento do gerador elétrico.",
+                prerequisites: ["Indução magnética"], pitfalls: ["Achar que a água gera luz diretamente sem gerador."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar um modelo de gerador manual (dínamo de bicicleta)." },
+                    { step: 2, action: "Duvidar", detail: "Como a força mecânica de rotação se converte em eletricidade?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear o fluxo: Fonte -> Turbina -> Gerador -> Rede elétrica." }
+                ], sampleQuestionTip: "Identificar a etapa crucial do gerador no esquema da usina."
+            },
+            {
+                id: "8EF09_CN_9A", bncc: "EF08CI06", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia elétrica.",
+                bookTheme: "2. Ação humana e desequilíbrios ambientais", bookChapter: "Capítulo 12: Desenvolvimento Sustentável", bookPage: "Página 244",
+                focus: "Analisar impactos de alagamentos, gases estufa e resíduos nucleares.",
+                prerequisites: ["Impactos socioambientais"], pitfalls: ["Acreditar que fontes limpas não têm impacto de instalação."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analizar fotos do represamento para construção de hidrelétricas." },
+                    { step: 2, action: "Duvidar", detail: "Quais os prejuízos à biodiversidade causados pelo alagamento de florestas?" },
+                    { step: 3, action: "Teorizar", detail: "Montar quadro de vantagens x impactos de usinas termo, hídricas e eólicas." }
+                ], sampleQuestionTip: "Indicar o impacto socioambiental característico da usina representada."
+            },
+            {
+                id: "8EF10_CN_9A", bncc: "EF08CI06", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Reconhecer os tipos de usinas de geração de energia elétrica.",
+                bookTheme: "1. Eletricidade", bookChapter: "Capítulo 2: Cargas Elétricas e Modelo Atômico", bookPage: "Página 33",
+                focus: "Identificar Usinas Hidrelétricas, Termelétricas, Nucleares, Eólicas e Solares Fotovoltaicas.",
+                prerequisites: ["Fontes de energia"], pitfalls: ["Inverter usinas solares térmicas com fotovoltaicas."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Exibir infográficos sobre os tipos de matrizes elétricas." },
+                    { step: 2, action: "Duvidar", detail: "Qual usina utiliza a queima de biomassa para gerar vapor?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar as usinas segundo o recurso primário utilizado." }
+                ], sampleQuestionTip: "Reconhecer a usina elétrica apresentada na ilustração."
+            },
+            {
+                id: "8EF11_CN_9A", bncc: "EF08CI07", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Reconhecer os diferentes processos reprodutivos dos seres vivos.",
+                bookTheme: "4. Cromossomos e reprodução humana", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Página 203",
+                focus: "Diferenciar reprodução sexuada (com variabilidade) e assexuada (mitótica/brotamento).",
+                prerequisites: ["Gametas e fertilização"], pitfalls: ["Confundir recombinação genética com clonagem natural."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Comparar a divisão por cissiparidade de bactérias com a fecundação humana." },
+                    { step: 2, action: "Duvidar", detail: "Por que filhos de reprodução sexuada não são idênticos aos pais?" },
+                    { step: 3, action: "Teorizar", detail: "Relacionar meiose e fecundação à variabilidade genética." }
+                ], sampleQuestionTip: "Classificar a forma reprodutiva do organismo conforme a variabilidade."
+            },
+            {
+                id: "8EF13_CN_9A", bncc: "EF08CI08", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias.",
+                bookTheme: "4. Cromossomos e reprodução humana", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Página 203",
+                focus: "Compreender a atuação do eixo Hipófise-Gônadas (LH, FSH, Testosterona, Estrogênio).",
+                prerequisites: ["Glândulas sexuais"], pitfalls: ["Confundir hormônios sexuais com hormônios metabólicos."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar gráficos de picos hormonais na puberdade." },
+                    { step: 2, action: "Duvidar", detail: "Qual sinal químico induz o aparecimento de pelos e voz grave?" },
+                    { step: 3, action: "Teorizar", detail: "Esquematizar a produção e ação dos hormônios gonadotróficos." }
+                ], sampleQuestionTip: "Associar o hormônio à transformação corporal secundária induzida."
+            },
+            {
+                id: "8EF14_CN_9A", bncc: "EF08CI09", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Reconhecer o princípio de ação dos métodos contraceptivos.",
+                bookTheme: "4. Cromossomos e reprodução humana", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Página 203",
+                focus: "Classificar métodos em barreira, hormonais, intrauterinos e cirúrgicos.",
+                prerequisites: ["Fisiologia reprodutiva"], pitfalls: ["Acreditar que anticoncepcionais orais protegem de infecções."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar amostras físicas e imagens de preservativos e DIUs." },
+                    { step: 2, action: "Duvidar", detail: "Como a pílula impede o encontro dos gametas?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar os métodos pelo bloqueio de ovulação ou encontro gamético." }
+                ], sampleQuestionTip: "Indicar o método de prevenção de barreira adequado."
+            },
+            {
+                id: "8EF15_CN_9A", bncc: "EF08CI10", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Reconhecer as características das infecções sexualmente transmissíveis (IST).",
+                bookTheme: "4. Cromossomos e reprodução humana", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Página 203",
+                focus: "Identificar formas de contágio, agente causador (vírus/bactéria) e prevenção de ISTs.",
+                prerequisites: ["Patógenos e vacinas"], pitfalls: ["Mitos de transmissão por compartilhamento de utensílios sem fluido."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar cartazes educativos sobre Sífilis, HPV e HIV." },
+                    { step: 2, action: "Duvidar", detail: "Por que o uso do preservativo é insubstituível na prevenção das ISTs?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear contágio, prevenção primária e tratamento das principais ISTs." }
+                ], sampleQuestionTip: "Indicar a medida preventiva correta contra infecções sexuais."
+            },
+            {
+                id: "8EF17_CN_9A", bncc: "EF08CI13", unit: "TU - Terra e Universo", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.",
+                bookTheme: "5. Os planetas e o Sistema Solar", bookChapter: "Capítulo 9: Gravitação", bookPage: "Página 175",
+                focus: "Relacionar rotação (24h) e translação + inclinação do eixo terrestre (estações).",
+                prerequisites: ["Eixo terrestre e órbita"], pitfalls: ["Atribuir as estações do ano à distância entre a Terra e o Sol."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Simular a órbita inclinada da Terra em torno de uma lâmpada focal." },
+                    { step: 2, action: "Duvidar", detail: "Por que quando é verão no Hemisfério Sul é inverno no Hemisfério Norte?" },
+                    { step: 3, action: "Teorizar", detail: "Conectar Solstícios/Equinócios à inclinação e raio de luz incidental." }
+                ], sampleQuestionTip: "Identificar a causa determinante das estações do ano."
+            },
+
+            // --- CICLO II (Habilidades Oficiais do 9º Ano) ---
+            {
+                id: "9EF01_CN", bncc: "EF09CI01", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Classificar, com base nos modelos de constituição submicroscópica, os estados físicos da matéria.",
+                bookTheme: "1. Recordando mudanças de fase da água", bookChapter: "Capítulo 1: Reações Químicas e Teoria Atômica de Dalton", bookPage: "Página 14",
+                focus: "Relacionar arranjo molecular, coesão e energia cinética aos estados sólido, líquido e gasoso.",
+                prerequisites: ["Estados físicos"], pitfalls: ["Considerar que moléculas de gás possuem alta força de atração."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Acompanhar simulação digital do arranjo de partículas ao aquecer." },
+                    { step: 2, action: "Duvidar", detail: "Como o espaço entre as partículas varia entre o gelo e o vapor?" },
+                    { step: 3, action: "Teorizar", detail: "Representar submicroscopicamente a agitação e a força de coesão." }
+                ], sampleQuestionTip: "Identificar o modelo atômico-molecular correspondente ao estado gasoso."
+            },
+            {
+                id: "9EF02_CN_C2", bncc: "EF09CI01", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Inferir as mudanças de estado físico da matéria a partir da observação dos modelos de constituição submicroscópica.",
+                bookTheme: "1. Recordando mudanças de fase da água", bookChapter: "Capítulo 1: Reações Químicas e Teoria Atômica de Dalton", bookPage: "Página 14",
+                focus: "Identificar fusão, vaporização, condensação e solidificação no nível molecular.",
+                prerequisites: ["Mudança de fase"], pitfalls: ["Acreditar que na ebulição as moléculas se quebram em átomos livres."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar o gráfico de curva de aquecimento de substância pura." },
+                    { step: 2, action: "Duvidar", detail: "O que acontece com a energia absorvida durante o patamar de fusão?" },
+                    { step: 3, action: "Teorizar", detail: "Descrever o rompimento das interações moleculares na transição." }
+                ], sampleQuestionTip: "Associar o esquema molecular à mudança de fase por ganho de calor."
+            },
+            {
+                id: "9EF06_CN", bncc: "EF09CI03", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer que os materiais são constituídos por partículas muito pequenas, com diferentes níveis de organização e espaços vazios.",
+                bookTheme: "6. A Teoria Atômica de Dalton", bookChapter: "Capítulo 1: Reações Químicas e Teoria Atômica de Dalton", bookPage: "Página 20",
+                focus: "Compreender a matéria descontínua formada por átomos e moléculas separadas por vazios.",
+                prerequisites: ["Conceito de Átomo"], pitfalls: ["Acreditar que a matéria é contínua e maciça em escala microscópica."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Misturar 50mL de água e 50mL de álcool e medir o volume final (<100mL)." },
+                    { step: 2, action: "Duvidar", detail: "Para onde foi o volume 'desaparecido' na mistura?" },
+                    { step: 3, action: "Teorizar", detail: "Explicar o preenchimento dos espaços vazios entre as partículas." }
+                ], sampleQuestionTip: "Selecionar a afirmação que descreve a descontinuidade da matéria."
+            },
+            {
+                id: "9EF07_CN_C2", bncc: "EF09CI04", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Explicar as cores dos objetos estabelecendo uma relação com a luz que os ilumina.",
+                bookTheme: "2. As componentes da luz branca / 4. Cores primárias de luz e visão", bookChapter: "Capítulo 6: Óptica", bookPage: "Páginas 109 e 111",
+                focus: "Compreender a cor por reflexão seletiva e absorção das demais frequências de luz.",
+                prerequisites: ["Reflexão da luz"], pitfalls: ["Acreditar que o objeto 'possui' cor no escuro absoluto."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Iluminar uma maçã vermelha com luz verde dentro da câmara escura." },
+                    { step: 2, action: "Duvidar", detail: "Por que a maçã parece preta sob a iluminação verde?" },
+                    { step: 3, action: "Teorizar", detail: "Explicar que enxergamos a cor do comprimento de luz refletido." }
+                ], sampleQuestionTip: "Indicar a cor percebida do objeto sob luz monocromática."
+            },
+            {
+                id: "9EF08_CN", bncc: "EF09CI04", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer as cores primárias e secundárias.",
+                bookTheme: "3. Cores primárias de luz / 5. Cores primárias de corantes", bookChapter: "Capítulo 6: Óptica", bookPage: "Páginas 110 e 112",
+                focus: "Diferenciar síntese aditiva da luz (RGB) e síntese subtrativa de pigmentos (CMY).",
+                prerequisites: ["Luz e cores"], pitfalls: ["Confundir as cores primárias de luz com as de tinta/pigmento."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Projetar lanternas Vermelha, Verde e Azul sobre superfície branca." },
+                    { step: 2, action: "Duvidar", detail: "Qual cor resulta da sobreposição das três luzes primárias?" },
+                    { step: 3, action: "Teorizar", detail: "Montar diagrama do sistema aditivo (Vermelho + Verde = Amarelo)." }
+                ], sampleQuestionTip: "Identificar a cor resultante da mistura de feixes de luz primários."
+            },
+            {
+                id: "9EF09_CN", bncc: "EF09CI06", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Classificar as radiações eletromagnéticas.",
+                bookTheme: "2. Ondas: mecânicas versus eletromagnéticas", bookChapter: "Capítulo 3: Ondas Eletromagnéticas e Modelo de Bohr", bookPage: "Página 53",
+                focus: "Ordenar o espectro eletromagnético por frequência e comprimento de onda.",
+                prerequisites: ["Ondas"], pitfalls: ["Confundir ondas sonoras (mecânicas) com ondas de rádio (eletromagnéticas)."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Examinar a escala do espectro (Rádio, Micro-ondas, UV, Raio-X)." },
+                    { step: 2, action: "Duvidar", detail: "Qual radiação possui maior energia e menor comprimento de onda?" },
+                    { step: 3, action: "Teorizar", detail: "Sistematizar a relação inversa entre Frequência e Comprimento de onda." }
+                ], sampleQuestionTip: "Classificar a radiação apontada conforme sua posição no espectro."
+            },
+            {
+                id: "9EF10_CN_C2", bncc: "EF09CI06", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer as aplicações das radiações eletromagnéticas.",
+                bookTheme: "3. Características e aplicações das ondas eletromagnéticas", bookChapter: "Capítulo 3: Ondas Eletromagnéticas e Modelo de Bohr", bookPage: "Página 54",
+                focus: "Associar Raio-X à radiografia, Infravemelho ao controle remoto, UV à esterilização e Micro-ondas às telecomunicações.",
+                prerequisites: ["Espectro eletromagnético"], pitfalls: ["Atribuir radiação ionizante nociva a ondas de rádio e Wi-Fi."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar imagens de exames de Raio-X e termografia por infravermelho." },
+                    { step: 2, action: "Duvidar", detail: "Por que o técnico de radiologia utiliza um avental de chumbo?" },
+                    { step: 3, action: "Teorizar", detail: "Diferenciar radiações ionizantes de não ionizantes e seus usos." }
+                ], sampleQuestionTip: "Relacionar o tipo de radiação eletromagnética ao seu uso tecnológico correto."
+            },
+            {
+                id: "9EF11_CN", bncc: "EF09CI08", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Interpretar como as características hereditárias são transmitidas às gerações seguintes.",
+                bookTheme: "9. Hereditariedade em humanos", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Página 210",
+                focus: "Compreender a transmissão do DNA por meio dos gametas na fecundação.",
+                prerequisites: ["Células e Núcleo"], pitfalls: ["Acreditar que características adquiridas em vida são herdadas."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar heredogramas familiares simples de tipo sanguíneo ou cor dos olhos." },
+                    { step: 2, action: "Duvidar", detail: "Como um traço biológico 'pula' uma geração e reaparece nos netos?" },
+                    { step: 3, action: "Teorizar", detail: "Esquematizar a união dos alelos maternos e paternos no zigoto." }
+                ], sampleQuestionTip: "Interpretar a probabilidade de transmissão do alelo no heredograma."
+            },
+            {
+                id: "9EF13_CN", bncc: "EF09CI09", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer a contribuição de Mendel para os estudos da genética.",
+                bookTheme: "1. Mendel e as ervilhas", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Página 197",
+                focus: "Compreender os experimentos de hibridização de Pisum sativum e a segregação dos fatores.",
+                prerequisites: ["Hereditariedade"], pitfalls: ["Atribuir a Mendel o descobrimento da estrutura em hélice do DNA."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Revisar o cruzamento entre ervilhas amarelas e verdes puras (Geração P e F1)." },
+                    { step: 2, action: "Duvidar", detail: "Por que na geração F2 a cor verde reapareceu na proporção de 3:1?" },
+                    { step: 3, action: "Teorizar", detail: "Formular a Primeira Lei de Mendel (Princípio da Segregação dos Fatores)." }
+                ], sampleQuestionTip: "Identificar a conclusão histórica de Mendel nos seus experimentos."
+            },
+            {
+                id: "9EF14_CN", bncc: "EF09CI09", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer os conceitos básicos para o estudo da hereditariedade.",
+                bookTheme: "5. O que é Genética? / 7. Genótipo / 8. Fenótipo", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Páginas 205 a 207",
+                focus: "Diferenciar Genótipo, Fenótipo, Alelo Dominante, Recessivo, Homozigoto e Heterozigoto.",
+                prerequisites: ["Cromossomos"], pitfalls: ["Confundir Genótipo (genes) com Fenótipo (característica expressa)."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar frases: 'Ele possui sangue tipo O' x 'Genótipo ii'." },
+                    { step: 2, action: "Duvidar", detail: "O ambiente pode alterar o fenótipo sem mudar o genótipo?" },
+                    { step: 3, action: "Teorizar", detail: "Elaborar um glossário dos termos fundamentais da genética." }
+                ], sampleQuestionTip: "Classificar a constituição genética (Aa/aa) no conceito correto."
+            },
+            {
+                id: "9EF18_CN", bncc: "EF09CI14", unit: "TU - Terra e Universo", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer os corpos que compõem o Sistema Solar.",
+                bookTheme: "5. Os planetas e o Sistema Solar", bookChapter: "Capítulo 9: Gravitação", bookPage: "Página 175",
+                focus: "Identificar o Sol, planetas rochosos e gasosos, satélites, cometas e asteroides.",
+                prerequisites: ["Astronomia básica"], pitfalls: ["Classificar a Lua ou cometas como planetas."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Examinar modelo em escala das órbitas planetárias." },
+                    { step: 2, action: "Duvidar", detail: "O que diferencia um planeta rochoso de um gigante gasoso?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar os corpos celestes segundo massa, composição e órbita." }
+                ], sampleQuestionTip: "Reconhecer o corpo celeste descrito pelas suas características orbitais."
+            },
+
+            // --- CICLO III (Habilidades Oficiais do 9º Ano) ---
+            {
+                id: "9EF02_CN_C3", bncc: "EF09CI01", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Inferir as mudanças de estado físico da matéria a partir da observação dos modelos de constituição submicroscópica.",
+                bookTheme: "1. Recordando mudanças de fase da água", bookChapter: "Capítulo 1: Reações Químicas e Teoria Atômica de Dalton", bookPage: "Página 14",
+                focus: "Mapear sublimação, condensação e vaporização na perspectiva cinético-molecular.",
+                prerequisites: ["Estados físicos da matéria"], pitfalls: ["Confundir evapo-transpiração com reação de síntese."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Ver vídeo em câmera lenta da sublimação do gelo seco (CO2)." },
+                    { step: 2, action: "Duvidar", detail: "Como as partículas passam direto do estado sólido para o gasoso?" },
+                    { step: 3, action: "Teorizar", detail: "Representar o ganho de energia cinética rompendo forças de atração." }
+                ], sampleQuestionTip: "Identificar o processo de sublimação no modelo submicroscópico."
+            },
+            {
+                id: "9EF03_CN", bncc: "EF09CI02", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Inferir, em situações que ocorrem transformações químicas, a relação estabelecida entre a conservação das massas e as propriedades dos átomos.",
+                bookTheme: "4. A Lei da Conservação da Massa / 9. Explicação para as Leis de Lavoisier e de Proust", bookChapter: "Capítulo 1: Reações Químicas e Teoria Atômica de Dalton", bookPage: "Páginas 18 e 24",
+                focus: "Compreender que em reações em sistemas fechados a massa se conserva pois os átomos são rearranjados.",
+                prerequisites: ["Reações Químicas"], pitfalls: ["Acreditar que a massa 'some' em reações com liberação de gás."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Pesar comprimido efervescente em água num frasco aberto x num frasco fechado." },
+                    { step: 2, action: "Duvidar", detail: "Por que a balança marca menos massa quando o frasco fica aberto?" },
+                    { step: 3, action: "Teorizar", detail: "Enunciar a Lei de Lavoisier ('Na natureza nada se cria, nada se perde...')." }
+                ], sampleQuestionTip: "Calcular a massa do produto obtido aplicando a Lei de Lavoisier."
+            },
+            {
+                id: "9EF04_CN", bncc: "EF09CI02", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Interpretar, em uma equação química, a conservação da massa entre reagentes e produtos.",
+                bookTheme: "8. Equação química", bookChapter: "Capítulo 1: Reações Químicas e Teoria Atômica de Dalton", bookPage: "Página 23",
+                focus: "Verificar se o número de átomos de cada elemento é igual nos reagentes e produtos (balanceamento).",
+                prerequisites: ["Símbolos e Fórmulas"], pitfalls: ["Alterar os subíndices da fórmula para tentar balancear a reação."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a equação não balanceada: H2 + O2 -> H2O." },
+                    { step: 2, action: "Duvidar", detail: "Para onde foi o segundo átomo de Oxigênio do reagente?" },
+                    { step: 3, action: "Teorizar", detail: "Ajustar os coeficientes estequiométricos (2 H2 + O2 -> 2 H2O)." }
+                ], sampleQuestionTip: "Identificar os coeficientes corretos que garantem a conservação da massa."
+            },
+            {
+                id: "9EF05_CN", bncc: "EF09CI03", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Interpretar, a partir da evolução histórica de teorias e de tecnologias, os diferentes modelos atômicos.",
+                bookTheme: "8. Modelo atômico de Rutherford / Cap. 3: 4. Modelo atômico de Bohr", bookChapter: "Capítulo 2 e 3", bookPage: "Páginas 39 e 59",
+                focus: "Diferenciar modelos de Dalton (bola de bilhar), Thomson (pudim de ameixas), Rutherford (planetário) e Bohr (órbitas quantizadas).",
+                prerequisites: ["Eletricidade e Cargas"], pitfalls: ["Acreditar que o modelo de Dalton já possuía elétrons."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a experiência de Rutherford com o folheto de ouro e partículas alfa." },
+                    { step: 2, action: "Duvidar", detail: "Por que algumas partículas alfa ricochetearam enquanto a maioria atravessou?" },
+                    { step: 3, action: "Teorizar", detail: "Construir linha do tempo comparativa da evolução dos modelos atômicos." }
+                ], sampleQuestionTip: "Associar o cientista ao postulado do seu modelo atômico."
+            },
+            {
+                id: "9EF07_CN_C3", bncc: "EF09CI04", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Explicar as cores dos objetos estabelecendo uma relação com a luz que os ilumina.",
+                bookTheme: "6. Reflexão, refração e absorção", bookChapter: "Capítulo 6: Óptica", bookPage: "Página 114",
+                focus: "Compreender os fenômenos de absorção total (cor preta) e reflexão difusa total (cor branca).",
+                prerequisites: ["Comportamento da luz"], pitfalls: ["Inverter o conceito de absorção e reflexão."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Comparar o aquecimento de um tecido preto e um tecido branco ao Sol." },
+                    { step: 2, action: "Duvidar", detail: "Por que o objeto preto esquenta mais rápido sob a luz solar?" },
+                    { step: 3, action: "Teorizar", detail: "Explicar a conversão da radiação luminosa absorvida em energia térmica." }
+                ], sampleQuestionTip: "Explicar por que a folha da planta parece verde à luz do dia."
+            },
+            {
+                id: "9EF10_CN_C3", bncc: "EF09CI06", unit: "ME - Matéria e Energia", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer as aplicações das radiações eletromagnéticas.",
+                bookTheme: "3. Características e aplicações das ondas eletromagnéticas", bookChapter: "Capítulo 3: Ondas Eletromagnéticas e Modelo de Bohr", bookPage: "Página 54",
+                focus: "Reconhecer a radioterapia, tomografia, radiodifusão e telefonia móvel.",
+                prerequisites: ["Radiações"], pitfalls: ["Confundir radiações com contaminação nuclear contagiosa."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar o funcionamento dos aparelhos de ultrassom x tomografia computadorizada." },
+                    { step: 2, action: "Duvidar", detail: "Qual dos exames utiliza radiação eletromagnética ionizante de alta energia?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear o uso médico e comunicativo dos diferentes tipos de ondas." }
+                ], sampleQuestionTip: "Identificar a aplicação médica correspondente aos Raios-X ou Raios Gama."
+            },
+            {
+                id: "9EF12_CN", bncc: "EF09CI09", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Verificar, a partir da aplicação da 1ª lei de Mendel, a expressão de características genéticas em uma população.",
+                bookTheme: "1. Mendel e as ervilhas / 6. Alelos localizam-se em cromossomos homólogos", bookChapter: "Capítulo 10: Genética e Hereditariedade", bookPage: "Páginas 197 e 205",
+                focus: "Resolver cruzamentos monohíbridos utilizando o Quadro de Punnett (proporções 3:1 e 1:2:1).",
+                prerequisites: ["Alelos dominantes e recessivos"], pitfalls: ["Errar o preenchimento dos gametas nas linhas do Quadro de Punnett."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Cruzamento entre dois indivíduos heterozigotos para o albinismo (Aa x Aa)." },
+                    { step: 2, action: "Duvidar", detail: "Qual a porcentagem de chance de o casal ter uma criança albina (aa)?" },
+                    { step: 3, action: "Teorizar", detail: "Desenhar o Quadro de Punnett e calcular genótipos (25% aa) e fenótipos." }
+                ], sampleQuestionTip: "Calcular a probabilidade genotípica resultante do cruzamento."
+            },
+            {
+                id: "9EF15_CN", bncc: "EF09CI10", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Comparar as ideias evolucionistas de Lamarck e Darwin.",
+                bookTheme: "3. A explicação lamarckista / 4. A explicação darwinista", bookChapter: "Capítulo 11: Evolução dos Seres Vivos", bookPage: "Página 223",
+                focus: "Diferenciar Uso/Desuso e Transmissão de Caracteres Adquiridos (Lamarck) de Variabilidade e Seleção Natural (Darwin).",
+                prerequisites: ["Conceito de evolução"], pitfalls: ["Acreditar que a seleção natural induz mutações propositais para o ambiente."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar o caso clássico do pescoço das girafas em ilustrações das duas teorias." },
+                    { step: 2, action: "Duvidar", detail: "O pescoço esticou pelo uso contínuo ou sobreviveram as girafas que já nasceram com pescoço longo?" },
+                    { step: 3, action: "Teorizar", detail: "Tabela comparativa: Lamarckismo (transformismo ativo) x Darwinismo (seleção do mais apto)." }
+                ], sampleQuestionTip: "Diferenciar o argumento lamarckista do argumento darwinista no texto."
+            },
+            {
+                id: "9EF16_CN", bncc: "EF09CI11", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Explicar o processo de evolução e o fenômeno da biodiversidade com base no conceito de seleção natural.",
+                bookTheme: "4. A explicação darwinista para a evolução", bookChapter: "Capítulo 11: Evolução dos Seres Vivos", bookPage: "Página 223",
+                focus: "Compreender que o meio seleciona as variantes genéticas mais adaptadas à sobrevivência e reprodução.",
+                prerequisites: ["Variabilidade genética"], pitfalls: ["Dizer que 'o mais forte' sempre vence, em vez do 'mais adaptado'."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar a resistência de bactérias a antibióticos ou mariposas de Manchester." },
+                    { step: 2, action: "Duvidar", detail: "O antibiótico 'cria' bactérias resistentes ou apenas elimina as sensíveis?" },
+                    { step: 3, action: "Teorizar", detail: "Explicar a Seleção Natural como filtro ecológico de populações." }
+                ], sampleQuestionTip: "Explicar o surgimento de populações resistentes pela Seleção Natural."
+            },
+            {
+                id: "9EF17_CN", bncc: "EF09CI11", unit: "VE - Vida e Evolução", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Reconhecer fatores que determinam o processo de especiação.",
+                bookTheme: "5. Como se formam novas espécies?", bookChapter: "Capítulo 11: Evolução dos Seres Vivos", bookPage: "Página 224",
+                focus: "Identificar o Isolamento Geográfico e o posterior Isolamento Reprodutivo na origem de novas espécies.",
+                prerequisites: ["Conceito de Espécie"], pitfalls: ["Achar que o isolamento geográfico sozinho já define duas novas espécies sem interrupção reprodutiva."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar o surgimento de um rio separando uma população inicial de roedores." },
+                    { step: 2, action: "Duvidar", detail: "O que acontece se após milhares de anos o rio secar e as duas populações se reencontrarem?" },
+                    { step: 3, action: "Teorizar", detail: "Esquematizar as etapas da Especiação Alopátrica." }
+                ], sampleQuestionTip: "Identificar a etapa crucial de isolamento geográfico no processo."
+            },
+            {
+                id: "9EF19_CN", bncc: "EF09CI17", unit: "TU - Terra e Universo", grade: "9º Ano", applicationYear: "2026", cycle: "Ciclo III",
+                caedSkill: "Organizar o ciclo evolutivo de uma estrela.",
+                bookTheme: "9. Ciclo de vida das estrelas", bookChapter: "Capítulo 9: Gravitação", bookPage: "Página 186",
+                focus: "Mapear a evolução estelar: Nebulosa -> Estrela (Fusão) -> Gigante Vermelha -> Anã Branca ou Supernova -> Buraco Negro.",
+                prerequisites: ["Estrelas e Fusão Nuclear"], pitfalls: ["Acreditar que estrelas de pequena massa como o Sol viram buracos negros."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar fotos da Nebulosa de Órion e de uma Supernova gravadas pelo Hubble." },
+                    { step: 2, action: "Duvidar", detail: "Qual o 'combustível' que a estrela queima no seu núcleo e o que ocorre quando ele acaba?" },
+                    { step: 3, action: "Teorizar", detail: "Montar o fluxograma da evolução estelar segundo a massa da estrela." }
+                ], sampleQuestionTip: "Ordenar as fases do ciclo de vida de uma estrela semelhante ao Sol."
+            },
+
+            // =========================================================================
+            // --- TURMAS ANTERIORES (6º, 7º e 8º Anos) PERFEITAMENTE PRESERVADAS ---
+            // =========================================================================
+            {
+                id: "6EF01_CN_C1", bncc: "EF05CI02", unit: "ME - Matéria e Energia", grade: "6º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Interpretar o ciclo da água.",
+                bookTheme: "8. Hidrosfera e ciclo da água", bookChapter: "Capítulo 10: Atmosfera e Hidrosfera", bookPage: "Página 176",
+                focus: "Identificar as etapas de evaporação, condensação, precipitação, transpiração e infiltração no ciclo da água.",
+                prerequisites: ["Mudanças de estado físico da água"], pitfalls: ["Confundir evaporação com condensação nas nuvens."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Analisar um ciclo da água em um terrário fechado." },
+                    { step: 2, action: "Duvidar", detail: "De onde vêm as gotas de água que se formam no teto do terrário?" },
+                    { step: 3, action: "Teorizar", detail: "Mapear o ciclo hidrológico completo no quadro." }
+                ], sampleQuestionTip: "Identificar a etapa de mudança de fase indicada na ilustração do ciclo da água."
+            },
+            {
+                id: "7EF02_CN", bncc: "EF07CI01", unit: "ME - Matéria e Energia", grade: "7º Ano", applicationYear: "2026", cycle: "Ciclo II",
+                caedSkill: "Reconhecer dispositivos mecânicos que facilitam a realização do trabalho.",
+                bookTheme: "1 a 9. Máquinas simples", bookChapter: "Capítulo 10: Máquinas Simples", bookPage: "Páginas 182 a 188",
+                focus: "Identificar engrenagens, roldanas, plano inclinado e alavancas no cotidiano.",
+                prerequisites: ["Força e movimento"], pitfalls: ["Confundir engrenagem com polia."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Examinar o funcionamento de uma bicicleta." },
+                    { step: 2, action: "Duvidar", detail: "Como catracas e correntes facilitam o pedalar?" },
+                    { step: 3, action: "Teorizar", detail: "Classificar as máquinas simples da bicicleta." }
+                ], sampleQuestionTip: "Identificar o dispositivo mecânico presente na ferramenta."
+            },
+            {
+                id: "7EF01_CN_8A", bncc: "EF07CI01", unit: "ME - Matéria e Energia", grade: "8º Ano", applicationYear: "2026", cycle: "Ciclo I",
+                caedSkill: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples.",
+                bookTheme: "O que são máquinas simples?", bookChapter: "Capítulo 10: Máquinas Simples", bookPage: "Página 182",
+                focus: "Compreender que máquinas simples multiplicam forças facilitando o trabalho.",
+                prerequisites: ["Força e movimento"], pitfalls: ["Acreditar que máquinas criam energia."],
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: "Levantar bloco usando uma alavanca." },
+                    { step: 2, action: "Duvidar", detail: "Por que a alavanca diminui a força requerida?" },
+                    { step: 3, action: "Teorizar", detail: "Calcular Trabalho = Força x Distância." }
+                ], sampleQuestionTip: "Calcular vantagem mecânica de uma alavanca."
+            }
+        ];
+
+        let selectedId = "9EF01_CN";
+
+        function showHome() {
+            document.getElementById('view-home').classList.remove('hidden');
+            document.getElementById('view-dashboard').classList.add('hidden');
+            document.getElementById('view-admin').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openGrade(gradeName) {
+            currentTab = gradeName;
+            switchTab(gradeName);
+        }
+
+        function switchTab(tabName) {
+            if (tabName === 'admin') {
+                document.getElementById('view-home').classList.add('hidden');
+                document.getElementById('view-dashboard').classList.add('hidden');
+                document.getElementById('view-admin').classList.remove('hidden');
+                return;
+            }
+
+            currentTab = tabName;
+
+            document.getElementById('view-home').classList.add('hidden');
+            document.getElementById('view-admin').classList.add('hidden');
+            document.getElementById('view-dashboard').classList.remove('hidden');
+
+            // Banner por turma
+            const theme = gradeThemes[tabName] || gradeThemes['9º Ano'];
+            const banner = document.getElementById('class-banner');
+            banner.className = `rounded-2xl p-6 text-white shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 transition-all ${theme.bg}`;
+            document.getElementById('class-icon').setAttribute('data-lucide', theme.icon);
+            document.getElementById('class-title').innerText = theme.title;
+            document.getElementById('active-class-label').innerText = tabName.toUpperCase();
+
+            lucide.createIcons();
+            renderList();
+        }
+
+        function renderList() {
+            const cycleVal = document.getElementById('filter-cycle').value;
+            const unitVal = document.getElementById('filter-unit').value;
+
+            const filtered = db.filter(item => {
+                const matchTab = item.grade === currentTab;
+                const matchCycle = cycleVal === 'todos' || item.cycle === cycleVal;
+                const matchUnit = unitVal === 'todos' || item.unit === unitVal;
+
+                return matchTab && matchCycle && matchUnit;
+            });
+
+            document.getElementById('results-count').innerText = filtered.length;
+            const container = document.getElementById('skills-list');
+            container.innerHTML = '';
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="p-4 bg-white rounded-xl border border-slate-200 text-center text-slate-500 text-xs">Nenhuma habilidade encontrada para os filtros selecionados no <strong>${currentTab}</strong>.</div>`;
+                document.getElementById('detail-card').innerHTML = `<div class="text-center text-slate-400 py-12 text-sm">Nenhuma habilidade selecionada.</div>`;
+                return;
+            }
+
+            if (!filtered.some(i => i.id === selectedId)) {
+                selectedId = filtered[0].id;
+            }
+
+            filtered.forEach(item => {
+                const isActive = item.id === selectedId;
+                const card = document.createElement('div');
+                card.className = `p-3.5 rounded-xl border transition-all cursor-pointer ${
+                    isActive 
+                    ? 'bg-rose-50/70 border-rose-600 shadow-sm ring-1 ring-rose-600' 
+                    : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/80'
+                }`;
+                card.onclick = () => {
+                    selectedId = item.id;
+                    renderList();
+                    renderDetail();
+                };
+
+                const cleanCode = item.id.split('_')[0].replace('C1', '').replace('C2', '').replace('C3', '').replace('7A', '').replace('8A', '').replace('9A', '');
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between mb-1.5">
+                        <span class="font-bold text-[11px] px-2 py-0.5 rounded ${isActive ? 'bg-rose-600 text-white' : 'bg-slate-100 text-slate-700'}">${cleanCode}</span>
+                        <span class="text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded border border-amber-200">${item.cycle}</span>
+                    </div>
+                    <h3 class="text-xs font-bold text-slate-900 line-clamp-2 mb-1">${item.caedSkill}</h3>
+                    <p class="text-[11px] text-slate-500 line-clamp-1">📖 ${item.bookTheme}</p>
+                `;
+                container.appendChild(card);
+            });
+
+            renderDetail();
+        }
+
+        function renderDetail() {
+            const item = db.find(i => i.id === selectedId);
+            const container = document.getElementById('detail-card');
+
+            if (!item) return;
+
+            const cleanCode = item.id.split('_')[0].replace('C1', '').replace('C2', '').replace('C3', '').replace('7A', '').replace('8A', '').replace('9A', '');
+
+            container.innerHTML = `
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4 mb-6">
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-amber-100 text-amber-900 font-extrabold text-xs px-3 py-1.5 rounded-lg border border-amber-200">
+                            CÓDIGO CAEd: ${cleanCode}
+                        </span>
+                        <span class="bg-indigo-100 text-indigo-800 font-extrabold text-xs px-3 py-1.5 rounded-lg border border-indigo-200">
+                            BNCC: ${item.bncc}
+                        </span>
+                    </div>
+                    <div class="flex items-center space-x-2 text-xs font-bold">
+                        <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg border border-slate-200">${item.grade}</span>
+                        <span class="bg-amber-100 text-amber-900 px-2.5 py-1 rounded-lg border border-amber-200">${item.cycle}</span>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-snug mb-4">
+                        ${item.caedSkill}
+                    </h2>
+                    
+                    <div class="bg-rose-50/50 p-4 rounded-xl border border-rose-100/80 space-y-1.5">
+                        <div class="flex items-center gap-2 text-rose-900 font-bold text-xs uppercase tracking-wider">
+                            <i data-lucide="book-open" class="w-4 h-4 text-rose-600"></i>
+                            <span>ALINHAMENTO NO LIVRO DIDÁTICO</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-800 font-medium">
+                            <strong>Tema:</strong> ${item.bookTheme}
+                        </p>
+                        <p class="text-xs text-slate-600">
+                            <strong>Localização:</strong> ${item.bookChapter} • <span class="bg-rose-100 text-rose-900 font-bold px-2 py-0.5 rounded">${item.bookPage}</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-emerald-50/50 border border-emerald-200 rounded-xl p-4">
+                        <div class="flex items-center space-x-2 text-emerald-800 font-bold text-xs uppercase mb-2">
+                            <i data-lucide="target" class="w-4 h-4 text-emerald-600"></i>
+                            <span>Foco Primário da Avaliação</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">${item.focus}</p>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-4">
+                        <div class="flex items-center space-x-2 text-rose-800 font-bold text-xs uppercase mb-2">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-600"></i>
+                            <span>Distratores & Erros Frequentes</span>
+                        </div>
+                        <ul class="list-disc list-inside text-xs sm:text-sm text-slate-700 space-y-1 font-medium">
+                            ${item.pitfalls.map(p => `<li>${p}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-rose-600"></i> Sugestão Didática (OBSERVAR • DUVIDAR • TEORIZAR)
+                    </h3>
+                    <div class="space-y-2">
+                        ${item.methodologyRoute.map(r => `
+                            <div class="flex items-start space-x-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                                <span class="bg-rose-600 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5">${r.step}</span>
+                                <div class="text-xs sm:text-sm">
+                                    <strong class="text-rose-900 uppercase font-bold">${r.action}:</strong> 
+                                    <span class="text-slate-700 leading-relaxed">${r.detail}</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-6">
+                    <h4 class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2 flex items-center gap-1">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Pré-requisitos & Dica de Questão
+                    </h4>
+                    <ul class="list-disc list-inside text-xs sm:text-sm text-slate-700 space-y-1 mb-2 font-medium">
+                        ${item.prerequisites.map(req => `<li>${req}</li>`).join('')}
+                    </ul>
+                    <div class="pt-2 border-t border-slate-200 text-xs text-slate-600 italic">
+                        <strong>Dica de Item CAEd:</strong> ${item.sampleQuestionTip}
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-slate-100 no-print">
+                    <button onclick="copyLessonPlan()" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 transition-colors">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>Copiar para Plano de Aula</span>
+                    </button>
+                    <button onclick="window.print()" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold rounded-xl shadow-md shadow-rose-600/20 transition-colors">
+                        <i data-lucide="printer" class="w-4 h-4"></i>
+                        <span>Imprimir / Gerar PDF</span>
+                    </button>
+                </div>
+            `;
+
+            lucide.createIcons();
+        }
+
+        function handleAddSkill(event) {
+            event.preventDefault();
+
+            const newSkill = {
+                id: document.getElementById('add-id').value.trim(),
+                bncc: document.getElementById('add-bncc').value.trim(),
+                unit: document.getElementById('add-unit').value,
+                grade: document.getElementById('add-grade').value,
+                applicationYear: document.getElementById('add-year').value.trim(),
+                cycle: document.getElementById('add-cycle').value,
+                caedSkill: document.getElementById('add-description').value.trim(),
+                bookTheme: document.getElementById('add-book-theme').value.trim(),
+                bookChapter: document.getElementById('add-book-chapter').value.trim(),
+                bookPage: document.getElementById('add-book-page').value.trim(),
+                focus: document.getElementById('add-focus').value.trim(),
+                prerequisites: ["Conceitos fundamentais da unidade temática"],
+                pitfalls: document.getElementById('add-pitfalls').value.split(',').map(s => s.trim()),
+                methodologyRoute: [
+                    { step: 1, action: "Observar", detail: document.getElementById('add-step1').value.trim() },
+                    { step: 2, action: "Duvidar", detail: document.getElementById('add-step2').value.trim() },
+                    { step: 3, action: "Teorizar", detail: document.getElementById('add-step3').value.trim() }
+                ],
+                sampleQuestionTip: "Item cadastrado manualmente pelo professor."
+            };
+
+            db.unshift(newSkill);
+            alert(`Habilidade ${newSkill.id} salva com sucesso para a turma do ${newSkill.grade}!`);
+            
+            document.getElementById('add-skill-form').reset();
+            switchTab(newSkill.grade);
+        }
+
+        function copyLessonPlan() {
+            const item = db.find(i => i.id === selectedId);
+            if (!item) return;
+
+            const cleanCode = item.id.split('_')[0].replace('C1', '').replace('C2', '').replace('C3', '').replace('7A', '').replace('8A', '').replace('9A', '');
+
+            const text = `UNIDADE ESCOLAR NATIVIDADE MARINHO - NORTEADOR PEDAGÓGICO
+Turma: ${item.grade} | Ciclo: ${item.cycle}
+Código CAEd: ${cleanCode} | Habilidade BNCC: ${item.bncc}
+Unidade Temática: ${item.unit}
+
+HABILIDADE OFICIAL CAEd:
+${item.caedSkill}
+
+ALINHAMENTO COM LIVRO DIDÁTICO:
+Tema: ${item.bookTheme}
+Localização: ${item.bookChapter} (${item.bookPage})
+
+FOCO DA AVALIAÇÃO:
+${item.focus}
+
+DISTRATORES / ERROS FREQUENTES:
+${item.pitfalls.map(p => '- ' + p).join('\n')}
+
+SEQUÊNCIA DIDÁTICA (OBSERVAR • DUVIDAR • TEORIZAR):
+${item.methodologyRoute.map(r => `${r.step}. ${r.action}: ${r.detail}`).join('\n')}
+            `;
+
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Plano de aula copiado com sucesso para a área de transferência!');
+            });
+        }
+
+        document.getElementById('filter-cycle').addEventListener('change', renderList);
+        document.getElementById('filter-unit').addEventListener('change', renderList);
+
+        // Inicialização na Matriz do 9º Ano
+        switchTab('9º Ano');
+    </script>
+</body>
+</html>
