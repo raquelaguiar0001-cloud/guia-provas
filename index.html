@@ -3,980 +3,415 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unidade Escolar Natividade Marinho - Norteador Pedagógico 2026</title>
-    
-    <!-- Favicon Pedagógico -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><polygon points='16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76'/></svg>">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Tesseract.js para processamento OCR de imagens no navegador -->
-    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
-
+    <title>Painel de Ciências - Matriz CAEd e Livro Didático</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        
-        .light-card {
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        :root {
+            --primary-bg: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            --accent-color: #0d6efd;
         }
-        .light-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px -3px rgba(0, 0, 0, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        body {
+            background-color: var(--primary-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
         }
-
-        @media print {
-            .no-print { display: none !important; }
-            .print-only { display: block !important; }
-            .shadow-lg, .shadow-md, .shadow-sm, .shadow-xl { box-shadow: none !important; }
-            body { background: white !important; color: black !important; }
+        .header-section {
+            background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 4px solid #084298;
+        }
+        .turma-card {
+            border: none;
+            border-radius: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            box-shadow: var(--card-shadow);
+        }
+        .turma-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .ciclo-btn {
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 0.6rem 1.2rem;
+        }
+        .habilidade-card {
+            border-left: 4px solid var(--accent-color);
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+        .badge-code {
+            font-size: 0.9rem;
+            background-color: #e7f1ff;
+            color: #0c63e4;
+            border: 1px solid #b6d4fe;
+        }
+        .badge-bncc {
+            font-size: 0.85rem;
+            background-color: #f8f9fa;
+            color: #495057;
+            border: 1px solid #dee2e6;
+        }
+        .info-label {
+            font-weight: 600;
+            color: #495057;
         }
     </style>
 </head>
-<body class="bg-[#f8fafc] text-slate-800 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+<body>
 
-    <!-- Header Superior -->
-    <header class="bg-[#312e81] text-white shadow-md sticky top-0 z-50 no-print">
-        <div class="max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8 flex items-center justify-between">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="showHome()">
-                <div class="bg-indigo-500/20 p-2 rounded-xl border border-indigo-400/30 hover:bg-indigo-500/30 transition-all">
-                    <i data-lucide="compass" class="w-6 h-6 text-indigo-200"></i>
-                </div>
-                <div>
-                    <h1 class="text-base font-extrabold tracking-tight uppercase flex items-center gap-2 text-white">
-                        Norteador Pedagógico
-                    </h1>
-                    <p class="text-xs text-indigo-200 font-medium">Unidade Escolar Natividade Marinho • CAEd 2026</p>
-                </div>
-            </div>
-            
-            <button onclick="showHome()" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white transition-all flex items-center gap-2 border border-white/10 shadow-sm">
-                <i data-lucide="home" class="w-4 h-4 text-indigo-200"></i>
-                <span>Início / Turmas</span>
-            </button>
+    <header class="header-section">
+        <div class="container text-center">
+            <h1 class="fw-bold"><i class="fa-solid fa-book-open me-2"></i>Matriz de Referência e Livro Didático</h1>
+            <p class="lead mb-0">Ciências da Natureza — Consulta Integrada por Turmas e Ciclos</p>
         </div>
     </header>
 
-    <!-- Conteúdo Principal -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 sm:px-6 lg:px-8">
+    <div class="container mb-5">
         
-        <!-- VIEW 1: PÁGINA INICIAL COM CADASTRO E PORTAS PERSONALIZADAS -->
-        <div id="view-home" class="space-y-10 py-4">
-            
-            <!-- Hero Header da Home com Ação de Cadastro Exclusiva -->
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
-                <div class="space-y-2 text-center md:text-left max-w-2xl">
-                    <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-extrabold bg-indigo-100 text-indigo-700 border border-indigo-200">
-                        <i data-lucide="school" class="w-4 h-4"></i> Portal Pedagógico Integrado
-                    </span>
-                    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                        Selecione a Turma para Acessar a Matriz
-                    </h2>
-                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                        Acesse individualmente o planejamento de cada ano escolar, com alinhamento completo do livro didático, distratores do CAEd e sequência didática (OBSERVAR • DUVIDAR • TEORIZAR).
-                    </p>
-                </div>
-
-                <!-- Botão de Cadastro Exclusivo da Tela Inicial -->
-                <div class="shrink-0 w-full md:w-auto text-center">
-                    <button onclick="openAdmin()" class="w-full md:w-auto px-6 py-3.5 rounded-2xl font-extrabold text-xs bg-amber-500 hover:bg-amber-400 text-slate-900 transition-all flex items-center justify-center gap-2 shadow-md shadow-amber-500/20 border border-amber-400/30">
-                        <i data-lucide="plus-circle" class="w-4 h-4"></i> Cadastrar Nova Habilidade
-                    </button>
-                </div>
-            </div>
-
-            <!-- Grid das 4 Portas de Entrada Personalizadas -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-                
-                <!-- Porta 6º Ano (Indigo) -->
-                <div onclick="openGrade('6º Ano')" class="light-card rounded-3xl overflow-hidden cursor-pointer flex flex-col justify-between group border-2 border-indigo-100 hover:border-indigo-500">
-                    <div class="p-6 bg-gradient-to-br from-indigo-600 to-indigo-800 text-white relative">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/20">
-                                6º ANO
-                            </span>
-                            <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform">
-                                <i data-lucide="droplet" class="w-5 h-5"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-black tracking-tight">Ciências 6º Ano</h3>
-                        <p class="text-xs text-indigo-100 mt-1 font-medium">Misturas, Água, Solos e Litosfera</p>
-                    </div>
-                    <div class="p-6 bg-white flex-1 flex flex-col justify-between space-y-4">
-                        <div class="space-y-2 text-xs">
-                            <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100">
-                                <span class="font-semibold text-slate-600">Ciclo I:</span>
-                                <span class="font-extrabold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md">9 habilidades</span>
-                            </div>
-                            <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100">
-                                <span class="font-semibold text-slate-600">Ciclo II:</span>
-                                <span class="font-extrabold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md">12 habilidades</span>
-                            </div>
-                            <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100">
-                                <span class="font-semibold text-slate-600">Ciclo III:</span>
-                                <span class="font-extrabold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md">11 habilidades</span>
-                            </div>
-                        </div>
-                        <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-indigo-600 group-hover:text-indigo-700">
-                            <span>Entrar na Turma</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1.5 transition-transform"></i>
+        <!-- TELA INICIAL: SELEÇÃO DE TURMAS -->
+        <div id="tela-inicio">
+            <h3 class="mb-4 text-center fw-bold text-secondary">Selecione a Turma</h3>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card turma-card text-center p-4" onclick="selecionarTurma('6ano')">
+                        <div class="card-body">
+                            <i class="fa-solid fa-graduation-cap fa-3x text-primary mb-3"></i>
+                            <h4 class="card-title fw-bold">6º Ano</h4>
+                            <p class="card-text text-muted">32 Habilidades</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Porta 7º Ano (Emerald) -->
-                <div onclick="openGrade('7º Ano')" class="light-card rounded-3xl overflow-hidden cursor-pointer flex flex-col justify-between group border-2 border-emerald-100 hover:border-emerald-500">
-                    <div class="p-6 bg-gradient-to-br from-emerald-600 to-emerald-800 text-white relative">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/20">
-                                7º ANO
-                            </span>
-                            <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform">
-                                <i data-lucide="leaf" class="w-5 h-5"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-black tracking-tight">Ciências 7º Ano</h3>
-                        <p class="text-xs text-emerald-100 mt-1 font-medium">Biomas, Calor, Ecossistemas e Saúde</p>
-                    </div>
-                    <div class="p-6 bg-white flex-1 flex flex-col justify-between space-y-4">
-                        <div class="space-y-2 text-xs">
-                            <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100">
-                                <span class="font-semibold text-slate-600">Ciclo I:</span>
-                                <span class="font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">11 habilidades</span>
-                            </div>
-                            <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100">
-                                <span class="font-semibold text-slate-600">Ciclo II:</span>
-                                <span class="font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">11 habilidades</span>
-                            </div>
-                            <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100">
-                                <span class="font-semibold text-slate-600">Ciclo III:</span>
-                                <span class="font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">12 habilidades</span>
-                            </div>
-                        </div>
-                        <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-600 group-hover:text-emerald-700">
-                            <span>Entrar na Turma</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1.5 transition-transform"></i>
+                <div class="col-md-3">
+                    <div class="card turma-card text-center p-4" onclick="selecionarTurma('7ano')">
+                        <div class="card-body">
+                            <i class="fa-solid fa-graduation-cap fa-3x text-success mb-3"></i>
+                            <h4 class="card-title fw-bold">7º Ano</h4>
+                            <p class="card-text text-muted">34 Habilidades</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Porta 8º Ano (Amber) -->
-                <div onclick="openGrade('8º Ano')" class="light-card rounded-3xl overflow-hidden cursor-pointer flex flex-col justify-between group border-2 border-amber-100 hover:border-amber-500">
-                    <div class="p-6 bg-gradient-to-br from-amber-600 to-amber-800 text-white relative">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/20">
-                                8º ANO
-                            </span>
-                            <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform">
-                                <i data-lucide="zap" class="w-5 h-5"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-black tracking-tight">Ciências 8º Ano</h3>
-                        <p class="text-xs text-amber-100 mt-1 font-medium">Energia Elétrica, Clima e Sistema Reprodutor</p>
-                    </div>
-                    <div class="p-6 bg-white flex-1 flex flex-col justify-between space-y-4">
-                        <div class="space-y-2 text-xs">
-                            <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100">
-                                <span class="font-semibold text-slate-600">Ciclo I:</span>
-                                <span class="font-extrabold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md">12 habilidades</span>
-                            </div>
-                            <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100">
-                                <span class="font-semibold text-slate-600">Ciclo II:</span>
-                                <span class="font-extrabold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md">9 habilidades</span>
-                            </div>
-                            <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100">
-                                <span class="font-semibold text-slate-600">Ciclo III:</span>
-                                <span class="font-extrabold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md">12 habilidades</span>
-                            </div>
-                        </div>
-                        <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-amber-600 group-hover:text-amber-700">
-                            <span>Entrar na Turma</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1.5 transition-transform"></i>
+                <div class="col-md-3">
+                    <div class="card turma-card text-center p-4" onclick="selecionarTurma('8ano')">
+                        <div class="card-body">
+                            <i class="fa-solid fa-graduation-cap fa-3x text-warning mb-3"></i>
+                            <h4 class="card-title fw-bold">8º Ano</h4>
+                            <p class="card-text text-muted">33 Habilidades</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Porta 9º Ano (Rose) -->
-                <div onclick="openGrade('9º Ano')" class="light-card rounded-3xl overflow-hidden cursor-pointer flex flex-col justify-between group border-2 border-rose-100 hover:border-rose-500">
-                    <div class="p-6 bg-gradient-to-br from-rose-600 to-rose-800 text-white relative">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/20">
-                                9º ANO
-                            </span>
-                            <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform">
-                                <i data-lucide="atom" class="w-5 h-5"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-black tracking-tight">Ciências 9º Ano</h3>
-                        <p class="text-xs text-rose-100 mt-1 font-medium">Átomos, Reações Químicas, Genética e Ondas</p>
-                    </div>
-                    <div class="p-6 bg-white flex-1 flex flex-col justify-between space-y-4">
-                        <div class="space-y-2 text-xs">
-                            <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100">
-                                <span class="font-semibold text-slate-600">Ciclo I:</span>
-                                <span class="font-extrabold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-md">12 habilidades</span>
-                            </div>
-                            <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100">
-                                <span class="font-semibold text-slate-600">Ciclo II:</span>
-                                <span class="font-extrabold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-md">11 habilidades</span>
-                            </div>
-                            <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100">
-                                <span class="font-semibold text-slate-600">Ciclo III:</span>
-                                <span class="font-extrabold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-md">11 habilidades</span>
-                            </div>
-                        </div>
-                        <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-rose-600 group-hover:text-rose-700">
-                            <span>Entrar na Turma</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1.5 transition-transform"></i>
+                <div class="col-md-3">
+                    <div class="card turma-card text-center p-4" onclick="selecionarTurma('9ano')">
+                        <div class="card-body">
+                            <i class="fa-solid fa-graduation-cap fa-3x text-danger mb-3"></i>
+                            <h4 class="card-title fw-bold">9º Ano</h4>
+                            <p class="card-text text-muted">34 Habilidades</p>
                         </div>
                     </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- VIEW 2: DASHBOARD EXCLUSIVO DA TURMA SELECIONADA -->
-        <div id="view-dashboard" class="hidden space-y-6">
-            <div id="class-banner" class="rounded-2xl p-6 text-white shadow-sm flex flex-col lg:flex-row items-center justify-between gap-6 transition-all">
-                <div class="flex items-center space-x-4">
-                    <div id="class-icon-bg" class="p-3 bg-white/20 backdrop-blur-md rounded-xl shrink-0">
-                        <i id="class-icon" data-lucide="book-open" class="w-8 h-8 text-white"></i>
-                    </div>
-                    <div>
-                        <span id="class-badge" class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/20">Matriz Exclusiva</span>
-                        <h2 id="class-title" class="text-2xl font-black tracking-tight">TURMA SELECIONADA</h2>
-                        <p id="class-subtitle" class="text-xs text-white/80 mt-0.5">Ciências da Natureza • Alinhamento Livro Didático & CAEd 2026</p>
-                    </div>
-                </div>
-
-                <div class="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto no-print">
-                    <div class="w-full sm:w-48">
-                        <label for="filter-cycle" class="block text-[10px] font-extrabold text-white/90 uppercase tracking-wider mb-1">CICLO DA PROVA CAED</label>
-                        <select id="filter-cycle" class="w-full py-2 px-3 bg-white text-slate-800 rounded-xl text-xs font-bold focus:outline-none focus:ring-2 focus:ring-white/50 shadow-sm border-0 cursor-pointer">
-                            <option value="todos">Todos os Ciclos</option>
-                            <option value="Ciclo I">Ciclo I</option>
-                            <option value="Ciclo II">Ciclo II</option>
-                            <option value="Ciclo III">Ciclo III</option>
-                        </select>
-                    </div>
-
-                    <div class="w-full sm:w-52">
-                        <label for="filter-unit" class="block text-[10px] font-extrabold text-white/90 uppercase tracking-wider mb-1">UNIDADE TEMÁTICA</label>
-                        <select id="filter-unit" class="w-full py-2 px-3 bg-white text-slate-800 rounded-xl text-xs font-bold focus:outline-none focus:ring-2 focus:ring-white/50 shadow-sm border-0 cursor-pointer">
-                            <option value="todos">Todas as Unidades</option>
-                            <option value="ME - Matéria e Energia">ME - Matéria e Energia</option>
-                            <option value="VE - Vida e Evolução">VE - Vida e Evolução</option>
-                            <option value="TU - Terra e Universo">TU - Terra e Universo</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                <div class="lg:col-span-4 space-y-3 no-print">
-                    <div class="flex items-center justify-between mb-1 px-1">
-                        <h2 class="text-xs font-extrabold text-slate-600 uppercase tracking-wider">
-                            HABILIDADES (<span id="active-class-label">TURMA</span>)
-                        </h2>
-                        <span id="results-count" class="text-xs bg-indigo-100 text-indigo-700 font-bold px-2.5 py-0.5 rounded-full">0</span>
-                    </div>
-                    <div id="skills-list" class="space-y-2.5 max-h-[680px] overflow-y-auto pr-1"></div>
-                </div>
-
-                <div class="lg:col-span-8">
-                    <div id="detail-card" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 text-slate-800"></div>
                 </div>
             </div>
         </div>
 
-        <!-- VIEW 3: FORMULÁRIO DE CADASTRO COM OCR / AUTOMACÃO POR IMAGEM -->
-        <div id="view-admin" class="hidden">
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 max-w-4xl mx-auto space-y-6">
-                <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900">Cadastrar Nova Habilidade / Prova CAEd</h2>
-                        <p class="text-xs text-slate-500">Envie imagens da matriz CAEd ou páginas do livro para preenchimento automático.</p>
-                    </div>
-                    <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full border border-amber-200">Painel do Professor</span>
-                </div>
-
-                <!-- BLOCO DE LEITURA AUTOMÁTICA DE IMAGEM -->
-                <div class="bg-indigo-50/70 border-2 border-dashed border-indigo-200 rounded-2xl p-6 text-center space-y-3">
-                    <div class="w-12 h-12 mx-auto rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center">
-                        <i data-lucide="scan-text" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-bold text-slate-900">Organizador Automático via Imagem</h3>
-                        <p class="text-xs text-slate-600 mt-0.5">Selecione ou cole um print do descritor CAEd ou página do Livro Didático</p>
-                    </div>
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-                        <input type="file" id="ocr-file-input" accept="image/*" class="hidden" onchange="handleImageOCR(event)">
-                        <button type="button" onclick="document.getElementById('ocr-file-input').click()" class="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold shadow-sm transition-all flex items-center gap-2">
-                            <i data-lucide="upload-cloud" class="w-4 h-4"></i> Carregar Imagem
-                        </button>
-                    </div>
-                    <div id="ocr-status" class="hidden text-xs font-bold text-indigo-700 pt-2 flex items-center justify-center gap-2">
-                        <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
-                        <span id="ocr-status-text">Analisando imagem e extraindo conceitos...</span>
-                    </div>
-                </div>
-
-                <form id="add-skill-form" onsubmit="handleAddSkill(event)" class="space-y-4">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Ano da Prova</label>
-                            <input type="text" id="add-year" value="2026" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Ciclo da Prova</label>
-                            <select id="add-cycle" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
-                                <option value="Ciclo I">Ciclo I</option>
-                                <option value="Ciclo II">Ciclo II</option>
-                                <option value="Ciclo III" selected>Ciclo III</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Turma Destino</label>
-                            <select id="add-grade" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
-                                <option value="6º Ano">6º Ano</option>
-                                <option value="7º Ano">7º Ano</option>
-                                <option value="8º Ano">8º Ano</option>
-                                <option value="9º Ano" selected>9º Ano</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Código CAEd</label>
-                            <input type="text" id="add-id" placeholder="Ex: 9EF01_CN" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Habilidade BNCC</label>
-                            <input type="text" id="add-bncc" placeholder="Ex: EF09CI01" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Unidade Temática</label>
-                            <select id="add-unit" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
-                                <option value="ME - Matéria e Energia">ME - Matéria e Energia</option>
-                                <option value="VE - Vida e Evolução">VE - Vida e Evolução</option>
-                                <option value="TU - Terra e Universo">TU - Terra e Universo</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Descrição Oficial da Habilidade CAEd</label>
-                        <textarea id="add-description" rows="2" placeholder="Texto exato da habilidade do CAEd..." required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800"></textarea>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Capítulo do Livro</label>
-                            <input type="text" id="add-book-chapter" placeholder="Ex: Capítulo 1" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Tema / Conteúdo</label>
-                            <input type="text" id="add-book-theme" placeholder="Ex: Reações Químicas" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Página do Livro</label>
-                            <input type="text" id="add-book-page" placeholder="Ex: Página 14" required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Foco Primário da Avaliação</label>
-                            <textarea id="add-focus" rows="2" placeholder="Objetivo de cobrança..." required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800"></textarea>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Erros Comuns / Distratores</label>
-                            <textarea id="add-pitfalls" rows="2" placeholder="Erros frequentes..." required class="w-full p-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 text-slate-800"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="bg-indigo-50/50 p-4 rounded-xl border border-indigo-100 space-y-3">
-                        <h3 class="text-xs font-bold text-indigo-700 uppercase">Sugestão Didática (OBSERVAR • DUVIDAR • TEORIZAR)</h3>
-                        <div>
-                            <input type="text" id="add-step1" placeholder="1. OBSERVAR: Imagens/Situações..." required class="w-full p-2 border border-slate-200 rounded-lg text-xs mb-2 bg-white">
-                            <input type="text" id="add-step2" placeholder="2. DUVIDAR: Pergunta disparadora..." required class="w-full p-2 border border-slate-200 rounded-lg text-xs mb-2 bg-white">
-                            <input type="text" id="add-step3" placeholder="3. TEORIZAR: Formalização..." required class="w-full p-2 border border-slate-200 rounded-lg text-xs bg-white">
-                        </div>
-                    </div>
-
-                    <div class="flex items-center justify-end space-x-3 pt-4 border-t border-slate-100">
-                        <button type="button" onclick="showHome()" class="px-5 py-2.5 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100">Cancelar</button>
-                        <button type="submit" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow-md shadow-indigo-600/20">Salvar Habilidade</button>
-                    </div>
-                </form>
+        <!-- TELA DE DETALHES DA TURMA -->
+        <div id="tela-detalhes" style="display: none;">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <button class="btn btn-outline-secondary" onclick="voltarInicio()">
+                    <i class="fa-solid fa-arrow-left me-2"></i>Voltar às Turmas
+                </button>
+                <h2 id="titulo-turma" class="fw-bold mb-0"></h2>
+                <div></div>
             </div>
+
+            <!-- NAVEGAÇÃO DE CICLOS -->
+            <div class="d-flex justify-content-center gap-2 mb-4" id="botoes-ciclos">
+                <button class="btn btn-outline-primary ciclo-btn active" id="btn-ciclo1" onclick="carregarCiclo(1)">
+                    Ciclo I <span class="badge bg-primary rounded-pill ms-1" id="count-ciclo1">0</span>
+                </button>
+                <button class="btn btn-outline-primary ciclo-btn" id="btn-ciclo2" onclick="carregarCiclo(2)">
+                    Ciclo II <span class="badge bg-primary rounded-pill ms-1" id="count-ciclo2">0</span>
+                </button>
+                <button class="btn btn-outline-primary ciclo-btn" id="btn-ciclo3" onclick="carregarCiclo(3)">
+                    Ciclo III <span class="badge bg-primary rounded-pill ms-1" id="count-ciclo3">0</span>
+                </button>
+            </div>
+
+            <!-- LISTA DE HABILIDADES -->
+            <div id="lista-habilidades"></div>
         </div>
 
-    </main>
-
-    <footer class="bg-white border-t border-slate-200 py-4 mt-8 no-print">
-        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
-            Unidade Escolar Natividade Marinho • Norteador Pedagógico • Todas as Turmas Integradas.
-        </div>
-    </footer>
+    </div>
 
     <script>
-        let currentTab = '6º Ano';
-
-        const gradeThemes = {
-            '6º Ano': { bg: 'bg-indigo-600', badge: 'bg-indigo-700', icon: 'droplet', title: '6º ANO DO ENSINO FUNDAMENTAL', colorClass: 'indigo' },
-            '7º Ano': { bg: 'bg-emerald-600', badge: 'bg-emerald-700', icon: 'leaf', title: '7º ANO DO ENSINO FUNDAMENTAL', colorClass: 'emerald' },
-            '8º Ano': { bg: 'bg-amber-600', badge: 'bg-amber-700', icon: 'zap', title: '8º ANO DO ENSINO FUNDAMENTAL', colorClass: 'amber' },
-            '9º Ano': { bg: 'bg-rose-600', badge: 'bg-rose-700', icon: 'atom', title: '9º ANO DO ENSINO FUNDAMENTAL', colorClass: 'rose' }
+        // PROGRAMAÇÃO COMPLETA COM OS DADOS INTEGRADOS SEM NENHUMA ALTERAÇÃO
+        const bancoDados = {
+            "6ano": {
+                "titulo": "6º Ano - Ensino Fundamental",
+                "ciclos": {
+                    1: [
+                        { codigo: "6EF01_CN", caed: "Interpretar o ciclo da água.", bncc: "EF05CI02", ut: "Unidade D — Atmosfera e Hidrosfera", cap: "Capítulo 10 (Atmosfera e Hidrosfera)", pag: "Página 176 (Tópico: 8. Hidrosfera e ciclo da água)" },
+                        { codigo: "6EF02_CN", caed: "Explicar como a ação da água, a atividade dos seres vivos e a retirada de cobertura vegetal influenciam no processo de erosão.", bncc: "EF05CI03", ut: "Unidade D — O Planeta Terra e os Recursos Minerais", cap: "Capítulo 11 (O Planeta Terra e os Recursos Minerais)", pag: "Página 194 (Tópico: 5. Rochas sedimentares)" },
+                        { codigo: "6EF03_CN", caed: "Interpretar comportamentos voltados para a preservação dos recursos naturais.", bncc: "EF05CI04", ut: "Unidade D — O Planeta Terra e os Recursos Minerais", cap: "Capítulo 11 (O Planeta Terra e os Recursos Minerais)", pag: "Páginas 202-205 (Tópicos: 11. Ferro, 12. Alumínio, 13. Vidro, 14. Ouro)" },
+                        { codigo: "6EF04_CN", caed: "Reconhecer as propriedades de materiais como plásticos, metais, papel e vidro que estão relacionadas ao uso, reaproveitamento e reciclagem desses materiais.", bncc: "EF05CI05", ut: "Unidade C — Substâncias Químicas", cap: "Capítulo 8 (Substâncias Químicas)", pag: "Páginas 138-142 (Tópicos: 5. Substâncias químicas, 6. Misturas, 7. Separação de misturas)" },
+                        { codigo: "6EF05_CN", caed: "Interpretar as relações estabelecidas entre os diferentes sistemas do corpo humano para a execução das funções de nutrição, excreção, relação, reprodução e coordenação.", bncc: "EF05CI06, EF05CI07", ut: "Unidade B — Níveis de Organização do Corpo Humano", cap: "Capítulo 4 (Níveis de Organização do Corpo Humano)", pag: "Páginas 56 e 66 (Tópicos: 1. Os níveis de organização do corpo humano, 10. A integração entre os sistemas)" },
+                        { codigo: "6EF06_CN", caed: "Explicar a necessidade de ingestão de diferentes nutrientes frente às demandas do organismo humano.", bncc: "EF05CI08, EF05CI09", ut: "Unidade A — Seres Vivos e Cadeias Alimentares", cap: "Capítulo 1 (Seres Vivos e Cadeias Alimentares)", pag: "Página 17 (Tópico: 2. Os seres vivos precisam de energia)" },
+                        { codigo: "6EF07_CN", caed: "Reconhecer os movimentos realizados pela Terra e pela Lua.", bncc: "EF05CI11", ut: "Unidade D — Dia e Noite: Regularidades Celestes", cap: "Capítulo 12 (Dia e Noite: Regularidades Celestes)", pag: "Página 211 (Tópico: 1. Ciclo dia/noite)" },
+                        { codigo: "6EF08_CN", caed: "Reconhecer as fases da Lua.", bncc: "EF05CI12", ut: "Unidade D — Dia e Noite: Regularidades Celestes", cap: "Capítulo 12 (Dia e Noite: Regularidades Celestes)", pag: "Página 225 (Tópico: 12. O nascente e o poente das demais estrelas e da Lua)" },
+                        { codigo: "6EF09_CN", caed: "Comparar instrumentos ópticos ao tipo de observação que ele proporciona.", bncc: "EF05CI13", ut: "Unidade B — Visão", cap: "Capítulo 6 (Visão)", pag: "Páginas 94 e 99 (Tópicos: 3. A lente do olho e a \"focalização\" de imagens, 6. A correção de alguns distúrbios visuais)" }
+                    ],
+                    2: [
+                        { codigo: "6EF11_CN", caed: "Reconhecer, a partir de características observáveis, a ocorrência de misturas.", bncc: "EF06CI01", ut: "Unidade C — Substâncias Químicas", cap: "Capítulo 8 (Substâncias Químicas)", pag: "Página 139 (Tópico: 6. Misturas)" },
+                        { codigo: "6EF12_CN", caed: "Classificar os métodos de separação de misturas de sistemas heterogêneos.", bncc: "EF06CI03", ut: "Unidade C — Substâncias Químicas", cap: "Capítulo 8 (Substâncias Químicas)", pag: "Página 142 (Tópico: 7. Separação de misturas)" },
+                        { codigo: "6EF14_CN", caed: "Reconhecer a origem natural ou sintética de materiais.", bncc: "EF06CI04", ut: "Unidade C — Transformações Químicas", cap: "Capítulo 9 (Transformações Químicas)", pag: "Página 158 (Tópico: 4. O petróleo)" },
+                        { codigo: "6EF16_CN", caed: "Reconhecer a célula como a unidade morfofisiológica dos seres vivos.", bncc: "EF06CI05", ut: "Unidade B — Níveis de Organização do Corpo Humano", cap: "Capítulo 4 (Níveis de Organização do Corpo Humano)", pag: "Página 57 (Tópico: 2. Célula: a unidade que compõe a diversidade)" },
+                        { codigo: "6EF18_CN", caed: "Reconhecer as estruturas que compõem o sistema nervoso.", bncc: "EF06CI07", ut: "Unidade C — Sistema Nervoso", cap: "Capítulo 7 (Sistema Nervoso)", pag: "Página 111 (Tópico: 3. Estrutura geral do sistema nervoso)" },
+                        { codigo: "6EF19_CN", caed: "Classificar os defeitos da visão.", bncc: "EF06CI08", ut: "Unidade B — Visão", cap: "Capítulo 6 (Visão)", pag: "Página 99 (Tópico: 6. A correção de alguns distúrbios visuais)" },
+                        { codigo: "6EF20_CN", caed: "Reconhecer as estruturas do olho humano e suas funcionalidades.", bncc: "EF06CI08", ut: "Unidade B — Visão", cap: "Capítulo 6 (Visão)", pag: "Páginas 91 e 94 (Tópicos: 2. O sentido da visão, 3. A lente do olho e a \"focalização\" de imagens)" },
+                        { codigo: "6EF22_CN", caed: "Reconhecer a estrutura da Terra.", bncc: "EF06CI11", ut: "Unidade D — O Planeta Terra e os Recursos Minerais", cap: "Capítulo 11 (O Planeta Terra e os Recursos Minerais)", pag: "Página 191 (Tópico: 1. Como é a Terra por dentro?)" },
+                        { codigo: "6EF23_CN", caed: "Reconhecer a forma esférica da Terra.", bncc: "EF06CI13", ut: "Unidade D — Dia e Noite: Regularidades Celestes", cap: "Capítulo 12 (Dia e Noite: Regularidades Celestes)", pag: "Página 224 (Tópico: 11. Evidências da esfericidade da Terra)" },
+                        { codigo: "6EF26_CN", caed: "Identificar evidências de transformações químicas no cotidiano.", bncc: "EF06CI02", ut: "Unidade C — Transformações Químicas", cap: "Capítulo 9 (Transformações Químicas)", pag: "Página 150 (Tópico: 1. Reação química)" },
+                        { codigo: "6EF27_CN", caed: "Diferenciar órgãos e funções do sistema digestório.", bncc: "EF06CI09", ut: "Unidade B — Níveis de Organização do Corpo Humano", cap: "Capítulo 4 (Níveis de Organização do Corpo Humano)", pag: "Página 65 (Tópicos: 8. Órgãos, 9. Sistemas)" },
+                        { codigo: "6EF29_CN", caed: "Identificar a composição das rochas e minerais da litosfera.", bncc: "EF06CI12", ut: "Unidade D — O Planeta Terra e os Recursos Minerais", cap: "Capítulo 11 (O Planeta Terra e os Recursos Minerais)", pag: "Página 194 (Tópico: 4. Rochas são formadas por minerais)" }
+                    ],
+                    3: [
+                        { codigo: "6EF10_CN", caed: "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais.", bncc: "EF06CI01", ut: "Unidade C — Substâncias Químicas", cap: "Capítulo 8 (Substâncias Químicas)", pag: "Página 139 (Tópico: 6. Misturas)" },
+                        { codigo: "6EF13_CN", caed: "Classificar os métodos de separação de misturas de sistemas homogêneos.", bncc: "EF06CI03", ut: "Unidade C — Substâncias Químicas", cap: "Capítulo 8 (Substâncias Químicas)", pag: "Página 142 (Tópico: 7. Separação de misturas)" },
+                        { codigo: "6EF15_CN", caed: "Inferir a relação entre o uso de materiais sintéticos e seus impactos socioambientais.", bncc: "EF06CI04", ut: "Unidade C — Transformações Químicas", cap: "Capítulo 9 (Transformações Químicas)", pag: "Página 158 (Tópicos: 4. O petróleo, 5. Carvão mineral)" },
+                        { codigo: "6EF17_CN", caed: "Reconhecer os níveis de organização dos seres vivos.", bncc: "EF06CI06", ut: "Unidade B — Níveis de Organização do Corpo Humano", cap: "Capítulo 4 (Níveis de Organização do Corpo Humano)", pag: "Páginas 56-65 (Tópicos: 1. Os níveis de organização do corpo humano, 7. Tecidos, 8. Órgãos, 9. Sistemas)" },
+                        { codigo: "6EF21_CN", caed: "Comparar as estruturas do olho humano ao princípio de funcionamento de instrumentos ópticos.", bncc: "EF06CI08", ut: "Unidade B — Visão", cap: "Capítulo 6 (Visão)", pag: "Página 98 (Tópico: 5. O cinema)" },
+                        { codigo: "6EF24_CN", caed: "Explicar argumentos e evidências que demonstram a esfericidade da Terra.", bncc: "EF06CI13", ut: "Unidade D — Dia e Noite: Regularidades Celestes", cap: "Capítulo 12 (Dia e Noite: Regularidades Celestes)", pag: "Página 224 (Tópico: 11. Evidências da esfericidade da Terra)" },
+                        { codigo: "6EF25_CN", caed: "Interpretar a relação entre os movimentos do planeta Terra e a mudança na sombra de objetos e instrumentos (gnômon).", bncc: "EF06CI14", ut: "Unidade D — Dia e Noite: Regularidades Celestes", cap: "Capítulo 12 (Dia e Noite: Regularidades Celestes)", pag: "Página 222 (Tópico: 10. A trajetória diária aparente do Sol)" },
+                        { codigo: "6EF28_CN", caed: "Explicar a integração do sistema nervoso com a locomoção.", bncc: "EF06CI10", ut: "Unidade C / Unidade B — Sistema Nervoso e Ossos e Músculos", cap: "Capítulo 7 e Capítulo 5 (Sistema Nervoso / Ossos e Músculos)", pag: "Página 110 e Página 78 (Tópicos: 1. Atos voluntários e atos reflexos / 4. Músculos esqueléticos e movimentos do corpo)" },
+                        { codigo: "6EF30_CN", caed: "Reconhecer mudanças de estado físico da água na natureza.", bncc: "EF05CI01", ut: "Unidade D — Atmosfera e Hidrosfera", cap: "Capítulo 10 (Atmosfera e Hidrosfera)", pag: "Página 176 (Tópico: 8. Hidrosfera e ciclo da água)" },
+                        { codigo: "6EF31_CN", caed: "Reconhecer os órgãos responsáveis pela eliminação de resíduos (excreção).", bncc: "EF05CI07", ut: "Unidade B — Níveis de Organização do Corpo Humano", cap: "Capítulo 4 (Níveis de Organização do Corpo Humano)", pag: "Página 65 (Tópico: 10. A integração entre os sistemas)" },
+                        { codigo: "6EF32_CN", caed: "Identificar a presença de água na atmosfera em forma de vapor e nuvens.", bncc: "EF05CI10", ut: "Unidade D — Atmosfera e Hidrosfera", cap: "Capítulo 10 (Atmosfera e Hidrosfera)", pag: "Página 178 (Tópicos: 9. Umidade do ar, orvalho e geada, 10. Umidade relativa do ar)" }
+                    ]
+                }
+            },
+            "7ano": {
+                "titulo": "7º Ano - Ensino Fundamental",
+                "ciclos": {
+                    1: [
+                        { codigo: "6EF10_CN", caed: "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais.", bncc: "EF06CI01", ut: "Unidade D — Gases da Atmosfera e Placas da Litosfera", cap: "Capítulo 12 (Gases da Atmosfera e Placas da Litosfera)", pag: "Página 214 (Tópico: 1. O ar é uma mistura)" },
+                        { codigo: "6EF12_CN", caed: "Classificar os métodos de separação de misturas de sistemas heterogêneos.", bncc: "EF06CI03", ut: "Unidade B — Saneamento Básico", cap: "Capítulo 6 (Saneamento Básico)", pag: "Páginas 109 e 115 (Tópicos: 7. Água potável e tratamento caseiro, 14. Tratamento de esgoto)" },
+                        { codigo: "6EF13_CN", caed: "Classificar os métodos de separação de misturas de sistemas homogêneos.", bncc: "EF06CI03", ut: "Unidade B — Saneamento Básico", cap: "Capítulo 6 (Saneamento Básico)", pag: "Página 109 (Tópico: 7. Água potável e tratamento caseiro)" },
+                        { codigo: "6EF15_CN", caed: "Inferir a relação entre o uso de materiais sintéticos e seus impactos socioambientais.", bncc: "EF06CI04", ut: "Unidade D — Gases da Atmosfera e Placas da Litosfera", cap: "Capítulo 12 (Gases da Atmosfera e Placas da Litosfera)", pag: "Páginas 219 e 222 (Tópicos: 5. Poluição do ar, 6. A camada de ozônio e a poluição por CFCs)" },
+                        { codigo: "6EF17_CN", caed: "Reconhecer os níveis de organização dos seres vivos.", bncc: "EF06CI06", ut: "Unidade A — Biodiversidade", cap: "Capítulo 1 (Biodiversidade)", pag: "Páginas 21 e 23 (Tópicos: 10. Recordando: células são estruturas vivas, 11. Procariotos e eucariotos)" },
+                        { codigo: "6EF18_CN", caed: "Reconhecer as estruturas que compõem o sistema nervoso.", bncc: "EF06CI07", ut: "Unidade A — Diversidade da Vida Microscópica", cap: "Capítulo 3 (Diversidade da Vida Microscópica)", pag: "Página 69 (Tópico: As defesas do nosso corpo)" },
+                        { codigo: "6EF20_CN", caed: "Reconhecer as estruturas do olho humano e suas funcionalidades.", bncc: "EF06CI08", ut: "Unidade A — Adaptação dos Seres Vivos", cap: "Capítulo 2 (Adaptação dos Seres Vivos)", pag: "Páginas 37 e 42 (Tópicos: 4. Adaptações aos fatores não vivos, 6. Adaptações ligadas à alimentação)" },
+                        { codigo: "6EF21_CN", caed: "Comparar as estruturas do olho humano ao princípio de funcionamento de instrumentos ópticos.", bncc: "EF06CI08", ut: "Unidade D — Máquinas Simples", cap: "Capítulo 10 (Máquinas Simples)", pag: "Página 190 (Tópico: 10. Tecnologia e seus impactos)" },
+                        { codigo: "6EF22_CN", caed: "Reconhecer a estrutura da Terra.", bncc: "EF06CI11", ut: "Unidade D — Gases da Atmosfera e Placas da Litosfera", cap: "Capítulo 12 (Gases da Atmosfera e Placas da Litosfera)", pag: "Páginas 223 e 228 (Tópicos: 7. Placas litosféricas, 8. Vulcões, terremotos e tsunamis)" },
+                        { codigo: "6EF24_CN", caed: "Explicar argumentos e evidências que demonstram a esfericidade da Terra.", bncc: "EF06CI13", ut: "Unidade D — Gases da Atmosfera e Placas da Litosfera", cap: "Capítulo 12 (Gases da Atmosfera e Placas da Litosfera)", pag: "Página 233 (Tópico: Tecnologia ao longo da História)" },
+                        { codigo: "6EF25_CN", caed: "Interpretar a relação entre os movimentos do planeta Terra e a mudança na sombra de objetos e instrumentos (gnômon).", bncc: "EF06CI14", ut: "Unidade D — Temperatura, Calor e Efeito Estufa", cap: "Capítulo 11 (Temperatura, Calor e Efeito Estufa)", pag: "Página 205 (Tópico: 6. Irradiação térmica)" }
+                    ],
+                    2: [
+                        { codigo: "7EF02_CN", caed: "Reconhecer dispositivos mecânicos que facilitam a realização do trabalho.", bncc: "EF07CI01", ut: "Unidade D — Máquinas Simples", cap: "Capítulo 10 (Máquinas Simples)", pag: "Páginas 182-188 (Tópicos: 1. Há vários tipos de máquinas a 9. Parafuso)" },
+                        { codigo: "7EF03_CN", caed: "Interpretar, em situações cotidianas, os conceitos de calor, temperatura e sensação térmica.", bncc: "EF07CI02", ut: "Unidade D — Temperatura, Calor e Efeito Estufa", cap: "Capítulo 11 (Temperatura, Calor e Efeito Estufa)", pag: "Páginas 196, 198 e 203 (Tópicos: 1. Escala de temperatura, 2. Calor e troca de calor, 5. Sensações térmicas podem enganar)" },
+                        { codigo: "7EF05_CN", caed: "Classificar os processos de transferência de calor.", bncc: "EF07CI03", ut: "Unidade D — Temperatura, Calor e Efeito Estufa", cap: "Capítulo 11 (Temperatura, Calor e Efeito Estufa)", pag: "Páginas 199-205 (Tópicos: 3. Condução térmica, 4. Convecção térmica, 6. Irradiação térmica)" },
+                        { codigo: "7EF07_CN", caed: "Interpretar o papel dos combustíveis em máquinas térmicas.", bncc: "EF07CI05", ut: "Unidade D — Máquinas Simples", cap: "Capítulo 10 (Máquinas Simples)", pag: "Página 190 (Tópico: 10. Tecnologia e seus impactos)" },
+                        { codigo: "7EF08_CN", caed: "Reconhecer os diferentes biomas brasileiros.", bncc: "EF07CI07", ut: "Unidade C — Principais Biomas Brasileiros", cap: "Capítulo 9 (Principais Biomas Brasileiros)", pag: "Páginas 166-175 (Tópicos: 1. Floresta Amazônica a 8. Pampas)" },
+                        { codigo: "7EF12_CN", caed: "Reconhecer a relação estabelecida entre as ações de saneamento básico e a saúde humana.", bncc: "EF07CI09", ut: "Unidade B — Saneamento Básico", cap: "Capítulo 6 (Saneamento Básico)", pag: "Páginas 113 e 117 (Tópicos: 11. Doenças veiculadas pela água, 15. Saneamento básico)" },
+                        { codigo: "7EF14_CN", caed: "Reconhecer a importância da adesão às campanhas de vacinação.", bncc: "EF07CI10", ut: "Unidade A — Diversidade da Vida Microscópica", cap: "Capítulo 3 (Diversidade da Vida Microscópica)", pag: "Páginas 59 e 60 (Tópicos: 7. Como ficamos gripados?, 9. Doenças causadas por vírus)" },
+                        { codigo: "7EF15_CN", caed: "Reconhecer o ar como uma mistura de gases.", bncc: "EF07CI12", ut: "Unidade D — Gases da Atmosfera e Placas da Litosfera", cap: "Capítulo 12 (Gases da Atmosfera e Placas da Litosfera)", pag: "Página 214 (Tópico: 1. O ar é uma mistura)" },
+                        { codigo: "7EF16_CN", caed: "Reconhecer a composição do ar e o modo como a poluição afeta suas características.", bncc: "EF07CI12", ut: "Unidade D — Gases da Atmosfera e Placas da Litosfera", cap: "Capítulo 12 (Gases da Atmosfera e Placas da Litosfera)", pag: "Páginas 215-219 (Tópicos: 2. O gás oxigênio, 3. O gás nitrogênio, 4. O gás carbônico, 5. Poluição do ar)" },
+                        { codigo: "7EF17_CN", caed: "Reconhecer a atuação do efeito estufa no planeta Terra.", bncc: "EF07CI13", ut: "Unidade D — Temperatura, Calor e Efeito Estufa", cap: "Capítulo 11 (Temperatura, Calor e Efeito Estufa)", pag: "Página 207 (Tópico: 8. Aquecimento global)" },
+                        { codigo: "7EF20_CN", caed: "Reconhecer a participação da camada de ozônio no fenômeno da vida na Terra.", bncc: "EF07CI14", ut: "Unidade D — Gases da Atmosfera e Placas da Litosfera", cap: "Capítulo 12 (Gases da Atmosfera e Placas da Litosfera)", pag: "Página 222 (Tópico: 6. A camada de ozônio e a poluição por CFCs)" }
+                    ],
+                    3: [
+                        { codigo: "7EF01_CN", caed: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples.", bncc: "EF07CI01", ut: "Unidade D — Máquinas Simples", cap: "Capítulo 10 (Máquinas Simples)", pag: "Página 182 (Tópico: 2. O que são máquinas simples?)" },
+                        { codigo: "7EF04_CN", caed: "Inferir, em situações cotidianas, as formas de propagação de calor envolvidas na utilização de determinados materiais e equipamentos.", bncc: "EF07CI03", ut: "Unidade D — Temperatura, Calor e Efeito Estufa", cap: "Capítulo 11 (Temperatura, Calor e Efeito Estufa)", pag: "Páginas 199-206 (Tópicos: 3. Condução térmica a 7. Como funciona a garrafa térmica?)" },
+                        { codigo: "7EF06_CN", caed: "Explicar o funcionamento de máquinas térmicas (conversão de calor em trabalho, fluxo de calor, equilíbrio térmico, fonte de energia, perdas de energia).", bncc: "EF07CI04", ut: "Unidade D — Máquinas Simples", cap: "Capítulo 10 (Máquinas Simples)", pag: "Página 190 (Tópico: 10. Tecnologia e seus impactos)" },
+                        { codigo: "7EF07_CN", caed: "Interpretar o papel dos combustíveis em máquinas térmicas.", bncc: "EF07CI05", ut: "Unidade D — Máquinas Simples", cap: "Capítulo 10 (Máquinas Simples)", pag: "Página 190 (Tópico: 10. Tecnologia e seus impactos)" },
+                        { codigo: "7EF09_CN", caed: "Interpretar a forma com que os fatores abióticos regem a diversidade dos diferentes biomas brasileiros.", bncc: "EF07CI07", ut: "Unidade A — Adaptação dos Seres Vivos", cap: "Capítulo 2 (Adaptação dos Seres Vivos)", pag: "Página 37 (Tópicos: 3. O conceito de ecossistema, 4. Adaptações aos fatores não vivos)" },
+                        { codigo: "7EF10_CN", caed: "Inferir como as intervenções humanas no ambiente causam desequilíbrios ambientais.", bncc: "EF07CI08", ut: "Unidade B — Saneamento Básico", cap: "Capítulo 6 (Saneamento Básico)", pag: "Página 118 (Tópico: 16. Poluição da água)" },
+                        { codigo: "7EF11_CN", caed: "Interpretar indicadores de saúde de um grupo populacional.", bncc: "EF07CI09", ut: "Unidade B — Saneamento Básico", cap: "Capítulo 6 (Saneamento Básico)", pag: "Página 117 (Tópico: 15. Saneamento básico)" },
+                        { codigo: "7EF12_CN", caed: "Reconhecer a relação estabelecida entre as ações de saneamento básico e a saúde humana.", bncc: "EF07CI09", ut: "Unidade B — Saneamento Básico", cap: "Capítulo 6 (Saneamento Básico)", pag: "Páginas 103-108 e 113 (Tópicos: 1. Parasitismo a 6. Ascaridíase, 11. Doenças veiculadas pela água)" },
+                        { codigo: "7EF13_CN", caed: "Inferir o mecanismo de ação das vacinas nos organismos.", bncc: "EF07CI10", ut: "Unidade A — Diversidade da Vida Microscópica", cap: "Capítulo 3 (Diversidade da Vida Microscópica)", pag: "Página 69 (Tópico: As defesas do nosso corpo)" },
+                        { codigo: "7EF16_CN", caed: "Reconhecer a composição do ar e o modo como a poluição afeta suas características.", bncc: "EF07CI12", ut: "Unidade D — Gases da Atmosfera e Placas da Litosfera", cap: "Capítulo 12 (Gases da Atmosfera e Placas da Litosfera)", pag: "Página 219 (Tópico: 5. Poluição do ar)" },
+                        { codigo: "7EF18_CN", caed: "Interpretar propostas de controle ou de reversão do aumento artificial do efeito estufa no planeta Terra.", bncc: "EF07CI13", ut: "Unidade D — Temperatura, Calor e Efeito Estufa", cap: "Capítulo 11 (Temperatura, Calor e Efeito Estufa)", pag: "Página 207 (Tópico: 8. Aquecimento global)" },
+                        { codigo: "7EF19_CN", caed: "Interpretar ações voltadas para a preservação da camada de ozônio.", bncc: "EF07CI14", ut: "Unidade D — Gases da Atmosfera e Placas da Litosfera", cap: "Capítulo 12 (Gases da Atmosfera e Placas da Litosfera)", pag: "Página 222 (Tópico: 6. A camada de ozônio e a poluição por CFCs)" }
+                    ]
+                }
+            },
+            "8ano": {
+                "titulo": "8º Ano - Ensino Fundamental",
+                "ciclos": {
+                    1: [
+                        { codigo: "7EF01_CN", caed: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples.", bncc: "EF07CI01", ut: "Unidade D — Produção e Uso de Energia Elétrica", cap: "Capítulo 12 (Produção e Uso de Energia Elétrica)", pag: "Páginas 214 e 217 (Tópicos: 1. Circuito elétrico e corrente elétrica, 3. Energia elétrica)" },
+                        { codigo: "7EF04_CN", caed: "Inferir, em situações cotidianas, as formas de propagação de calor envolvidas na utilização de determinados materiais e equipamentos.", bncc: "EF07CI03", ut: "Unidade D — Previsão do Tempo", cap: "Capítulo 10 (Previsão do Tempo)", pag: "Páginas 176 e 179 (Tópicos: 1. O volume do ar e a temperatura, 4. O ar quente tende a subir)" },
+                        { codigo: "7EF06_CN", caed: "Explicar o funcionamento de máquinas térmicas (conversão de calor em trabalho, fluxo de calor, equilíbrio térmico, fonte de energia, perdas de energia).", bncc: "EF07CI04", ut: "Unidade D — Previsão do Tempo", cap: "Capítulo 10 (Previsão do Tempo)", pag: "Páginas 185 e 187 (Tópicos: 8. As correntes marítimas, 10. O movimento das massas de ar)" },
+                        { codigo: "7EF07_CN", caed: "Interpretar o papel dos combustíveis em máquinas térmicas.", bncc: "EF07CI05", ut: "Unidade D — Previsão do Tempo / Produção e Uso de Energia Elétrica", cap: "Capítulo 10 / Capítulo 12", pag: "Páginas 190 e 227 (Tópicos: 13. Alterações climáticas provocadas pelo ser humano / 6. Recursos energéticos)" },
+                        { codigo: "7EF09_CN", caed: "Interpretar a forma com que os fatores abióticos regem a diversidade dos diferentes biomas brasileiros.", bncc: "EF07CI07", ut: "Unidade D — Previsão do Tempo", cap: "Capítulo 10 (Previsão do Tempo)", pag: "Página 186 (Tópico: 9. Tempo e clima)" },
+                        { codigo: "7EF10_CN", caed: "Inferir como as intervenções humanas no ambiente causam desequilíbrios ambientais.", bncc: "EF07CI08", ut: "Unidade D — Previsão do Tempo", cap: "Capítulo 10 (Previsão do Tempo)", pag: "Página 190 (Tópico: 13. Alterações climáticas provocadas pelo ser humano)" },
+                        { codigo: "7EF11_CN", caed: "Interpretar indicadores de saúde de um grupo populacional.", bncc: "EF07CI09", ut: "Unidade A — Alimentos e Nutrientes / Sistema Digestório", cap: "Capítulo 1 e Capítulo 2", pag: "Páginas 14 e 37 (Tópicos: 1. Os vários tipos de nutrientes / 7. Afinal, nós \"somos\" o que comemos?)" },
+                        { codigo: "7EF12_CN", caed: "Reconhecer a relação estabelecida entre as ações de saneamento básico e a saúde humana.", bncc: "EF07CI09", ut: "Unidade A — Sistemas Circulatório, Linfático e Urinário", cap: "Capítulo 3 (Sistemas Circulatório, Linfático e Urinário)", pag: "Página 59 (Tópico: 8. Excreção)" },
+                        { codigo: "7EF13_CN", caed: "Inferir o mecanismo de ação das vacinas nos organismos.", bncc: "EF07CI10", ut: "Unidade A — Sistemas Circulatório, Linfático e Urinário", cap: "Capítulo 3 (Sistemas Circulatório, Linfático e Urinário)", pag: "Páginas 46 e 58 (Tópicos: 2. O sangue, 7. O sistema linfático)" },
+                        { codigo: "7EF16_CN", caed: "Reconhecer a composição do ar e o modo como a poluição afeta suas características.", bncc: "EF07CI12", ut: "Unidade B — Sistema Respiratório", cap: "Capítulo 4 (Sistema Respiratório)", pag: "Páginas 76 e 80 (Tópicos: 4. As trocas gasosas nos pulmões, 7. Distúrbios do sistema respiratório)" },
+                        { codigo: "7EF18_CN", caed: "Interpretar propostas de controle ou de reversão do aumento artificial do efeito estufa no planeta Terra.", bncc: "EF07CI13", ut: "Unidade D — Previsão do Tempo", cap: "Capítulo 10 (Previsão do Tempo)", pag: "Página 190 (Tópico: 13. Alterações climáticas provocadas pelo ser humano)" },
+                        { codigo: "7EF19_CN", caed: "Interpretar ações voltadas para a preservação da camada de ozônio.", bncc: "EF07CI14", ut: "Unidade D — Previsão do Tempo", cap: "Capítulo 10 (Previsão do Tempo)", pag: "Página 190 (Tópico: 13. Alterações climáticas provocadas pelo ser humano)" }
+                    ],
+                    2: [
+                        { codigo: "8EF01_CN", caed: "Classificar os recursos energéticos em renováveis e não renováveis.", bncc: "EF08CI01", ut: "Unidade D — Produção e Uso de Energia Elétrica", cap: "Capítulo 12 (Produção e Uso de Energia Elétrica)", pag: "Página 227 (Tópico: 6. Recursos energéticos)" },
+                        { codigo: "8EF02_CN", caed: "Reconhecer diferentes fontes de energia.", bncc: "EF08CI01", ut: "Unidade D — Produção e Uso de Energia Elétrica", cap: "Capítulo 12 (Produção e Uso de Energia Elétrica)", pag: "Página 227 (Tópico: 6. Recursos energéticos)" },
+                        { codigo: "8EF03_CN", caed: "Reconhecer diferentes tipos de energia.", bncc: "EF08CI01", ut: "Unidade D — Produção e Uso de Energia Elétrica", cap: "Capítulo 12 (Produção e Uso de Energia Elétrica)", pag: "Página 217 (Tópico: 3. Energia elétrica)" },
+                        { codigo: "8EF05_CN", caed: "Classificar os processos de transformação da energia nos aparelhos residenciais.", bncc: "EF08CI03", ut: "Unidade D — Produção e Uso de Energia Elétrica", cap: "Capítulo 12 (Produção e Uso de Energia Elétrica)", pag: "Página 219 (Tópico: 4. O uso doméstico de energia elétrica)" },
+                        { codigo: "8EF07_CN", caed: "Reconhecer as atitudes que contribuem para redução do consumo de energia.", bncc: "EF08CI05", ut: "Unidade D — Produção e Uso de Energia Elétrica", cap: "Capítulo 12 (Produção e Uso de Energia Elétrica)", pag: "Páginas 219 e 221 (Tópicos: 4. O uso doméstico de energia elétrica, 5. Segurança no uso da energia elétrica)" },
+                        { codigo: "8EF10_CN", caed: "Reconhecer os tipos de usinas de geração de energia elétrica.", bncc: "EF08CI06", ut: "Unidade D — Produção e Uso de Energia Elétrica", cap: "Capítulo 12 (Produção e Uso de Energia Elétrica)", pag: "Página 227 (Tópico: 6. Recursos energéticos)" },
+                        { codigo: "8EF11_CN", caed: "Reconhecer os diferentes processos reprodutivos dos seres vivos.", bncc: "EF08CI07", ut: "Unidade B — Reprodução Sexuada e Reprodução Assexuada em Animais", cap: "Capítulo 5 (Reprodução Sexuada e Reprodução Assexuada em Animais)", pag: "Páginas 95 e 98 (Tópicos: 4. Reprodução sexuada em animais, 5. Reprodução assexuada em animais)" },
+                        { codigo: "8EF12_CN", caed: "Reconhecer as estruturas que compõem o sistema endócrino.", bncc: "EF08CI08", ut: "Unidade C — Adolescência, Puberdade e Sistema Endócrino", cap: "Capítulo 7 (Adolescência, Puberdade e Sistema Endócrino)", pag: "Páginas 138 e 139 (Tópicos: 8. Glândulas: exócrinas e endócrinas, 9. O sistema endócrino)" },
+                        { codigo: "8EF16_CN", caed: "Reconhecer as posições relativas entre Sol, Terra e Lua associadas às fases da Lua e à ocorrência de eclipses.", bncc: "EF08CI12", ut: "Unidade D — Lua e Constelações", cap: "Capítulo 11 (Lua e Constelações)", pag: "Páginas 200 e 203 (Tópicos: 1. As fases da Lua, 3. As fases da Lua e os eclipses)" }
+                    ],
+                    3: [
+                        { codigo: "8EF01_CN", caed: "Classificar os recursos energéticos em renováveis e não renováveis.", bncc: "EF08CI01", ut: "Unidade D — Produção e Uso de Energia Elétrica", cap: "Capítulo 12 (Produção e Uso de Energia Elétrica)", pag: "Página 227 (Tópico: 6. Recursos energéticos)" },
+                        { codigo: "8EF04_CN", caed: "Reconhecer os componentes de um circuito.", bncc: "EF08CI02", ut: "Unidade D — Produção e Uso de Energia Elétrica", cap: "Capítulo 12 (Produção e Uso de Energia Elétrica)", pag: "Página 214 (Tópico: 1. Circuito elétrico e corrente elétrica)" },
+                        { codigo: "8EF05_CN", caed: "Classificar os processos de transformação da energia nos aparelhos residenciais.", bncc: "EF08CI03", ut: "Unidade D — Produção e Uso de Energia Elétrica", cap: "Capítulo 12 (Produção e Uso de Energia Elétrica)", pag: "Página 219 (Tópico: 4. O uso doméstico de energia elétrica)" },
+                        { codigo: "8EF06_CN", caed: "Verificar o consumo de energia elétrica de aparelhos eletroeletrônicos, assim como as grandezas e as ações que influenciam nesse consumo.", bncc: "EF08CI04", ut: "Unidade D — Produção e Uso de Energia Elétrica", cap: "Capítulo 12 (Produção e Uso de Energia Elétrica)", pag: "Página 219 (Tópico: 4. O uso doméstico de energia elétrica)" },
+                        { codigo: "8EF08_CN", caed: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas.", bncc: "EF08CI06", ut: "Unidade D — Produção e Uso de Energia Elétrica", cap: "Capítulo 12 (Produção e Uso de Energia Elétrica)", pag: "Página 227 (Tópico: 6. Recursos energéticos)" },
+                        { codigo: "8EF09_CN", caed: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia elétrica.", bncc: "EF08CI06", ut: "Unidade D — Previsão do Tempo / Produção e Uso de Energia Elétrica", cap: "Capítulo 10 / Capítulo 12", pag: "Páginas 190 e 227 (Tópicos: 13. Alterações climáticas provocadas pelo ser humano / 6. Recursos energéticos)" },
+                        { codigo: "8EF10_CN", caed: "Reconhecer os tipos de usinas de geração de energia elétrica.", bncc: "EF08CI06", ut: "Unidade D — Produção e Uso de Energia Elétrica", cap: "Capítulo 12 (Produção e Uso de Energia Elétrica)", pag: "Página 227 (Tópico: 6. Recursos energéticos)" },
+                        { codigo: "8EF11_CN", caed: "Reconhecer os diferentes processos reprodutivos dos seres vivos.", bncc: "EF08CI07", ut: "Unidade B — Reprodução Sexuada e Assexuada em Animais / em Plantas", cap: "Capítulo 5 e Capítulo 6", pag: "Páginas 95, 98 e 105 (Tópicos: 4. Reprodução sexuada em animais, 5. Reprodução assexuada em animais, 2. Reprodução sexuada de plantas)" },
+                        { codigo: "8EF13_CN", caed: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias.", bncc: "EF08CI08", ut: "Unidade C — Adolescência, Puberdade e Sistema Endócrino", cap: "Capítulo 7 (Adolescência, Puberdade e Sistema Endócrino)", pag: "Páginas 134 e 145 (Tópicos: 4. As mudanças trazidas pela puberdade, 13. Hormônios sexuais e mudanças na puberdade)" },
+                        { codigo: "8EF14_CN", caed: "Reconhecer o princípio de ação dos métodos contraceptivos.", bncc: "EF08CI09", ut: "Unidade C — Sexo, Saúde e Sociedade", cap: "Capítulo 9 (Sexo, Saúde e Sociedade)", pag: "Página 164 (Tópico: 1. Contracepção)" },
+                        { codigo: "8EF15_CN", caed: "Reconhecer as características das infecções sexualmente transmissíveis (IST).", bncc: "EF08CI10", ut: "Unidade C — Sexo, Saúde e Sociedade", cap: "Capítulo 9 (Sexo, Saúde e Sociedade)", pag: "Páginas 167 e 169 (Tópicos: 2. Infecções Sexualmente Transmissíveis (IST), 3. Aids)" },
+                        { codigo: "8EF17_CN", caed: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.", bncc: "EF08CI13", ut: "Unidade D — Lua e Constelações", cap: "Capítulo 11 (Lua e Constelações)", pag: "Página 206 (Tópico: 4. As estações do ano)" }
+                    ]
+                }
+            },
+            "9ano": {
+                "titulo": "9º Ano - Ensino Fundamental",
+                "ciclos": {
+                    1: [
+                        { codigo: "8EF01_CN", caed: "Classificar os recursos energéticos em renováveis e não renováveis.", bncc: "EF08CI01", ut: "Unidade D — Desenvolvimento Sustentável", cap: "Capítulo 12 (Desenvolvimento Sustentável)", pag: "Página 247 (Tópico: 4. Recursos renováveis e recursos não renováveis)" },
+                        { codigo: "8EF04_CN", caed: "Reconhecer os componentes de um circuito.", bncc: "EF08CI02", ut: "Unidade A — Cargas Elétricas e Modelo Atômico de Rutherford", cap: "Capítulo 2 (Cargas Elétricas e Modelo Atômico de Rutherford)", pag: "Página 33 (Tópicos: 1. Eletricidade, 2. Cargas elétricas, 4. Condutores elétricos e isolantes elétricos)" },
+                        { codigo: "8EF05_CN", caed: "Classificar os processos de transformação da energia nos aparelhos residenciais.", bncc: "EF08CI03", ut: "Unidade A — Cargas Elétricas e Modelo Atômico de Rutherford", cap: "Capítulo 2 (Cargas Elétricas e Modelo Atômico de Rutherford)", pag: "Página 33 (Tópico: 1. Eletricidade)" },
+                        { codigo: "8EF06_CN", caed: "Verificar o consumo de energia elétrica de aparelhos eletroeletrônicos, assim como as grandezas e as ações que influenciam nesse consumo.", bncc: "EF08CI04", ut: "Unidade A — Cargas Elétricas e Modelo Atômico de Rutherford", cap: "Capítulo 2 (Cargas Elétricas e Modelo Atômico de Rutherford)", pag: "Página 33 (Tópicos: 1. Eletricidade, 2. Cargas elétricas)" },
+                        { codigo: "8EF08_CN", caed: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas.", bncc: "EF08CI06", ut: "Unidade A — Cargas Elétricas e Modelo Atômico de Rutherford", cap: "Capítulo 2 (Cargas Elétricas e Modelo Atômico de Rutherford)", pag: "Página 33 (Tópicos: 1. Eletricidade, 7. Descargas elétricas no ar)" },
+                        { codigo: "8EF09_CN", caed: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia elétrica.", bncc: "EF08CI06", ut: "Unidade D — Desenvolvimento Sustentável", cap: "Capítulo 12 (Desenvolvimento Sustentável)", pag: "Páginas 244 e 247 (Tópicos: 2. Ação humana e desequilíbrios ambientais, 4. Recursos renováveis e recursos não renováveis)" },
+                        { codigo: "8EF10_CN", caed: "Reconhecer os tipos de usinas de geração de energia elétrica.", bncc: "EF08CI06", ut: "Unidade A / Unidade D — Cargas Elétricas e Modelo Atômico de Rutherford / Desenvolvimento Sustentável", cap: "Capítulo 2 e Capítulo 12", pag: "Páginas 33 e 247 (Tópicos: 1. Eletricidade / 4. Recursos renováveis e recursos não renováveis)" },
+                        { codigo: "8EF11_CN", caed: "Reconhecer os diferentes processos reprodutivos dos seres vivos.", bncc: "EF08CI07", ut: "Unidade D — Genética e Hereditariedade", cap: "Capítulo 10 (Genética e Hereditariedade)", pag: "Página 203 (Tópico: 4. Cromossomos e reprodução humana)" },
+                        { codigo: "8EF13_CN", caed: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias.", bncc: "EF08CI08", ut: "Unidade D — Genética e Hereditariedade", cap: "Capítulo 10 (Genética e Hereditariedade)", pag: "Páginas 203 e 213 (Tópicos: 4. Cromossomos e reprodução humana, 12. Cromossomos sexuais)" },
+                        { codigo: "8EF14_CN", caed: "Reconhecer o princípio de ação dos métodos contraceptivos.", bncc: "EF08CI09", ut: "Unidade D — Genética e Hereditariedade", cap: "Capítulo 10 (Genética e Hereditariedade)", pag: "Página 203 (Tópico: 4. Cromossomos e reprodução humana)" },
+                        { codigo: "8EF15_CN", caed: "Reconhecer as características das infecções sexualmente transmissíveis (IST).", bncc: "EF08CI10", ut: "Unidade D — Genética e Hereditariedade", cap: "Capítulo 10 (Genética e Hereditariedade)", pag: "Página 203 (Tópico: 4. Cromossomos e reprodução humana)" },
+                        { codigo: "8EF17_CN", caed: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.", bncc: "EF08CI13", ut: "Unidade C — Gravitação", cap: "Capítulo 9 (Gravitação)", pag: "Páginas 171 e 175 (Tópicos: 4. Geocentrismo versus heliocentrismo, 5. Os planetas e o Sistema Solar)" }
+                    ],
+                    2: [
+                        { codigo: "9EF01_CN", caed: "Classificar, com base nos modelos de constituição submicroscópica, os estados físicos da matéria.", bncc: "EF09CI01", ut: "Unidade A — Reações Químicas e Teoria Atômica de Dalton", cap: "Capítulo 1 (Reações Químicas e Teoria Atômica de Dalton)", pag: "Página 14 (Tópico: 1. Recordando mudanças de fase da água)" },
+                        { codigo: "9EF02_CN", caed: "Inferir as mudanças de estado físico da matéria a partir da observação dos modelos de constituição submicroscópica.", bncc: "EF09CI01", ut: "Unidade A — Reações Químicas e Teoria Atômica de Dalton", cap: "Capítulo 1 (Reações Químicas e Teoria Atômica de Dalton)", pag: "Página 14 (Tópico: 1. Recordando mudanças de fase da água)" },
+                        { codigo: "9EF06_CN", caed: "Reconhecer que os materiais são constituídos por partículas muito pequenas, com diferentes níveis de organização e espaços vazios.", bncc: "EF09CI03", ut: "Unidade A — Reações Químicas e Teoria Atômica de Dalton", cap: "Capítulo 1 (Reações Químicas e Teoria Atômica de Dalton)", pag: "Página 20 (Tópico: 6. A Teoria Atômica de Dalton)" },
+                        { codigo: "9EF07_CN", caed: "Explicar as cores dos objetos estabelecendo uma relação com a luz que os ilumina.", bncc: "EF09CI04", ut: "Unidade B — Óptica", cap: "Capítulo 6 (Óptica)", pag: "Páginas 109 e 114 (Tópicos: 2. As componentes da luz branca, 6. Reflexão, refração e absorção)" },
+                        { codigo: "9EF08_CN", caed: "Reconhecer as cores primárias e secundárias.", bncc: "EF09CI04", ut: "Unidade B — Óptica", cap: "Capítulo 6 (Óptica)", pag: "Páginas 110-112 (Tópicos: 3. Cores primárias de luz, 4. Cores primárias de luz e visão, 5. Cores primárias de corantes)" },
+                        { codigo: "9EF09_CN", caed: "Classificar as radiações eletromagnéticas.", bncc: "EF09CI06", ut: "Unidade A — Ondas Eletromagnéticas e Modelo Atômico de Bohr", cap: "Capítulo 3 (Ondas Eletromagnéticas e Modelo Atômico de Bohr)", pag: "Páginas 53 e 54 (Tópicos: 2. Ondas: mecânicas versus eletromagnéticas, 3. Características e aplicações das ondas eletromagnéticas)" },
+                        { codigo: "9EF10_CN", caed: "Reconhecer as aplicações das radiações eletromagnéticas.", bncc: "EF09CI06", ut: "Unidade A — Ondas Eletromagnéticas e Modelo Atômico de Bohr", cap: "Capítulo 3 (Ondas Eletromagnéticas e Modelo Atômico de Bohr)", pag: "Página 54 (Tópico: 3. Características e aplicações das ondas eletromagnéticas)" },
+                        { codigo: "9EF11_CN", caed: "Interpretar como as características hereditárias são transmitidas às gerações seguintes.", bncc: "EF09CI08", ut: "Unidade D — Genética e Hereditariedade", cap: "Capítulo 10 (Genética e Hereditariedade)", pag: "Página 210 (Tópico: 9. Hereditariedade em humanos)" },
+                        { codigo: "9EF13_CN", caed: "Reconhecer a contribuição de Mendel para os estudos da genética.", bncc: "EF09CI09", ut: "Unidade D — Genética e Hereditariedade", cap: "Capítulo 10 (Genética e Hereditariedade)", pag: "Página 197 (Tópico: 1. Mendel e as ervilhas)" },
+                        { codigo: "9EF14_CN", caed: "Reconhecer os conceitos básicos para o estudo da hereditariedade.", bncc: "EF09CI09", ut: "Unidade D — Genética e Hereditariedade", cap: "Capítulo 10 (Genética e Hereditariedade)", pag: "Páginas 205-207 (Tópicos: 5. O que é Genética?, 6. Alelos localizam-se em cromossomos homólogos, 7. Genótipo, 8. Fenótipo e influência do ambiente)" },
+                        { codigo: "9EF18_CN", caed: "Reconhecer os corpos que compõem o Sistema Solar.", bncc: "EF09CI14", ut: "Unidade C — Gravitação", cap: "Capítulo 9 (Gravitação)", pag: "Páginas 175 e 177 (Tópicos: 5. Os planetas e o Sistema Solar, 6. Sol, a nossa estrela)" }
+                    ],
+                    3: [
+                        { codigo: "9EF02_CN", caed: "Inferir as mudanças de estado físico da matéria a partir da observação dos modelos de constituição submicroscópica.", bncc: "EF09CI01", ut: "Unidade A — Reações Químicas e Teoria Atômica de Dalton", cap: "Capítulo 1 (Reações Químicas e Teoria Atômica de Dalton)", pag: "Página 14 (Tópico: 1. Recordando mudanças de fase da água)" },
+                        { codigo: "9EF03_CN", caed: "Inferir, em situações que ocorrem transformações químicas, a relação estabelecida entre a conservação das massas e as propriedades dos átomos.", bncc: "EF09CI02", ut: "Unidade A — Reações Químicas e Teoria Atômica de Dalton", cap: "Capítulo 1 (Reações Químicas e Teoria Atômica de Dalton)", pag: "Páginas 18 e 24 (Tópicos: 4. A Lei da Conservação da Massa, 9. Explicação para as Leis de Lavoisier e de Proust)" },
+                        { codigo: "9EF04_CN", caed: "Interpretar, em uma equação química, a conservação da massa entre reagentes e produtos.", bncc: "EF09CI02", ut: "Unidade A — Reações Químicas e Teoria Atômica de Dalton", cap: "Capítulo 1 (Reações Químicas e Teoria Atômica de Dalton)", pag: "Páginas 23 e 24 (Tópicos: 8. Equação química, 9. Explicação para as Leis de Lavoisier e de Proust)" },
+                        { codigo: "9EF05_CN", caed: "Interpretar, a partir da evolução histórica de teorias e de tecnologias, os diferentes modelos atômicos.", bncc: "EF09CI03", ut: "Unidade A — Cargas Elétricas e Modelo Atômico de Rutherford / Ondas Eletromagnéticas e Modelo Atômico de Bohr", cap: "Capítulo 2 e Capítulo 3", pag: "Páginas 39 e 59 (Tópicos: 8. Modelo atômico de Rutherford / 4. Modelo atômico de Bohr)" },
+                        { codigo: "9EF07_CN", caed: "Explicar as cores dos objetos estabelecendo uma relação com a luz que os ilumina.", bncc: "EF09CI04", ut: "Unidade B — Óptica", cap: "Capítulo 6 (Óptica)", pag: "Páginas 109 e 114 (Tópicos: 2. As componentes da luz branca, 6. Reflexão, refração e absorção)" },
+                        { codigo: "9EF10_CN", caed: "Reconhecer as aplicações das radiações eletromagnéticas.", bncc: "EF09CI06", ut: "Unidade A — Ondas Eletromagnéticas e Modelo Atômico de Bohr", cap: "Capítulo 3 (Ondas Eletromagnéticas e Modelo Atômico de Bohr)", pag: "Páginas 54 e 128 (Tópicos: 3. Características e aplicações das ondas eletromagnéticas / Importância das radiações eletromagnéticas)" },
+                        { codigo: "9EF12_CN", caed: "Verificar, a partir da aplicação da 1ª lei de Mendel, a expressão de características genéticas em uma população.", bncc: "EF09CI09", ut: "Unidade D — Genética e Hereditariedade", cap: "Capítulo 10 (Genética e Hereditariedade)", pag: "Páginas 197-205 (Tópicos: 1. Mendel e as ervilhas, 5. O que é Genética?)" },
+                        { codigo: "9EF15_CN", caed: "Comparar as ideias evolucionistas de Lamarck e Darwin.", bncc: "EF09CI10", ut: "Unidade D — Evolução dos Seres Vivos", cap: "Capítulo 11 (Evolução dos Seres Vivos)", pag: "Página 223 (Tópicos: 3. A explicação lamarckista para a evolução, 4. A explicação darwinista para a evolução)" },
+                        { codigo: "9EF16_CN", caed: "Explicar o processo de evolução e o fenômeno da biodiversidade com base no conceito de seleção natural.", bncc: "EF09CI11", ut: "Unidade D — Evolução dos Seres Vivos", cap: "Capítulo 11 (Evolução dos Seres Vivos)", pag: "Páginas 223 e 226 (Tópicos: 4. A explicação darwinista para a evolução, 7. Darwin inspirou-se na seleção artificial)" },
+                        { codigo: "9EF17_CN", caed: "Reconhecer fatores que determinam o processo de especiação.", bncc: "EF09CI11", ut: "Unidade D — Evolução dos Seres Vivos", cap: "Capítulo 11 (Evolução dos Seres Vivos)", pag: "Página 224 (Tópico: 5. Como se formam novas espécies?)" },
+                        { codigo: "9EF19_CN", caed: "Organizar o ciclo evolutivo de uma estrela.", bncc: "EF09CI17", ut: "Unidade C — Gravitação", cap: "Capítulo 9 (Gravitação)", pag: "Páginas 182 e 186 (Tópicos: 8. Sol e outras estrelas, 9. Ciclo de vida das estrelas)" }
+                    ]
+                }
+            }
         };
 
-        // BASE DE DADOS COMPLETA INTACTA (TODAS AS 133 HABILIDADES PRESERVADAS)
-        function buildExactDatabase() {
-            const list = [];
+        let turmaAtual = null;
+        let cicloAtual = 1;
 
-            function createObj(id, bncc, unit, grade, cycle, name, theme, chap, page) {
-                return {
-                    id: id,
-                    bncc: bncc,
-                    unit: unit,
-                    grade: grade,
-                    applicationYear: "2026",
-                    cycle: cycle,
-                    caedSkill: name,
-                    bookTheme: theme,
-                    bookChapter: chap,
-                    bookPage: page,
-                    focus: `Compreensão e aplicação do descritor ${bncc} no contexto do CAEd para o ${grade}.`,
-                    prerequisites: ["Conceitos fundamentais da unidade temática"],
-                    pitfalls: ["Confusão entre conceitos correlatos ou interpretação equivocada de imagens."],
-                    methodologyRoute: [
-                        { step: 1, action: "Observar", detail: `Analisar esquemas, gráficos ou imagens associadas ao tema ${theme}.` },
-                        { step: 2, action: "Duvidar", detail: "Formular pergunta condutora sobre a ocorrência do fenômeno." },
-                        { step: 3, action: "Teorizar", detail: "Construir a síntese do conceito alinhado ao descritor do CAEd." }
-                    ],
-                    sampleQuestionTip: "Identificar a alternativa correta baseando-se no foco da matriz CAEd."
-                };
+        function selecionarTurma(turmaKey) {
+            turmaAtual = turmaKey;
+            cicloAtual = 1;
+
+            document.getElementById('tela-inicio').style.display = 'none';
+            document.getElementById('tela-detalhes').style.display = 'block';
+
+            const dadosTurma = bancoDados[turmaKey];
+            document.getElementById('titulo-turma').innerText = dadosTurma.titulo;
+
+            document.getElementById('count-ciclo1').innerText = dadosTurma.ciclos[1].length;
+            document.getElementById('count-ciclo2').innerText = dadosTurma.ciclos[2].length;
+            document.getElementById('count-ciclo3').innerText = dadosTurma.ciclos[3].length;
+
+            carregarCiclo(1);
+        }
+
+        function voltarInicio() {
+            document.getElementById('tela-detalhes').style.display = 'none';
+            document.getElementById('tela-inicio').style.display = 'block';
+            turmaAtual = null;
+        }
+
+        function carregarCiclo(numCiclo) {
+            cicloAtual = numCiclo;
+
+            // Atualiza botões
+            for (let i = 1; i <= 3; i++) {
+                const btn = document.getElementById(`btn-ciclo${i}`);
+                if (i === numCiclo) {
+                    btn.classList.add('active', 'btn-primary');
+                    btn.classList.remove('btn-outline-primary');
+                } else {
+                    btn.classList.remove('active', 'btn-primary');
+                    btn.classList.add('btn-outline-primary');
+                }
             }
 
-            // 1. 6º ANO -> 32 Habilidades (Ciclo I: 9 | Ciclo II: 12 | Ciclo III: 11)
-            const raw6_C1 = [
-                ["6EF01_CN", "EF05CI02", "ME - Matéria e Energia", "Interpretar o ciclo da água.", "8. Hidrosfera e ciclo da água", "Capítulo 10", "Página 176"],
-                ["6EF02_CN", "EF05CI03", "ME - Matéria e Energia", "Explicar como a ação da água, seres vivos e desmatamento causam erosão.", "5. Rochas sedimentares", "Capítulo 11", "Página 194"],
-                ["6EF03_CN", "EF05CI04", "ME - Matéria e Energia", "Interpretar comportamentos voltados para a preservação dos recursos naturais.", "11. Recursos minerais", "Capítulo 11", "Páginas 202-205"],
-                ["6EF04_CN", "EF05CI05", "ME - Matéria e Energia", "Reconhecer propriedades de materiais para reciclagem (plástico, vidro, metal).", "5. Substâncias e misturas", "Capítulo 8", "Páginas 138-142"],
-                ["6EF05_CN", "EF05CI06", "VE - Vida e Evolução", "Interpretar as relações entre sistemas do corpo humano.", "1. Níveis e integração", "Capítulo 4", "Páginas 56 e 66"],
-                ["6EF06_CN", "EF05CI08", "VE - Vida e Evolução", "Explicar a necessidade de ingestão de diferentes nutrientes.", "1. Nutrientes e energia", "Capítulo 1", "Página 17"],
-                ["6EF07_CN", "EF05CI11", "TU - Terra e Universo", "Reconhecer os movimentos realizados pela Terra e pela Lua.", "1. Ciclo dia/noite e estações", "Capítulo 12", "Página 211"],
-                ["6EF08_CN", "EF05CI12", "TU - Terra e Universo", "Reconhecer as fases da Lua.", "12. Nascente e poente da Lua", "Capítulo 12", "Página 225"],
-                ["6EF09_CN", "EF05CI13", "TU - Terra e Universo", "Comparar instrumentos ópticos ao tipo de observação.", "3. Focalização de imagens", "Capítulo 6", "Páginas 94 e 99"]
-            ];
+            const conteiner = document.getElementById('lista-habilidades');
+            conteiner.innerHTML = '';
 
-            const raw6_C2 = [
-                ["6EF11_CN", "EF06CI01", "ME - Matéria e Energia", "Reconhecer, a partir de características observáveis, a ocorrência de misturas.", "6. Misturas no cotidiano", "Capítulo 8", "Página 139"],
-                ["6EF12_CN", "EF06CI03", "ME - Matéria e Energia", "Classificar métodos de separação de misturas heterogêneas.", "7. Separação de misturas", "Capítulo 8", "Página 142"],
-                ["6EF14_CN", "EF06CI04", "ME - Matéria e Energia", "Reconhecer a origem natural ou sintética de materiais.", "4. O petróleo / Sintéticos", "Capítulo 9", "Página 158"],
-                ["6EF16_CN", "EF06CI05", "VE - Vida e Evolução", "Reconhecer a célula como a unidade morfofisiológica dos seres vivos.", "2. A célula", "Capítulo 4", "Página 57"],
-                ["6EF18_CN", "EF06CI07", "VE - Vida e Evolução", "Reconhecer as estruturas que compõem o sistema nervoso.", "3. Estrutura do sistema nervoso", "Capítulo 7", "Página 111"],
-                ["6EF19_CN", "EF06CI08", "VE - Vida e Evolução", "Classificar os defeitos da visão.", "6. Distúrbios visuais", "Capítulo 6", "Página 99"],
-                ["6EF20_CN", "EF06CI08", "VE - Vida e Evolução", "Reconhecer as estruturas do olho humano e suas funcionalidades.", "2. O sentido da visão", "Capítulo 6", "Páginas 91 e 94"],
-                ["6EF22_CN", "EF06CI11", "TU - Terra e Universo", "Reconhecer a estrutura da Terra.", "1. Crosta, Manto e Núcleo", "Capítulo 11", "Página 191"],
-                ["6EF23_CN", "EF06CI13", "TU - Terra e Universo", "Reconhecer a forma esférica da Terra.", "11. Forma do planeta", "Capítulo 12", "Página 224"],
-                ["6EF26_CN", "EF06CI02", "ME - Matéria e Energia", "Identificar evidências de transformações químicas no cotidiano.", "1. Reações Químicas", "Capítulo 9", "Página 150"],
-                ["6EF27_CN", "EF06CI09", "VE - Vida e Evolução", "Diferenciar órgãos e funções do sistema digestório.", "Sistemas de nutrição", "Capítulo 4", "Página 65"],
-                ["6EF29_CN", "EF06CI12", "TU - Terra e Universo", "Identificar a composição das rochas e minerais da litosfera.", "4. Rochas e minerais", "Capítulo 11", "Página 194"]
-            ];
+            const habilidades = bancoDados[turmaAtual].ciclos[numCiclo];
 
-            const raw6_C3 = [
-                ["6EF10_CN", "EF06CI01", "ME - Matéria e Energia", "Classificar como homogênea ou heterogênea a mistura de materiais.", "6. Misturas", "Capítulo 8", "Página 139"],
-                ["6EF13_CN", "EF06CI03", "ME - Matéria e Energia", "Classificar métodos de separação de misturas homogêneas.", "7. Separação de misturas", "Capítulo 8", "Página 142"],
-                ["6EF15_CN", "EF06CI04", "ME - Matéria e Energia", "Inferir a relação entre o uso de materiais sintéticos e seus impactos socioambientais.", "4. Poluição por plástico", "Capítulo 9", "Página 158"],
-                ["6EF17_CN", "EF06CI06", "VE - Vida e Evolução", "Reconhecer os níveis de organização dos seres vivos.", "1. Níveis hierárquicos", "Capítulo 4", "Páginas 56-65"],
-                ["6EF21_CN", "EF06CI08", "VE - Vida e Evolução", "Comparar estruturas do olho humano ao funcionamento de instrumentos ópticos.", "5. Câmera e Olho", "Capítulo 6", "Página 98"],
-                ["6EF24_CN", "EF06CI13", "TU - Terra e Universo", "Explicar argumentos e evidências que demonstram a esfericidade da Terra.", "11. Evidências históricas", "Capítulo 12", "Página 224"],
-                ["6EF25_CN", "EF06CI14", "TU - Terra e Universo", "Interpretar a relação entre movimentos da Terra e a sombra do gnômon.", "10. Trajetória do Sol", "Capítulo 12", "Página 222"],
-                ["6EF28_CN", "EF06CI10", "VE - Vida e Evolução", "Explicar a integração do sistema nervoso com a locomoção.", "1. Atos reflexos e músculos", "Capítulo 7", "Página 110"],
-                ["6EF30_CN", "EF05CI01", "ME - Matéria e Energia", "Reconhecer mudanças de estado físico da água na natureza.", "Ciclo hidrológico", "Capítulo 10", "Página 176"],
-                ["6EF31_CN", "EF05CI07", "VE - Vida e Evolução", "Reconhecer os órgãos responsáveis pela eliminação de resíduos (excreção).", "Sistemas corporais", "Capítulo 4", "Página 65"],
-                ["6EF32_CN", "EF05CI10", "TU - Terra e Universo", "Identificar a presença de água na atmosfera em forma de vapor e nuvens.", "9. Umidade do ar", "Capítulo 10", "Página 178"]
-            ];
-
-            raw6_C1.forEach(r => list.push(createObj(r[0], r[1], r[2], "6º Ano", "Ciclo I", r[3], r[4], r[5], r[6])));
-            raw6_C2.forEach(r => list.push(createObj(r[0], r[1], r[2], "6º Ano", "Ciclo II", r[3], r[4], r[5], r[6])));
-            raw6_C3.forEach(r => list.push(createObj(r[0], r[1], r[2], "6º Ano", "Ciclo III", r[3], r[4], r[5], r[6])));
-
-            // 2. 7º ANO -> 34 Habilidades (Ciclo I: 11 | Ciclo II: 11 | Ciclo III: 12)
-            const raw7_C1 = raw6_C1.concat(raw6_C2.slice(0, 2)).map(r => [r[0] + "_7A", r[1], r[2], r[3], r[4], r[5], r[6]]);
-
-            const raw7_C2 = [
-                ["7EF02_CN", "EF07CI01", "ME - Matéria e Energia", "Reconhecer dispositivos mecânicos que facilitam o trabalho.", "1-9. Alavancas e Roldanas", "Capítulo 10", "Páginas 182-188"],
-                ["7EF03_CN", "EF07CI02", "ME - Matéria e Energia", "Interpretar conceitos de calor, temperatura e sensação térmica.", "1. Escalas e calor", "Capítulo 11", "Páginas 196-198"],
-                ["7EF05_CN", "EF07CI03", "ME - Matéria e Energia", "Classificar processos de transferência de calor (condução, convecção, irradiação).", "3-6. Trocas de calor", "Capítulo 11", "Páginas 199-205"],
-                ["7EF07_CN", "EF07CI05", "ME - Matéria e Energia", "Discutir o uso de combustíveis fósseis e renováveis.", "Impacto dos combustíveis", "Capítulo 10", "Página 190"],
-                ["7EF08_CN", "EF07CI07", "VE - Vida e Evolução", "Reconhecer os diferentes biomas brasileiros.", "1-8. Biomas Brasileiros", "Capítulo 9", "Páginas 166-175"],
-                ["7EF12_CN", "EF07CI09", "VE - Vida e Evolução", "Reconhecer a relação entre saneamento básico e saúde humana.", "11. Doenças hídricas", "Capítulo 6", "Página 113"],
-                ["7EF14_CN", "EF07CI10", "VE - Vida e Evolução", "Reconhecer a importância da adesão às campanhas de vacinação.", "7. Vírus e imunidade", "Capítulo 3", "Página 59"],
-                ["7EF15_CN", "EF07CI12", "TU - Terra e Universo", "Reconhecer o ar como uma mistura de gases.", "1. Composição do ar", "Capítulo 12", "Página 214"],
-                ["7EF17_CN", "EF07CI13", "TU - Terra e Universo", "Reconhecer a atuação do efeito estufa no planeta Terra.", "8. Aquecimento global", "Capítulo 11", "Página 207"],
-                ["7EF20_CN", "EF07CI14", "TU - Terra e Universo", "Reconhecer a participação da camada de ozônio no fenômeno da vida.", "6. Camada de ozônio", "Capítulo 12", "Página 222"],
-                ["7EF21_CN", "EF07CI11", "TU - Terra e Universo", "Identificar a influência do relevo e vulcanismo na crosta.", "Placas Tectônicas", "Capítulo 11", "Página 195"]
-            ];
-
-            const raw7_C3 = [
-                ["7EF01_CN", "EF07CI01", "ME - Matéria e Energia", "Inferir os conceitos de força e trabalho em máquinas simples.", "2. Máquinas simples", "Capítulo 10", "Página 182"],
-                ["7EF04_CN", "EF07CI03", "ME - Matéria e Energia", "Inferir formas de propagação de calor em equipamentos.", "3-7. Isolantes térmicos", "Capítulo 11", "Páginas 199-206"],
-                ["7EF06_CN", "EF07CI04", "ME - Matéria e Energia", "Explicar o funcionamento de máquinas térmicas.", "10. Motores a vapor", "Capítulo 10", "Página 190"],
-                ["7EF09_CN", "EF07CI07", "VE - Vida e Evolução", "Interpretar fatores abióticos na diversidade dos biomas.", "4. Adaptação de plantas e animais", "Capítulo 2", "Página 37"],
-                ["7EF10_CN", "EF07CI08", "VE - Vida e Evolução", "Inferir como intervenções humanas causam desequilíbrios ambientais.", "16. Eutrofização de rios", "Capítulo 6", "Página 118"],
-                ["7EF11_CN", "EF07CI09", "VE - Vida e Evolução", "Interpretar indicadores de saúde de um grupo populacional.", "15. Saneamento e IDH", "Capítulo 6", "Página 117"],
-                ["7EF13_CN", "EF07CI10", "VE - Vida e Evolução", "Inferir o mecanismo de ação das vacinas nos organismos.", "Defesas imunológicas", "Capítulo 3", "Página 69"],
-                ["7EF16_CN", "EF07CI12", "TU - Terra e Universo", "Reconhecer a composição do ar e efeitos da poluição.", "5. Poluição e chuva ácida", "Capítulo 12", "Página 219"],
-                ["7EF18_CN", "EF07CI13", "TU - Terra e Universo", "Interpretar propostas de reversão do efeito estufa artificial.", "8. Ações mitigatórias", "Capítulo 11", "Página 207"],
-                ["7EF19_CN", "EF07CI14", "TU - Terra e Universo", "Interpretar ações de preservação da camada de ozônio.", "6. Poluição por CFCs", "Capítulo 12", "Página 222"],
-                ["7EF22_CN", "EF07CI06", "VE - Vida e Evolução", "Avaliar a importância da biodiversidade em biomas continentais.", "Biodiversidade", "Capítulo 9", "Página 170"],
-                ["7EF23_CN", "EF07CI15", "TU - Terra e Universo", "Explicar fenômenos naturais derivados do movimento de placas tectônicas.", "Sismos e Vulcões", "Capítulo 11", "Página 195"]
-            ];
-
-            raw7_C1.forEach(r => list.push(createObj(r[0], r[1], r[2], "7º Ano", "Ciclo I", r[3], r[4], r[5], r[6])));
-            raw7_C2.forEach(r => list.push(createObj(r[0], r[1], r[2], "7º Ano", "Ciclo II", r[3], r[4], r[5], r[6])));
-            raw7_C3.forEach(r => list.push(createObj(r[0], r[1], r[2], "7º Ano", "Ciclo III", r[3], r[4], r[5], r[6])));
-
-            // 3. 8º ANO -> 33 Habilidades (Ciclo I: 12 | Ciclo II: 9 | Ciclo III: 12)
-            const raw8_C1 = raw6_C1.concat(raw6_C2.slice(0, 3)).map(r => [r[0] + "_8A", r[1], r[2], r[3], r[4], r[5], r[6]]);
-
-            const raw8_C2 = [
-                ["8EF01_CN", "EF08CI01", "ME - Matéria e Energia", "Classificar os recursos energéticos em renováveis e não renováveis.", "Matriz energética", "Capítulo 12", "Página 227"],
-                ["8EF02_CN", "EF08CI02", "ME - Matéria e Energia", "Reconhecer circuitos elétricos e condutores.", "Circuito e corrente", "Capítulo 12", "Página 214"],
-                ["8EF03_CN", "EF08CI03", "ME - Matéria e Energia", "Classificar processos de transformação de energia em aparelhos.", "3. Transformação elétrica", "Capítulo 12", "Página 217"],
-                ["8EF05_CN", "EF08CI03", "ME - Matéria e Energia", "Classificar aparelhos elétricos segundo a transformação efetuada.", "4. Uso doméstico", "Capítulo 12", "Página 219"],
-                ["8EF07_CN", "EF08CI05", "ME - Matéria e Energia", "Reconhecer atitudes de redução do consumo de energia.", "5. Eficiência energética", "Capítulo 12", "Página 221"],
-                ["8EF10_CN", "EF08CI06", "ME - Matéria e Energia", "Reconhecer os tipos de usinas elétricas.", "6. Tipos de usinas", "Capítulo 12", "Página 227"],
-                ["8EF11_CN", "EF08CI07", "VE - Vida e Evolução", "Reconhecer processos reprodutivos dos seres vivos.", "4-5. Reprodução animal", "Capítulo 5", "Páginas 95-98"],
-                ["8EF12_CN", "EF08CI08", "VE - Vida e Evolução", "Reconhecer estruturas do sistema endócrino.", "8-9. Glândulas do corpo", "Capítulo 7", "Páginas 138-139"],
-                ["8EF16_CN", "EF08CI12", "TU - Terra e Universo", "Reconhecer posições relativas Sol-Terra-Lua e eclipses.", "1-3. Fases e eclipses", "Capítulo 11", "Páginas 200-203"]
-            ];
-
-            const raw8_C3 = [
-                ["8EF04_CN", "EF08CI04", "ME - Matéria e Energia", "Calcular consumo de energia elétrica em kWh.", "4. Consumo residencial", "Capítulo 12", "Página 219"],
-                ["8EF06_CN", "EF08CI04", "ME - Matéria e Energia", "Verificar grandezas que influenciam no consumo elétrico.", "4. Potência e tempo", "Capítulo 12", "Página 219"],
-                ["8EF08_CN", "EF08CI06", "ME - Matéria e Energia", "Inferir o mecanismo de geração de energia em usinas.", "6. Geradores e turbinas", "Capítulo 12", "Página 227"],
-                ["8EF09_CN", "EF08CI06", "ME - Matéria e Energia", "Reconhecer impactos ambientais de usinas elétricas.", "13. Alterações ambientais", "Capítulo 10", "Página 190"],
-                ["8EF13_CN", "EF08CI08", "VE - Vida e Evolução", "Explicar ação endócrina nas características sexuais secundárias.", "13. Hormônios da puberdade", "Capítulo 7", "Página 145"],
-                ["8EF14_CN", "EF08CI09", "VE - Vida e Evolução", "Reconhecer o princípio de ação dos métodos contraceptivos.", "1. Métodos contraceptivos", "Capítulo 9", "Página 164"],
-                ["8EF15_CN", "EF08CI10", "VE - Vida e Evolução", "Reconhecer características das infecções transmissíveis (IST).", "2. ISTs e prevenção", "Capítulo 9", "Páginas 167-169"],
-                ["8EF17_CN", "EF08CI13", "TU - Terra e Universo", "Explicar movimentos terrestres e estações do ano.", "4. Estações do ano", "Capítulo 11", "Página 206"],
-                ["8EF18_CN", "EF08CI11", "TU - Terra e Universo", "Identificar a influência do clima e massas de ar no tempo.", "9-11. Tempo e Clima", "Capítulo 10", "Páginas 186-188"],
-                ["8EF19_CN", "EF08CI14", "TU - Terra e Universo", "Relacionar a inclinação do eixo da Terra à variação de insolação.", "Eixo e insolação", "Capítulo 11", "Página 207"],
-                ["8EF20_CN", "EF08CI15", "TU - Terra e Universo", "Identificar a composição da atmosfera e fenômenos meteorológicos.", "Atmosfera e Tempo", "Capítulo 10", "Página 185"],
-                ["8EF21_CN", "EF08CI16", "TU - Terra e Universo", "Analisar mapas de previsão do tempo e variáveis meteorológicas.", "Previsão do Tempo", "Capítulo 10", "Página 189"]
-            ];
-
-            raw8_C1.forEach(r => list.push(createObj(r[0], r[1], r[2], "8º Ano", "Ciclo I", r[3], r[4], r[5], r[6])));
-            raw8_C2.forEach(r => list.push(createObj(r[0], r[1], r[2], "8º Ano", "Ciclo II", r[3], r[4], r[5], r[6])));
-            raw8_C3.forEach(r => list.push(createObj(r[0], r[1], r[2], "8º Ano", "Ciclo III", r[3], r[4], r[5], r[6])));
-
-            // 4. 9º ANO -> 34 Habilidades (Ciclo I: 12 | Ciclo II: 11 | Ciclo III: 11)
-            const raw9_C1 = [
-                ["8EF01_CN_9A", "EF08CI01", "ME - Matéria e Energia", "Classificar recursos energéticos em renováveis e não renováveis.", "4. Recursos renováveis", "Capítulo 12", "Página 247"],
-                ["8EF02_CN_9A", "EF08CI02", "ME - Matéria e Energia", "Reconhecer componentes de circuitos elétricos.", "1. Cargas e circuitos", "Capítulo 2", "Página 33"],
-                ["8EF03_CN_9A", "EF08CI03", "ME - Matéria e Energia", "Classificar transformações de energia residencial.", "1. Transformações de energia", "Capítulo 2", "Página 33"],
-                ["8EF04_CN_9A", "EF08CI02", "ME - Matéria e Energia", "Reconhecer os componentes de um circuito.", "1. Eletricidade e circuitos", "Capítulo 2", "Página 33"],
-                ["8EF05_CN_9A", "EF08CI03", "ME - Matéria e Energia", "Classificar processos de transformação de energia.", "1. Transformação de energia", "Capítulo 2", "Página 33"],
-                ["8EF06_CN_9A", "EF08CI04", "ME - Matéria e Energia", "Verificar o consumo de energia em eletrodomésticos.", "1. Consumo em kWh", "Capítulo 2", "Página 33"],
-                ["8EF07_CN_9A", "EF08CI05", "ME - Matéria e Energia", "Reconhecer atitudes de economia de energia.", "4. Eficiência energética", "Capítulo 12", "Página 247"],
-                ["8EF08_CN_9A", "EF08CI06", "ME - Matéria e Energia", "Inferir o mecanismo de geração de energia nas usinas.", "1. Geradores elétricos", "Capítulo 2", "Página 33"],
-                ["8EF09_CN_9A", "EF08CI06", "ME - Matéria e Energia", "Reconhecer impactos ambientais do uso de usinas.", "2. Impactos ambientais", "Capítulo 12", "Página 244"],
-                ["8EF10_CN_9A", "EF08CI06", "ME - Matéria e Energia", "Reconhecer tipos de usinas de geração de energia.", "1. Usinas elétricas", "Capítulo 2", "Página 33"],
-                ["8EF11_CN_9A", "EF08CI07", "VE - Vida e Evolução", "Reconhecer diferentes processos reprodutivos.", "4. Cromossomos e reprodução", "Capítulo 10", "Página 203"],
-                ["8EF12_CN_9A", "EF08CI08", "VE - Vida e Evolução", "Reconhecer glândulas do sistema endócrino.", "4. Sistema hormonal", "Capítulo 10", "Página 203"]
-            ];
-
-            const raw9_C2 = [
-                ["9EF01_CN", "EF09CI01", "ME - Matéria e Energia", "Classificar os estados físicos da matéria submicroscópicamente.", "1. Mudanças de fase", "Capítulo 1", "Página 14"],
-                ["9EF02_CN", "EF09CI01", "ME - Matéria e Energia", "Inferir mudanças de estado físico por modelos de partículas.", "1. Mudanças de fase", "Capítulo 1", "Página 14"],
-                ["9EF06_CN", "EF09CI03", "ME - Matéria e Energia", "Reconhecer a constituição descontínua da matéria.", "6. Dalton e partículas", "Capítulo 1", "Página 20"],
-                ["9EF07_CN", "EF09CI04", "ME - Matéria e Energia", "Explicar as cores dos objetos por reflexão da luz.", "2. Luz branca e cores", "Capítulo 6", "Página 109"],
-                ["9EF08_CN", "EF09CI04", "ME - Matéria e Energia", "Reconhecer cores primárias e secundárias.", "3. Cores primárias de luz", "Capítulo 6", "Página 110"],
-                ["9EF09_CN", "EF09CI06", "ME - Matéria e Energia", "Classificar radiações eletromagnéticas.", "2. Espectro eletromagnético", "Capítulo 3", "Página 53"],
-                ["9EF10_CN", "EF09CI06", "ME - Matéria e Energia", "Reconhecer aplicações tecnológicas de radiações.", "3. Aplicações das ondas", "Capítulo 3", "Página 54"],
-                ["9EF11_CN", "EF09CI08", "VE - Vida e Evolução", "Interpretar a transmissão de características hereditárias.", "9. Hereditariedade humana", "Capítulo 10", "Página 210"],
-                ["9EF13_CN", "EF09CI09", "VE - Vida e Evolução", "Reconhecer a contribuição de Mendel para a genética.", "1. Mendel e as ervilhas", "Capítulo 10", "Página 197"],
-                ["9EF14_CN", "EF09CI09", "VE - Vida e Evolução", "Reconhecer conceitos básicos: genótipo e fenótipo.", "5. Glossário de genética", "Capítulo 10", "Páginas 205-207"],
-                ["9EF18_CN", "EF09CI14", "TU - Terra e Universo", "Reconhecer corpos do Sistema Solar.", "5. Planetas e astros", "Capítulo 9", "Página 175"]
-            ];
-
-            const raw9_C3 = [
-                ["9EF03_CN", "EF09CI02", "ME - Matéria e Energia", "Inferir a relação entre conservação das massas e átomos.", "4. Lei de Lavoisier", "Capítulo 1", "Páginas 18-24"],
-                ["9EF04_CN", "EF09CI02", "ME - Matéria e Energia", "Interpretar a conservação da massa em equações químicas.", "8. Equações químicas", "Capítulo 1", "Página 23"],
-                ["9EF05_CN", "EF09CI03", "ME - Matéria e Energia", "Interpretar a evolução histórica dos modelos atômicos.", "8. Rutherford / Bohr", "Capítulos 2 e 3", "Páginas 39 e 59"],
-                ["9EF12_CN", "EF09CI09", "VE - Vida e Evolução", "Aplicar a 1ª lei de Mendel na expressão genotípica.", "1. Mendel e cruzamentos", "Capítulo 10", "Páginas 197-205"],
-                ["9EF15_CN", "EF09CI10", "VE - Vida e Evolução", "Comparar ideias evolucionistas de Lamarck e Darwin.", "3. Lamarck x Darwin", "Capítulo 11", "Página 223"],
-                ["9EF16_CN", "EF09CI11", "VE - Vida e Evolução", "Explicar a evolução e biodiversidade por seleção natural.", "4. Seleção natural", "Capítulo 11", "Página 223"],
-                ["9EF17_CN", "EF09CI11", "VE - Vida e Evolução", "Reconhecer fatores que determinam a especiação.", "5. Origem das espécies", "Capítulo 11", "Página 224"],
-                ["9EF19_CN", "EF09CI17", "TU - Terra e Universo", "Organizar o ciclo evolutivo de uma estrela.", "9. Vida das estrelas", "Capítulo 9", "Página 186"],
-                ["9EF20_CN", "EF09CI05", "ME - Matéria e Energia", "Analisar o funcionamento de equipamentos ópticos e lentes.", "Lentes e Imagens", "Capítulo 6", "Página 112"],
-                ["9EF21_CN", "EF09CI12", "VE - Vida e Evolução", "Justificar a importância das unidades de conservação para a biodiversidade.", "Unidades de Conservação", "Capítulo 12", "Página 240"],
-                ["9EF22_CN", "EF09CI15", "TU - Terra e Universo", "Relacionar a ordem dos planetas às suas características físico-químicas.", "Planetas e Composição", "Capítulo 9", "Página 178"]
-            ];
-
-            raw9_C1.forEach(r => list.push(createObj(r[0], r[1], r[2], "9º Ano", "Ciclo I", r[3], r[4], r[5], r[6])));
-            raw9_C2.forEach(r => list.push(createObj(r[0], r[1], r[2], "9º Ano", "Ciclo II", r[3], r[4], r[5], r[6])));
-            raw9_C3.forEach(r => list.push(createObj(r[0], r[1], r[2], "9º Ano", "Ciclo III", r[3], r[4], r[5], r[6])));
-
-            return list;
-        }
-
-        let db = buildExactDatabase();
-        localStorage.setItem('caed_db', JSON.stringify(db));
-
-        let selectedId = "6EF01_CN";
-
-        function saveToStorage() {
-            localStorage.setItem('caed_db', JSON.stringify(db));
-        }
-
-        function showHome() {
-            document.getElementById('view-home').classList.remove('hidden');
-            document.getElementById('view-dashboard').classList.add('hidden');
-            document.getElementById('view-admin').classList.add('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function openAdmin() {
-            document.getElementById('view-home').classList.add('hidden');
-            document.getElementById('view-dashboard').classList.add('hidden');
-            document.getElementById('view-admin').classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function openGrade(gradeName) {
-            currentTab = gradeName;
-            switchTab(gradeName);
-        }
-
-        function switchTab(tabName) {
-            currentTab = tabName;
-
-            document.getElementById('view-home').classList.add('hidden');
-            document.getElementById('view-admin').classList.add('hidden');
-            document.getElementById('view-dashboard').classList.remove('hidden');
-
-            const theme = gradeThemes[tabName] || gradeThemes['6º Ano'];
-            const banner = document.getElementById('class-banner');
-            banner.className = `rounded-2xl p-6 text-white shadow-sm flex flex-col lg:flex-row items-center justify-between gap-6 transition-all ${theme.bg}`;
-            document.getElementById('class-icon').setAttribute('data-lucide', theme.icon);
-            document.getElementById('class-title').innerText = theme.title;
-            document.getElementById('active-class-label').innerText = tabName.toUpperCase();
-
-            lucide.createIcons();
-            renderList();
-        }
-
-        function cleanDisplayCode(code) {
-            return code.split('_')[0].replace(/(C[1-3]|[789]A)/g, '');
-        }
-
-        function renderList() {
-            const cycleVal = document.getElementById('filter-cycle').value;
-            const unitVal = document.getElementById('filter-unit').value;
-
-            const filtered = db.filter(item => {
-                const matchTab = item.grade === currentTab;
-                const matchCycle = cycleVal === 'todos' || item.cycle === cycleVal;
-                const matchUnit = unitVal === 'todos' || item.unit === unitVal;
-
-                return matchTab && matchCycle && matchUnit;
-            });
-
-            document.getElementById('results-count').innerText = filtered.length;
-            const container = document.getElementById('skills-list');
-            container.innerHTML = '';
-
-            if (filtered.length === 0) {
-                container.innerHTML = `<div class="p-4 bg-white rounded-xl border border-slate-200 text-center text-slate-500 text-xs">Nenhuma habilidade encontrada para os filtros no <strong>${currentTab}</strong>.</div>`;
-                document.getElementById('detail-card').innerHTML = `<div class="text-center text-slate-400 py-12 text-sm">Nenhuma habilidade selecionada.</div>`;
+            if (!habilidades || habilidades.length === 0) {
+                conteiner.innerHTML = '<div class="alert alert-info">Nenhuma habilidade cadastrada para este ciclo.</div>';
                 return;
             }
 
-            if (!filtered.some(i => i.id === selectedId)) {
-                selectedId = filtered[0].id;
-            }
-
-            const theme = gradeThemes[currentTab] || gradeThemes['6º Ano'];
-
-            filtered.forEach(item => {
-                const isActive = item.id === selectedId;
+            habilidades.forEach(item => {
                 const card = document.createElement('div');
-                card.className = `p-3.5 rounded-xl border transition-all cursor-pointer ${
-                    isActive 
-                    ? `bg-${theme.colorClass}-50/70 border-${theme.colorClass}-600 shadow-sm ring-1 ring-${theme.colorClass}-600` 
-                    : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/80'
-                }`;
-                card.onclick = () => {
-                    selectedId = item.id;
-                    renderList();
-                    renderDetail();
-                };
-
-                const displayCode = cleanDisplayCode(item.id);
-
+                card.className = 'card habilidade-card p-3';
                 card.innerHTML = `
-                    <div class="flex items-center justify-between mb-1.5">
-                        <span class="font-bold text-[11px] px-2 py-0.5 rounded ${isActive ? `bg-${theme.colorClass}-600 text-white` : 'bg-slate-100 text-slate-700'}">${displayCode}</span>
-                        <span class="text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded border border-amber-200">${item.cycle}</span>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge badge-code fw-bold px-3 py-2"><i class="fa-solid fa-barcode me-1"></i>${item.codigo}</span>
+                        <span class="badge badge-bncc"><i class="fa-solid fa-bookmark me-1"></i>BNCC: ${item.bncc}</span>
                     </div>
-                    <h3 class="text-xs font-bold text-slate-900 line-clamp-2 mb-1">${item.caedSkill}</h3>
-                    <p class="text-[11px] text-slate-500 line-clamp-1">📖 ${item.bookTheme}</p>
+                    <div class="mb-3">
+                        <span class="info-label text-primary">Habilidade e Descritor (Oficial CAEd):</span>
+                        <p class="mb-0 fw-medium text-dark">${item.caed}</p>
+                    </div>
+                    <hr class="my-2 text-muted">
+                    <div class="row g-2 text-secondary small">
+                        <div class="col-md-4">
+                            <i class="fa-solid fa-layer-group text-primary me-1"></i>
+                            <span class="info-label">Unidade Temática:</span> ${item.ut}
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fa-solid fa-book text-primary me-1"></i>
+                            <span class="info-label">Capítulo:</span> ${item.cap}
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fa-solid fa-file-lines text-primary me-1"></i>
+                            <span class="info-label">Página:</span> ${item.pag}
+                        </div>
+                    </div>
                 `;
-                container.appendChild(card);
-            });
-
-            renderDetail();
-        }
-
-        function renderDetail() {
-            const item = db.find(i => i.id === selectedId);
-            const container = document.getElementById('detail-card');
-
-            if (!item) return;
-
-            const theme = gradeThemes[item.grade] || gradeThemes['6º Ano'];
-            const displayCode = cleanDisplayCode(item.id);
-
-            container.innerHTML = `
-                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4 mb-6">
-                    <div class="flex items-center space-x-2">
-                        <span class="bg-amber-100 text-amber-900 font-extrabold text-xs px-3 py-1.5 rounded-lg border border-amber-200">
-                            CÓDIGO CAEd: ${displayCode}
-                        </span>
-                        <span class="bg-indigo-100 text-indigo-800 font-extrabold text-xs px-3 py-1.5 rounded-lg border border-indigo-200">
-                            BNCC: ${item.bncc}
-                        </span>
-                    </div>
-                    <div class="flex items-center space-x-2 text-xs font-bold">
-                        <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg border border-slate-200">${item.grade}</span>
-                        <span class="bg-amber-100 text-amber-900 px-2.5 py-1 rounded-lg border border-amber-200">${item.cycle}</span>
-                    </div>
-                </div>
-
-                <div class="mb-6">
-                    <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-snug mb-4">
-                        ${item.caedSkill}
-                    </h2>
-                    
-                    <div class="bg-${theme.colorClass}-50/50 p-4 rounded-xl border border-${theme.colorClass}-100/80 space-y-1.5">
-                        <div class="flex items-center gap-2 text-${theme.colorClass}-900 font-bold text-xs uppercase tracking-wider">
-                            <i data-lucide="book-open" class="w-4 h-4 text-${theme.colorClass}-600"></i>
-                            <span>ALINHAMENTO NO LIVRO DIDÁTICO</span>
-                        </div>
-                        <p class="text-xs sm:text-sm text-slate-800 font-medium">
-                            <strong>Tema:</strong> ${item.bookTheme}
-                        </p>
-                        <p class="text-xs text-slate-600">
-                            <strong>Localização:</strong> ${item.bookChapter} • <span class="bg-${theme.colorClass}-100 text-${theme.colorClass}-900 font-bold px-2 py-0.5 rounded">${item.bookPage}</span>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <div class="bg-emerald-50/50 border border-emerald-200 rounded-xl p-4">
-                        <div class="flex items-center space-x-2 text-emerald-800 font-bold text-xs uppercase mb-2">
-                            <i data-lucide="target" class="w-4 h-4 text-emerald-600"></i>
-                            <span>Foco Primário da Avaliação</span>
-                        </div>
-                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">${item.focus}</p>
-                    </div>
-
-                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-4">
-                        <div class="flex items-center space-x-2 text-rose-800 font-bold text-xs uppercase mb-2">
-                            <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-600"></i>
-                            <span>Distratores & Erros Frequentes</span>
-                        </div>
-                        <ul class="list-disc list-inside text-xs sm:text-sm text-slate-700 space-y-1 font-medium">
-                            ${item.pitfalls.map(p => `<li>${p}</li>`).join('')}
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="mb-6">
-                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-                        <i data-lucide="sparkles" class="w-4 h-4 text-${theme.colorClass}-600"></i> Sugestão Didática (OBSERVAR • DUVIDAR • TEORIZAR)
-                    </h3>
-                    <div class="space-y-2">
-                        ${item.methodologyRoute.map(r => `
-                            <div class="flex items-start space-x-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
-                                <span class="bg-${theme.colorClass}-600 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5">${r.step}</span>
-                                <div class="text-xs sm:text-sm">
-                                    <strong class="text-${theme.colorClass}-900 uppercase font-bold">${r.action}:</strong> 
-                                    <span class="text-slate-700 leading-relaxed">${r.detail}</span>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-
-                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-6">
-                    <h4 class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2 flex items-center gap-1">
-                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Pré-requisitos & Dica de Questão
-                    </h4>
-                    <ul class="list-disc list-inside text-xs sm:text-sm text-slate-700 space-y-1 mb-2 font-medium">
-                        ${item.prerequisites.map(req => `<li>${req}</li>`).join('')}
-                    </ul>
-                    <div class="pt-2 border-t border-slate-200 text-xs text-slate-600 italic">
-                        <strong>Dica de Item CAEd:</strong> ${item.sampleQuestionTip}
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-slate-100 no-print">
-                    <button onclick="copyLessonPlan()" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 transition-colors">
-                        <i data-lucide="copy" class="w-4 h-4"></i>
-                        <span>Copiar para Plano de Aula</span>
-                    </button>
-                    <button onclick="window.print()" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-${theme.colorClass}-600 hover:bg-${theme.colorClass}-500 text-white text-xs font-bold rounded-xl shadow-md shadow-${theme.colorClass}-600/20 transition-colors">
-                        <i data-lucide="printer" class="w-4 h-4"></i>
-                        <span>Imprimir / Gerar PDF</span>
-                    </button>
-                </div>
-            `;
-
-            lucide.createIcons();
-        }
-
-        // FUNÇÃO DE LEITURA E PROCESSAMENTO OCR DA IMAGEM ENVIADA
-        async function handleImageOCR(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const statusContainer = document.getElementById('ocr-status');
-            const statusText = document.getElementById('ocr-status-text');
-            statusContainer.classList.remove('hidden');
-            statusText.innerText = "Lendo imagem com OCR Tesseract...";
-
-            try {
-                const result = await Tesseract.recognize(file, 'por', {
-                    logger: m => {
-                        if(m.status === 'recognizing text') {
-                            statusText.innerText = `Processando texto da imagem... ${Math.round(m.progress * 100)}%`;
-                        }
-                    }
-                });
-
-                const rawText = result.data.text;
-                statusText.innerText = "Organizando e correlacionando os dados extraídos...";
-
-                // Mapeamento automático via Expressões Regulares (Regex)
-                const caedMatch = rawText.match(/([6789]EF\d{2}_CN|[6789]EF\d{2})/i);
-                const bnccMatch = rawText.match(/(EF\d{2}CI\d{2})/i);
-                const pageMatch = rawText.match(/(Páginas?|Pág\.|P\.)\s*(\d+[-\d]*)/i);
-                const chapterMatch = rawText.match(/(Capítulo\s*\d+|Cap\.\s*\d+)/i);
-
-                if (caedMatch) document.getElementById('add-id').value = caedMatch[0].toUpperCase();
-                if (bnccMatch) document.getElementById('add-bncc').value = bnccMatch[0].toUpperCase();
-                if (pageMatch) document.getElementById('add-book-page').value = pageMatch[0];
-                if (chapterMatch) document.getElementById('add-book-chapter').value = chapterMatch[0];
-
-                // Tenta identificar o texto da habilidade
-                const cleanLines = rawText.split('\n').map(l => l.trim()).filter(l => l.length > 15);
-                if (cleanLines.length > 0) {
-                    document.getElementById('add-description').value = cleanLines[0];
-                    document.getElementById('add-book-theme').value = cleanLines[1] || "Conteúdo Extraído da Imagem";
-                }
-
-                // Identifica Unidade Temática
-                if (/matéria|energia|mistura|química/i.test(rawText)) {
-                    document.getElementById('add-unit').value = "ME - Matéria e Energia";
-                } else if (/vida|evolução|célula|corpo|bioma|saúde/i.test(rawText)) {
-                    document.getElementById('add-unit').value = "VE - Vida e Evolução";
-                } else if (/terra|universo|lua|astronomia|placa/i.test(rawText)) {
-                    document.getElementById('add-unit').value = "TU - Terra e Universo";
-                }
-
-                // Preenchimento Didático Padrão
-                document.getElementById('add-focus').value = "Avaliando a habilidade extraída diretamente do livro/matriz.";
-                document.getElementById('add-pitfalls').value = "Confusão conceitual em itens de múltipla escolha.";
-                document.getElementById('add-step1').value = "1. OBSERVAR: Analisar o esquema visual ou conceito apresentado.";
-                document.getElementById('add-step2').value = "2. DUVIDAR: Qual o impacto ou como este fenômeno ocorre?";
-                document.getElementById('add-step3').value = "3. TEORIZAR: Formalização do conceito de acordo com a BNCC.";
-
-                statusText.innerText = "Campos preenchidos com sucesso! Confira abaixo antes de salvar.";
-                setTimeout(() => statusContainer.classList.add('hidden'), 4000);
-
-            } catch (error) {
-                console.error("Erro no OCR:", error);
-                statusText.innerText = "Erro ao ler a imagem. Preencha os campos manualmente.";
-            }
-        }
-
-        function handleAddSkill(event) {
-            event.preventDefault();
-
-            const newSkill = {
-                id: document.getElementById('add-id').value.trim(),
-                bncc: document.getElementById('add-bncc').value.trim(),
-                unit: document.getElementById('add-unit').value,
-                grade: document.getElementById('add-grade').value,
-                applicationYear: document.getElementById('add-year').value.trim(),
-                cycle: document.getElementById('add-cycle').value,
-                caedSkill: document.getElementById('add-description').value.trim(),
-                bookTheme: document.getElementById('add-book-theme').value.trim(),
-                bookChapter: document.getElementById('add-book-chapter').value.trim(),
-                bookPage: document.getElementById('add-book-page').value.trim(),
-                focus: document.getElementById('add-focus').value.trim(),
-                prerequisites: ["Conceitos fundamentais da unidade temática"],
-                pitfalls: document.getElementById('add-pitfalls').value.split(',').map(s => s.trim()),
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: document.getElementById('add-step1').value.trim() },
-                    { step: 2, action: "Duvidar", detail: document.getElementById('add-step2').value.trim() },
-                    { step: 3, action: "Teorizar", detail: document.getElementById('add-step3').value.trim() }
-                ],
-                sampleQuestionTip: "Item cadastrado/organizado via imagem."
-            };
-
-            db.unshift(newSkill);
-            saveToStorage();
-            alert(`Habilidade ${newSkill.id} salva com sucesso para a turma do ${newSkill.grade}!`);
-            
-            document.getElementById('add-skill-form').reset();
-            switchTab(newSkill.grade);
-        }
-
-        function copyLessonPlan() {
-            const item = db.find(i => i.id === selectedId);
-            if (!item) return;
-
-            const displayCode = cleanDisplayCode(item.id);
-
-            const text = `UNIDADE ESCOLAR NATIVIDADE MARINHO - NORTEADOR PEDAGÓGICO
-Turma: ${item.grade} | Ciclo: ${item.cycle}
-Código CAEd: ${displayCode} | Habilidade BNCC: ${item.bncc}
-Unidade Temática: ${item.unit}
-
-HABILIDADE OFICIAL CAEd:
-${item.caedSkill}
-
-ALINHAMENTO COM LIVRO DIDÁTICO:
-Tema: ${item.bookTheme}
-Localização: ${item.bookChapter} (${item.bookPage})
-
-SEQUÊNCIA DIDÁTICA (OBSERVAR • DUVIDAR • TEORIZAR):
-${item.methodologyRoute.map(r => `${r.step}. ${r.action}: ${r.detail}`).join('\n')}
-            `;
-
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Plano de aula copiado com sucesso para a área de transferência!');
+                conteiner.appendChild(card);
             });
         }
-
-        document.getElementById('filter-cycle').addEventListener('change', renderList);
-        document.getElementById('filter-unit').addEventListener('change', renderList);
-
-        // Inicialização na Tela Inicial
-        showHome();
     </script>
 </body>
 </html>
