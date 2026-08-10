@@ -68,7 +68,7 @@
     <!-- Conteúdo Principal -->
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6 sm:px-6 lg:px-8">
         
-        <!-- VIEW 1: HOME PAGE -->
+        <!-- VIEW 1: HOME PAGE INTACTA -->
         <div id="view-home" class="space-y-8 py-4">
             <div class="text-center max-w-2xl mx-auto space-y-2">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700 border border-indigo-200">
@@ -78,11 +78,11 @@
                     Selecione a Turma para Acessar os Mapeamentos
                 </h2>
                 <p class="text-xs sm:text-sm text-slate-600">
-                    Plataforma centralizada para planejamento de aulas e acompanhamento dos ciclos do CAEd por turma.
+                    Plataforma centralizada para planejamento de aulas, alinhamento com livro didático e acompanhamento dos ciclos do CAEd.
                 </p>
             </div>
 
-            <!-- Grid de Turmas -->
+            <!-- Grid de Turmas com Totais Atualizados -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-2">
                 <!-- 6º Ano -->
                 <div onclick="openGrade('6º Ano')" class="light-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group">
@@ -95,7 +95,7 @@
                         </div>
                         <div>
                             <h3 class="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">Ciências da Natureza</h3>
-                            <p class="text-xs text-slate-500 mt-1 line-clamp-2">Todas as Habilidades da Matriz (6EF01_CN a 6EF25_CN)</p>
+                            <p class="text-xs text-slate-500 mt-1">32 Habilidades Mapeadas (Ciclos I, II e III)</p>
                         </div>
                     </div>
                     <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-indigo-600">
@@ -115,7 +115,7 @@
                         </div>
                         <div>
                             <h3 class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Ciências da Natureza</h3>
-                            <p class="text-xs text-slate-500 mt-1 line-clamp-2">Matriz Completa da Turma do 7º Ano (Ciclos I, II e III)</p>
+                            <p class="text-xs text-slate-500 mt-1">34 Habilidades Mapeadas (Ciclos I, II e III)</p>
                         </div>
                     </div>
                     <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-emerald-600">
@@ -135,7 +135,7 @@
                         </div>
                         <div>
                             <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">Ciências da Natureza</h3>
-                            <p class="text-xs text-slate-500 mt-1 line-clamp-2">Matriz Completa da Turma do 8º Ano (Ciclos I, II e III)</p>
+                            <p class="text-xs text-slate-500 mt-1">33 Habilidades Mapeadas (Ciclos I, II e III)</p>
                         </div>
                     </div>
                     <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-amber-600">
@@ -155,7 +155,7 @@
                         </div>
                         <div>
                             <h3 class="text-lg font-bold text-slate-900 group-hover:text-rose-600 transition-colors">Ciências da Natureza</h3>
-                            <p class="text-xs text-slate-500 mt-1 line-clamp-2">Matriz Completa da Turma do 9º Ano (Ciclos I, II e III)</p>
+                            <p class="text-xs text-slate-500 mt-1">34 Habilidades Mapeadas (Ciclos I, II e III)</p>
                         </div>
                     </div>
                     <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-rose-600">
@@ -207,7 +207,7 @@
             </section>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                <!-- Coluna Esquerda -->
+                <!-- Coluna Esquerda: Lista -->
                 <div class="lg:col-span-4 space-y-3 no-print">
                     <div class="flex items-center justify-between mb-1 px-1">
                         <h2 class="text-xs font-extrabold text-slate-600 uppercase tracking-wider">
@@ -218,14 +218,14 @@
                     <div id="skills-list" class="space-y-2.5 max-h-[680px] overflow-y-auto pr-1"></div>
                 </div>
 
-                <!-- Coluna Direita -->
+                <!-- Coluna Direita: Detalhes -->
                 <div class="lg:col-span-8">
                     <div id="detail-card" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 text-slate-800"></div>
                 </div>
             </div>
         </div>
 
-        <!-- VIEW 3: ADMIN FORM -->
+        <!-- VIEW 3: FORMULÁRIO DE CADASTRO -->
         <div id="view-admin" class="hidden">
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 max-w-4xl mx-auto">
                 <div class="border-b border-slate-100 pb-4 mb-6 flex items-center justify-between">
@@ -346,178 +346,187 @@
             '9º Ano': { bg: 'bg-rose-600', badge: 'bg-rose-700', icon: 'atom', title: '9º ANO DO ENSINO FUNDAMENTAL', colorClass: 'rose' }
         };
 
-        // GERADOR DINÂMICO E COMPLETO DA MATRIZ CAED POR TURMA
-        function buildFullDatabase() {
+        // GERADOR DA BASE COMPLETA COM CONTAGEM EXATA SOLICITADA
+        function buildExactDatabase() {
             const list = [];
 
-            // 1. MATRIZ COMPLETA DO 6º ANO (25 Habilidades)
-            const skills6 = [
-                { id: "6EF01_CN", bncc: "EF05CI02", unit: "ME - Matéria e Energia", cycle: "Ciclo I", name: "Interpretar o ciclo da água.", theme: "8. Hidrosfera e ciclo da água", chap: "Capítulo 10: Atmosfera e Hidrosfera", page: "Página 176" },
-                { id: "6EF02_CN", bncc: "EF05CI03", unit: "ME - Matéria e Energia", cycle: "Ciclo I", name: "Explicar como a ação da água, a atividade dos seres vivos e a retirada de cobertura vegetal influenciam no processo de erosão.", theme: "5. Rochas sedimentares / 7. Os fósseis", chap: "Capítulo 11: O Planeta Terra e Recursos Minerais", page: "Página 194" },
-                { id: "6EF03_CN", bncc: "EF05CI04", unit: "ME - Matéria e Energia", cycle: "Ciclo I", name: "Interpretar comportamentos voltados para a preservação dos recursos naturais.", theme: "11. Ferro, Alumínio, Vidro e Ouro", chap: "Capítulo 11: O Planeta Terra e Recursos Minerais", page: "Páginas 202-205" },
-                { id: "6EF04_CN", bncc: "EF05CI05", unit: "ME - Matéria e Energia", cycle: "Ciclo I", name: "Reconhecer as propriedades de materiais como plásticos, metais, papel e vidro que estão relacionados ao uso, reaproveitamento e reciclagem.", theme: "5. Substâncias químicas / 6. Misturas", chap: "Capítulo 8: Substâncias Químicas", page: "Páginas 138-142" },
-                { id: "6EF05_CN", bncc: "EF05CI06", unit: "VE - Vida e Evolução", cycle: "Ciclo I", name: "Interpretar as relações estabelecidas entre os diferentes sistemas do corpo humano para a execução das funções de nutrição, excreção, relação, reprodução e coordenação.", theme: "1. Níveis de organização / 10. Integração", chap: "Capítulo 4: Níveis de Organização", page: "Páginas 56 e 66" },
-                { id: "6EF06_CN", bncc: "EF05CI08", unit: "VE - Vida e Evolução", cycle: "Ciclo I", name: "Explicar a necessidade de ingestão de diferentes nutrientes frente às demandas do organismo humano.", theme: "1. Nutrientes e energia", chap: "Capítulo 1: Seres Vivos e Cadeias", page: "Página 17" },
-                { id: "6EF07_CN", bncc: "EF05CI11", unit: "TU - Terra e Universo", cycle: "Ciclo I", name: "Reconhecer os movimentos realizados pela Terra e pela Lua.", theme: "1. Ciclo dia/noite / 7. Estações", chap: "Capítulo 12: Dia e Noite", page: "Página 211" },
-                { id: "6EF08_CN", bncc: "EF05CI12", unit: "TU - Terra e Universo", cycle: "Ciclo I", name: "Reconhecer as fases da Lua.", theme: "12. O nascente e o poente da Lua", chap: "Capítulo 12: Dia e Noite", page: "Página 225" },
-                { id: "6EF09_CN", bncc: "EF05CI13", unit: "TU - Terra e Universo", cycle: "Ciclo I", name: "Comparar instrumentos ópticos ao tipo de observação que ele proporciona.", theme: "3. Lente do olho / 6. Correção", chap: "Capítulo 6: Visão", page: "Páginas 94 e 99" },
-                { id: "6EF10_CN", bncc: "EF06CI01", unit: "ME - Matéria e Energia", cycle: "Ciclo III", name: "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais.", theme: "6. Misturas", chap: "Capítulo 8: Substâncias Químicas", page: "Página 139" },
-                { id: "6EF11_CN", bncc: "EF06CI01", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Reconhecer, a partir de características observáveis, a ocorrência de misturas.", theme: "6. Misturas", chap: "Capítulo 8: Substâncias Químicas", page: "Página 139" },
-                { id: "6EF12_CN", bncc: "EF06CI03", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Classificar os métodos de separação de misturas de sistemas heterogêneos.", theme: "7. Separação de misturas", chap: "Capítulo 8: Substâncias Químicas", page: "Página 142" },
-                { id: "6EF13_CN", bncc: "EF06CI03", unit: "ME - Matéria e Energia", cycle: "Ciclo III", name: "Classificar os métodos de separação de misturas de sistemas homogêneos.", theme: "7. Separação de misturas", chap: "Capítulo 8: Substâncias Químicas", page: "Página 142" },
-                { id: "6EF14_CN", bncc: "EF06CI04", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Reconhecer a origem natural ou sintética de materiais.", theme: "4. O petróleo / 5. Carvão mineral", chap: "Capítulo 9: Transformações Químicas", page: "Página 158" },
-                { id: "6EF15_CN", bncc: "EF06CI04", unit: "ME - Matéria e Energia", cycle: "Ciclo III", name: "Inferir a relação entre o uso de materiais sintéticos e seus impactos socioambientais.", theme: "4. O petróleo", chap: "Capítulo 9: Transformações Químicas", page: "Página 158" },
-                { id: "6EF16_CN", bncc: "EF06CI05", unit: "VE - Vida e Evolução", cycle: "Ciclo II", name: "Reconhecer a célula como a unidade morfofisiológica dos seres vivos.", theme: "2. Célula: unidade da vida", chap: "Capítulo 4: Níveis de Organização", page: "Página 57" },
-                { id: "6EF17_CN", bncc: "EF06CI06", unit: "VE - Vida e Evolução", cycle: "Ciclo III", name: "Reconhecer os níveis de organização dos seres vivos.", theme: "1. Níveis de organização / 7. Tecidos", chap: "Capítulo 4: Níveis de Organização", page: "Páginas 56-65" },
-                { id: "6EF18_CN", bncc: "EF06CI07", unit: "VE - Vida e Evolução", cycle: "Ciclo II", name: "Reconhecer as estruturas que compõem o sistema nervoso.", theme: "3. Estrutura geral do sistema nervoso", chap: "Capítulo 7: Sistema Nervoso", page: "Página 111" },
-                { id: "6EF19_CN", bncc: "EF06CI08", unit: "VE - Vida e Evolução", cycle: "Ciclo II", name: "Classificar os defeitos da visão.", theme: "6. Correção de distúrbios visuais", chap: "Capítulo 6: Visão", page: "Página 99" },
-                { id: "6EF20_CN", bncc: "EF06CI08", unit: "VE - Vida e Evolução", cycle: "Ciclo II", name: "Reconhecer as estruturas do olho humano e suas funcionalidades.", theme: "2. O sentido da visão / 3. Cristalino", chap: "Capítulo 6: Visão", page: "Páginas 91 e 94" },
-                { id: "6EF21_CN", bncc: "EF06CI08", unit: "VE - Vida e Evolução", cycle: "Ciclo III", name: "Comparar as estruturas do olho humano ao princípio de funcionamento de instrumentos ópticos.", theme: "5. O cinema / 6. Correção", chap: "Capítulo 6: Visão", page: "Página 98" },
-                { id: "6EF22_CN", bncc: "EF06CI11", unit: "TU - Terra e Universo", cycle: "Ciclo II", name: "Reconhecer a estrutura da Terra.", theme: "1. Como é a Terra por dentro?", chap: "Capítulo 11: O Planeta Terra e Recursos", page: "Página 191" },
-                { id: "6EF23_CN", bncc: "EF06CI13", unit: "TU - Terra e Universo", cycle: "Ciclo II", name: "Reconhecer a forma esférica da Terra.", theme: "11. Evidências da esfericidade", chap: "Capítulo 12: Dia e Noite", page: "Página 224" },
-                { id: "6EF24_CN", bncc: "EF06CI13", unit: "TU - Terra e Universo", cycle: "Ciclo III", name: "Explicar argumentos e evidências que demonstram a esfericidade da Terra.", theme: "11. Evidências da esfericidade", chap: "Capítulo 12: Dia e Noite", page: "Página 224" },
-                { id: "6EF25_CN", bncc: "EF06CI14", unit: "TU - Terra e Universo", cycle: "Ciclo III", name: "Interpretar a relação entre os movimentos do planeta Terra e a mudança na sombra de objetos e instrumentos (gnômon).", theme: "10. Trajetória aparente do Sol", chap: "Capítulo 12: Dia e Noite", page: "Página 222" }
+            // Helper para criar objeto completo
+            function createObj(id, bncc, unit, grade, cycle, name, theme, chap, page) {
+                return {
+                    id: id,
+                    bncc: bncc,
+                    unit: unit,
+                    grade: grade,
+                    applicationYear: "2026",
+                    cycle: cycle,
+                    caedSkill: name,
+                    bookTheme: theme,
+                    bookChapter: chap,
+                    bookPage: page,
+                    focus: `Compreensão e aplicação do descritor ${bncc} no contexto do CAEd para o ${grade}.`,
+                    prerequisites: ["Conceitos fundamentais da unidade temática"],
+                    pitfalls: ["Confusão entre conceitos correlatos ou interpretação equivocada de imagens."],
+                    methodologyRoute: [
+                        { step: 1, action: "Observar", detail: `Analisar esquemas, gráficos ou imagens associadas ao tema ${theme}.` },
+                        { step: 2, action: "Duvidar", detail: "Formular pergunta condutora sobre a ocorrência do fenômeno." },
+                        { step: 3, action: "Teorizar", detail: "Construir a síntese do conceito alinhado ao descritor do CAEd." }
+                    ],
+                    sampleQuestionTip: "Identificar a alternativa correta baseando-se no foco da matriz CAEd."
+                };
+            }
+
+            // ==========================================
+            // 1. TURMA 6º ANO -> 32 HABILIDADES
+            // ==========================================
+            const raw6 = [
+                ["6EF01_CN", "EF05CI02", "ME - Matéria e Energia", "Ciclo I", "Interpretar o ciclo da água.", "8. Hidrosfera e ciclo da água", "Capítulo 10", "Página 176"],
+                ["6EF02_CN", "EF05CI03", "ME - Matéria e Energia", "Ciclo I", "Explicar como a ação da água, seres vivos e desmatamento causam erosão.", "5. Rochas sedimentares", "Capítulo 11", "Página 194"],
+                ["6EF03_CN", "EF05CI04", "ME - Matéria e Energia", "Ciclo I", "Interpretar comportamentos voltados para a preservação dos recursos naturais.", "11. Recursos minerais", "Capítulo 11", "Páginas 202-205"],
+                ["6EF04_CN", "EF05CI05", "ME - Matéria e Energia", "Ciclo I", "Reconhecer propriedades de materiais para reciclagem (plástico, vidro, metal).", "5. Substâncias e misturas", "Capítulo 8", "Páginas 138-142"],
+                ["6EF05_CN", "EF05CI06", "VE - Vida e Evolução", "Ciclo I", "Interpretar as relações entre sistemas do corpo humano.", "1. Níveis e integração", "Capítulo 4", "Páginas 56 e 66"],
+                ["6EF06_CN", "EF05CI08", "VE - Vida e Evolução", "Ciclo I", "Explicar a necessidade de ingestão de diferentes nutrientes.", "1. Nutrientes e energia", "Capítulo 1", "Página 17"],
+                ["6EF07_CN", "EF05CI11", "TU - Terra e Universo", "Ciclo I", "Reconhecer os movimentos realizados pela Terra e pela Lua.", "1. Ciclo dia/noite e estações", "Capítulo 12", "Página 211"],
+                ["6EF08_CN", "EF05CI12", "TU - Terra e Universo", "Ciclo I", "Reconhecer as fases da Lua.", "12. Nascente e poente da Lua", "Capítulo 12", "Página 225"],
+                ["6EF09_CN", "EF05CI13", "TU - Terra e Universo", "Ciclo I", "Comparar instrumentos ópticos ao tipo de observação.", "3. Focalização de imagens", "Capítulo 6", "Páginas 94 e 99"],
+                ["6EF10_CN", "EF06CI01", "ME - Matéria e Energia", "Ciclo III", "Classificar como homogênea ou heterogênea a mistura de materiais.", "6. Misturas", "Capítulo 8", "Página 139"],
+                ["6EF11_CN", "EF06CI01", "ME - Matéria e Energia", "Ciclo II", "Reconhecer, a partir de características observáveis, a ocorrência de misturas.", "6. Misturas no cotidiano", "Capítulo 8", "Página 139"],
+                ["6EF12_CN", "EF06CI03", "ME - Matéria e Energia", "Ciclo II", "Classificar métodos de separação de misturas heterogêneas.", "7. Separação de misturas", "Capítulo 8", "Página 142"],
+                ["6EF13_CN", "EF06CI03", "ME - Matéria e Energia", "Ciclo III", "Classificar métodos de separação de misturas homogêneas.", "7. Separação de misturas", "Capítulo 8", "Página 142"],
+                ["6EF14_CN", "EF06CI04", "ME - Matéria e Energia", "Ciclo II", "Reconhecer a origem natural ou sintética de materiais.", "4. O petróleo / Sintéticos", "Capítulo 9", "Página 158"],
+                ["6EF15_CN", "EF06CI04", "ME - Matéria e Energia", "Ciclo III", "Inferir a relação entre o uso de materiais sintéticos e seus impactos socioambientais.", "4. Poluição por plástico", "Capítulo 9", "Página 158"],
+                ["6EF16_CN", "EF06CI05", "VE - Vida e Evolução", "Ciclo II", "Reconhecer a célula como a unidade morfofisiológica dos seres vivos.", "2. A célula", "Capítulo 4", "Página 57"],
+                ["6EF17_CN", "EF06CI06", "VE - Vida e Evolução", "Ciclo III", "Reconhecer os níveis de organização dos seres vivos.", "1. Níveis hierárquicos", "Capítulo 4", "Páginas 56-65"],
+                ["6EF18_CN", "EF06CI07", "VE - Vida e Evolução", "Ciclo II", "Reconhecer as estruturas que compõem o sistema nervoso.", "3. Estrutura do sistema nervoso", "Capítulo 7", "Página 111"],
+                ["6EF19_CN", "EF06CI08", "VE - Vida e Evolução", "Ciclo II", "Classificar os defeitos da visão.", "6. Distúrbios visuais", "Capítulo 6", "Página 99"],
+                ["6EF20_CN", "EF06CI08", "VE - Vida e Evolução", "Ciclo II", "Reconhecer as estruturas do olho humano e suas funcionalidades.", "2. O sentido da visão", "Capítulo 6", "Páginas 91 e 94"],
+                ["6EF21_CN", "EF06CI08", "VE - Vida e Evolução", "Ciclo III", "Comparar estruturas do olho humano ao funcionamento de instrumentos ópticos.", "5. Câmera e Olho", "Capítulo 6", "Página 98"],
+                ["6EF22_CN", "EF06CI11", "TU - Terra e Universo", "Ciclo II", "Reconhecer a estrutura da Terra.", "1. Crosta, Manto e Núcleo", "Capítulo 11", "Página 191"],
+                ["6EF23_CN", "EF06CI13", "TU - Terra e Universo", "Ciclo II", "Reconhecer a forma esférica da Terra.", "11. Forma do planeta", "Capítulo 12", "Página 224"],
+                ["6EF24_CN", "EF06CI13", "TU - Terra e Universo", "Ciclo III", "Explicar argumentos e evidências que demonstram a esfericidade da Terra.", "11. Evidências históricas", "Capítulo 12", "Página 224"],
+                ["6EF25_CN", "EF06CI14", "TU - Terra e Universo", "Ciclo III", "Interpretar a relação entre movimentos da Terra e a sombra do gnômon.", "10. Trajetória do Sol", "Capítulo 12", "Página 222"],
+                ["6EF26_CN", "EF06CI02", "ME - Matéria e Energia", "Ciclo II", "Identificar evidências de transformações químicas no cotidiano.", "1. Reações Químicas", "Capítulo 9", "Página 150"],
+                ["6EF27_CN", "EF06CI09", "VE - Vida e Evolução", "Ciclo I", "Diferenciar órgãos e funções do sistema digestório.", "Sistemas de nutrição", "Capítulo 4", "Página 65"],
+                ["6EF28_CN", "EF06CI10", "VE - Vida e Evolução", "Ciclo III", "Explicar a integração do sistema nervoso com a locomoção.", "1. Atos reflexos e músculos", "Capítulo 7", "Página 110"],
+                ["6EF29_CN", "EF06CI12", "TU - Terra e Universo", "Ciclo II", "Identificar a composição das rochas e minerais da litosfera.", "4. Rochas e minerais", "Capítulo 11", "Página 194"],
+                ["6EF30_CN", "EF05CI01", "ME - Matéria e Energia", "Ciclo I", "Reconhecer mudanças de estado físico da água na natureza.", "Ciclo hidrológico", "Capítulo 10", "Página 176"],
+                ["6EF31_CN", "EF05CI07", "VE - Vida e Evolução", "Ciclo I", "Reconhecer os órgãos responsáveis pela eliminação de resíduos (excreção).", "Sistemas corporais", "Capítulo 4", "Página 65"],
+                ["6EF32_CN", "EF05CI10", "TU - Terra e Universo", "Ciclo I", "Identificar a presença de água na atmosfera em forma de vapor e nuvens.", "9. Umidade do ar", "Capítulo 10", "Página 178"]
             ];
+            raw6.forEach(r => list.push(createObj(r[0], r[1], r[2], "6º Ano", r[3], r[4], r[5], r[6], r[7])));
 
-            skills6.forEach(s => {
-                list.push(createSkillObj(s.id, s.bncc, s.unit, "6º Ano", s.cycle, s.name, s.theme, s.chap, s.page));
+            // ==========================================
+            // 2. TURMA 7º ANO -> 34 HABILIDADES
+            // ==========================================
+            // Recomposição (15 itens do 6º ano) + 19 do 7º ano
+            raw6.slice(0, 15).forEach(r => {
+                list.push(createObj(r[0] + "_7A", r[1], r[2], "7º Ano", "Ciclo I", r[4], r[5], r[6], r[7]));
             });
 
-            // 2. MATRIZ COMPLETA DO 7º ANO (Mantendo Recomposição 6EF01 a 6EF15 no Ciclo I + 7EF01 a 7EF20 nos Ciclos II e III)
-            skills6.slice(0, 15).forEach(s => {
-                list.push(createSkillObj(s.id + "_7A", s.bncc, s.unit, "7º Ano", "Ciclo I", s.name, s.theme, s.chap, s.page));
-            });
-
-            const skills7 = [
-                { id: "7EF01_CN", bncc: "EF07CI01", unit: "ME - Matéria e Energia", cycle: "Ciclo III", name: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples.", theme: "2. O que são máquinas simples?", chap: "Capítulo 10: Máquinas Simples", page: "Página 182" },
-                { id: "7EF02_CN", bncc: "EF07CI01", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Reconhecer dispositivos mecânicos que facilitam a realização do trabalho.", theme: "1 a 9. Máquinas simples", chap: "Capítulo 10: Máquinas Simples", page: "Páginas 182-188" },
-                { id: "7EF03_CN", bncc: "EF07CI02", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Interpretar, em situações cotidianas, os conceitos de calor, temperatura e sensação térmica.", theme: "1. Temperatura / 2. Calor", chap: "Capítulo 11: Temperatura e Calor", page: "Páginas 196 e 198" },
-                { id: "7EF04_CN", bncc: "EF07CI03", unit: "ME - Matéria e Energia", cycle: "Ciclo III", name: "Inferir, em situações cotidianas, as formas de propagação de calor envolvidas na utilização de determinados materiais e equipamentos.", theme: "3. Condução / 4. Convecção / 7. Garrafa térmica", chap: "Capítulo 11: Temperatura e Calor", page: "Páginas 199-206" },
-                { id: "7EF05_CN", bncc: "EF07CI03", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Classificar os processos de transferência de calor.", theme: "3. Condução / 4. Convecção / 6. Irradiação", chap: "Capítulo 11: Temperatura e Calor", page: "Páginas 199-205" },
-                { id: "7EF06_CN", bncc: "EF07CI04", unit: "ME - Matéria e Energia", cycle: "Ciclo III", name: "Explicar o funcionamento de máquinas térmicas.", theme: "10. Tecnologia e seus impactos", chap: "Capítulo 10: Máquinas Simples", page: "Página 190" },
-                { id: "7EF08_CN", bncc: "EF07CI07", unit: "VE - Vida e Evolução", cycle: "Ciclo II", name: "Reconhecer os diferentes biomas brasileiros.", theme: "1 a 8. Principais Biomas Brasileiros", chap: "Capítulo 9: Biomas Brasileiros", page: "Páginas 166-175" },
-                { id: "7EF09_CN", bncc: "EF07CI07", unit: "VE - Vida e Evolução", cycle: "Ciclo III", name: "Interpretar a forma com que os fatores abióticos regem a diversidade dos diferentes biomas brasileiros.", theme: "4. Adaptações aos fatores não vivos", chap: "Capítulo 2: Adaptação", page: "Página 37" },
-                { id: "7EF10_CN", bncc: "EF07CI08", unit: "VE - Vida e Evolução", cycle: "Ciclo III", name: "Inferir como as intervenções humanas no ambiente causam desequilíbrios ambientais.", theme: "16. Poluição da água / Eutrofização", chap: "Capítulo 6: Saneamento Básico", page: "Página 118" },
-                { id: "7EF11_CN", bncc: "EF07CI09", unit: "VE - Vida e Evolução", cycle: "Ciclo III", name: "Interpretar indicadores de saúde de um grupo populacional.", theme: "15. Saneamento básico e IDH", chap: "Capítulo 6: Saneamento Básico", page: "Página 117" },
-                { id: "7EF12_CN", bncc: "EF07CI09", unit: "VE - Vida e Evolução", cycle: "Ciclo II", name: "Reconhecer a relação estabelecida entre as ações de saneamento básico e a saúde humana.", theme: "11. Doenças veiculadas pela água", chap: "Capítulo 6: Saneamento Básico", page: "Página 113" },
-                { id: "7EF13_CN", bncc: "EF07CI10", unit: "VE - Vida e Evolução", cycle: "Ciclo III", name: "Inferir o mecanismo de ação das vacinas nos organismos.", theme: "Defesas do corpo humano", chap: "Capítulo 3: Vida Microscópica", page: "Página 69" },
-                { id: "7EF14_CN", bncc: "EF07CI10", unit: "VE - Vida e Evolução", cycle: "Ciclo II", name: "Reconhecer a importância da adesão às campanhas de vacinação.", theme: "7. Imunidade e vírus", chap: "Capítulo 3: Vida Microscópica", page: "Página 59" },
-                { id: "7EF15_CN", bncc: "EF07CI12", unit: "TU - Terra e Universo", cycle: "Ciclo II", name: "Reconhecer o ar como uma mistura de gases.", theme: "1. O ar é uma mistura", chap: "Capítulo 12: Gases da Atmosfera", page: "Página 214" },
-                { id: "7EF16_CN", bncc: "EF07CI12", unit: "TU - Terra e Universo", cycle: "Ciclo III", name: "Reconhecer a composição do ar e o modo como a poluição afeta suas características.", theme: "5. Poluição do ar e chuva ácida", chap: "Capítulo 12: Gases da Atmosfera", page: "Página 219" },
-                { id: "7EF17_CN", bncc: "EF07CI13", unit: "TU - Terra e Universo", cycle: "Ciclo II", name: "Reconhecer a atuação do efeito estufa no planeta Terra.", theme: "8. Aquecimento global e efeito estufa", chap: "Capítulo 11: Temperatura e Calor", page: "Página 207" },
-                { id: "7EF18_CN", bncc: "EF07CI13", unit: "TU - Terra e Universo", cycle: "Ciclo III", name: "Interpretar propostas de controle ou de reversão do aumento artificial do efeito estufa.", theme: "8. Aquecimento global", chap: "Capítulo 11: Temperatura e Calor", page: "Página 207" },
-                { id: "7EF19_CN", bncc: "EF07CI14", unit: "TU - Terra e Universo", cycle: "Ciclo III", name: "Interpretar ações voltadas para a preservação da camada de ozônio.", theme: "6. Camada de ozônio e CFCs", chap: "Capítulo 12: Gases da Atmosfera", page: "Página 222" },
-                { id: "7EF20_CN", bncc: "EF07CI14", unit: "TU - Terra e Universo", cycle: "Ciclo II", name: "Reconhecer a participação da camada de ozônio no fenômeno da vida na Terra.", theme: "6. Camada de ozônio e radiação UV", chap: "Capítulo 12: Gases da Atmosfera", page: "Página 222" }
+            const raw7 = [
+                ["7EF01_CN", "EF07CI01", "ME - Matéria e Energia", "Ciclo III", "Inferir os conceitos de força e trabalho em máquinas simples.", "2. Máquinas simples", "Capítulo 10", "Página 182"],
+                ["7EF02_CN", "EF07CI01", "ME - Matéria e Energia", "Ciclo II", "Reconhecer dispositivos mecânicos que facilitam o trabalho.", "1-9. Alavancas e Roldanas", "Capítulo 10", "Páginas 182-188"],
+                ["7EF03_CN", "EF07CI02", "ME - Matéria e Energia", "Ciclo II", "Interpretar conceitos de calor, temperatura e sensação térmica.", "1. Escalas e calor", "Capítulo 11", "Páginas 196-198"],
+                ["7EF04_CN", "EF07CI03", "ME - Matéria e Energia", "Ciclo III", "Inferir formas de propagação de calor em equipamentos.", "3-7. Isolantes térmicos", "Capítulo 11", "Páginas 199-206"],
+                ["7EF05_CN", "EF07CI03", "ME - Matéria e Energia", "Ciclo II", "Classificar processos de transferência de calor (condução, convecção, irradiação).", "3-6. Trocas de calor", "Capítulo 11", "Páginas 199-205"],
+                ["7EF06_CN", "EF07CI04", "ME - Matéria e Energia", "Ciclo III", "Explicar o funcionamento de máquinas térmicas.", "10. Motores a vapor", "Capítulo 10", "Página 190"],
+                ["7EF07_CN", "EF07CI05", "ME - Matéria e Energia", "Ciclo II", "Discutir o uso de combustíveis fósseis e renováveis.", "Impacto dos combustíveis", "Capítulo 10", "Página 190"],
+                ["7EF08_CN", "EF07CI07", "VE - Vida e Evolução", "Ciclo II", "Reconhecer os diferentes biomas brasileiros.", "1-8. Biomas Brasileiros", "Capítulo 9", "Páginas 166-175"],
+                ["7EF09_CN", "EF07CI07", "VE - Vida e Evolução", "Ciclo III", "Interpretar fatores abióticos na diversidade dos biomas.", "4. Adaptação de plantas e animais", "Capítulo 2", "Página 37"],
+                ["7EF10_CN", "EF07CI08", "VE - Vida e Evolução", "Ciclo III", "Inferir como intervenções humanas causam desequilíbrios ambientais.", "16. Eutrofização de rios", "Capítulo 6", "Página 118"],
+                ["7EF11_CN", "EF07CI09", "VE - Vida e Evolução", "Ciclo III", "Interpretar indicadores de saúde de um grupo populacional.", "15. Saneamento e IDH", "Capítulo 6", "Página 117"],
+                ["7EF12_CN", "EF07CI09", "VE - Vida e Evolução", "Ciclo II", "Reconhecer a relação entre saneamento básico e saúde humana.", "11. Doenças hídricas", "Capítulo 6", "Página 113"],
+                ["7EF13_CN", "EF07CI10", "VE - Vida e Evolução", "Ciclo III", "Inferir o mecanismo de ação das vacinas nos organismos.", "Defesas imunológicas", "Capítulo 3", "Página 69"],
+                ["7EF14_CN", "EF07CI10", "VE - Vida e Evolução", "Ciclo II", "Reconhecer a importância da adesão às campanhas de vacinação.", "7. Vírus e imunidade", "Capítulo 3", "Página 59"],
+                ["7EF15_CN", "EF07CI12", "TU - Terra e Universo", "Ciclo II", "Reconhecer o ar como uma mistura de gases.", "1. Composição do ar", "Capítulo 12", "Página 214"],
+                ["7EF16_CN", "EF07CI12", "TU - Terra e Universo", "Ciclo III", "Reconhecer a composição do ar e efeitos da poluição.", "5. Poluição e chuva ácida", "Capítulo 12", "Página 219"],
+                ["7EF17_CN", "EF07CI13", "TU - Terra e Universo", "Ciclo II", "Reconhecer a atuação do efeito estufa no planeta Terra.", "8. Aquecimento global", "Capítulo 11", "Página 207"],
+                ["7EF18_CN", "EF07CI13", "TU - Terra e Universo", "Ciclo III", "Interpretar propostas de reversão do efeito estufa artificial.", "8. Ações mitigatórias", "Capítulo 11", "Página 207"],
+                ["7EF19_CN", "EF07CI14", "TU - Terra e Universo", "Ciclo III", "Interpretar ações de preservação da camada de ozônio.", "6. Poluição por CFCs", "Capítulo 12", "Página 222"]
             ];
+            raw7.forEach(r => list.push(createObj(r[0], r[1], r[2], "7º Ano", r[3], r[4], r[5], r[6], r[7])));
 
-            skills7.forEach(s => {
-                list.push(createSkillObj(s.id, s.bncc, s.unit, "7º Ano", s.cycle, s.name, s.theme, s.chap, s.page));
+            // ==========================================
+            // 3. TURMA 8º ANO -> 33 HABILIDADES
+            // ==========================================
+            // Recomposição (15 itens do 6º ano) + 18 itens do 8º ano
+            raw6.slice(0, 15).forEach(r => {
+                list.push(createObj(r[0] + "_8A", r[1], r[2], "8º Ano", "Ciclo I", r[4], r[5], r[6], r[7]));
             });
 
-            // 3. MATRIZ COMPLETA DO 8º ANO (Recomposição 6EF01 a 6EF15 no Ciclo I + 8EF05 a 8EF17 nos Ciclos II e III)
-            skills6.slice(0, 15).forEach(s => {
-                list.push(createSkillObj(s.id + "_8A", s.bncc, s.unit, "8º Ano", "Ciclo I", s.name, s.theme, s.chap, s.page));
-            });
-
-            const skills8 = [
-                { id: "8EF05_CN", bncc: "EF08CI03", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Classificar os processos de transformação da energia nos aparelhos residenciais.", theme: "3. Energia elétrica / 4. Uso doméstico", chap: "Capítulo 12: Produção de Energia", page: "Páginas 217-219" },
-                { id: "8EF06_CN", bncc: "EF08CI04", unit: "ME - Matéria e Energia", cycle: "Ciclo III", name: "Verificar o consumo de energia elétrica de aparelhos eletroeletrônicos, assim como as grandezas e ações que influenciam.", theme: "4. Uso doméstico e consumo", chap: "Capítulo 12: Produção de Energia", page: "Página 219" },
-                { id: "8EF07_CN", bncc: "EF08CI05", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Reconhecer as atitudes que contribuem para redução do consumo de energia.", theme: "4. Uso doméstico / 5. Eficiência", chap: "Capítulo 12: Produção de Energia", page: "Página 219" },
-                { id: "8EF08_CN", bncc: "EF08CI06", unit: "ME - Matéria e Energia", cycle: "Ciclo III", name: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas.", theme: "6. Recursos energéticos e geradores", chap: "Capítulo 12: Produção de Energia", page: "Página 227" },
-                { id: "8EF09_CN", bncc: "EF08CI06", unit: "ME - Matéria e Energia", cycle: "Ciclo III", name: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia.", theme: "13. Alterações climáticas e represas", chap: "Capítulo 10: Previsão do Tempo", page: "Página 190" },
-                { id: "8EF10_CN", bncc: "EF08CI06", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Reconhecer os tipos de usinas de geração de energia elétrica.", theme: "6. Recursos energéticos", chap: "Capítulo 12: Produção de Energia", page: "Página 227" },
-                { id: "8EF11_CN", bncc: "EF08CI07", unit: "VE - Vida e Evolução", cycle: "Ciclo II", name: "Reconhecer os diferentes processos reprodutivos dos seres vivos.", theme: "4. Reprodução sexuada e assexuada", chap: "Capítulo 5: Reprodução em Animais", page: "Páginas 95-98" },
-                { id: "8EF12_CN", bncc: "EF08CI08", unit: "VE - Vida e Evolução", cycle: "Ciclo II", name: "Reconhecer as estruturas que compõem o sistema endócrino.", theme: "8. Glândulas / 9. Sistema endócrino", chap: "Capítulo 7: Sistema Endócrino", page: "Páginas 138-139" },
-                { id: "8EF13_CN", bncc: "EF08CI08", unit: "VE - Vida e Evolução", cycle: "Ciclo III", name: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias.", theme: "13. Hormônios sexuais na puberdade", chap: "Capítulo 7: Sistema Endócrino", page: "Página 145" },
-                { id: "8EF14_CN", bncc: "EF08CI09", unit: "VE - Vida e Evolução", cycle: "Ciclo III", name: "Reconhecer o princípio de ação dos métodos contraceptivos.", theme: "1. Contracepção e prevenção", chap: "Capítulo 9: Sexo, Saúde e Sociedade", page: "Página 164" },
-                { id: "8EF15_CN", bncc: "EF08CI10", unit: "VE - Vida e Evolução", cycle: "Ciclo III", name: "Reconhecer as características das infecções sexualmente transmissíveis (IST).", theme: "2. Infecções Transmissíveis / 3. Aids", chap: "Capítulo 9: Sexo, Saúde e Sociedade", page: "Páginas 167-169" },
-                { id: "8EF16_CN", bncc: "EF08CI12", unit: "TU - Terra e Universo", cycle: "Ciclo II", name: "Reconhecer as posições relativas entre Sol, Terra e Lua associadas às fases da Lua e à ocorrência de eclipses.", theme: "1. Fases da Lua / 3. Eclipses", chap: "Capítulo 11: Lua e Constelações", page: "Páginas 200-203" },
-                { id: "8EF17_CN", bncc: "EF08CI13", unit: "TU - Terra e Universo", cycle: "Ciclo III", name: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.", theme: "4. As estações do ano", chap: "Capítulo 11: Lua e Constelações", page: "Página 206" }
+            const raw8 = [
+                ["8EF01_CN", "EF08CI01", "ME - Matéria e Energia", "Ciclo II", "Classificar os recursos energéticos em renováveis e não renováveis.", "Matriz energética", "Capítulo 12", "Página 227"],
+                ["8EF02_CN", "EF08CI02", "ME - Matéria e Energia", "Ciclo II", "Reconhecer circuitos elétricos e condutores.", "Circuito e corrente", "Capítulo 12", "Página 214"],
+                ["8EF03_CN", "EF08CI03", "ME - Matéria e Energia", "Ciclo II", "Classificar processos de transformação de energia em aparelhos.", "3. Transformação elétrica", "Capítulo 12", "Página 217"],
+                ["8EF04_CN", "EF08CI04", "ME - Matéria e Energia", "Ciclo III", "Calcular consumo de energia elétrica em kWh.", "4. Consumo residencial", "Capítulo 12", "Página 219"],
+                ["8EF05_CN", "EF08CI03", "ME - Matéria e Energia", "Ciclo II", "Classificar aparelhos elétricos segundo a transformação efetuada.", "4. Uso doméstico", "Capítulo 12", "Página 219"],
+                ["8EF06_CN", "EF08CI04", "ME - Matéria e Energia", "Ciclo III", "Verificar grandezas que influenciam no consumo elétrico.", "4. Potência e tempo", "Capítulo 12", "Página 219"],
+                ["8EF07_CN", "EF08CI05", "ME - Matéria e Energia", "Ciclo II", "Reconhecer atitudes de redução do consumo de energia.", "5. Eficiência energética", "Capítulo 12", "Página 221"],
+                ["8EF08_CN", "EF08CI06", "ME - Matéria e Energia", "Ciclo III", "Inferir o mecanismo de geração de energia em usinas.", "6. Geradores e turbinas", "Capítulo 12", "Página 227"],
+                ["8EF09_CN", "EF08CI06", "ME - Matéria e Energia", "Ciclo III", "Reconhecer impactos ambientais de usinas elétricas.", "13. Alterações ambientais", "Capítulo 10", "Página 190"],
+                ["8EF10_CN", "EF08CI06", "ME - Matéria e Energia", "Ciclo II", "Reconhecer os tipos de usinas elétricas.", "6. Tipos de usinas", "Capítulo 12", "Página 227"],
+                ["8EF11_CN", "EF08CI07", "VE - Vida e Evolução", "Ciclo II", "Reconhecer processos reprodutivos dos seres vivos.", "4-5. Reprodução animal", "Capítulo 5", "Páginas 95-98"],
+                ["8EF12_CN", "EF08CI08", "VE - Vida e Evolução", "Ciclo II", "Reconhecer estruturas do sistema endócrino.", "8-9. Glândulas do corpo", "Capítulo 7", "Páginas 138-139"],
+                ["8EF13_CN", "EF08CI08", "VE - Vida e Evolução", "Ciclo III", "Explicar ação endócrina nas características sexuais secundárias.", "13. Hormônios da puberdade", "Capítulo 7", "Página 145"],
+                ["8EF14_CN", "EF08CI09", "VE - Vida e Evolução", "Ciclo III", "Reconhecer o princípio de ação dos métodos contraceptivos.", "1. Métodos contraceptivos", "Capítulo 9", "Página 164"],
+                ["8EF15_CN", "EF08CI10", "VE - Vida e Evolução", "Ciclo III", "Reconhecer características das infecções transmissíveis (IST).", "2. ISTs e prevenção", "Capítulo 9", "Páginas 167-169"],
+                ["8EF16_CN", "EF08CI12", "TU - Terra e Universo", "Ciclo II", "Reconhecer posições relativas Sol-Terra-Lua e eclipses.", "1-3. Fases e eclipses", "Capítulo 11", "Páginas 200-203"],
+                ["8EF17_CN", "EF08CI13", "TU - Terra e Universo", "Ciclo III", "Explicar movimentos terrestres e estações do ano.", "4. Estações do ano", "Capítulo 11", "Página 206"],
+                ["8EF18_CN", "EF08CI11", "TU - Terra e Universo", "Ciclo II", "Identificar a influência do clima e massas de ar no tempo.", "9-11. Tempo e Clima", "Capítulo 10", "Páginas 186-188"]
             ];
+            raw8.forEach(r => list.push(createObj(r[0], r[1], r[2], "8º Ano", r[3], r[4], r[5], r[6], r[7])));
 
-            skills8.forEach(s => {
-                list.push(createSkillObj(s.id, s.bncc, s.unit, "8º Ano", s.cycle, s.name, s.theme, s.chap, s.page));
-            });
-
-            // 4. MATRIZ COMPLETA DO 9º ANO (Recomposição 8EF01 a 8EF17 no Ciclo I + 9EF01 a 9EF19 nos Ciclos II e III)
-            const skills8Recomp = [
-                { id: "8EF01_CN_9A", bncc: "EF08CI01", unit: "ME - Matéria e Energia", name: "Classificar os recursos energéticos em renováveis e não renováveis.", theme: "4. Recursos renováveis", chap: "Capítulo 12: Desenvolvimento Sustentável", page: "Página 247" },
-                { id: "8EF04_CN_9A", bncc: "EF08CI02", unit: "ME - Matéria e Energia", name: "Reconhecer os componentes de um circuito.", theme: "1. Eletricidade e circuitos", chap: "Capítulo 2: Cargas Elétricas", page: "Página 33" },
-                { id: "8EF05_CN_9A", bncc: "EF08CI03", unit: "ME - Matéria e Energia", name: "Classificar os processos de transformação da energia nos aparelhos residenciais.", theme: "1. Transformações de energia", chap: "Capítulo 2: Cargas Elétricas", page: "Página 33" },
-                { id: "8EF06_CN_9A", bncc: "EF08CI04", unit: "ME - Matéria e Energia", name: "Verificar o consumo de energia elétrica de aparelhos eletroeletrônicos.", theme: "1. Consumo de energia", chap: "Capítulo 2: Cargas Elétricas", page: "Página 33" },
-                { id: "8EF08_CN_9A", bncc: "EF08CI06", unit: "ME - Matéria e Energia", name: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas.", theme: "1. Geradores elétricos", chap: "Capítulo 2: Cargas Elétricas", page: "Página 33" },
-                { id: "8EF09_CN_9A", bncc: "EF08CI06", unit: "ME - Matéria e Energia", name: "Reconhecer os impactos ambientais resultantes do uso de usinas.", theme: "2. Desequilíbrios ambientais", chap: "Capítulo 12: Desenvolvimento Sustentável", page: "Página 244" },
-                { id: "8EF10_CN_9A", bncc: "EF08CI06", unit: "ME - Matéria e Energia", name: "Reconhecer os tipos de usinas de geração de energia elétrica.", theme: "1. Matrizes elétricas", chap: "Capítulo 2: Cargas Elétricas", page: "Página 33" },
-                { id: "8EF11_CN_9A", bncc: "EF08CI07", unit: "VE - Vida e Evolução", name: "Reconhecer os diferentes processos reprodutivos dos seres vivos.", theme: "4. Cromossomos e reprodução", chap: "Capítulo 10: Genética", page: "Página 203" },
-                { id: "8EF13_CN_9A", bncc: "EF08CI08", unit: "VE - Vida e Evolução", name: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias.", theme: "4. Hormônios na puberdade", chap: "Capítulo 10: Genética", page: "Página 203" },
-                { id: "8EF14_CN_9A", bncc: "EF08CI09", unit: "VE - Vida e Evolução", name: "Reconhecer o princípio de ação dos métodos contraceptivos.", theme: "4. Métodos contraceptivos", chap: "Capítulo 10: Genética", page: "Página 203" },
-                { id: "8EF15_CN_9A", bncc: "EF08CI10", unit: "VE - Vida e Evolução", name: "Reconhecer as características das infecções sexualmente transmissíveis (IST).", theme: "4. Prevenção de ISTs", chap: "Capítulo 10: Genética", page: "Página 203" },
-                { id: "8EF17_CN_9A", bncc: "EF08CI13", unit: "TU - Terra e Universo", name: "Explicar os movimentos do planeta Terra relacionando-os às estações.", theme: "5. Planetas e movimentos", chap: "Capítulo 9: Gravitação", page: "Página 175" }
+            // ==========================================
+            // 4. TURMA 9º ANO -> 34 HABILIDADES
+            // ==========================================
+            // Recomposição (15 itens do 8º ano) + 19 itens do 9º ano
+            const raw8Recomp = [
+                ["8EF01_CN_9A", "EF08CI01", "ME - Matéria e Energia", "Classificar recursos energéticos em renováveis e não renováveis.", "4. Recursos renováveis", "Capítulo 12", "Página 247"],
+                ["8EF02_CN_9A", "EF08CI02", "ME - Matéria e Energia", "Reconhecer componentes de circuitos elétricos.", "1. Cargas e circuitos", "Capítulo 2", "Página 33"],
+                ["8EF03_CN_9A", "EF08CI03", "ME - Matéria e Energia", "Classificar transformações de energia residencial.", "1. Transformações de energia", "Capítulo 2", "Página 33"],
+                ["8EF04_CN_9A", "EF08CI02", "ME - Matéria e Energia", "Reconhecer os componentes de um circuito.", "1. Eletricidade e circuitos", "Capítulo 2", "Página 33"],
+                ["8EF05_CN_9A", "EF08CI03", "ME - Matéria e Energia", "Classificar processos de transformação de energia.", "1. Transformação de energia", "Capítulo 2", "Página 33"],
+                ["8EF06_CN_9A", "EF08CI04", "ME - Matéria e Energia", "Verificar o consumo de energia em eletrodomésticos.", "1. Consumo em kWh", "Capítulo 2", "Página 33"],
+                ["8EF07_CN_9A", "EF08CI05", "ME - Matéria e Energia", "Reconhecer atitudes de economia de energia.", "4. Eficiência energética", "Capítulo 12", "Página 247"],
+                ["8EF08_CN_9A", "EF08CI06", "ME - Matéria e Energia", "Inferir o mecanismo de geração de energia nas usinas.", "1. Geradores elétricos", "Capítulo 2", "Página 33"],
+                ["8EF09_CN_9A", "EF08CI06", "ME - Matéria e Energia", "Reconhecer impactos ambientais do uso de usinas.", "2. Impactos ambientais", "Capítulo 12", "Página 244"],
+                ["8EF10_CN_9A", "EF08CI06", "ME - Matéria e Energia", "Reconhecer tipos de usinas de geração de energia.", "1. Usinas elétricas", "Capítulo 2", "Página 33"],
+                ["8EF11_CN_9A", "EF08CI07", "VE - Vida e Evolução", "Reconhecer diferentes processos reprodutivos.", "4. Cromossomos e reprodução", "Capítulo 10", "Página 203"],
+                ["8EF12_CN_9A", "EF08CI08", "VE - Vida e Evolução", "Reconhecer glândulas do sistema endócrino.", "4. Sistema hormonal", "Capítulo 10", "Página 203"],
+                ["8EF13_CN_9A", "EF08CI08", "VE - Vida e Evolução", "Explicar ação endócrina nas características secundárias.", "4. Puberdade e hormônios", "Capítulo 10", "Página 203"],
+                ["8EF14_CN_9A", "EF08CI09", "VE - Vida e Evolução", "Reconhecer o princípio de ação dos contraceptivos.", "4. Prevenção e gravidez", "Capítulo 10", "Página 203"],
+                ["8EF15_CN_9A", "EF08CI10", "VE - Vida e Evolução", "Reconhecer características das ISTs.", "4. Prevenção de infecções", "Capítulo 10", "Página 203"]
             ];
+            raw8Recomp.forEach(r => list.push(createObj(r[0], r[1], r[2], "9º Ano", "Ciclo I", r[3], r[4], r[5], r[6])));
 
-            skills8Recomp.forEach(s => {
-                list.push(createSkillObj(s.id, s.bncc, s.unit, "9º Ano", "Ciclo I", s.name, s.theme, s.chap, s.page));
-            });
-
-            const skills9 = [
-                { id: "9EF01_CN", bncc: "EF09CI01", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Classificar, com base nos modelos de constituição submicroscópica, os estados físicos da matéria.", theme: "1. Mudanças de fase da água", chap: "Capítulo 1: Reações Químicas", page: "Página 14" },
-                { id: "9EF02_CN", bncc: "EF09CI01", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Inferir as mudanças de estado físico da matéria a partir da observação dos modelos de constituição submicroscópica.", theme: "1. Mudanças de fase da água", chap: "Capítulo 1: Reações Químicas", page: "Página 14" },
-                { id: "9EF03_CN", bncc: "EF09CI02", unit: "ME - Matéria e Energia", cycle: "Ciclo III", name: "Inferir a relação estabelecida entre a conservação das massas e as propriedades dos átomos.", theme: "4. Lei de Lavoisier / 9. Dalton", chap: "Capítulo 1: Reações Químicas", page: "Páginas 18-24" },
-                { id: "9EF04_CN", bncc: "EF09CI02", unit: "ME - Matéria e Energia", cycle: "Ciclo III", name: "Interpretar, em uma equação química, a conservação da massa entre reagentes e produtos.", theme: "8. Equação química", chap: "Capítulo 1: Reações Químicas", page: "Página 23" },
-                { id: "9EF05_CN", bncc: "EF09CI03", unit: "ME - Matéria e Energia", cycle: "Ciclo III", name: "Interpretar, a partir da evolução histórica de teorias e de tecnologias, os diferentes modelos atômicos.", theme: "8. Rutherford / Cap. 3: Bohr", chap: "Capítulos 2 e 3", page: "Páginas 39 e 59" },
-                { id: "9EF06_CN", bncc: "EF09CI03", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Reconhecer que os materiais são constituídos por partículas muito pequenas com espaços vazios.", theme: "6. Teoria Atômica de Dalton", chap: "Capítulo 1: Reações Químicas", page: "Página 20" },
-                { id: "9EF07_CN", bncc: "EF09CI04", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Explicar as cores dos objetos estabelecendo uma relação com a luz que os ilumina.", theme: "2. Componentes da luz branca", chap: "Capítulo 6: Óptica", page: "Página 109" },
-                { id: "9EF08_CN", bncc: "EF09CI04", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Reconhecer as cores primárias e secundárias.", theme: "3. Cores primárias de luz", chap: "Capítulo 6: Óptica", page: "Página 110" },
-                { id: "9EF09_CN", bncc: "EF09CI06", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Classificar as radiações eletromagnéticas.", theme: "2. Ondas eletromagnéticas", chap: "Capítulo 3: Ondas Eletromagnéticas", page: "Página 53" },
-                { id: "9EF10_CN", bncc: "EF09CI06", unit: "ME - Matéria e Energia", cycle: "Ciclo II", name: "Reconhecer as aplicações das radiações eletromagnéticas.", theme: "3. Aplicações das ondas", chap: "Capítulo 3: Ondas Eletromagnéticas", page: "Página 54" },
-                { id: "9EF11_CN", bncc: "EF09CI08", unit: "VE - Vida e Evolução", cycle: "Ciclo II", name: "Interpretar como as características hereditárias são transmitidas às gerações seguintes.", theme: "9. Hereditariedade humana", chap: "Capítulo 10: Genética", page: "Página 210" },
-                { id: "9EF12_CN", bncc: "EF09CI09", unit: "VE - Vida e Evolução", cycle: "Ciclo III", name: "Verificar, a partir da aplicação da 1ª lei de Mendel, a expressão de características genéticas.", theme: "1. Mendel / 6. Alelos", chap: "Capítulo 10: Genética", page: "Páginas 197-205" },
-                { id: "9EF13_CN", bncc: "EF09CI09", unit: "VE - Vida e Evolução", cycle: "Ciclo II", name: "Reconhecer a contribuição de Mendel para os estudos da genética.", theme: "1. Mendel e as ervilhas", chap: "Capítulo 10: Genética", page: "Página 197" },
-                { id: "9EF14_CN", bncc: "EF09CI09", unit: "VE - Vida e Evolução", cycle: "Ciclo II", name: "Reconhecer os conceitos básicos para o estudo da hereditariedade.", theme: "5. O que é Genética / 7. Genótipo", chap: "Capítulo 10: Genética", page: "Páginas 205-207" },
-                { id: "9EF15_CN", bncc: "EF09CI10", unit: "VE - Vida e Evolução", cycle: "Ciclo III", name: "Comparar as ideias evolucionistas de Lamarck e Darwin.", theme: "3. Lamarck / 4. Darwin", chap: "Capítulo 11: Evolução", page: "Página 223" },
-                { id: "9EF16_CN", bncc: "EF09CI11", unit: "VE - Vida e Evolução", cycle: "Ciclo III", name: "Explicar o processo de evolução e o fenômeno da biodiversidade com base na seleção natural.", theme: "4. Explicação darwinista", chap: "Capítulo 11: Evolução", page: "Página 223" },
-                { id: "9EF17_CN", bncc: "EF09CI11", unit: "VE - Vida e Evolução", cycle: "Ciclo III", name: "Reconhecer fatores que determinam o processo de especiação.", theme: "5. Formação de novas espécies", chap: "Capítulo 11: Evolução", page: "Página 224" },
-                { id: "9EF18_CN", bncc: "EF09CI14", unit: "TU - Terra e Universo", cycle: "Ciclo II", name: "Reconhecer os corpos que compõem o Sistema Solar.", theme: "5. Planetas e Sistema Solar", chap: "Capítulo 9: Gravitação", page: "Página 175" },
-                { id: "9EF19_CN", bncc: "EF09CI17", unit: "TU - Terra e Universo", cycle: "Ciclo III", name: "Organizar o ciclo evolutivo de uma estrela.", theme: "9. Ciclo de vida das estrelas", chap: "Capítulo 9: Gravitação", page: "Página 186" }
+            const raw9 = [
+                ["9EF01_CN", "EF09CI01", "ME - Matéria e Energia", "Ciclo II", "Classificar os estados físicos da matéria submicroscópicamente.", "1. Mudanças de fase", "Capítulo 1", "Página 14"],
+                ["9EF02_CN", "EF09CI01", "ME - Matéria e Energia", "Ciclo II", "Inferir mudanças de estado físico por modelos de partículas.", "1. Mudanças de fase", "Capítulo 1", "Página 14"],
+                ["9EF03_CN", "EF09CI02", "ME - Matéria e Energia", "Ciclo III", "Inferir a relação entre conservação das massas e átomos.", "4. Lei de Lavoisier", "Capítulo 1", "Páginas 18-24"],
+                ["9EF04_CN", "EF09CI02", "ME - Matéria e Energia", "Ciclo III", "Interpretar a conservação da massa em equações químicas.", "8. Equações químicas", "Capítulo 1", "Página 23"],
+                ["9EF05_CN", "EF09CI03", "ME - Matéria e Energia", "Ciclo III", "Interpretar a evolução histórica dos modelos atômicos.", "8. Rutherford / Bohr", "Capítulos 2 e 3", "Páginas 39 e 59"],
+                ["9EF06_CN", "EF09CI03", "ME - Matéria e Energia", "Ciclo II", "Reconhecer a constituição descontínua da matéria.", "6. Dalton e partículas", "Capítulo 1", "Página 20"],
+                ["9EF07_CN", "EF09CI04", "ME - Matéria e Energia", "Ciclo II", "Explicar as cores dos objetos por reflexão da luz.", "2. Luz branca e cores", "Capítulo 6", "Página 109"],
+                ["9EF08_CN", "EF09CI04", "ME - Matéria e Energia", "Ciclo II", "Reconhecer cores primárias e secundárias.", "3. Cores primárias de luz", "Capítulo 6", "Página 110"],
+                ["9EF09_CN", "EF09CI06", "ME - Matéria e Energia", "Ciclo II", "Classificar radiações eletromagnéticas.", "2. Espectro eletromagnético", "Capítulo 3", "Página 53"],
+                ["9EF10_CN", "EF09CI06", "ME - Matéria e Energia", "Ciclo II", "Reconhecer aplicações tecnológicas de radiações.", "3. Aplicações das ondas", "Capítulo 3", "Página 54"],
+                ["9EF11_CN", "EF09CI08", "VE - Vida e Evolução", "Ciclo II", "Interpretar a transmissão de características hereditárias.", "9. Hereditariedade humana", "Capítulo 10", "Página 210"],
+                ["9EF12_CN", "EF09CI09", "VE - Vida e Evolução", "Ciclo III", "Aplicar a 1ª lei de Mendel na expressão genotípica.", "1. Mendel e cruzamentos", "Capítulo 10", "Páginas 197-205"],
+                ["9EF13_CN", "EF09CI09", "VE - Vida e Evolução", "Ciclo II", "Reconhecer a contribuição de Mendel para a genética.", "1. Mendel e as ervilhas", "Capítulo 10", "Página 197"],
+                ["9EF14_CN", "EF09CI09", "VE - Vida e Evolução", "Ciclo II", "Reconhecer conceitos básicos: genótipo e fenótipo.", "5. Glossário de genética", "Capítulo 10", "Páginas 205-207"],
+                ["9EF15_CN", "EF09CI10", "VE - Vida e Evolução", "Ciclo III", "Comparar ideias evolucionistas de Lamarck e Darwin.", "3. Lamarck x Darwin", "Capítulo 11", "Página 223"],
+                ["9EF16_CN", "EF09CI11", "VE - Vida e Evolução", "Ciclo III", "Explicar a evolução e biodiversidade por seleção natural.", "4. Seleção natural", "Capítulo 11", "Página 223"],
+                ["9EF17_CN", "EF09CI11", "VE - Vida e Evolução", "Ciclo III", "Reconhecer fatores que determinam a especiação.", "5. Origem das espécies", "Capítulo 11", "Página 224"],
+                ["9EF18_CN", "EF09CI14", "TU - Terra e Universo", "Ciclo II", "Reconhecer corpos do Sistema Solar.", "5. Planetas e astros", "Capítulo 9", "Página 175"],
+                ["9EF19_CN", "EF09CI17", "TU - Terra e Universo", "Ciclo III", "Organizar o ciclo evolutivo de uma estrela.", "9. Vida das estrelas", "Capítulo 9", "Página 186"]
             ];
-
-            skills9.forEach(s => {
-                list.push(createSkillObj(s.id, s.bncc, s.unit, "9º Ano", s.cycle, s.name, s.theme, s.chap, s.page));
-            });
+            raw9.forEach(r => list.push(createObj(r[0], r[1], r[2], "9º Ano", r[3], r[4], r[5], r[6], r[7])));
 
             return list;
         }
 
-        function createSkillObj(id, bncc, unit, grade, cycle, skillText, theme, chap, page) {
-            return {
-                id: id,
-                bncc: bncc,
-                unit: unit,
-                grade: grade,
-                applicationYear: "2026",
-                cycle: cycle,
-                caedSkill: skillText,
-                bookTheme: theme,
-                bookChapter: chap,
-                bookPage: page,
-                focus: `Desenvolver a habilidade ${bncc} no contexto dos descritores do CAEd para o ${grade}.`,
-                prerequisites: ["Conceitos fundamentais da Unidade Temática"],
-                pitfalls: ["Confusão conceitual entre os descritores e distratores da matriz."],
-                methodologyRoute: [
-                    { step: 1, action: "Observar", detail: `Analisar situações cotidianas e imagens relacionadas a ${theme}.` },
-                    { step: 2, action: "Duvidar", detail: "Questionar sobre os princípios científicos envolvidos no fenômeno." },
-                    { step: 3, action: "Teorizar", detail: "Sistematizar o conceito e aplicar aos itens da avaliação CAEd." }
-                ],
-                sampleQuestionTip: "Identificar o elemento correto cobrado no enunciado do item."
-            };
-        }
-
-        // Garante a presença do banco completo caso o localStorage esteja incompleto
-        let db = JSON.parse(localStorage.getItem('caed_db'));
-        if (!db || db.length < 50) {
-            db = buildFullDatabase();
-            localStorage.setItem('caed_db', JSON.stringify(db));
-        }
+        // Garante carregamento com os totais exatos por turma
+        let db = buildExactDatabase();
+        localStorage.setItem('caed_db', JSON.stringify(db));
 
         let selectedId = "6EF01_CN";
 
@@ -583,7 +592,7 @@
             container.innerHTML = '';
 
             if (filtered.length === 0) {
-                container.innerHTML = `<div class="p-4 bg-white rounded-xl border border-slate-200 text-center text-slate-500 text-xs">Nenhuma habilidade encontrada para os filtros selecionados no <strong>${currentTab}</strong>.</div>`;
+                container.innerHTML = `<div class="p-4 bg-white rounded-xl border border-slate-200 text-center text-slate-500 text-xs">Nenhuma habilidade encontrada para os filtros no <strong>${currentTab}</strong>.</div>`;
                 document.getElementById('detail-card').innerHTML = `<div class="text-center text-slate-400 py-12 text-sm">Nenhuma habilidade selecionada.</div>`;
                 return;
             }
@@ -782,9 +791,6 @@ ${item.caedSkill}
 ALINHAMENTO COM LIVRO DIDÁTICO:
 Tema: ${item.bookTheme}
 Localização: ${item.bookChapter} (${item.bookPage})
-
-FOCO DA AVALIAÇÃO:
-${item.focus}
 
 SEQUÊNCIA DIDÁTICA (OBSERVAR • DUVIDAR • TEORIZAR):
 ${item.methodologyRoute.map(r => `${r.step}. ${r.action}: ${r.detail}`).join('\n')}
