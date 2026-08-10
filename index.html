@@ -20,12 +20,11 @@
             background-color: #ffffff;
             border: 1px solid #e2e8f0;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            transition: all 0.2s ease-in-out;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .light-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-            border-color: #cbd5e1;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
         @media print {
@@ -42,7 +41,7 @@
     <header class="bg-[#312e81] text-white shadow-md sticky top-0 z-50 no-print">
         <div class="max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="showHome()">
-                <div class="bg-indigo-500/20 p-2 rounded-xl border border-indigo-400/30">
+                <div class="bg-indigo-500/20 p-2 rounded-xl border border-indigo-400/30 hover:bg-indigo-500/30 transition-all">
                     <i data-lucide="compass" class="w-6 h-6 text-indigo-200"></i>
                 </div>
                 <div>
@@ -54,6 +53,9 @@
             </div>
             
             <div class="flex items-center space-x-2">
+                <button onclick="showHome()" class="px-3 py-1.5 rounded-lg text-xs font-bold text-indigo-100 hover:bg-indigo-700/50 transition-all flex items-center gap-1">
+                    <i data-lucide="home" class="w-3.5 h-3.5"></i> Início
+                </button>
                 <button onclick="switchTab('6º Ano')" class="px-3 py-1.5 rounded-lg text-xs font-bold text-indigo-100 hover:bg-indigo-700/50 transition-all">6º Ano</button>
                 <button onclick="switchTab('7º Ano')" class="px-3 py-1.5 rounded-lg text-xs font-bold text-indigo-100 hover:bg-indigo-700/50 transition-all">7º Ano</button>
                 <button onclick="switchTab('8º Ano')" class="px-3 py-1.5 rounded-lg text-xs font-bold text-indigo-100 hover:bg-indigo-700/50 transition-all">8º Ano</button>
@@ -66,109 +68,131 @@
     </header>
 
     <!-- Conteúdo Principal -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6 sm:px-6 lg:px-8">
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 sm:px-6 lg:px-8">
         
-        <!-- VIEW 1: HOME PAGE -->
-        <div id="view-home" class="space-y-8 py-4">
-            <div class="text-center max-w-2xl mx-auto space-y-2">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700 border border-indigo-200">
-                    <i data-lucide="book-marked" class="w-3.5 h-3.5"></i> Livros Didáticos & Matrizes CAEd Completa
+        <!-- VIEW 1: PÁGINA INICIAL (PORTA DE ENTRADA COM 4 BLOCOS) -->
+        <div id="view-home" class="space-y-10 py-6">
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-extrabold bg-indigo-100 text-indigo-700 border border-indigo-200">
+                    <i data-lucide="school" class="w-4 h-4"></i> Unidade Escolar Natividade Marinho
                 </span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                    Selecione a Turma para Acessar os Mapeamentos
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+                    Portal de Matrizes & Planejamento CAEd 2026
                 </h2>
-                <p class="text-xs sm:text-sm text-slate-600">
-                    Plataforma centralizada para planejamento de aulas, alinhamento com livro didático e acompanhamento dos ciclos do CAEd.
+                <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
+                    Selecione a turma abaixo para acessar o alinhamento pedagógico, mapeamento do livro didático e a sequência didática completa.
                 </p>
             </div>
 
-            <!-- Grid de Turmas com Detalhamento de Ciclos -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-2">
-                <!-- 6º Ano -->
-                <div onclick="openGrade('6º Ano')" class="light-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group">
-                    <div class="absolute top-4 right-4 bg-indigo-50 text-indigo-700 border border-indigo-200 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">6º ANO</div>
-                    <div class="space-y-4 text-center mt-2">
-                        <div class="w-20 h-28 mx-auto rounded-lg bg-indigo-600 p-2 shadow-md flex flex-col items-center justify-between text-white group-hover:scale-105 transition-transform">
-                            <i data-lucide="droplet" class="w-6 h-6 mt-2"></i>
-                            <span class="text-[9px] font-black uppercase tracking-tighter text-center">Ciências 6</span>
-                            <div class="w-full bg-white/30 h-1 rounded-full mb-1"></div>
+            <!-- Grid das 4 Portas de Entrada -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto pt-4">
+                
+                <!-- Bloco 6º Ano -->
+                <div onclick="openGrade('6º Ano')" class="light-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer border-t-4 border-t-indigo-600 group hover:border-indigo-600">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                                <i data-lucide="droplet" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">6º ANO</span>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">Ciências da Natureza</h3>
-                            <p class="text-xs text-slate-500 mt-1">32 Habilidades (C-I: 9 | C-II: 12 | C-III: 11)</p>
+                            <h3 class="text-xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors">6º Ano Fundamental</h3>
+                            <p class="text-xs text-slate-500 mt-1 font-medium">32 Habilidades Mapeadas</p>
+                        </div>
+                        <div class="space-y-1.5 pt-2 border-t border-slate-100 text-[11px] text-slate-600">
+                            <div class="flex justify-between"><span>Ciclo I:</span> <strong class="text-indigo-700">9 habilidades</strong></div>
+                            <div class="flex justify-between"><span>Ciclo II:</span> <strong class="text-indigo-700">12 habilidades</strong></div>
+                            <div class="flex justify-between"><span>Ciclo III:</span> <strong class="text-indigo-700">11 habilidades</strong></div>
                         </div>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-indigo-600">
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-indigo-600">
                         <span>Acessar Matriz</span>
-                        <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </div>
                 </div>
 
-                <!-- 7º Ano -->
-                <div onclick="openGrade('7º Ano')" class="light-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group">
-                    <div class="absolute top-4 right-4 bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">7º ANO</div>
-                    <div class="space-y-4 text-center mt-2">
-                        <div class="w-20 h-28 mx-auto rounded-lg bg-emerald-600 p-2 shadow-md flex flex-col items-center justify-between text-white group-hover:scale-105 transition-transform">
-                            <i data-lucide="leaf" class="w-6 h-6 mt-2"></i>
-                            <span class="text-[9px] font-black uppercase tracking-tighter text-center">Ciências 7</span>
-                            <div class="w-full bg-white/30 h-1 rounded-full mb-1"></div>
+                <!-- Bloco 7º Ano -->
+                <div onclick="openGrade('7º Ano')" class="light-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer border-t-4 border-t-emerald-600 group hover:border-emerald-600">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                                <i data-lucide="leaf" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100">7º ANO</span>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Ciências da Natureza</h3>
-                            <p class="text-xs text-slate-500 mt-1">34 Habilidades (C-I: 11 | C-II: 11 | C-III: 12)</p>
+                            <h3 class="text-xl font-black text-slate-900 group-hover:text-emerald-600 transition-colors">7º Ano Fundamental</h3>
+                            <p class="text-xs text-slate-500 mt-1 font-medium">34 Habilidades Mapeadas</p>
+                        </div>
+                        <div class="space-y-1.5 pt-2 border-t border-slate-100 text-[11px] text-slate-600">
+                            <div class="flex justify-between"><span>Ciclo I:</span> <strong class="text-emerald-700">11 habilidades</strong></div>
+                            <div class="flex justify-between"><span>Ciclo II:</span> <strong class="text-emerald-700">11 habilidades</strong></div>
+                            <div class="flex justify-between"><span>Ciclo III:</span> <strong class="text-emerald-700">12 habilidades</strong></div>
                         </div>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-emerald-600">
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-600">
                         <span>Acessar Matriz</span>
-                        <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </div>
                 </div>
 
-                <!-- 8º Ano -->
-                <div onclick="openGrade('8º Ano')" class="light-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group">
-                    <div class="absolute top-4 right-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">8º ANO</div>
-                    <div class="space-y-4 text-center mt-2">
-                        <div class="w-20 h-28 mx-auto rounded-lg bg-amber-600 p-2 shadow-md flex flex-col items-center justify-between text-white group-hover:scale-105 transition-transform">
-                            <i data-lucide="zap" class="w-6 h-6 mt-2"></i>
-                            <span class="text-[9px] font-black uppercase tracking-tighter text-center">Ciências 8</span>
-                            <div class="w-full bg-white/30 h-1 rounded-full mb-1"></div>
+                <!-- Bloco 8º Ano -->
+                <div onclick="openGrade('8º Ano')" class="light-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer border-t-4 border-t-amber-600 group hover:border-amber-600">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center group-hover:bg-amber-600 group-hover:text-white transition-all">
+                                <i data-lucide="zap" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-100">8º ANO</span>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">Ciências da Natureza</h3>
-                            <p class="text-xs text-slate-500 mt-1">33 Habilidades (C-I: 12 | C-II: 9 | C-III: 12)</p>
+                            <h3 class="text-xl font-black text-slate-900 group-hover:text-amber-600 transition-colors">8º Ano Fundamental</h3>
+                            <p class="text-xs text-slate-500 mt-1 font-medium">33 Habilidades Mapeadas</p>
+                        </div>
+                        <div class="space-y-1.5 pt-2 border-t border-slate-100 text-[11px] text-slate-600">
+                            <div class="flex justify-between"><span>Ciclo I:</span> <strong class="text-amber-700">12 habilidades</strong></div>
+                            <div class="flex justify-between"><span>Ciclo II:</span> <strong class="text-amber-700">9 habilidades</strong></div>
+                            <div class="flex justify-between"><span>Ciclo III:</span> <strong class="text-amber-700">12 habilidades</strong></div>
                         </div>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-amber-600">
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-amber-600">
                         <span>Acessar Matriz</span>
-                        <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </div>
                 </div>
 
-                <!-- 9º Ano -->
-                <div onclick="openGrade('9º Ano')" class="light-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer relative group">
-                    <div class="absolute top-4 right-4 bg-rose-50 text-rose-700 border border-rose-200 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">9º ANO</div>
-                    <div class="space-y-4 text-center mt-2">
-                        <div class="w-20 h-28 mx-auto rounded-lg bg-rose-600 p-2 shadow-md flex flex-col items-center justify-between text-white group-hover:scale-105 transition-transform">
-                            <i data-lucide="atom" class="w-6 h-6 mt-2"></i>
-                            <span class="text-[9px] font-black uppercase tracking-tighter text-center">Ciências 9</span>
-                            <div class="w-full bg-white/30 h-1 rounded-full mb-1"></div>
+                <!-- Bloco 9º Ano -->
+                <div onclick="openGrade('9º Ano')" class="light-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer border-t-4 border-t-rose-600 group hover:border-rose-600">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center group-hover:bg-rose-600 group-hover:text-white transition-all">
+                                <i data-lucide="atom" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 border border-rose-100">9º ANO</span>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-rose-600 transition-colors">Ciências da Natureza</h3>
-                            <p class="text-xs text-slate-500 mt-1">34 Habilidades (C-I: 12 | C-II: 11 | C-III: 11)</p>
+                            <h3 class="text-xl font-black text-slate-900 group-hover:text-rose-600 transition-colors">9º Ano Fundamental</h3>
+                            <p class="text-xs text-slate-500 mt-1 font-medium">34 Habilidades Mapeadas</p>
+                        </div>
+                        <div class="space-y-1.5 pt-2 border-t border-slate-100 text-[11px] text-slate-600">
+                            <div class="flex justify-between"><span>Ciclo I:</span> <strong class="text-rose-700">12 habilidades</strong></div>
+                            <div class="flex justify-between"><span>Ciclo II:</span> <strong class="text-rose-700">11 habilidades</strong></div>
+                            <div class="flex justify-between"><span>Ciclo III:</span> <strong class="text-rose-700">11 habilidades</strong></div>
                         </div>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-rose-600">
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-rose-600">
                         <span>Acessar Matriz</span>
-                        <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </div>
                 </div>
+
             </div>
         </div>
 
-        <!-- VIEW 2: DASHBOARD DA TURMA COM BANNER REORGANIZADO -->
+        <!-- VIEW 2: DASHBOARD DA TURMA -->
         <div id="view-dashboard" class="hidden space-y-6">
-            <!-- Banner Colorido Integrando Título e Filtros no Canto Direito -->
+            <!-- Banner Colorido Integrando Título e Filtros -->
             <div id="class-banner" class="rounded-2xl p-6 text-white shadow-sm flex flex-col lg:flex-row items-center justify-between gap-6 transition-all">
                 <div class="flex items-center space-x-4">
                     <div id="class-icon-bg" class="p-3 bg-white/20 backdrop-blur-md rounded-xl shrink-0">
@@ -181,7 +205,7 @@
                     </div>
                 </div>
 
-                <!-- Filtros Reorganizados Dentro do Canto Direito do Banner -->
+                <!-- Filtros Reorganizados Dentro do Banner -->
                 <div class="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto no-print">
                     <div class="w-full sm:w-48">
                         <label for="filter-cycle" class="block text-[10px] font-extrabold text-white/90 uppercase tracking-wider mb-1">CICLO DA PROVA CAED</label>
@@ -345,7 +369,7 @@
             '9º Ano': { bg: 'bg-rose-600', badge: 'bg-rose-700', icon: 'atom', title: '9º ANO DO ENSINO FUNDAMENTAL', colorClass: 'rose' }
         };
 
-        // BASE DE DADOS COMPLETA COM DISTRIBUIÇÃO EXATA POR CICLO
+        // BASE DE DADOS COMPLETA PRESERVADA E INTACTA
         function buildExactDatabase() {
             const list = [];
 
@@ -373,9 +397,7 @@
                 };
             }
 
-            // ==========================================
-            // 1. 6º ANO -> Total: 32 (Ciclo I: 9 | Ciclo II: 12 | Ciclo III: 11)
-            // ==========================================
+            // 1. 6º ANO -> 32 Habilidades (Ciclo I: 9 | Ciclo II: 12 | Ciclo III: 11)
             const raw6_C1 = [
                 ["6EF01_CN", "EF05CI02", "ME - Matéria e Energia", "Interpretar o ciclo da água.", "8. Hidrosfera e ciclo da água", "Capítulo 10", "Página 176"],
                 ["6EF02_CN", "EF05CI03", "ME - Matéria e Energia", "Explicar como a ação da água, seres vivos e desmatamento causam erosão.", "5. Rochas sedimentares", "Capítulo 11", "Página 194"],
@@ -421,9 +443,7 @@
             raw6_C2.forEach(r => list.push(createObj(r[0], r[1], r[2], "6º Ano", "Ciclo II", r[3], r[4], r[5], r[6])));
             raw6_C3.forEach(r => list.push(createObj(r[0], r[1], r[2], "6º Ano", "Ciclo III", r[3], r[4], r[5], r[6])));
 
-            // ==========================================
-            // 2. 7º ANO -> Total: 34 (Ciclo I: 11 | Ciclo II: 11 | Ciclo III: 12)
-            // ==========================================
+            // 2. 7º ANO -> 34 Habilidades (Ciclo I: 11 | Ciclo II: 11 | Ciclo III: 12)
             const raw7_C1 = raw6_C1.concat(raw6_C2.slice(0, 2)).map(r => [r[0] + "_7A", r[1], r[2], r[3], r[4], r[5], r[6]]);
 
             const raw7_C2 = [
@@ -459,9 +479,7 @@
             raw7_C2.forEach(r => list.push(createObj(r[0], r[1], r[2], "7º Ano", "Ciclo II", r[3], r[4], r[5], r[6])));
             raw7_C3.forEach(r => list.push(createObj(r[0], r[1], r[2], "7º Ano", "Ciclo III", r[3], r[4], r[5], r[6])));
 
-            // ==========================================
-            // 3. 8º ANO -> Total: 33 (Ciclo I: 12 | Ciclo II: 9 | Ciclo III: 12)
-            // ==========================================
+            // 3. 8º ANO -> 33 Habilidades (Ciclo I: 12 | Ciclo II: 9 | Ciclo III: 12)
             const raw8_C1 = raw6_C1.concat(raw6_C2.slice(0, 3)).map(r => [r[0] + "_8A", r[1], r[2], r[3], r[4], r[5], r[6]]);
 
             const raw8_C2 = [
@@ -495,9 +513,7 @@
             raw8_C2.forEach(r => list.push(createObj(r[0], r[1], r[2], "8º Ano", "Ciclo II", r[3], r[4], r[5], r[6])));
             raw8_C3.forEach(r => list.push(createObj(r[0], r[1], r[2], "8º Ano", "Ciclo III", r[3], r[4], r[5], r[6])));
 
-            // ==========================================
-            // 4. 9º ANO -> Total: 34 (Ciclo I: 12 | Ciclo II: 11 | Ciclo III: 11)
-            // ==========================================
+            // 4. 9º ANO -> 34 Habilidades (Ciclo I: 12 | Ciclo II: 11 | Ciclo III: 11)
             const raw9_C1 = [
                 ["8EF01_CN_9A", "EF08CI01", "ME - Matéria e Energia", "Classificar recursos energéticos em renováveis e não renováveis.", "4. Recursos renováveis", "Capítulo 12", "Página 247"],
                 ["8EF02_CN_9A", "EF08CI02", "ME - Matéria e Energia", "Reconhecer componentes de circuitos elétricos.", "1. Cargas e circuitos", "Capítulo 2", "Página 33"],
@@ -827,8 +843,8 @@ ${item.methodologyRoute.map(r => `${r.step}. ${r.action}: ${r.detail}`).join('\n
         document.getElementById('filter-cycle').addEventListener('change', renderList);
         document.getElementById('filter-unit').addEventListener('change', renderList);
 
-        // Inicialização na Matriz do 6º Ano
-        switchTab('6º Ano');
+        // Inicialização na Página Inicial (Porta de Entrada)
+        showHome();
     </script>
 </body>
 </html>
