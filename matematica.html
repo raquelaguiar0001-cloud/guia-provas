@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norteador Pedagógico - Matemática</title>
+    <!-- Favicon Moderno e Temático -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%236366f1' d='M256 0a256 256 0 1 0 0 512 256 256 0 1 0 0-512zm0 96a160 160 0 1 1 0 320 160 160 0 1 1 0-320z'/><circle cx='256' cy='256' r='48' fill='%236366f1'/></svg>">
+    
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-main: #f8fafc;
+            --surface-card: #ffffff;
+            --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            --primary-accent: #6366f1;
+            --primary-soft: #eef2ff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --shadow-hover: 0 20px 25px -5px rgba(99, 102, 241, 0.12), 0 8px 10px -6px rgba(99, 102, 241, 0.08);
+        }
+
+        body {
+            background-color: var(--bg-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Header Glow */
+        .header-section {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 3.5rem 0 3rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+        }
+
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+        .title-badge {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Abas das Matérias */
+        .materia-tabs-wrapper {
+            background: #e2e8f0;
+            padding: 6px;
+            border-radius: 16px;
+            display: inline-flex;
+            gap: 6px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .materia-tab-btn {
+            font-weight: 800;
+            font-size: 0.95rem;
+            border-radius: 12px;
+            padding: 0.8rem 1.8rem;
+            border: none;
+            color: var(--text-muted);
+            background: transparent;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .materia-tab-btn.active {
+            background: var(--surface-card);
+            color: var(--primary-accent);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Section Titles */
+        .area-title {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--primary-accent);
+            background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Cards Modernos de Turma */
+        .turma-card {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            background: var(--surface-card);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .turma-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: #c7d2fe;
+        }
+
+        .turma-card .icon-wrapper {
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-size: 1.75rem;
+        }
+
+        .icon-6 { background: #e0e7ff; color: #4338ca; }
+        .icon-7 { background: #dcfce7; color: #15803d; }
+        .icon-8 { background: #fef3c7; color: #b45309; }
+        .icon-9 { background: #ffe4e6; color: #be123c; }
+
+        /* Dashboard de Detalhes */
+        .nav-ciclos-wrapper {
+            background: #f1f5f9;
+            padding: 6px;
+            border-radius: 14px;
+            display: inline-flex;
+            gap: 4px;
+        }
+
+        .ciclo-btn {
+            font-weight: 700;
+            border-radius: 10px;
+            padding: 0.6rem 1.4rem;
+            border: none;
+            color: var(--text-muted);
+            background: transparent;
+            transition: all 0.2s ease;
+        }
+
+        .ciclo-btn.active {
+            background: var(--surface-card);
+            color: var(--primary-accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Card de Habilidades Estilo Dashboard */
+        .habilidade-card {
+            border: 1px solid var(--border-color);
+            background: var(--surface-card);
+            border-radius: var(--radius-lg);
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .habilidade-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 16px;
+            bottom: 16px;
+            width: 4px;
+            background: var(--primary-gradient);
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        .badge-code {
+            font-weight: 800;
+            font-size: 0.85rem;
+            background-color: var(--primary-soft);
+            color: var(--primary-accent);
+            border-radius: 8px;
+            padding: 6px 12px;
+            border: 1px solid #c7d2fe;
+        }
+
+        .meta-box {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            border: 1px solid #f1f5f9;
+            height: 100%;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .meta-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-section text-center">
+        <div class="container position-relative">
+            <span class="title-badge"><i class="fa-solid fa-compass me-1"></i> Plataforma Pedagógica</span>
+            <h1 class="fw-extrabold display-5 mb-1">Norteador Pedagógico</h1>
+            <p class="text-white-50 mb-0">Matriz de Referência CAEd & Livro Didático Integrados</p>
+        </div>
+    </header>
+
+    <div class="container mb-5">
+        
+        <!-- NAVEGAÇÃO DE ABAS ENTRE MATÉRIAS -->
+        <div class="text-center mb-4">
+            <div class="materia-tabs-wrapper">
+                <a href="index.html" class="materia-tab-btn">
+                    <i class="fa-solid fa-flask"></i> Ciências da Natureza
+                </a>
+                <a href="portugues.html" class="materia-tab-btn">
+                    <i class="fa-solid fa-book"></i> Língua Portuguesa
+                </a>
+                <button class="materia-tab-btn active">
+                    <i class="fa-solid fa-calculator"></i> Matemática
+                </button>
+            </div>
+        </div>
+
+        <!-- TELA INICIAL: SELEÇÃO DE TURMAS -->
+        <div id="tela-inicio">
+            <div class="text-center mb-4">
+                <h2 class="area-title text-uppercase mb-1">MATEMÁTICA</h2>
+                <p class="text-muted small">Selecione o ano para visualizar o mapeamento de habilidades e descritores</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card turma-card text-center p-4" onclick="selecionarTurma('6ano')">
+                        <div class="card-body p-0">
+                            <div class="icon-wrapper icon-6">
+                                <i class="fa-solid fa-calculator"></i>
+                            </div>
+                            <h4 class="fw-bold mb-1">6º Ano</h4>
+                            <span class="badge bg-light text-secondary rounded-pill px-3 py-2" id="badge-6ano">0 Habilidades</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card turma-card text-center p-4" onclick="selecionarTurma('7ano')">
+                        <div class="card-body p-0">
+                            <div class="icon-wrapper icon-7">
+                                <i class="fa-solid fa-shapes"></i>
+                            </div>
+                            <h4 class="fw-bold mb-1">7º Ano</h4>
+                            <span class="badge bg-light text-secondary rounded-pill px-3 py-2" id="badge-7ano">0 Habilidades</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card turma-card text-center p-4" onclick="selecionarTurma('8ano')">
+                        <div class="card-body p-0">
+                            <div class="icon-wrapper icon-8">
+                                <i class="fa-solid fa-square-root-variable"></i>
+                            </div>
+                            <h4 class="fw-bold mb-1">8º Ano</h4>
+                            <span class="badge bg-light text-secondary rounded-pill px-3 py-2" id="badge-8ano">0 Habilidades</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card turma-card text-center p-4" onclick="selecionarTurma('9ano')">
+                        <div class="card-body p-0">
+                            <div class="icon-wrapper icon-9">
+                                <i class="fa-solid fa-chart-pie"></i>
+                            </div>
+                            <h4 class="fw-bold mb-1">9º Ano</h4>
+                            <span class="badge bg-light text-secondary rounded-pill px-3 py-2" id="badge-9ano">0 Habilidades</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TELA DE DETALHES DA TURMA -->
+        <div id="tela-detalhes" style="display: none;">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <button class="btn btn-light rounded-pill px-3 fw-semibold border" onclick="voltarInicio()">
+                    <i class="fa-solid fa-arrow-left me-2"></i> Voltar
+                </button>
+                <h3 id="titulo-turma" class="fw-bold mb-0"></h3>
+                <div></div>
+            </div>
+
+            <!-- NAVEGAÇÃO DE CICLOS -->
+            <div class="text-center mb-4">
+                <div class="nav-ciclos-wrapper">
+                    <button class="ciclo-btn active" id="btn-ciclo1" onclick="carregarCiclo(1)">
+                        Ciclo I <span class="badge bg-primary rounded-pill ms-1" id="count-ciclo1">0</span>
+                    </button>
+                    <button class="ciclo-btn" id="btn-ciclo2" onclick="carregarCiclo(2)">
+                        Ciclo II <span class="badge bg-primary rounded-pill ms-1" id="count-ciclo2">0</span>
+                    </button>
+                    <button class="ciclo-btn" id="btn-ciclo3" onclick="carregarCiclo(3)">
+                        Ciclo III <span class="badge bg-primary rounded-pill ms-1" id="count-ciclo3">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- LISTA DE HABILIDADES -->
+            <div id="lista-habilidades"></div>
+        </div>
+
+    </div>
+
+    <script>
+        // BANCO DE DADOS PREPARADO PARA MATEMÁTICA
+        const bancoDados = {
+            "6ano": {
+                "titulo": "6º Ano - Matemática",
+                "ciclos": { 1: [], 2: [], 3: [] }
+            },
+            "7ano": {
+                "titulo": "7º Ano - Matemática",
+                "ciclos": { 1: [], 2: [], 3: [] }
+            },
+            "8ano": {
+                "titulo": "8º Ano - Matemática",
+                "ciclos": { 1: [], 2: [], 3: [] }
+            },
+            "9ano": {
+                "titulo": "9º Ano - Matemática",
+                "ciclos": { 1: [], 2: [], 3: [] }
+            }
+        };
+
+        let turmaAtual = null;
+
+        function selecionarTurma(turmaKey) {
+            turmaAtual = turmaKey;
+
+            document.getElementById('tela-inicio').style.display = 'none';
+            document.getElementById('tela-detalhes').style.display = 'block';
+
+            const dadosTurma = bancoDados[turmaKey];
+            document.getElementById('titulo-turma').innerText = dadosTurma.titulo;
+
+            document.getElementById('count-ciclo1').innerText = dadosTurma.ciclos[1].length;
+            document.getElementById('count-ciclo2').innerText = dadosTurma.ciclos[2].length;
+            document.getElementById('count-ciclo3').innerText = dadosTurma.ciclos[3].length;
+
+            carregarCiclo(1);
+        }
+
+        function voltarInicio() {
+            document.getElementById('tela-detalhes').style.display = 'none';
+            document.getElementById('tela-inicio').style.display = 'block';
+            turmaAtual = null;
+        }
+
+        function carregarCiclo(numCiclo) {
+            const botoes = document.querySelectorAll('.ciclo-btn');
+            botoes.forEach((btn, index) => {
+                if (index + 1 === numCiclo) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            const conteiner = document.getElementById('lista-habilidades');
+            conteiner.innerHTML = '';
+
+            const habilidades = bancoDados[turmaAtual].ciclos[numCiclo];
+
+            if (!habilidades || habilidades.length === 0) {
+                conteiner.innerHTML = `
+                    <div class="alert alert-light text-center border p-5 rounded-4 shadow-sm my-4">
+                        <i class="fa-solid fa-folder-open fa-3x text-primary mb-3"></i>
+                        <h4 class="fw-bold">Nenhuma habilidade cadastrada para o Ciclo ${numCiclo}</h4>
+                        <p class="text-muted mb-0">A estrutura do módulo de Matemática está pronta para receber os descritores e dados do livro didático.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            habilidades.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card habilidade-card p-4';
+                card.innerHTML = `
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge badge-code"><i class="fa-solid fa-hashtag me-1"></i>${item.codigo}</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-uppercase text-muted fw-bold small d-block mb-1">Habilidade e Descritor (Oficial CAEd)</span>
+                        <p class="fw-semibold text-dark fs-6 mb-0">${item.caed}</p>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-5">
+                            <div class="meta-box">
+                                <span class="meta-label"><i class="fa-solid fa-layer-group text-primary me-1"></i> Unidade / Capítulo</span>
+                                <p class="meta-value">${item.ut}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="meta-box">
+                                <span class="meta-label"><i class="fa-solid fa-book-open text-primary me-1"></i> Seção / Tema</span>
+                                <p class="meta-value">${item.cap}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="meta-box">
+                                <span class="meta-label"><i class="fa-solid fa-bookmark text-primary me-1"></i> Página</span>
+                                <p class="meta-value">${item.pag}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                conteiner.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
