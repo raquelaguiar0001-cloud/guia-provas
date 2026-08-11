@@ -160,37 +160,6 @@
         .icon-8 { background: #fef3c7; color: #b45309; }
         .icon-9 { background: #ffe4e6; color: #be123c; }
 
-        /* Animações de Flutuação da Turma */
-        @keyframes floatUpTop {
-            0% { opacity: 0; transform: translateY(30px) scale(0.9); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        @keyframes fadeInGrid {
-            0% { opacity: 0; transform: translateY(-10px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .top-floated-card {
-            animation: floatUpTop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            width: 140px;
-            margin: 0 auto;
-        }
-
-        .top-floated-card .turma-card {
-            cursor: default;
-            border-color: #c7d2fe;
-            box-shadow: 0 12px 25px rgba(99, 102, 241, 0.15);
-        }
-
-        .top-floated-card .turma-card:hover {
-            transform: none;
-        }
-
-        #grid-turmas {
-            animation: fadeInGrid 0.3s ease-out forwards;
-        }
-
         .nav-ciclos-wrapper {
             background: #f1f5f9;
             padding: 4px;
@@ -311,9 +280,6 @@
             </div>
         </div>
 
-        <!-- ÁREA ONDE O CARD DA TURMA FLUTUA ATÉ O TOPO -->
-        <div id="area-turma-flutuante" class="my-3 text-center" style="display: none;"></div>
-
         <!-- TELA INICIAL: SELEÇÃO DE TURMAS -->
         <div id="tela-inicio">
             <div class="text-center mb-4">
@@ -322,7 +288,7 @@
             </div>
 
             <div class="row g-3" id="grid-turmas">
-                <div class="col-6 col-md-3" id="col-6ano">
+                <div class="col-6 col-md-3">
                     <div class="card turma-card text-center p-3" onclick="selecionarTurma('6ano')">
                         <div class="card-body p-0">
                             <div class="icon-wrapper icon-6">
@@ -333,7 +299,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-md-3" id="col-7ano">
+                <div class="col-6 col-md-3">
                     <div class="card turma-card text-center p-3" onclick="selecionarTurma('7ano')">
                         <div class="card-body p-0">
                             <div class="icon-wrapper icon-7">
@@ -344,7 +310,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-md-3" id="col-8ano">
+                <div class="col-6 col-md-3">
                     <div class="card turma-card text-center p-3" onclick="selecionarTurma('8ano')">
                         <div class="card-body p-0">
                             <div class="icon-wrapper icon-8">
@@ -355,7 +321,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-md-3" id="col-9ano">
+                <div class="col-6 col-md-3">
                     <div class="card turma-card text-center p-3" onclick="selecionarTurma('9ano')">
                         <div class="card-body p-0">
                             <div class="icon-wrapper icon-9">
@@ -371,10 +337,11 @@
 
         <!-- TELA DE DETALHES DA TURMA -->
         <div id="tela-detalhes" style="display: none;">
-            <div class="d-flex justify-content-start align-items-center mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
                 <button class="btn btn-light rounded-pill px-3 py-1 fw-semibold border btn-sm" onclick="voltarInicio()">
                     <i class="fa-solid fa-arrow-left me-1"></i> Voltar
                 </button>
+                <h4 class="fw-bold mb-0 text-primary fs-5" id="titulo-turma"></h4>
             </div>
 
             <!-- NAVEGAÇÃO DE CICLOS -->
@@ -410,21 +377,11 @@
 
         function selecionarTurma(turmaKey) {
             turmaAtual = turmaKey;
-
-            const elementoColuna = document.getElementById(`col-${turmaKey}`);
-            const areaFlutuante = document.getElementById('area-turma-flutuante');
-            
-            areaFlutuante.innerHTML = '';
-            const cardClonado = elementoColuna.cloneNode(true);
-            cardClonado.className = 'top-floated-card';
-            
-            areaFlutuante.appendChild(cardClonado);
-            areaFlutuante.style.display = 'block';
-
             document.getElementById('tela-inicio').style.display = 'none';
             document.getElementById('tela-detalhes').style.display = 'block';
 
             const dadosTurma = bancoDados[turmaKey];
+            document.getElementById('titulo-turma').innerText = dadosTurma.titulo;
 
             document.getElementById('count-ciclo1').innerText = dadosTurma.ciclos[1].length;
             document.getElementById('count-ciclo2').innerText = dadosTurma.ciclos[2].length;
@@ -434,8 +391,6 @@
         }
 
         function voltarInicio() {
-            document.getElementById('area-turma-flutuante').style.display = 'none';
-            document.getElementById('area-turma-flutuante').innerHTML = '';
             document.getElementById('tela-detalhes').style.display = 'none';
             document.getElementById('tela-inicio').style.display = 'block';
             turmaAtual = null;
