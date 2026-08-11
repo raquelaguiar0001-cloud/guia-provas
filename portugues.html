@@ -8,7 +8,7 @@
     <!-- Favicon para Navegadores de Computador -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%236366f1' d='M256 0a256 256 0 1 0 0 512 256 256 0 1 0 0-512zm0 96a160 160 0 1 1 0 320 160 160 0 1 1 0-320z'/><circle cx='256' cy='256' r='48' fill='%236366f1'/></svg>">
     
-    <!-- Ícone e Configurações para Tela Inicial de Celular (iOS e Android) -->
+    <!-- Ícone e Configurações para Tela Inicial de Celular -->
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3209/3209886.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -160,35 +160,35 @@
         .icon-8 { background: #fef3c7; color: #b45309; }
         .icon-9 { background: #ffe4e6; color: #be123c; }
 
-        /* Animações de Flutuação */
-        @keyframes slideDownFade {
-            0% { opacity: 0; transform: translateY(-20px) scale(0.95); }
+        /* Animações de Flutuação da Turma */
+        @keyframes floatUpTop {
+            0% { opacity: 0; transform: translateY(30px) scale(0.9); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(10px); }
+        @keyframes fadeInGrid {
+            0% { opacity: 0; transform: translateY(-10px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        .float-top-container {
-            animation: slideDownFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            max-width: 280px;
-            margin: 0 auto 1.5rem auto;
+        .top-floated-card {
+            animation: floatUpTop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            width: 140px;
+            margin: 0 auto;
         }
 
-        .float-top-container .turma-card {
+        .top-floated-card .turma-card {
             cursor: default;
             border-color: #c7d2fe;
-            box-shadow: var(--shadow-hover);
+            box-shadow: 0 12px 25px rgba(99, 102, 241, 0.15);
         }
 
-        .float-top-container .turma-card:hover {
+        .top-floated-card .turma-card:hover {
             transform: none;
         }
 
-        #tela-inicio {
-            animation: fadeIn 0.3s ease-out forwards;
+        #grid-turmas {
+            animation: fadeInGrid 0.3s ease-out forwards;
         }
 
         .nav-ciclos-wrapper {
@@ -311,6 +311,9 @@
             </div>
         </div>
 
+        <!-- ÁREA ONDE O CARD DA TURMA FLUTUA ATÉ O TOPO -->
+        <div id="area-turma-flutuante" class="my-3 text-center" style="display: none;"></div>
+
         <!-- TELA INICIAL: SELEÇÃO DE TURMAS -->
         <div id="tela-inicio">
             <div class="text-center mb-4">
@@ -368,14 +371,11 @@
 
         <!-- TELA DE DETALHES DA TURMA -->
         <div id="tela-detalhes" style="display: none;">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-start align-items-center mb-3">
                 <button class="btn btn-light rounded-pill px-3 py-1 fw-semibold border btn-sm" onclick="voltarInicio()">
                     <i class="fa-solid fa-arrow-left me-1"></i> Voltar
                 </button>
             </div>
-
-            <!-- BLOCO FLUTUANTE DA TURMA SELECIONADA -->
-            <div id="container-turma-flutuante" class="float-top-container"></div>
 
             <!-- NAVEGAÇÃO DE CICLOS -->
             <div class="text-center mb-3">
@@ -412,10 +412,14 @@
             turmaAtual = turmaKey;
 
             const elementoColuna = document.getElementById(`col-${turmaKey}`);
-            const containerFlutuante = document.getElementById('container-turma-flutuante');
+            const areaFlutuante = document.getElementById('area-turma-flutuante');
             
-            // Move o elemento clicado para o container superior flutuante
-            containerFlutuante.appendChild(elementoColuna);
+            areaFlutuante.innerHTML = '';
+            const cardClonado = elementoColuna.cloneNode(true);
+            cardClonado.className = 'top-floated-card';
+            
+            areaFlutuante.appendChild(cardClonado);
+            areaFlutuante.style.display = 'block';
 
             document.getElementById('tela-inicio').style.display = 'none';
             document.getElementById('tela-detalhes').style.display = 'block';
@@ -430,29 +434,8 @@
         }
 
         function voltarInicio() {
-            if (turmaAtual) {
-                const elementoColuna = document.getElementById(`col-${turmaAtual}`);
-                const gridTurmas = document.getElementById('grid-turmas');
-                
-                // Restaura o elemento de volta na ordem exata no grid original
-                const ordemAnos = ['6ano', '7ano', '8ano', '9ano'];
-                const indexAtual = ordemAnos.indexOf(turmaAtual);
-                
-                let inserido = false;
-                for (let i = indexAtual + 1; i < ordemAnos.length; i++) {
-                    const proximoElemento = document.getElementById(`col-${ordemAnos[i]}`);
-                    if (proximoElemento && proximoElemento.parentElement === gridTurmas) {
-                        gridTurmas.insertBefore(elementoColuna, proximoElemento);
-                        inserido = true;
-                        break;
-                    }
-                }
-                if (!inserido) {
-                    gridTurmas.appendChild(elementoColuna);
-                }
-            }
-
-            document.getElementById('container-turma-flutuante').innerHTML = '';
+            document.getElementById('area-turma-flutuante').style.display = 'none';
+            document.getElementById('area-turma-flutuante').innerHTML = '';
             document.getElementById('tela-detalhes').style.display = 'none';
             document.getElementById('tela-inicio').style.display = 'block';
             turmaAtual = null;
