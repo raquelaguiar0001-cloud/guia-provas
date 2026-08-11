@@ -41,8 +41,8 @@
         .header-section {
             background: var(--primary-gradient);
             color: white;
-            padding: 3.5rem 0 3rem;
-            margin-bottom: 2.5rem;
+            padding: 2.5rem 1rem 2rem;
+            margin-bottom: 1.5rem;
             position: relative;
             overflow: hidden;
             border-bottom-left-radius: 24px;
@@ -65,40 +65,49 @@
         .title-badge {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(8px);
-            padding: 6px 16px;
+            padding: 5px 14px;
             border-radius: 30px;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
             display: inline-block;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Abas das Matérias */
+        /* Abas das Matérias com Scroll Horizontal Responsivo */
         .materia-tabs-wrapper {
             background: #e2e8f0;
-            padding: 6px;
+            padding: 5px;
             border-radius: 16px;
             display: inline-flex;
-            gap: 6px;
+            gap: 4px;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            max-width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .materia-tabs-wrapper::-webkit-scrollbar {
+            display: none;
         }
 
         .materia-tab-btn {
-            font-weight: 800;
-            font-size: 0.95rem;
+            font-weight: 700;
+            font-size: 0.88rem;
             border-radius: 12px;
-            padding: 0.8rem 1.8rem;
+            padding: 0.6rem 1.1rem;
             border: none;
             color: var(--text-muted);
             background: transparent;
             transition: all 0.3s ease;
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             text-decoration: none;
+            white-space: nowrap;
         }
 
         .materia-tab-btn.active {
@@ -130,20 +139,20 @@
         }
 
         .turma-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-4px);
             box-shadow: var(--shadow-hover);
             border-color: #c7d2fe;
         }
 
         .turma-card .icon-wrapper {
-            width: 64px;
-            height: 64px;
+            width: 56px;
+            height: 56px;
             border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.25rem;
-            font-size: 1.75rem;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
         }
 
         .icon-6 { background: #e0e7ff; color: #4338ca; }
@@ -154,20 +163,24 @@
         /* Dashboard de Detalhes */
         .nav-ciclos-wrapper {
             background: #f1f5f9;
-            padding: 6px;
+            padding: 4px;
             border-radius: 14px;
             display: inline-flex;
             gap: 4px;
+            max-width: 100%;
+            overflow-x: auto;
         }
 
         .ciclo-btn {
             font-weight: 700;
+            font-size: 0.85rem;
             border-radius: 10px;
-            padding: 0.6rem 1.4rem;
+            padding: 0.5rem 1rem;
             border: none;
             color: var(--text-muted);
             background: transparent;
             transition: all 0.2s ease;
+            white-space: nowrap;
         }
 
         .ciclo-btn.active {
@@ -181,7 +194,7 @@
             border: 1px solid var(--border-color);
             background: var(--surface-card);
             border-radius: var(--radius-lg);
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
             box-shadow: var(--shadow-soft);
             transition: all 0.2s ease;
             position: relative;
@@ -212,13 +225,13 @@
         .meta-box {
             background: #f8fafc;
             border-radius: var(--radius-md);
-            padding: 1rem;
+            padding: 0.85rem;
             border: 1px solid #f1f5f9;
             height: 100%;
         }
 
         .meta-label {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -228,10 +241,18 @@
         }
 
         .meta-value {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 600;
             color: var(--text-main);
             margin: 0;
+        }
+
+        @media (max-width: 576px) {
+            .header-section h1 { font-size: 1.75rem; }
+            .header-section p { font-size: 0.85rem; }
+            .materia-tabs-wrapper { width: 100%; justify-content: flex-start; }
+            .materia-tab-btn { padding: 0.5rem 0.85rem; font-size: 0.8rem; }
+            .turma-card { padding: 1.25rem !important; }
         }
     </style>
 </head>
@@ -240,12 +261,12 @@
     <header class="header-section text-center">
         <div class="container position-relative">
             <span class="title-badge"><i class="fa-solid fa-compass me-1"></i> Plataforma Pedagógica</span>
-            <h1 class="fw-extrabold display-5 mb-1">Norteador Pedagógico</h1>
+            <h1 class="fw-extrabold mb-1">Norteador Pedagógico</h1>
             <p class="text-white-50 mb-0">Matriz de Referência CAEd & Livro Didático Integrados</p>
         </div>
     </header>
 
-    <div class="container mb-5">
+    <div class="container mb-5 px-3">
         
         <!-- NAVEGAÇÃO DE ABAS ENTRE MATÉRIAS -->
         <div class="text-center mb-4">
@@ -265,52 +286,52 @@
         <!-- TELA INICIAL: SELEÇÃO DE TURMAS -->
         <div id="tela-inicio">
             <div class="text-center mb-4">
-                <h2 class="area-title text-uppercase mb-1">MATEMÁTICA</h2>
+                <h2 class="area-title text-uppercase mb-1 fs-4">MATEMÁTICA</h2>
                 <p class="text-muted small">Selecione o ano para visualizar o mapeamento de habilidades e descritores</p>
             </div>
 
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="card turma-card text-center p-4" onclick="selecionarTurma('6ano')">
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <div class="card turma-card text-center p-3" onclick="selecionarTurma('6ano')">
                         <div class="card-body p-0">
                             <div class="icon-wrapper icon-6">
                                 <i class="fa-solid fa-calculator"></i>
                             </div>
-                            <h4 class="fw-bold mb-1">6º Ano</h4>
-                            <span class="badge bg-light text-secondary rounded-pill px-3 py-2" id="badge-6ano">0 Habilidades</span>
+                            <h5 class="fw-bold mb-1 fs-6">6º Ano</h5>
+                            <span class="badge bg-light text-secondary rounded-pill px-2 py-1 small" id="badge-6ano">0 Habilidades</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card turma-card text-center p-4" onclick="selecionarTurma('7ano')">
+                <div class="col-6 col-md-3">
+                    <div class="card turma-card text-center p-3" onclick="selecionarTurma('7ano')">
                         <div class="card-body p-0">
                             <div class="icon-wrapper icon-7">
                                 <i class="fa-solid fa-shapes"></i>
                             </div>
-                            <h4 class="fw-bold mb-1">7º Ano</h4>
-                            <span class="badge bg-light text-secondary rounded-pill px-3 py-2" id="badge-7ano">0 Habilidades</span>
+                            <h5 class="fw-bold mb-1 fs-6">7º Ano</h5>
+                            <span class="badge bg-light text-secondary rounded-pill px-2 py-1 small" id="badge-7ano">0 Habilidades</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card turma-card text-center p-4" onclick="selecionarTurma('8ano')">
+                <div class="col-6 col-md-3">
+                    <div class="card turma-card text-center p-3" onclick="selecionarTurma('8ano')">
                         <div class="card-body p-0">
                             <div class="icon-wrapper icon-8">
                                 <i class="fa-solid fa-square-root-variable"></i>
                             </div>
-                            <h4 class="fw-bold mb-1">8º Ano</h4>
-                            <span class="badge bg-light text-secondary rounded-pill px-3 py-2" id="badge-8ano">0 Habilidades</span>
+                            <h5 class="fw-bold mb-1 fs-6">8º Ano</h5>
+                            <span class="badge bg-light text-secondary rounded-pill px-2 py-1 small" id="badge-8ano">0 Habilidades</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card turma-card text-center p-4" onclick="selecionarTurma('9ano')">
+                <div class="col-6 col-md-3">
+                    <div class="card turma-card text-center p-3" onclick="selecionarTurma('9ano')">
                         <div class="card-body p-0">
                             <div class="icon-wrapper icon-9">
                                 <i class="fa-solid fa-chart-pie"></i>
                             </div>
-                            <h4 class="fw-bold mb-1">9º Ano</h4>
-                            <span class="badge bg-light text-secondary rounded-pill px-3 py-2" id="badge-9ano">0 Habilidades</span>
+                            <h5 class="fw-bold mb-1 fs-6">9º Ano</h5>
+                            <span class="badge bg-light text-secondary rounded-pill px-2 py-1 small" id="badge-9ano">0 Habilidades</span>
                         </div>
                     </div>
                 </div>
@@ -319,16 +340,15 @@
 
         <!-- TELA DE DETALHES DA TURMA -->
         <div id="tela-detalhes" style="display: none;">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <button class="btn btn-light rounded-pill px-3 fw-semibold border" onclick="voltarInicio()">
-                    <i class="fa-solid fa-arrow-left me-2"></i> Voltar
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <button class="btn btn-light rounded-pill px-3 py-1 fw-semibold border btn-sm" onclick="voltarInicio()">
+                    <i class="fa-solid fa-arrow-left me-1"></i> Voltar
                 </button>
-                <h3 id="titulo-turma" class="fw-bold mb-0"></h3>
-                <div></div>
+                <h4 id="titulo-turma" class="fw-bold mb-0 fs-5 text-end"></h4>
             </div>
 
             <!-- NAVEGAÇÃO DE CICLOS -->
-            <div class="text-center mb-4">
+            <div class="text-center mb-3">
                 <div class="nav-ciclos-wrapper">
                     <button class="ciclo-btn active" id="btn-ciclo1" onclick="carregarCiclo(1)">
                         Ciclo I <span class="badge bg-primary rounded-pill ms-1" id="count-ciclo1">0</span>
@@ -349,31 +369,17 @@
     </div>
 
     <script>
-        // BANCO DE DADOS PREPARADO PARA MATEMÁTICA
         const bancoDados = {
-            "6ano": {
-                "titulo": "6º Ano - Matemática",
-                "ciclos": { 1: [], 2: [], 3: [] }
-            },
-            "7ano": {
-                "titulo": "7º Ano - Matemática",
-                "ciclos": { 1: [], 2: [], 3: [] }
-            },
-            "8ano": {
-                "titulo": "8º Ano - Matemática",
-                "ciclos": { 1: [], 2: [], 3: [] }
-            },
-            "9ano": {
-                "titulo": "9º Ano - Matemática",
-                "ciclos": { 1: [], 2: [], 3: [] }
-            }
+            "6ano": { "titulo": "6º Ano - Matemática", "ciclos": { 1: [], 2: [], 3: [] } },
+            "7ano": { "titulo": "7º Ano - Matemática", "ciclos": { 1: [], 2: [], 3: [] } },
+            "8ano": { "titulo": "8º Ano - Matemática", "ciclos": { 1: [], 2: [], 3: [] } },
+            "9ano": { "titulo": "9º Ano - Matemática", "ciclos": { 1: [], 2: [], 3: [] } }
         };
 
         let turmaAtual = null;
 
         function selecionarTurma(turmaKey) {
             turmaAtual = turmaKey;
-
             document.getElementById('tela-inicio').style.display = 'none';
             document.getElementById('tela-detalhes').style.display = 'block';
 
@@ -396,11 +402,8 @@
         function carregarCiclo(numCiclo) {
             const botoes = document.querySelectorAll('.ciclo-btn');
             botoes.forEach((btn, index) => {
-                if (index + 1 === numCiclo) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
+                if (index + 1 === numCiclo) btn.classList.add('active');
+                else btn.classList.remove('active');
             });
 
             const conteiner = document.getElementById('lista-habilidades');
@@ -410,10 +413,10 @@
 
             if (!habilidades || habilidades.length === 0) {
                 conteiner.innerHTML = `
-                    <div class="alert alert-light text-center border p-5 rounded-4 shadow-sm my-4">
-                        <i class="fa-solid fa-folder-open fa-3x text-primary mb-3"></i>
-                        <h4 class="fw-bold">Nenhuma habilidade cadastrada para o Ciclo ${numCiclo}</h4>
-                        <p class="text-muted mb-0">A estrutura do módulo de Matemática está pronta para receber os descritores e dados do livro didático.</p>
+                    <div class="alert alert-light text-center border p-4 rounded-4 my-3">
+                        <i class="fa-solid fa-folder-open fa-2x text-primary mb-2"></i>
+                        <h5 class="fw-bold mb-1 fs-6">Nenhuma habilidade cadastrada para o Ciclo ${numCiclo}</h5>
+                        <p class="text-muted small mb-0">Estrutura pronta para receber os descritores.</p>
                     </div>
                 `;
                 return;
@@ -421,34 +424,19 @@
 
             habilidades.forEach(item => {
                 const card = document.createElement('div');
-                card.className = 'card habilidade-card p-4';
+                card.className = 'card habilidade-card p-3 p-md-4';
                 card.innerHTML = `
-                    <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="badge badge-code"><i class="fa-solid fa-hashtag me-1"></i>${item.codigo}</span>
                     </div>
-                    <div class="mb-4">
-                        <span class="text-uppercase text-muted fw-bold small d-block mb-1">Habilidade e Descritor (Oficial CAEd)</span>
+                    <div class="mb-3">
+                        <span class="text-uppercase text-muted fw-bold small d-block mb-1" style="font-size:0.7rem;">Habilidade e Descritor (Oficial CAEd)</span>
                         <p class="fw-semibold text-dark fs-6 mb-0">${item.caed}</p>
                     </div>
-                    <div class="row g-3">
-                        <div class="col-md-5">
-                            <div class="meta-box">
-                                <span class="meta-label"><i class="fa-solid fa-layer-group text-primary me-1"></i> Unidade / Capítulo</span>
-                                <p class="meta-value">${item.ut}</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="meta-box">
-                                <span class="meta-label"><i class="fa-solid fa-book-open text-primary me-1"></i> Seção / Tema</span>
-                                <p class="meta-value">${item.cap}</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="meta-box">
-                                <span class="meta-label"><i class="fa-solid fa-bookmark text-primary me-1"></i> Página</span>
-                                <p class="meta-value">${item.pag}</p>
-                            </div>
-                        </div>
+                    <div class="row g-2">
+                        <div class="col-12 col-md-5"><div class="meta-box"><span class="meta-label">Unidade / Capítulo</span><p class="meta-value">${item.ut}</p></div></div>
+                        <div class="col-12 col-md-4"><div class="meta-box"><span class="meta-label">Seção / Tema</span><p class="meta-value">${item.cap}</p></div></div>
+                        <div class="col-12 col-md-3"><div class="meta-box"><span class="meta-label">Página</span><p class="meta-value">${item.pag}</p></div></div>
                     </div>
                 `;
                 conteiner.appendChild(card);
