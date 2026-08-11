@@ -82,34 +82,31 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
+        /* Abas das Matérias Centralizadas */
         .materia-tabs-wrapper {
             background: #e2e8f0;
             padding: 5px;
             border-radius: 16px;
             display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 4px;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
             max-width: 100%;
-            overflow-x: auto;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .materia-tabs-wrapper::-webkit-scrollbar {
-            display: none;
         }
 
         .materia-tab-btn {
             font-weight: 700;
             font-size: 0.88rem;
             border-radius: 12px;
-            padding: 0.6rem 1.1rem;
+            padding: 0.6rem 1rem;
             border: none;
             color: var(--text-muted);
             background: transparent;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
             text-decoration: none;
             white-space: nowrap;
@@ -251,8 +248,7 @@
         @media (max-width: 576px) {
             .header-section h1 { font-size: 1.75rem; }
             .header-section p { font-size: 0.85rem; }
-            .materia-tabs-wrapper { width: 100%; justify-content: flex-start; }
-            .materia-tab-btn { padding: 0.5rem 0.85rem; font-size: 0.8rem; }
+            .materia-tab-btn { padding: 0.5rem 0.65rem; font-size: 0.78rem; }
             .turma-card { padding: 1.25rem !important; }
         }
     </style>
@@ -269,7 +265,7 @@
 
     <div class="container mb-5 px-3">
         
-        <!-- NAVEGAÇÃO DE ABAS ENTRE MATÉRIAS -->
+        <!-- NAVEGAÇÃO DE ABAS ENTRE MATÉRIAS CENTRALIZADAS -->
         <div class="text-center mb-4">
             <div class="materia-tabs-wrapper">
                 <button class="materia-tab-btn active">
@@ -379,7 +375,7 @@
                         { codigo: "6EF02_CN", caed: "Explicar como a ação da água, a atividade dos seres vivos e a retirada de cobertura vegetal influenciam no processo de erosão.", ut: "UNIDADE D — CAPÍTULO 11: O PLANETA TERRA E OS RECURSOS MINERAIS", cap: "Desenvolvimento do tema / Aplicações da argila e Minerais", pag: "191–205" },
                         { codigo: "6EF03_CN", caed: "Interpretar comportamentos voltados para a preservação dos recursos naturais.", ut: "UNIDADE D — CAPÍTULO 11: O PLANETA TERRA E OS RECURSOS MINERAIS", cap: "Desenvolvimento do tema (Recursos Minerais)", pag: "191–205" },
                         { codigo: "6EF04_CN", caed: "Reconhecer as propriedades de materiais como plásticos, metais, papel e vidro que estão relacionadas ao uso, reaproveitamento e reciclagem desses materiais.", ut: "UNIDADE C — CAPÍTULO 8: SUBSTÂNCIAS QUÍMICAS", cap: "3. Matéria / 5. Substâncias químicas<br><strong>(e também em)</strong> UNIDADE D — CAPÍTULO 11: 13. Vidro / 11. Ferro / 12. Alumínio", pag: "134, 138<br><strong>(e também em)</strong> Páginas: 202, 203, 204" },
-                        { codigo: "6EF05_CN", caed: "Interpretar as relações estabelecidas entre os diferentes sistemas do corpo humano para a execução das funções de nutrição, excreção, relação, reprodução e coordenação.", ut: "UNIDADE B — CAPÍTULO 4: NÍVEIS DE ORGANIZAÇÃO DO CORPO HUMANO", cap: "9. Sistemas / 10. A integração entre os sistemas", pag: "65, 66" },
+                        { codigo: "6EF05_CN", caed: "Interpretar as relações established entre os diferentes sistemas do corpo humano para a execução das funções de nutrição, excreção, relação, reprodução e coordenação.", ut: "UNIDADE B — CAPÍTULO 4: NÍVEIS DE ORGANIZAÇÃO DO CORPO HUMANO", cap: "9. Sistemas / 10. A integração entre os sistemas", pag: "65, 66" },
                         { codigo: "6EF06_CN", caed: "Explicar a necessidade de ingestão de diferentes nutrientes frente às demandas do organismo humano.", ut: "UNIDADE B — CAPÍTULO 6: VISÃO", cap: "Isso vai para o nosso blog! – Alimentação, saúde óssea e muscular", pag: "107" },
                         { codigo: "6EF07_CN", caed: "Reconhecer os movimentos realizados pela Terra e pela Lua.", ut: "UNIDADE D — CAPÍTULO 12: DIA E NOITE: REGULARIDADES CELESTES", cap: "1. Ciclo dia/noite / 10. A trajetória diária aparente do Sol / 12. O nascente e o poente das demais estrelas e da Lua", pag: "211, 222, 225" },
                         { codigo: "6EF08_CN", caed: "Reconhecer as fases da Lua.", ut: "UNIDADE D — CAPÍTULO 12: DIA E NOITE: REGULARIDADES CELESTES", cap: "12. O nascente e o poente das demais estrelas e da Lua", pag: "225" },
