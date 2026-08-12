@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Norteador Pedagógico - Ciências da Natureza</title>
+    <title>Norteador Pedagógico - U. E Natividade Marinho</title>
     
     <!-- Favicon para Navegadores de Computador -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%236366f1' d='M256 0a256 256 0 1 0 0 512 256 256 0 1 0 0-512zm0 96a160 160 0 1 1 0 320 160 160 0 1 1 0-320z'/><circle cx='256' cy='256' r='48' fill='%236366f1'/><path fill='none' stroke='%236366f1' stroke-width='24' d='M256 128c70.7 0 128 57.3 128 128s-57.3 128-128 128-128-57.3-128-128 57.3-128 128-128z'/><ellipse cx='256' cy='256' rx='180' ry='60' fill='none' stroke='%234f46e5' stroke-width='20' transform='rotate(30 256 256)'/><ellipse cx='256' cy='256' rx='180' ry='60' fill='none' stroke='%234f46e5' stroke-width='20' transform='rotate(-30 256 256)'/></svg>">
     
-    <!-- Ícone e Configurações para Tela Inicial de Celular (iOS e Android) -->
+    <!-- Ícone e Configurações para Tela Inicial de Celular -->
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3209/3209886.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -258,7 +258,7 @@
     <header class="header-section text-center">
         <div class="container position-relative">
             <span class="title-badge"><i class="fa-solid fa-compass me-1"></i> Plataforma Pedagógica</span>
-            <h1 class="fw-extrabold mb-1">Norteador Pedagógico</h1>
+            <h1 class="fw-extrabold mb-1">Norteador Pedagógico - U. E Natividade Marinho</h1>
             <p class="text-white-50 mb-0">Matriz de Referência CAEd & Livro Didático Integrados</p>
         </div>
     </header>
@@ -287,7 +287,7 @@
                 <p class="text-muted small">Selecione o ano para visualizar o mapeamento de habilidades e conteúdos</p>
             </div>
 
-            <div class="row g-3">
+            <div class="row g-3" id="grid-turmas">
                 <div class="col-6 col-md-3">
                     <div class="card turma-card text-center p-3" onclick="selecionarTurma('6ano')">
                         <div class="card-body p-0">
@@ -341,7 +341,7 @@
                 <button class="btn btn-light rounded-pill px-3 py-1 fw-semibold border btn-sm" onclick="voltarInicio()">
                     <i class="fa-solid fa-arrow-left me-1"></i> Voltar
                 </button>
-                <h4 id="titulo-turma" class="fw-bold mb-0 fs-5 text-end"></h4>
+                <h4 class="fw-bold mb-0 text-primary fs-5" id="titulo-turma"></h4>
             </div>
 
             <!-- NAVEGAÇÃO DE CICLOS -->
@@ -550,7 +550,6 @@
 
         function selecionarTurma(turmaKey) {
             turmaAtual = turmaKey;
-
             document.getElementById('tela-inicio').style.display = 'none';
             document.getElementById('tela-detalhes').style.display = 'block';
 
