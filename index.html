@@ -82,7 +82,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Abas das Matérias Centralizadas */
         .materia-tabs-wrapper {
             background: #e2e8f0;
             padding: 5px;
@@ -245,6 +244,23 @@
             margin: 0;
         }
 
+        /* Destaques Pedagógicos */
+        .pedagogico-box {
+            border-radius: var(--radius-md);
+            padding: 0.85rem 1rem;
+            font-size: 0.85rem;
+        }
+        .pedagogico-erro {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+        }
+        .pedagogico-dica {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+        }
+
         @media (max-width: 576px) {
             .header-section h1 { font-size: 1.75rem; }
             .header-section p { font-size: 0.85rem; }
@@ -371,179 +387,304 @@
                 "titulo": "6º Ano - Ensino Fundamental",
                 "ciclos": {
                     1: [
-                        { codigo: "6EF01_CN", caed: "Interpretar o ciclo da água.", ut: "UNIDADE D — CAPÍTULO 10: ATMOSFERA E HIDROSFERA", cap: "8. Hidrosfera e ciclo da água", pag: "176" },
-                        { codigo: "6EF02_CN", caed: "Explicar como a ação da água, a atividade dos seres vivos e a retirada de cobertura vegetal influenciam no processo de erosão.", ut: "UNIDADE D — CAPÍTULO 11: O PLANETA TERRA E OS RECURSOS MINERAIS", cap: "Desenvolvimento do tema / Aplicações da argila e Minerais", pag: "191–205" },
-                        { codigo: "6EF03_CN", caed: "Interpretar comportamentos voltados para a preservação dos recursos naturais.", ut: "UNIDADE D — CAPÍTULO 11: O PLANETA TERRA E OS RECURSOS MINERAIS", cap: "Desenvolvimento do tema (Recursos Minerais)", pag: "191–205" },
-                        { codigo: "6EF04_CN", caed: "Reconhecer as propriedades de materiais como plásticos, metais, papel e vidro que estão relacionadas ao uso, reaproveitamento e reciclagem desses materiais.", ut: "UNIDADE C — CAPÍTULO 8: SUBSTÂNCIAS QUÍMICAS", cap: "3. Matéria / 5. Substâncias químicas<br><strong>(e também em)</strong> UNIDADE D — CAPÍTULO 11: 13. Vidro / 11. Ferro / 12. Alumínio", pag: "134, 138<br><strong>(e também em)</strong> Páginas: 202, 203, 204" },
-                        { codigo: "6EF05_CN", caed: "Interpretar as relações established entre os diferentes sistemas do corpo humano para a execução das funções de nutrição, excreção, relação, reprodução e coordenação.", ut: "UNIDADE B — CAPÍTULO 4: NÍVEIS DE ORGANIZAÇÃO DO CORPO HUMANO", cap: "9. Sistemas / 10. A integração entre os sistemas", pag: "65, 66" },
-                        { codigo: "6EF06_CN", caed: "Explicar a necessidade de ingestão de diferentes nutrientes frente às demandas do organismo humano.", ut: "UNIDADE B — CAPÍTULO 6: VISÃO", cap: "Isso vai para o nosso blog! – Alimentação, saúde óssea e muscular", pag: "107" },
-                        { codigo: "6EF07_CN", caed: "Reconhecer os movimentos realizados pela Terra e pela Lua.", ut: "UNIDADE D — CAPÍTULO 12: DIA E NOITE: REGULARIDADES CELESTES", cap: "1. Ciclo dia/noite / 10. A trajetória diária aparente do Sol / 12. O nascente e o poente das demais estrelas e da Lua", pag: "211, 222, 225" },
-                        { codigo: "6EF08_CN", caed: "Reconhecer as fases da Lua.", ut: "UNIDADE D — CAPÍTULO 12: DIA E NOITE: REGULARIDADES CELESTES", cap: "12. O nascente e o poente das demais estrelas e da Lua", pag: "225" },
-                        { codigo: "6EF09_CN", caed: "Comparar instrumentos ópticos ao tipo de observação que ele proporciona.", ut: "UNIDADE B — CAPÍTULO 6: VISÃO", cap: "3. A lente do olho e a \"focalização\" de imagens / 5. O cinema / 6. A correção de alguns distúrbios visuais", pag: "94, 98, 99" }
+                        {
+                            codigo: "6EF01_CN",
+                            caed: "Interpretar o ciclo da água.",
+                            ut: "UNIDADE D — CAPÍTULO 10: ATMOSFERA E HIDROSFERA",
+                            cap: "8. Hidrosfera e ciclo da água",
+                            pag: "176",
+                            erro: "Confundir os estados físicos da matéria envolvidos nas mudanças de fase (ex.: achar que a evaporação só ocorre a 100°C ou confundir condensação com precipitação).",
+                            dica: "Utilizar diagramas esquemáticos demonstrando que a evaporação ocorre continuamente em temperatura ambiente e reforçar que as nuvens são formadas por gotículas líquidas resultantes da condensação do vapor de água."
+                        },
+                        {
+                            codigo: "6EF02_CN",
+                            caed: "Explicar como a ação da água, a atividade dos seres vivos e a retirada de cobertura vegetal influenciam no processo de erosão.",
+                            ut: "UNIDADE D — CAPÍTULO 11: O PLANETA TERRA E OS RECURSOS MINERAIS",
+                            cap: "Desenvolvimento do tema / Aplicações da argila e Minerais",
+                            pag: "191–205",
+                            erro: "Considerar que a vegetação apenas \"enfeita\" o solo, desconsiderando o papel mecânico das raízes na fixação do solo e a função das copas em amortecer o impacto direto da chuva.",
+                            dica: "Realizar simulações práticas (ou demonstrativas) comparando o escoamento de água em garrafas PET contendo solo com cobertura vegetal versus solo exposto."
+                        },
+                        {
+                            codigo: "6EF03_CN",
+                            caed: "Interpretar comportamentos voltados para a preservação dos recursos naturais.",
+                            ut: "UNIDADE D — CAPÍTULO 11: O PLANETA TERRA E OS RECURSOS MINERAIS",
+                            cap: "Desenvolvimento do tema (Recursos Minerais)",
+                            pag: "191–205",
+                            erro: "Achar que recursos minerais e fósseis são inesgotáveis por estarem presentes na crosta terrestre em grande quantidade.",
+                            dica: "Trabalhar o conceito de \"recursos não renováveis\" comparando a escala de tempo geológica de formação dos minérios/combustíveis com a velocidade de consumo humano."
+                        },
+                        {
+                            codigo: "6EF04_CN",
+                            caed: "Reconhecer as propriedades de materiais como plásticos, metais, papel e vidro que estão relacionadas ao uso, reaproveitamento e reciclagem desses materiais.",
+                            ut: "UNIDADE C — CAPÍTULO 8: SUBSTÂNCIAS QUÍMICAS",
+                            cap: "3. Matéria / 5. Substâncias químicas<br><strong>(e também em)</strong> UNIDADE D — CAPÍTULO 11: 13. Vidro / 11. Ferro / 12. Alumínio",
+                            pag: "134, 138<br><strong>(e também em)</strong> Páginas: 202, 203, 204",
+                            erro: "Confundir propriedades físicas gerais (massa, volume) com propriedades específicas dos materiais (condutividade térmica, maleabilidade, densidade, tenacidade).",
+                            dica: "Associar a escolha de determinado material à sua aplicação prática (ex.: por que usamos metais para panelas e plásticos/madeira para os cabos)."
+                        },
+                        {
+                            codigo: "6EF05_CN",
+                            caed: "Interpretar as relações estabelecidas entre os diferentes sistemas do corpo humano para a execução das funções de nutrição, excreção, relação, reprodução e coordenação.",
+                            ut: "UNIDADE B — CAPÍTULO 4: NÍVEIS DE ORGANIZAÇÃO DO CORPO HUMANO",
+                            cap: "9. Sistemas / 10. A integração entre os sistemas",
+                            pag: "65, 66",
+                            erro: "Analisar os sistemas corporais de forma isolada e compartimentada (ex.: achar que o sistema digestório não tem relação com o circulatório ou nervoso).",
+                            dica: "Utilizar mapas conceituais focados no transporte de substâncias: os nutrientes absorvidos no digestório e o O₂ absorvido no respiratório são integrados pelo circulatório para abastecer todas as células."
+                        },
+                        {
+                            codigo: "6EF06_CN",
+                            caed: "Explicar a necessidade de ingestão de diferentes nutrientes frente às demandas do organismo humano.",
+                            ut: "UNIDADE B — CAPÍTULO 6: VISÃO",
+                            cap: "Isso vai para o nosso blog! – Alimentação, saúde óssea e muscular",
+                            pag: "107",
+                            erro: "Confundir a função primária dos macronutrientes (ex.: achar que vitaminas fornecem energia direta ou que carboidratos servem apenas para \"engordar\").",
+                            dica: "Classificar de forma funcional os nutrientes em Construtores (proteínas), Energéticos (carboidratos e lipídios) e Reguladores (vitaminas e minerais)."
+                        },
+                        {
+                            codigo: "6EF07_CN",
+                            caed: "Reconhecer os movimentos realizados pela Terra e pela Lua.",
+                            ut: "UNIDADE D — CAPÍTULO 12: DIA E NOITE: REGULARIDADES CELESTES",
+                            cap: "1. Ciclo dia/noite / 10. A trajetória diária aparente do Sol / 12. O nascente e o poente das demais estrelas e da Lua",
+                            pag: "211, 222, 225",
+                            erro: "Atribuir a alternância entre dia e noite ao movimento de rotação da Lua ou ao movimento da Terra ao redor do Sol (transladação).",
+                            dica: "Diferenciar Rotação (movimento em torno do próprio eixo = ciclo dia/noite) de Traslação (movimento ao redor do Sol = ano e estações)."
+                        },
+                        {
+                            codigo: "6EF08_CN",
+                            caed: "Reconhecer as fases da Lua.",
+                            ut: "UNIDADE D — CAPÍTULO 12: DIA E NOITE: REGULARIDADES CELESTES",
+                            cap: "12. O nascente e o poente das demais estrelas e da Lua",
+                            pag: "225",
+                            erro: "Acreditar que as fases da Lua ocorrem devido à sombra da Terra projetada sobre ela.",
+                            dica: "Enfatizar que as fases resultam da variação da posição relativa entre Sol, Terra e Lua, alterando apenas a porção da face iluminada pelo Sol que conseguimos enxergar a partir da Terra."
+                        },
+                        {
+                            codigo: "6EF09_CN",
+                            caed: "Comparar instrumentos ópticos ao tipo de observação que ele proporciona.",
+                            ut: "UNIDADE B — CAPÍTULO 6: VISÃO",
+                            cap: "3. A lente do olho e a \"focalização\" de imagens / 5. O cinema / 6. A correção de alguns distúrbios visuais",
+                            pag: "94, 98, 99",
+                            erro: "Confundir a aplicação de instrumentos para ampliação de objetos microscópicos (microscópio) com instrumentos para observação de objetos distantes (telescópio/luneta).",
+                            dica: "Agrupar os instrumentos ópticos em duas categorias: ampliação do mundo microscópico (células, microrganismos) e aproximação do mundo astronômico/distante (estrelas, planetas)."
+                        }
                     ],
                     2: [
-                        { codigo: "6EF04_CN", caed: "Reconhecer as propriedades de materiais como plásticos, metais, papel e vidro que estão relacionadas ao uso, reaproveitamento e reciclagem desses materiais.", ut: "UNIDADE C — CAPÍTULO 8: SUBSTÂNCIAS QUÍMICAS", cap: "3. Matéria / 5. Substâncias químicas<br><strong>(e também em)</strong> UNIDADE D — CAPÍTULO 11: 13. Vidro / 11. Ferro / 12. Alumínio", pag: "134, 138<br><strong>(e também em)</strong> Páginas: 202, 203, 204" },
-                        { codigo: "6EF06_CN", caed: "Explicar a necessidade de ingestão de diferentes nutrientes frente às demandas do organismo humano.", ut: "UNIDADE B — CAPÍTULO 6: VISÃO", cap: "Isso vai para o nosso blog! – Alimentação, saúde óssea e muscular", pag: "107" },
-                        { codigo: "6EF09_CN", caed: "Comparar instrumentos ópticos ao tipo de observação que ele proporciona.", ut: "UNIDADE B — CAPÍTULO 6: VISÃO", cap: "3. A lente do olho e a \"focalização\" de imagens / 5. O cinema / 6. A correção de alguns distúrbios visuais", pag: "94, 98, 99" },
-                        { codigo: "6EF11_CN", caed: "Reconhecer, a partir de características observáveis, a ocorrência de misturas.", ut: "UNIDADE C — CAPÍTULO 8: SUBSTÂNCIAS QUÍMICAS", cap: "6. Misturas", pag: "139" },
-                        { codigo: "6EF12_CN", caed: "Classificar os métodos de separação de misturas de sistemas heterogêneos.", ut: "UNIDADE C — CAPÍTULO 8: SUBSTÂNCIAS QUÍMICAS", cap: "7. Separação de misturas", pag: "142" },
-                        { codigo: "6EF14_CN", caed: "Reconhecer a origem natural ou sintética de materiais.", ut: "UNIDADE C — CAPÍTULO 9: TRANSFORMAÇÕES QUÍMICAS", cap: "4. O petróleo / 5. Carvão mineral<br><strong>(e também em)</strong> UNIDADE C — CAPÍTULO 9: Isso vai para o nosso blog! – A importância da Química para a sociedade", pag: "158, 162<br><strong>(e também em)</strong> Página: 166" },
-                        { codigo: "6EF16_CN", caed: "Reconhecer a célula como a unidade morfofisiológica dos seres vivos.", ut: "UNIDADE B — CAPÍTULO 4: NÍVEIS DE ORGANIZAÇÃO DO CORPO HUMANO", cap: "2. Célula: a unidade que compõe a diversidade / 3. Seres pluricelulares e seres unicelulares / 4. Noção da estrutura de uma célula animal / 5. Noção da estrutura de uma célula vegetal / 6. A diversidade das células", pag: "57, 60, 61, 62, 63" },
-                        { codigo: "6EF18_CN", caed: "Reconhecer as estruturas que compõem o sistema nervoso.", ut: "UNIDADE C — CAPÍTULO 7: SISTEMA NERVOSO", cap: "2. Neurônios / 3. Estrutura geral do sistema nervoso / 4. O papel dos nervos / 5. O papel da medula espinal / 6. O papel do encéfalo / 7. SNP somático e SNP autónomo", pag: "110, 111, 112, 113, 115, 118" },
-                        { codigo: "6EF19_CN", caed: "Classificar os defeitos da visão.", ut: "UNIDADE B — CAPÍTULO 6: VISÃO", cap: "6. A correção de alguns distúrbios visuais", pag: "99" },
-                        { codigo: "6EF20_CN", caed: "Reconhecer as estruturas do olho humano e suas funcionalidades.", ut: "UNIDADE B — CAPÍTULO 6: VISÃO", cap: "2. O sentido da visão / 3. A lente do olho e a \"focalização\" de imagens", pag: "91, 94" },
-                        { codigo: "6EF22_CN", caed: "Reconhecer a estrutura da Terra.", ut: "UNIDADE D — CAPÍTULO 11: O PLANETA TERRA E OS RECURSOS MINERAIS", cap: "1. Como é a Terra por dentro?", pag: "191" },
-                        { codigo: "6EF23_CN", caed: "Reconhecer a forma esférica da Terra.", ut: "UNIDADE D — CAPÍTULO 12: DIA E NOITE: REGULARIDADES CELESTES", cap: "11. Evidências da esfericidade da Terra / Isso vai para o nosso blog! – A Terra é esférica! E ela tem uma história!", pag: "224, 229" }
+                        {
+                            codigo: "6EF04_CN",
+                            caed: "Reconhecer as propriedades de materiais como plásticos, metais, papel e vidro que estão relacionadas ao uso, reaproveitamento e reciclagem desses materiais.",
+                            ut: "UNIDADE C — CAPÍTULO 8: SUBSTÂNCIAS QUÍMICAS",
+                            cap: "3. Matéria / 5. Substâncias químicas<br><strong>(e também em)</strong> UNIDADE D — CAPÍTULO 11: 13. Vidro / 11. Ferro / 12. Alumínio",
+                            pag: "134, 138<br><strong>(e também em)</strong> Páginas: 202, 203, 204",
+                            erro: "Julgar que qualquer plástico ou vidro possui a mesma capacidade de reciclagem e o mesmo tempo de decomposição.",
+                            dica: "Abordar a separação seletiva associada à composição química básica e à viabilidade de reprocessamento térmico ou mecânico dos materiais."
+                        },
+                        {
+                            codigo: "6EF06_CN",
+                            caed: "Explicar a necessidade de ingestão de diferentes nutrientes frente às demandas do organismo humano.",
+                            ut: "UNIDADE B — CAPÍTULO 6: VISÃO",
+                            cap: "Isso vai para o nosso blog! – Alimentação, saúde óssea e muscular",
+                            pag: "107",
+                            erro: "Acreditar que uma dieta saudável se baseia apenas na restrição de gorduras e carboidratos, ignorando suas funções essenciais para a absorção de vitaminas lipossolúveis e fornecimento basal de energia.",
+                            dica: "Analisar rótulos nutricionais reais para identificar a presença equilibrada de cada nutriente."
+                        },
+                        {
+                            codigo: "6EF09_CN",
+                            caed: "Comparar instrumentos ópticos ao tipo de observação que ele proporciona.",
+                            ut: "UNIDADE B — CAPÍTULO 6: VISÃO",
+                            cap: "3. A lente do olho e a \"focalização\" de imagens / 5. O cinema / 6. A correção de alguns distúrbios visuais",
+                            pag: "94, 98, 99",
+                            erro: "Não identificar a lupa como uma lente convergente simples de ampliação de curto alcance.",
+                            dica: "Relacionar a função do instrumento óptico ao tipo de lente utilizado e à distância do objeto observado."
+                        },
+                        {
+                            codigo: "6EF11_CN",
+                            caed: "Reconhecer, a partir de características observáveis, a ocorrência de misturas.",
+                            ut: "UNIDADE C — CAPÍTULO 8: SUBSTÂNCIAS QUÍMICAS",
+                            cap: "6. Misturas",
+                            pag: "139",
+                            erro: "Achar que a água potável é uma substância pura por apresentar aspecto visual transparente e límpido.",
+                            dica: "Demonstrar que misturas podem parecer homogêneas (uma única fase visual, como água + sais minerais) sem deixarem de ser misturas."
+                        },
+                        {
+                            codigo: "6EF12_CN",
+                            caed: "Classificar os métodos de separação de misturas de sistemas heterogêneos.",
+                            ut: "UNIDADE C — CAPÍTULO 8: SUBSTÂNCIAS QUÍMICAS",
+                            cap: "7. Separação de misturas",
+                            pag: "142",
+                            erro: "Confundir decantação (separação por diferença de densidade/repouso) com filtração (separação por retenção física em poro).",
+                            dica: "Associar cada método ao estado físico dos componentes e à propriedade explorada: Filtração = tamanho de partícula; Decantação = diferença de densidade; Catação = tamanho/aspecto visual."
+                        },
+                        {
+                            codigo: "6EF14_CN",
+                            caed: "Reconhecer a origem natural ou sintética de materiais.",
+                            ut: "UNIDADE C — CAPÍTULO 9: TRANSFORMAÇÕES QUÍMICAS",
+                            cap: "4. O petróleo / 5. Carvão mineral<br><strong>(e também em)</strong> UNIDADE C — CAPÍTULO 9: Isso vai para o nosso blog! – A importância da Química para a sociedade",
+                            pag: "158, 162<br><strong>(e também em)</strong> Página: 166",
+                            erro: "Considerar que materiais sintéticos (como o plástico) não vêm da natureza, ignorando que são derivados de recursos naturais modificados industrialmente (petróleo).",
+                            dica: "Construir esquemas de cadeia produtiva: Recurso Natural Bruto (Petróleo) → Processamento Químico → Material Sintético (Plástico/Nylon)."
+                        },
+                        {
+                            codigo: "6EF16_CN",
+                            caed: "Reconhecer a célula como a unidade morfofisiológica dos seres vivos.",
+                            ut: "UNIDADE B — CAPÍTULO 4: NÍVEIS DE ORGANIZAÇÃO DO CORPO HUMANO",
+                            cap: "2. Célula: a unidade que compõe a diversidade / 3. Seres pluricelulares e seres unicelulares / 4. Noção da estrutura de uma célula animal / 5. Noção da estrutura de uma célula vegetal / 6. A diversidade das células",
+                            pag: "57, 60, 61, 62, 63",
+                            erro: "Imaginar que todas as células são iguais em formato e função, ou esquecer que seres unicelulares (bactérias/protozoários) são organismos completos.",
+                            dica: "Enfatizar a Teoria Celular: todos os seres vivos são formados por células, e a célula é a menor unidade capaz de realizar as funções vitais (metabolismo)."
+                        },
+                        {
+                            codigo: "6EF18_CN",
+                            caed: "Reconhecer as estruturas que compõem o sistema nervoso.",
+                            ut: "UNIDADE C — CAPÍTULO 7: SISTEMA NERVOSO",
+                            cap: "2. Neurônios / 3. Estrutura geral do sistema nervoso / 4. O papel dos nervos / 5. O papel da medula espinal / 6. O papel do encéfalo / 7. SNP somático e SNP autónomo",
+                            pag: "110, 111, 112, 113, 115, 118",
+                            erro: "Confundir a medula espinal com a coluna vertebral (estrutura óssea de proteção).",
+                            dica: "Diferenciar o Sistema Nervoso Central (Encéfalo + Medula Espinal - centros de processamento e condução) do Sistema Nervoso Periférico (Nervos e Gânglios - vias de transmissão)."
+                        },
+                        {
+                            codigo: "6EF19_CN",
+                            caed: "Classificar os defeitos da visão.",
+                            ut: "UNIDADE B — CAPÍTULO 6: VISÃO",
+                            cap: "6. A correção de alguns distúrbios visuais",
+                            pag: "99",
+                            erro: "Inverter as dificuldades de visão: achar que o míope não enxerga de perto e o hipermetrope não enxerga de longe.",
+                            dica: "Fixar a regra básica: Miopia = dificuldade para longe (imagem se forma antes da retina); Hipermetropia = dificuldade para perto (imagem se forma atrás da retina)."
+                        },
+                        {
+                            codigo: "6EF20_CN",
+                            caed: "Reconhecer as estruturas do olho humano e suas funcionalidades.",
+                            ut: "UNIDADE B — CAPÍTULO 6: VISÃO",
+                            cap: "2. O sentido da visão / 3. A lente do olho e a \"focalização\" de imagens",
+                            pag: "91, 94",
+                            erro: "Confundir a função da Íris (regula a entrada de luz alterando o diâmetro da pupila) com a do Cristalino/Lente (focalização da imagem).",
+                            dica: "Comparar o olho humano a uma câmara fotográfica: Íris = diafragma; Cristalino = lente de foco; Retina = sensor/filme fotográfico."
+                        },
+                        {
+                            codigo: "6EF22_CN",
+                            caed: "Reconhecer a estrutura da Terra.",
+                            ut: "UNIDADE D — CAPÍTULO 11: O PLANETA TERRA E OS RECURSOS MINERAIS",
+                            cap: "1. Como é a Terra por dentro?",
+                            pag: "191",
+                            erro: "Acreditar que o interior da Terra é inteiramente oco ou composto apenas por magma líquido.",
+                            dica: "Apresentar o modelo em camadas concêntricas (Crosta, Manto e Núcleo), destacando as variações de temperatura, pressão e estado físico do material."
+                        },
+                        {
+                            codigo: "6EF23_CN",
+                            caed: "Reconhecer a forma esférica da Terra.",
+                            ut: "UNIDADE D — CAPÍTULO 12: DIA E NOITE: REGULARIDADES CELESTES",
+                            cap: "11. Evidências da esfericidade da Terra / Isso vai para o nosso blog! – A Terra é esférica! E ela tem uma história!",
+                            pag: "224, 229",
+                            erro: "Acreditar que a percepção local de um horizonte plano comprova que o planeta inteiro é plano.",
+                            dica: "Discutir evidências observáveis históricas: o desaparecimento gradual de navios no horizonte (primeiro o casco, depois o mastro) e a sombra circular da Terra durante os eclipses lunares."
+                        }
                     ],
                     3: [
-                        { codigo: "6EF10_CN", caed: "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais.", ut: "UNIDADE C — CAPÍTULO 8: SUBSTÂNCIAS QUÍMICAS", cap: "6. Misturas", pag: "139" },
-                        { codigo: "6EF12_CN", caed: "Classificar os métodos de separação de misturas de sistemas heterogêneos.", ut: "UNIDADE C — CAPÍTULO 8: SUBSTÂNCIAS QUÍMICAS", cap: "7. Separação de misturas", pag: "142" },
-                        { codigo: "6EF13_CN", caed: "Classificar os métodos de separação de misturas de sistemas homogêneos.", ut: "UNIDADE C — CAPÍTULO 8: SUBSTÂNCIAS QUÍMICAS", cap: "7. Separação de misturas", pag: "142" },
-                        { codigo: "6EF15_CN", caed: "Inferir a relação entre o uso de materiais sintéticos e seus impactos socioambientais.", ut: "UNIDADE C — CAPÍTULO 9: TRANSFORMAÇÕES QUÍMICAS", cap: "4. O petróleo / 5. Carvão mineral / Isso vai para o nosso blog! – A importância da Química para a sociedade", pag: "158, 162, 166" },
-                        { codigo: "6EF17_CN", caed: "Reconhecer os níveis de organização dos seres vivos.", ut: "UNIDADE B — CAPÍTULO 4: NÍVEIS DE ORGANIZAÇÃO DO CORPO HUMANO", cap: "1. Os níveis de organização do corpo humano / 7. Tecidos / 8. Órgãos / 9. Sistemas", pag: "56, 63, 65" },
-                        { codigo: "6EF18_CN", caed: "Reconhecer as estruturas que compõem o sistema nervoso.", ut: "UNIDADE C — CAPÍTULO 7: SISTEMA NERVOSO", cap: "2. Neurônios / 3. Estrutura geral do sistema nervoso / 4. O papel dos nervos / 5. O papel da medula espinal / 6. O papel do encéfalo / 7. SNP somático e SNP autónomo", pag: "110, 111, 112, 113, 115, 118" },
-                        { codigo: "6EF20_CN", caed: "Reconhecer as estruturas do olho humano e suas funcionalidades.", ut: "UNIDADE B — CAPÍTULO 6: VISÃO", cap: "2. O sentido da visão / 3. A lente do olho e a \"focalização\" de imagens", pag: "91, 94" },
-                        { codigo: "6EF21_CN", caed: "Comparar as estruturas do olho humano ao princípio de funcionamento de instrumentos ópticos.", ut: "UNIDADE B — CAPÍTULO 6: VISÃO", cap: "1. Raios de luz / 3. A lente do olho e a \"focalização\" de imagens / 5. O cinema", pag: "88, 94, 98" },
-                        { codigo: "6EF22_CN", caed: "Reconhecer a estrutura da Terra.", ut: "UNIDADE D — CAPÍTULO 11: O PLANETA TERRA E OS RECURSOS MINERAIS", cap: "1. Como é a Terra por dentro?", pag: "191" },
-                        { codigo: "6EF24_CN", caed: "Explicar argumentos e evidências que demonstram a esfericidade da Terra.", ut: "UNIDADE D — CAPÍTULO 12: DIA E NOITE: REGULARIDADES CELESTES", cap: "11. Evidências da esfericidade da Terra / Isso vai para o nosso blog! – A Terra é esférica! E ela tem uma história!", pag: "224, 229" },
-                        { codigo: "6EF25_CN", caed: "Interpretar a relação entre os movimentos do planeta Terra e a mudança na sombra de objetos e instrumentos (gnômon).", ut: "UNIDADE D — CAPÍTULO 12: DIA E NOITE: REGULARIDADES CELESTES", cap: "1. Ciclo dia/noite / 8. O nascente e o poente do Sol / 10. A trajetória diária aparente do Sol", pag: "211, 218, 222" }
+                        {
+                            codigo: "6EF10_CN",
+                            caed: "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais.",
+                            ut: "UNIDADE C — CAPÍTULO 8: SUBSTÂNCIAS QUÍMICAS",
+                            cap: "6. Misturas",
+                            pag: "139",
+                            erro: "Classificar o leite ou o sangue como misturas homogêneas por não identificar a olho nu suas diferentes fases.",
+                            dica: "Esclarecer que a classificação de heterogênea leva em conta a observação ao microscópio ou o comportamento sob centrifugação."
+                        },
+                        {
+                            codigo: "6EF12_CN",
+                            caed: "Classificar os métodos de separação de misturas de sistemas heterogêneos.",
+                            ut: "UNIDADE C — CAPÍTULO 8: SUBSTÂNCIAS QUÍMICAS",
+                            cap: "7. Separação de misturas",
+                            pag: "142",
+                            erro: "Propor a evaporação para separar misturas heterogêneas de sólido-líquido em vez de usar a filtração (gastando energia desnecessariamente).",
+                            dica: "Enfatizar a escolha do método mais simples e de menor custo energético para misturas heterogêneas."
+                        },
+                        {
+                            codigo: "6EF13_CN",
+                            caed: "Classificar os métodos de separação de misturas de sistemas homogêneos.",
+                            ut: "UNIDADE C — CAPÍTULO 8: SUBSTÂNCIAS QUÍMICAS",
+                            cap: "7. Separação de misturas",
+                            pag: "142",
+                            erro: "Confundir Destilação Simples (separação de sólido dissolvido em líquido) com Destilação Fracionada (separação de líquidos misturáveis com pontos de ebulição diferentes).",
+                            dica: "Destacar a propriedade fundamental envolvida nas destilações: a diferença nos pontos de ebulição das substâncias."
+                        },
+                        {
+                            codigo: "6EF15_CN",
+                            caed: "Inferir a relação entre o uso de materiais sintéticos e seus impactos socioambientais.",
+                            ut: "UNIDADE C — CAPÍTULO 9: TRANSFORMAÇÕES QUÍMICAS",
+                            cap: "4. O petróleo / 5. Carvão mineral / Isso vai para o nosso blog! – A importância da Química para a sociedade",
+                            pag: "158, 162, 166",
+                            erro: "Associar a poluição por plásticos apenas ao descarte incorreto, esquecendo os impactos gerados na extração do petróleo e na produção industrial.",
+                            dica: "Debater a logística reversa, o conceito dos 5Rs (Reduzir, Recusar, Reutilizar, Reciclar, Repensar) e o problema dos microplásticos nos ecossistemas aquáticos."
+                        },
+                        {
+                            codigo: "6EF17_CN",
+                            caed: "Reconhecer os níveis de organização dos seres vivos.",
+                            ut: "UNIDADE B — CAPÍTULO 4: NÍVEIS DE ORGANIZAÇÃO DO CORPO HUMANO",
+                            cap: "1. Os níveis de organização do corpo humano / 7. Tecidos / 8. Órgãos / 9. Sistemas",
+                            pag: "56, 63, 65",
+                            erro: "Inverter a ordem hierárquica dos níveis de organização (ex.: achar que tecidos formam células ou que órgãos formam tecidos).",
+                            dica: "Utilizar a sequência linear ascendente obrigatoriamente: Célula → Tecido → Órgão → Sistema → Organismo."
+                        },
+                        {
+                            codigo: "6EF18_CN",
+                            caed: "Reconhecer as estruturas que compõem o sistema nervoso.",
+                            ut: "UNIDADE C — CAPÍTULO 7: SISTEMA NERVOSO",
+                            cap: "2. Neurônios / 3. Estrutura geral do sistema nervoso / 4. O papel dos nervos / 5. O papel da medula espinal / 6. O papel do encéfalo / 7. SNP somático e SNP autónomo",
+                            pag: "110, 111, 112, 113, 115, 118",
+                            erro: "Não compreender o papel do neurônio na transmissão do impulso nervoso via sinapses.",
+                            dica: "Desenhar a estrutura típica do neurônio (Dendritos → Corpo Celular → Axônio) indicando o sentido unidirecional da condução elétrica."
+                        },
+                        {
+                            codigo: "6EF20_CN",
+                            caed: "Reconhecer as estruturas do olho humano e suas funcionalidades.",
+                            ut: "UNIDADE B — CAPÍTULO 6: VISÃO",
+                            cap: "2. O sentido da visão / 3. A lente do olho e a \"focalização\" de imagens",
+                            pag: "91, 94",
+                            erro: "Acreditar que o processamento final da imagem invertida ocorre no próprio olho e não no cérebro.",
+                            dica: "Explicar que o olho é o receptor físico que capta e projeta a imagem na retina, enquanto a interpretação e \"desinversão\" ocorrem na córtex visual do cérebro."
+                        },
+                        {
+                            codigo: "6EF21_CN",
+                            caed: "Comparar as estruturas do olho humano ao princípio de funcionamento de instrumentos ópticos.",
+                            ut: "UNIDADE B — CAPÍTULO 6: VISÃO",
+                            cap: "1. Raios de luz / 3. A lente do olho e a \"focalização\" de imagens / 5. O cinema",
+                            pag: "88, 94, 98",
+                            erro: "Não perceber a analogia entre a acomodação visual do cristalino (mudança de curvatura) e o ajuste mecânico das lentes focais das câmeras.",
+                            dica: "Criar uma tabela comparativa direta entre as partes anatômicas do olho e os componentes mecânicos/ópticos de uma câmara escura/fotográfica."
+                        },
+                        {
+                            codigo: "6EF22_CN",
+                            caed: "Reconhecer a estrutura da Terra.",
+                            ut: "UNIDADE D — CAPÍTULO 11: O PLANETA TERRA E OS RECURSOS MINERAIS",
+                            cap: "1. Como é a Terra por dentro?",
+                            pag: "191",
+                            erro: "Confundir Crosta Terrestre (camada rochosa externa) com Litosfera (unidade rígida formada pela crosta + parte superior do manto).",
+                            dica: "Utilizar esquemas de corte transversal mostrando a espessura relativa de cada camada e a posição da litosfera sobre a astenosfera."
+                        },
+                        {
+                            codigo: "6EF24_CN",
+                            caed: "Explicar argumentos e evidências que demonstram a esfericidade da Terra.",
+                            ut: "UNIDADE D — CAPÍTULO 12: DIA E NOITE: REGULARIDADES CELESTES",
+                            cap: "11. Evidências da esfericidade da Terra / Isso vai para o nosso blog! – A Terra é esférica! E ela tem uma história!",
+                            pag: "224, 229",
+                            erro: "Dificuldade em explicar como a diferença de fuso horário e a observação de diferentes constelações em latitudes distintas provam a curvatura da Terra.",
+                            dica: "Demonstrar com uma lanterna projetada sobre uma superfície plana versus uma esfera: na esfera, a iluminação ocorre em ângulos diferentes ao mesmo tempo."
+                        },
+                        {
+                            codigo: "6EF25_CN",
+                            caed: "Interpretar a relação entre os movimentos do planeta Terra e a mudança na sombra de objetos e instrumentos (gnômon).",
+                            ut: "UNIDADE D — CAPÍTULO 12: DIA E NOITE: REGULARIDADES CELESTES",
+                            cap: "1. Ciclo dia/noite / 8. O nascente e o poente do Sol / 10. A trajetória diária aparente do Sol",
+                            pag: "211, 218, 222",
+                            erro: "Acreditar que a sombra do gnômon é mais curta no início da manhã e no fim da tarde.",
+                            dica: "Enfatizar a relação inversamente proporcional: Sol mais baixo no horizonte (início/fim do dia) = sombra mais longa; Sol no ponto mais alto (meio-dia solar) = sombra mais curta."
+                        }
                     ]
                 }
             },
-            "7ano": {
-                "titulo": "7º Ano - Ensino Fundamental",
-                "ciclos": {
-                    1: [
-                        { codigo: "6EF10_CN", caed: "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais.", ut: "UNIDADE D — CAPÍTULO 12: GASES DA ATMOSFERA E PLACAS DA LITOSFERA", cap: "1. O ar é uma mistura", pag: "214" },
-                        { codigo: "6EF12_CN", caed: "Classificar os métodos de separação de misturas de sistemas heterogêneos.", ut: "UNIDADE B — CAPÍTULO 6: SANEAMENTO BÁSICO", cap: "7. Água potável e tratamento caseiro / 14. Tratamento de esgoto", pag: "109, 115" },
-                        { codigo: "6EF13_CN", caed: "Classificar os métodos de separação de misturas de sistemas homogêneos.", ut: "UNIDADE B — CAPÍTULO 6: SANEAMENTO BÁSICO", cap: "7. Água potável e tratamento caseiro / 8. Distribuição de água encanada", pag: "109, 110" },
-                        { codigo: "6EF15_CN", caed: "Inferir a relação entre o uso de materiais sintéticos e seus impactos socioambientais.", ut: "UNIDADE D — CAPÍTULO 10: MÁQUINAS SIMPLES", cap: "10. Tecnologia e seus impactos", pag: "190" },
-                        { codigo: "6EF17_CN", caed: "Reconhecer os níveis de organização dos seres vivos.", ut: "UNIDADE A — CAPÍTULO 1: BIODIVERSIDADE", cap: "10. Recordando: células são estruturas vivas / 11. Procariotos e eucariotos / 12. Os três domínios de seres vivos", pag: "21, 23, 24" },
-                        { codigo: "6EF18_CN", caed: "Reconhecer as estruturas que compõem o sistema nervoso.", ut: "UNIDADE A — CAPÍTULO 3: DIVERSIDADE DA VIDA MICROSCÓPICA", cap: "Isso vai para o nosso blog! – As defesas do nosso corpo", pag: "69" },
-                        { codigo: "6EF20_CN", caed: "Reconhecer as estruturas do olho humano e suas funcionalidades.", ut: "UNIDADE A — CAPÍTULO 2: ADAPTAÇÃO DOS SERES VIVOS", cap: "4. Adaptações aos fatores não vivos / 6. Adaptações ligadas à alimentação", pag: "37, 42" },
-                        { codigo: "6EF21_CN", caed: "Comparar as estruturas do olho humano ao princípio de funcionamento de instrumentos ópticos.", ut: "UNIDADE D — CAPÍTULO 10: MÁQUINAS SIMPLES", cap: "10. Tecnologia e seus impactos", pag: "190" },
-                        { codigo: "6EF22_CN", caed: "Reconhecer a estrutura da Terra.", ut: "UNIDADE D — CAPÍTULO 12: GASES DA ATMOSFERA E PLACAS DA LITOSFERA", cap: "7. Placas litosféricas / 8. Vulcões, terremotos e tsunamis", pag: "223, 228" },
-                        { codigo: "6EF24_CN", caed: "Explicar argumentos e evidências que demonstram a esfericidade da Terra.", ut: "UNIDADE D — CAPÍTULO 12: GASES DA ATMOSFERA E PLACAS DA LITOSFERA", cap: "Desenvolvimento do tema", pag: "214" },
-                        { codigo: "6EF25_CN", caed: "Interpretar a relação entre os movimentos do planeta Terra e a mudança na sombra de objetos e instrumentos (gnômon).", ut: "UNIDADE D — CAPÍTULO 11: TEMPERATURA, CALOR E EFEITO ESTUFA", cap: "6. Irradiação térmica", pag: "205" }
-                    ],
-                    2: [
-                        { codigo: "7EF02_CN", caed: "Reconhecer dispositivos mecânicos que facilitam a realização do trabalho.", ut: "UNIDADE D — CAPÍTULO 10: MÁQUINAS SIMPLES", cap: "1. Há vários tipos de máquinas / 2. O que são máquinas simples? / 3. Roda-eixo / 4. Alavanca / 5. Polia ou roldana / 6. Engrenagem / 7. Plano inclinado / 8. Cunha / 9. Parafuso", pag: "182, 183, 184, 185, 186, 187, 188" },
-                        { codigo: "7EF03_CN", caed: "Interpretar, em situações cotidianas, os conceitos de calor, temperatura e sensação térmica.", ut: "UNIDADE D — CAPÍTULO 11: TEMPERATURA, CALOR E EFEITO ESTUFA", cap: "1. Escala de temperatura / 2. Calor e troca de calor / 5. Sensações térmicas podem enganar", pag: "196, 198, 203" },
-                        { codigo: "7EF05_CN", caed: "Classificar os processos de transferência de calor.", ut: "UNIDADE D — CAPÍTULO 11: TEMPERATURA, CALOR E EFEITO ESTUFA", cap: "3. Condução térmica / 4. Convecção térmica / 6. Irradiação térmica / 7. Como funciona a garrafa térmica?", pag: "199, 201, 205, 206" },
-                        { codigo: "7EF07_CN", caed: "Interpretar o papel dos combustíveis em máquinas térmicas.", ut: "UNIDADE D — CAPÍTULO 10: MÁQUINAS SIMPLES", cap: "10. Tecnologia e seus impactos<br><strong>(e também em)</strong> UNIDADE D — CAPÍTULO 12: Isso vai para o nosso blog! – Tecnologia ao longo da História", pag: "190<br><strong>(e também em)</strong> Página: 233" },
-                        { codigo: "7EF08_CN", caed: "Reconhecer os diferentes biomas brasileiros.", ut: "UNIDADE C — CAPÍTULO 9: PRINCIPAIS BIOMAS BRASILEIROS", cap: "1. Floresta Amazônica / 2. Mata Atlântica / 3. Floresta de Araucárias / 4. Caatinga / 5. Faixa de transição: Mata dos Cocais / 6. Cerrado / 7. Faixa de transição: Pantanal / 8. Pampas", pag: "166, 170, 171, 172, 173, 174, 175" },
-                        { codigo: "7EF12_CN", caed: "Reconhecer a relação estabelecida entre as ações de saneamento básico e a saúde humana.", ut: "UNIDADE B — CAPÍTULO 6: SANEAMENTO BÁSICO", cap: "7. Água potável e tratamento caseiro / 8. Distribuição de água encanada / 9. Águas servidas / 11. Doenças veiculadas pela água / 12. Higiene pessoal / 13. Os tipos de fossa / 14. Tratamento de esgoto / 15. Saneamento básico / Isso vai para o nosso blog! – Doenças contagiosas e saneamento", pag: "109, 110, 111, 113, 114, 115, 117, 128" },
-                        { codigo: "7EF14_CN", caed: "Reconhecer a importância da adesão às campanhas de vacinação.", ut: "UNIDADE A — CAPÍTULO 3: DIVERSIDADE DA VIDA MICROSCÓPICA", cap: "7. Como ficamos gripados? / 9. Doenças causadas por vírus / Isso vai para o nosso blog! – As defesas do nosso corpo", pag: "59, 60, 69" },
-                        { codigo: "7EF15_CN", caed: "Reconhecer o ar como uma mistura de gases.", ut: "UNIDADE D — CAPÍTULO 12: GASES DA ATMOSFERA E PLACAS DA LITOSFERA", cap: "1. O ar é uma mistura / 2. O gás oxigênio / 3. O gás nitrogênio / 4. O gás carbônico", pag: "214, 215, 218" },
-                        { codigo: "7EF16_CN", caed: "Reconhecer a composição do ar e o modo como a poluição afeta suas características.", ut: "UNIDADE D — CAPÍTULO 12: GASES DA ATMOSFERA E PLACAS DA LITOSFERA", cap: "1. O ar é uma mistura / 5. Poluição do ar", pag: "214, 219" },
-                        { codigo: "7EF17_CN", caed: "Reconhecer a atuação do efeito estufa no planeta Terra.", ut: "UNIDADE D — CAPÍTULO 11: TEMPERATURA, CALOR E EFEITO ESTUFA", cap: "8. Aquecimento global", pag: "207" },
-                        { codigo: "7EF20_CN", caed: "Reconhecer a participação da camada de ozônio no fenômeno da vida na Terra.", ut: "UNIDADE D — CAPÍTULO 12: GASES DA ATMOSFERA E PLACAS DA LITOSFERA", cap: "6. A camada de ozônio e a poluição por CFCs", pag: "222" }
-                    ],
-                    3: [
-                        { codigo: "7EF01_CN", caed: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples.", ut: "UNIDADE D — CAPÍTULO 10: MÁQUINAS SIMPLES", cap: "1. Há vários tipos de máquinas / 2. O que são máquinas simples? / 4. Alavanca / 5. Polia ou roldana", pag: "182, 183, 184" },
-                        { codigo: "7EF04_CN", caed: "Inferir, em situações cotidianas, as formas de propagação de calor envolvidas na utilização de determinados materiais e equipamentos.", ut: "UNIDADE D — CAPÍTULO 11: TEMPERATURA, CALOR E EFEITO ESTUFA", cap: "3. Condução térmica / 4. Convecção térmica / 6. Irradiação térmica / 7. Como funciona a garrafa térmica?", pag: "199, 201, 205, 206" },
-                        { codigo: "7EF06_CN", caed: "Explicar o funcionamento de máquinas térmicas (conversão de calor em trabalho, fluxo de calor, equilíbrio térmico, fonte de energia, perdas de energia).", ut: "UNIDADE D — CAPÍTULO 10: MÁQUINAS SIMPLES", cap: "10. Tecnologia e seus impactos<br><strong>(e também em)</strong> UNIDADE D — CAPÍTULO 11: 2. Calor e troca de calor<br><strong>(e também em)</strong> UNIDADE D — CAPÍTULO 12: Isso vai para o nosso blog! – Tecnologia ao longo da História", pag: "190<br><strong>(e também em)</strong> Página: 198<br><strong>(e também em)</strong> Página: 233" },
-                        { codigo: "7EF07_CN", caed: "Interpretar o papel dos combustíveis em máquinas térmicas.", ut: "UNIDADE D — CAPÍTULO 10: MÁQUINAS SIMPLES", cap: "10. Tecnologia e seus impactos<br><strong>(e também em)</strong> UNIDADE D — CAPÍTULO 12: Isso vai para o nosso blog! – Tecnologia ao longo da História", pag: "190<br><strong>(e também em)</strong> Página: 233" },
-                        { codigo: "7EF09_CN", caed: "Interpretar a forma com que os fatores abióticos regem a diversidade dos diferentes biomas brasileiros.", ut: "UNIDADE A — CAPÍTULO 2: ADAPTAÇÃO DOS SERES VIVOS", cap: "4. Adaptações aos fatores não vivos<br><strong>(e também em)</strong> UNIDADE C — CAPÍTULO 9: PRINCIPAIS BIOMAS BRASILEIROS", pag: "37<br><strong>(e também em)</strong> Páginas: 166–175" },
-                        { codigo: "7EF10_CN", caed: "Inferir como as intervenções humanas no ambiente causam desequilíbrios ambientais.", ut: "UNIDADE B — CAPÍTULO 6: SANEAMENTO BÁSICO", cap: "16. Poluição da água<br><strong>(e também em)</strong> UNIDADE C — CAPÍTULO 9: Isso vai para o nosso blog! – Ecossistemas e ameaças a eles<br><strong>(e também em)</strong> UNIDADE D — CAPÍTULO 11: 8. Aquecimento global", pag: "118<br><strong>(e também em)</strong> Página: 180<br><strong>(e também em)</strong> Página: 207" },
-                        { codigo: "7EF11_CN", caed: "Interpretar indicadores de saúde de um grupo populacional.", ut: "UNIDADE B — CAPÍTULO 6: SANEAMENTO BÁSICO", cap: "11. Doenças veiculadas pela água / 15. Saneamento básico / Isso vai para o nosso blog! – Doenças contagiosas e saneamento", pag: "113, 117, 128" },
-                        { codigo: "7EF12_CN", caed: "Reconhecer a relação estabelecida entre as ações de saneamento básico e a saúde humana.", ut: "UNIDADE B — CAPÍTULO 6: SANEAMENTO BÁSICO", cap: "7. Água potável e tratamento caseiro / 8. Distribuição de água encanada / 9. Águas servidas / 11. Doenças veiculadas pela água / 12. Higiene pessoal / 13. Os tipos de fossa / 14. Tratamento de esgoto / 15. Saneamento básico / Isso vai para o nosso blog! – Doenças contagiosas e saneamento", pag: "109, 110, 111, 113, 114, 115, 117, 128" },
-                        { codigo: "7EF13_CN", caed: "Inferir o mecanismo de ação das vacinas nos organismos.", ut: "UNIDADE A — CAPÍTULO 3: DIVERSIDADE DA VIDA MICROSCÓPICA", cap: "7. Como ficamos gripados? / 9. Doenças causadas por vírus / Isso vai para o nosso blog! – As defesas do nosso corpo", pag: "59, 60, 69" },
-                        { codigo: "7EF16_CN", caed: "Reconhecer a composição do ar e o modo como a poluição afeta suas características.", ut: "UNIDADE D — CAPÍTULO 12: GASES DA ATMOSFERA E PLACAS DA LITOSFERA", cap: "1. O ar é uma mistura / 5. Poluição do ar", pag: "214, 219" },
-                        { codigo: "7EF18_CN", caed: "Interpretar propostas de controle ou de reversão do aumento artificial do efeito estufa no planeta Terra.", ut: "UNIDADE D — CAPÍTULO 11: TEMPERATURA, CALOR E EFEITO ESTUFA", cap: "8. Aquecimento global", pag: "207" },
-                        { codigo: "7EF19_CN", caed: "Interpretar ações voltadas para a preservação da camada de ozônio.", ut: "UNIDADE D — CAPÍTULO 12: GASES DA ATMOSFERA E PLACAS DA LITOSFERA", cap: "6. A camada de ozônio e a poluição por CFCs", pag: "222" }
-                    ]
-                }
-            },
-            "8ano": {
-                "titulo": "8º Ano - Ensino Fundamental",
-                "ciclos": {
-                    1: [
-                        { codigo: "7EF01_CN", caed: "Inferir os conceitos de força e trabalho em situações que envolvam o funcionamento de máquinas simples.", ut: "UNIDADE D — CAPÍTULO 12: PRODUÇÃO E USO DE ENERGIA ELÉTRICA", cap: "3. Energia elétrica", pag: "217" },
-                        { codigo: "7EF04_CN", caed: "Inferir, em situações cotidianas, as formas de propagação de calor envolvidas na utilização de determinados materiais e equipamentos.", ut: "UNIDADE D — CAPÍTULO 10: PREVISÃO DO TEMPO", cap: "1. O volume do ar e a temperatura / 4. O ar quente tende a subir / 5. As brisas à beira-mar", pag: "176, 179, 181" },
-                        { codigo: "7EF06_CN", caed: "Explicar o funcionamento de máquinas térmicas (conversão de calor em trabalho, fluxo de calor, equilíbrio térmico, fonte de energia, perdas de energia).", ut: "UNIDADE D — CAPÍTULO 12: PRODUÇÃO E USO DE ENERGIA ELÉTRICA", cap: "6. Recursos energéticos / Isso vai para o nosso blog! – O Brasil e a energia elétrica", pag: "227, 235" },
-                        { codigo: "7EF07_CN", caed: "Interpretar o papel dos combustíveis em máquinas térmicas.", ut: "UNIDADE D — CAPÍTULO 12: PRODUÇÃO E USO DE ENERGIA ELÉTRICA", cap: "6. Recursos energéticos", pag: "227" },
-                        { codigo: "7EF09_CN", caed: "Interpretar a forma com que os fatores abióticos regem a diversidade dos diferentes biomas brasileiros.", ut: "UNIDADE D — CAPÍTULO 10: PREVISÃO DO TEMPO", cap: "8. As correntes marítimas / 9. Tempo e clima", pag: "185, 186" },
-                        { codigo: "7EF10_CN", caed: "Inferir como as intervenções humanas no ambiente causam desequilíbrios ambientais.", ut: "UNIDADE D — CAPÍTULO 10: PREVISÃO DO TEMPO", cap: "13. Alterações climáticas provocadas pelo ser humano", pag: "190" },
-                        { codigo: "7EF11_CN", caed: "Interpretar indicadores de saúde de um grupo populacional.", ut: "UNIDADE A — CAPÍTULO 3: SISTEMAS CIRCULATÓRIO, LINFÁTICO E URINÁRIO", cap: "Isso vai para o nosso blog! – Doenças do sistema circulatório<br><strong>(e também em)</strong> UNIDADE B — CAPÍTULO 4: 7. Distúrbios do sistema respiratório", pag: "68<br><strong>(e também em)</strong> Página: 80" },
-                        { codigo: "7EF12_CN", caed: "Reconhecer a relação established entre as ações de saneamento básico e a saúde humana.", ut: "UNIDADE A — CAPÍTULO 3: SISTEMAS CIRCULATÓRIO, LINFÁTICO E URINÁRIO", cap: "8. Excreção / 9. O sistema urinário / Isso vai para o nosso blog! – Doenças do sistema circulatório", pag: "59, 60, 68" },
-                        { codigo: "7EF13_CN", caed: "Inferir o mecanismo de ação das vacinas nos organismos.", ut: "UNIDADE A — CAPÍTULO 3: SISTEMAS CIRCULATÓRIO, LINFÁTICO E URINÁRIO", cap: "2. O sangue / 7. O sistema linfático", pag: "46, 58" },
-                        { codigo: "7EF16_CN", caed: "Reconhecer a composição do ar e o modo como a poluição afeta suas características.", ut: "UNIDADE B — CAPÍTULO 4: SISTEMA RESPIRATÓRIO", cap: "4. As trocas gasosas nos pulmões / 7. Distúrbios do sistema respiratório", pag: "76, 80" },
-                        { codigo: "7EF18_CN", caed: "Interpretar propostas de controle ou de reversão do aumento artificial do efeito estufa no planeta Terra.", ut: "UNIDADE D — CAPÍTULO 10: PREVISÃO DO TEMPO", cap: "13. Alterações climáticas provocadas pelo ser humano", pag: "190" },
-                        { codigo: "7EF19_CN", caed: "Interpretar ações voltadas para a preservação da camada de ozônio.", ut: "UNIDADE D — CAPÍTULO 10: PREVISÃO DO TEMPO", cap: "13. Alterações climáticas provocadas pelo ser humano", pag: "190" }
-                    ],
-                    2: [
-                        { codigo: "8EF01_CN", caed: "Classificar os recursos energéticos em renováveis e não renováveis.", ut: "UNIDADE D — CAPÍTULO 12: PRODUÇÃO E USO DE ENERGIA ELÉTRICA", cap: "6. Recursos energéticos", pag: "227" },
-                        { codigo: "8EF02_CN", caed: "Reconhecer diferentes fontes de energia.", ut: "UNIDADE A — CAPÍTULO 1: ALIMENTOS E NUTRIENTES", cap: "3. Nutrientes com função energética<br><strong>(e também em)</strong> UNIDADE D — CAPÍTULO 12: 6. Recursos energéticos", pag: "17<br><strong>(e também em)</strong> Página: 227" },
-                        { codigo: "8EF03_CN", caed: "Reconhecer diferentes tipos de energia.", ut: "UNIDADE D — CAPÍTULO 12: PRODUÇÃO E USO DE ENERGIA ELÉTRICA", cap: "3. Energia elétrica / 6. Recursos energéticos", pag: "217, 227" },
-                        { codigo: "8EF05_CN", caed: "Classificar os processos de transformação da energia nos aparelhos residenciais.", ut: "UNIDADE D — CAPÍTULO 12: PRODUÇÃO E USO DE ENERGIA ELÉTRICA", cap: "4. O uso doméstico de energia elétrica", pag: "219" },
-                        { codigo: "8EF07_CN", caed: "Reconhecer as atitudes que contribuem para redução do consumo de energia.", ut: "UNIDADE D — CAPÍTULO 12: PRODUÇÃO E USO DE ENERGIA ELÉTRICA", cap: "4. O uso doméstico de energia elétrica / 5. Segurança no uso da energia elétrica", pag: "219, 221" },
-                        { codigo: "8EF10_CN", caed: "Reconhecer os tipos de usinas de geração de energia elétrica.", ut: "UNIDADE D — CAPÍTULO 12: PRODUÇÃO E USO DE ENERGIA ELÉTRICA", cap: "6. Recursos energéticos / Isso vai para o nosso blog! – O Brasil e a energia elétrica", pag: "227, 235" },
-                        { codigo: "8EF11_CN", caed: "Reconhecer os diferentes processos reprodutivos dos seres vivos.", ut: "UNIDADE B — CAPÍTULO 5: REPRODUÇÃO SEXUADA E REPRODUÇÃO ASSEXUADA EM ANIMAIS", cap: "4. Reprodução sexuada em animais / 5. Reprodução assexuada em animais<br><strong>(e também em)</strong> UNIDADE B — CAPÍTULO 6: 2. Reprodução sexuada de plantas / 3. Reprodução assexuada de plantas", pag: "95, 98<br><strong>(e também em)</strong> Páginas: 105" },
-                        { codigo: "8EF12_CN", caed: "Reconhecer as estruturas que compõem o sistema endócrino.", ut: "UNIDADE C — CAPÍTULO 7: ADOLESCÊNCIA, PUBERDADE E SISTEMA ENDÓCRINO", cap: "7. O controle das funções do corpo / 8. Glândulas: exócrinas e endócrinas / 9. O sistema endócrino / 10. Exemplo de atuação hormonal: a adrenalina / 11. A tireoide e o bócio / 12. O pâncreas e o controle da glicose no sangue", pag: "137, 138, 139, 140, 141, 142" },
-                        { codigo: "8EF16_CN", caed: "Reconhecer as posições relativas entre Sol, Terra e Lua associadas às fases da Lua e à ocorrência de eclipses.", ut: "UNIDADE D — CAPÍTULO 11: LUA E CONSTELAÇÕES", cap: "1. As fases da Lua / 2. A Lua e seus horários / 3. As fases da Lua e os eclipses", pag: "200, 201, 203" }
-                    ],
-                    3: [
-                        { codigo: "8EF01_CN", caed: "Classificar os recursos energéticos em renováveis e não renováveis.", ut: "UNIDADE D — CAPÍTULO 12: PRODUÇÃO E USO DE ENERGIA ELÉTRICA", cap: "6. Recursos energéticos", pag: "227" },
-                        { codigo: "8EF04_CN", caed: "Reconhecer os componentes de um circuito.", ut: "UNIDADE D — CAPÍTULO 12: PRODUÇÃO E USO DE ENERGIA ELÉTRICA", cap: "1. Circuito elétrico e corrente elétrica / 2. Diferença de potencial elétrico", pag: "214, 215" },
-                        { codigo: "8EF05_CN", caed: "Classificar os processos de transformação da energia nos aparelhos residenciais.", ut: "UNIDADE D — CAPÍTULO 12: PRODUÇÃO E USO DE ENERGIA ELÉTRICA", cap: "4. O uso doméstico de energia elétrica", pag: "219" },
-                        { codigo: "8EF06_CN", caed: "Verificar o consumo de energia elétrica de aparelhos eletroeletrônicos, assim como as grandezas e as ações que influenciam nesse consumo.", ut: "UNIDADE D — CAPÍTULO 12: PRODUÇÃO E USO DE ENERGIA ELÉTRICA", cap: "3. Energia elétrica / 4. O uso doméstico de energia elétrica", pag: "217, 219" },
-                        { codigo: "8EF08_CN", caed: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas.", ut: "UNIDADE D — CAPÍTULO 12: PRODUÇÃO E USO DE ENERGIA ELÉTRICA", cap: "6. Recursos energéticos / Isso vai para o nosso blog! – O Brasil e a energia elétrica", pag: "227, 235" },
-                        { codigo: "8EF09_CN", caed: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia elétrica.", ut: "UNIDADE D — CAPÍTULO 12: PRODUÇÃO E USO DE ENERGIA ELÉTRICA", cap: "6. Recursos energéticos / Isso vai para o nosso blog! – O Brasil e a energia elétrica", pag: "227, 235" },
-                        { codigo: "8EF10_CN", caed: "Reconhecer os tipos de usinas de geração de energia elétrica.", ut: "UNIDADE D — CAPÍTULO 12: PRODUÇÃO E USO DE ENERGIA ELÉTRICA", cap: "6. Recursos energéticos / Isso vai para o nosso blog! – O Brasil e a energia elétrica", pag: "227, 235" },
-                        { codigo: "8EF11_CN", caed: "Reconhecer os diferentes processos reprodutivos dos seres vivos.", ut: "UNIDADE B — CAPÍTULO 5: REPRODUÇÃO SEXUADA E REPRODUÇÃO ASSEXUADA EM ANIMAIS", cap: "4. Reprodução sexuada em animais / 5. Reprodução assexuada em animais / 6. Reprodução sexuada e variabilidade genética dos descendentes<br><strong>(e também em)</strong> UNIDADE B — CAPÍTULO 6: 2. Reprodução sexuada de plantas / 3. Reprodução assexuada de plantas", pag: "95, 98, 99<br><strong>(e também em)</strong> Páginas: 105" },
-                        { codigo: "8EF13_CN", caed: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias.", ut: "UNIDADE C — CAPÍTULO 7: ADOLESCÊNCIA, PUBERDADE E SISTEMA ENDÓCRINO", cap: "3. A adolescência e a puberdade / 4. As mudanças trazidas pela puberdade / 13. Hormônios sexuais e mudanças na puberdade", pag: "133, 134, 145" },
-                        { codigo: "8EF14_CN", caed: "Reconhecer o princípio de ação dos métodos contraceptivos.", ut: "UNIDADE C — CAPÍTULO 9: SEXO, SAÚDE E SOCIEDADE", cap: "1. Contracepção", pag: "164" },
-                        { codigo: "8EF15_CN", caed: "Reconhecer as características das infecções sexualmente transmissíveis (IST).", ut: "UNIDADE C — CAPÍTULO 9: SEXO, SAÚDE E SOCIEDADE", cap: "2. Infecções Sexualmente Transmissíveis (IST) / 3. Aids / Isso vai para o nosso blog! – Conviver e respeitar!", pag: "167, 169, 174" },
-                        { codigo: "8EF17_CN", caed: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.", ut: "UNIDADE D — CAPÍTULO 11: LUA E CONSTELAÇÕES", cap: "4. As estações do ano / 5. As estrelas no céu noturno", pag: "206, 208" }
-                    ]
-                }
-            },
-            "9ano": {
-                "titulo": "9º Ano - Ensino Fundamental",
-                "ciclos": {
-                    1: [
-                        { codigo: "8EF01_CN", caed: "Classificar os recursos energéticos em renováveis e não renováveis.", ut: "UNIDADE D — CAPÍTULO 12: DESENVOLVIMENTO SUSTENTÁVEL", cap: "4. Recursos renováveis e recursos não renováveis", pag: "247" },
-                        { codigo: "8EF04_CN", caed: "Reconhecer os componentes de um circuito.", ut: "UNIDADE A — CAPÍTULO 2: CARGAS ELÉTRICAS E MODELO ATÔMICO DE RUTHERFORD", cap: "1. Eletricidade / 4. Condutores elétricos e isolantes elétricos", pag: "33, 36" },
-                        { codigo: "8EF05_CN", caed: "Classificar os processos de transformação da energia nos aparelhos residenciais.", ut: "UNIDADE A — CAPÍTULO 2: CARGAS ELÉTRICAS E MODELO ATÔMICO DE RUTHERFORD", cap: "1. Eletricidade", pag: "33" },
-                        { codigo: "8EF06_CN", caed: "Verificar o consumo de energia elétrica de aparelhos eletroeletrônicos, assim como as grandezas e as ações que influenciam nesse consumo.", ut: "UNIDADE A — CAPÍTULO 2: CARGAS ELÉTRICAS E MODELO ATÔMICO DE RUTHERFORD", cap: "1. Eletricidade / 2. Cargas elétricas", pag: "33" },
-                        { codigo: "8EF08_CN", caed: "Inferir o mecanismo de geração de energia elétrica nas diferentes usinas.", ut: "UNIDADE D — CAPÍTULO 12: DESENVOLVIMENTO SUSTENTÁVEL", cap: "4. Recursos renováveis e recursos não renováveis / 5. Ameaça aos recursos renováveis", pag: "247, 250" },
-                        { codigo: "8EF09_CN", caed: "Reconhecer os impactos ambientais resultantes da construção e do uso de diferentes usinas de geração de energia elétrica.", ut: "UNIDADE D — CAPÍTULO 12: DESENVOLVIMENTO SUSTENTÁVEL", cap: "2. Ação humana e desequilíbrios ambientais / 4. Recursos renováveis e recursos não renováveis / Isso vai para o nosso blog! – As soluções começam conosco!", pag: "244, 247, 256" },
-                        { codigo: "8EF10_CN", caed: "Reconhecer os tipos de usinas de geração de energia elétrica.", ut: "UNIDADE D — CAPÍTULO 12: DESENVOLVIMENTO SUSTENTÁVEL", cap: "4. Recursos renováveis e recursos não renováveis", pag: "247" },
-                        { codigo: "8EF11_CN", caed: "Reconhecer os diferentes processos reprodutivos dos seres vivos.", ut: "UNIDADE D — CAPÍTULO 10: GENÉTICA E HEREDITARIEDADE", cap: "4. Cromossomos e reprodução humana", pag: "203" },
-                        { codigo: "8EF13_CN", caed: "Explicar a ação do sistema endócrino sobre as características sexuais secundárias.", ut: "UNIDADE D — CAPÍTULO 10: GENÉTICA E HEREDITARIEDADE", cap: "12. Cromossomos sexuais", pag: "213" },
-                        { codigo: "8EF14_CN", caed: "Reconhecer o princípio de ação dos métodos contraceptivos.", ut: "UNIDADE D — CAPÍTULO 10: GENÉTICA E HEREDITARIEDADE", cap: "4. Cromossomos e reprodução humana", pag: "203" },
-                        { codigo: "8EF15_CN", caed: "Reconhecer as características das infecções sexualmente transmissíveis (IST).", ut: "UNIDADE D — CAPÍTULO 10: GENÉTICA E HEREDITARIEDADE", cap: "13. Doenças hereditárias e aneuploidia", pag: "214" },
-                        { codigo: "8EF17_CN", caed: "Explicar os movimentos do planeta Terra relacionando-os à ocorrência do dia e da noite e às estações do ano.", ut: "UNIDADE C — CAPÍTULO 9: GRAVITAÇÃO", cap: "5. Os planetas e o Sistema Solar / 6. Sol, a nossa estrela", pag: "175, 177" }
-                    ],
-                    2: [
-                        { codigo: "9EF01_CN", caed: "Classificar, com base nos modelos de constituição submicroscópica, os estados físicos da matéria.", ut: "UNIDADE A — CAPÍTULO 1: REAÇÕES QUÍMICAS E TEORIA ATÔMICA DE DALTON", cap: "1. Recordando mudanças de fase da água", pag: "14" },
-                        { codigo: "9EF02_CN", caed: "Inferir as mudanças de estado físico da matéria a partir da observação dos modelos de constituição submicroscópica.", ut: "UNIDADE A — CAPÍTULO 1: REAÇÕES QUÍMICAS E TEORIA ATÔMICA DE DALTON", cap: "1. Recordando mudanças de fase da água / 6. A Teoria Atômica de Dalton", pag: "14, 20" },
-                        { codigo: "9EF06_CN", caed: "Reconhecer que os materiais são constituídos por partículas muito pequenas, com diferentes níveis de organização e espaços vazios.", ut: "UNIDADE A — CAPÍTULO 1: REAÇÕES QUÍMICAS E TEORIA ATÔMICA DE DALTON", cap: "6. A Teoria Atômica de Dalton / 7. Símbolos e fórmulas<br><strong>(e também em)</strong> UNIDADE B — CAPÍTULO 4: 1. Tipos de substâncias que estudaremos / 2. Ligações químicas que estudaremos", pag: "20, 21<br><strong>(e também em)</strong> Páginas: 70" },
-                        { codigo: "9EF07_CN", caed: "Explicar as cores dos objetos estabelecendo uma relação com a luz que os ilumina.", ut: "UNIDADE B — CAPÍTULO 6: ÓPTICA", cap: "2. As componentes da luz branca / 3. Cores primárias de luz / 4. Cores primárias de luz e visão / 5. Cores primárias de corantes / 6. Reflexão, refração e absorção", pag: "109, 110, 111, 112, 114" },
-                        { codigo: "9EF08_CN", caed: "Reconhecer as cores primárias e secundárias.", ut: "UNIDADE B — CAPÍTULO 6: ÓPTICA", cap: "3. Cores primárias de luz / 5. Cores primárias de corantes", pag: "110, 112" },
-                        { codigo: "9EF09_CN", caed: "Classificar as radiações eletromagnéticas.", ut: "UNIDADE A — CAPÍTULO 3: ONDAS ELETROMAGNÉTICAS E MODELO ATÔMICO DE BOHR", cap: "1. Ondas / 2. Ondas: mecânicas versus eletromagnéticas / 3. Características e aplicações das ondas eletromagnéticas", pag: "52, 53, 54" },
-                        { codigo: "9EF10_CN", caed: "Reconhecer as aplicações das radiações eletromagnéticas.", ut: "UNIDADE A — CAPÍTULO 3: ONDAS ELETROMAGNÉTICAS E MODELO ATÔMICO DE BOHR", cap: "3. Características e aplicações das ondas eletromagnéticas<br><strong>(e também em)</strong> UNIDADE B — CAPÍTULO 6: Isso vai para o nosso blog! – Importância das radiações eletromagnéticas", pag: "54<br><strong>(e também em)</strong> Página: 128" },
-                        { codigo: "9EF11_CN", caed: "Interpretar como as características hereditárias são transmitidas às gerações seguintes.", ut: "UNIDADE D — CAPÍTULO 10: GENÉTICA E HEREDITARIEDADE", cap: "2. Material genético / 5. O que é Genética? / 6. Alelos localizam-se em cromossomos homólogos / 9. Hereditariedade em humanos", pag: "200, 205, 210" },
-                        { codigo: "9EF13_CN", caed: "Reconhecer a contribuição de Mendel para os estudos da genética.", ut: "UNIDADE D — CAPÍTULO 10: GENÉTICA E HEREDITARIEDADE", cap: "1. Mendel e as ervilhas", pag: "197" },
-                        { codigo: "9EF14_CN", caed: "Reconhecer os conceitos básicos para o estudo da hereditariedade.", ut: "UNIDADE D — CAPÍTULO 10: GENÉTICA E HEREDITARIEDADE", cap: "3. Cromossomos homólogos e número haploide / 5. O que é Genética? / 7. Genótipo / 8. Fenótipo e influência do ambiente", pag: "202, 205, 206, 207" },
-                        { codigo: "9EF18_CN", caed: "Reconhecer os corpos que compõem o Sistema Solar.", ut: "UNIDADE C — CAPÍTULO 9: GRAVITAÇÃO", cap: "3. A Lei da Gravitação Universal / 4. Geocentrismo versus heliocentrismo / 5. Os planetas e o Sistema Solar / 6. Sol, a nossa estrela", pag: "171, 175, 177" }
-                    ],
-                    3: [
-                        { codigo: "9EF02_CN", caed: "Inferir as mudanças de estado físico da matéria a partir da observação dos modelos de constituição submicroscópica.", ut: "UNIDADE A — CAPÍTULO 1: REAÇÕES QUÍMICAS E TEORIA ATÔMICA DE DALTON", cap: "1. Recordando mudanças de fase da água / 6. A Teoria Atômica de Dalton", pag: "14, 20" },
-                        { codigo: "9EF03_CN", caed: "Inferir, em situações que ocorrem transformações químicas, a relação established entre a conservação das massas e as propriedades dos átomos.", ut: "UNIDADE A — CAPÍTULO 1: REAÇÕES QUÍMICAS E TEORIA ATÔMICA DE DALTON", cap: "3. Recordando o que é reação química / 4. A Lei da Conservação da Massa / 5. A Lei das Proporções Constantes / 9. Explicação para as Leis de Lavoisier e de Proust", pag: "16, 18, 19, 24" },
-                        { codigo: "9EF04_CN", caed: "Interpretar, em uma equação química, a conservação da massa entre reagentes e produtos.", ut: "UNIDADE A — CAPÍTULO 1: REAÇÕES QUÍMICAS E TEORIA ATÔMICA DE DALTON", cap: "4. A Lei da Conservação da Massa / 7. Símbolos e fórmulas / 8. Equação química", pag: "18, 21, 23" },
-                        { codigo: "9EF05_CN", caed: "Interpretar, a partir da evolução histórica de teorias e de tecnologias, os diferentes modelos atômicos.", ut: "UNIDADE A — CAPÍTULO 1: REAÇÕES QUÍMICAS E TEORIA ATÔMICA DE DALTON", cap: "6. A Teoria Atômica de Dalton<br><strong>(e também em)</strong> UNIDADE A — CAPÍTULO 2: 8. Modelo atômico de Rutherford<br><strong>(e também em)</strong> UNIDADE A — CAPÍTULO 3: 4. Modelo atômico de Bohr / 5. Algumas aplicações do modelo de Bohr", pag: "20<br><strong>(e também em)</strong> Página: 39<br><strong>(e também em)</strong> Páginas: 59, 61" },
-                        { codigo: "9EF07_CN", caed: "Explicar as cores dos objetos estabelecendo uma relação com a luz que os ilumina.", ut: "UNIDADE B — CAPÍTULO 6: ÓPTICA", cap: "2. As componentes da luz branca / 3. Cores primárias de luz / 4. Cores primárias de luz e visão / 6. Reflexão, refração e absorção", pag: "109, 110, 111, 114" },
-                        { codigo: "9EF10_CN", caed: "Reconhecer as aplicações das radiações eletromagnéticas.", ut: "UNIDADE A — CAPÍTULO 3: ONDAS ELETROMAGNÉTICAS E MODELO ATÔMICO DE BOHR", cap: "3. Características e aplicações das ondas eletromagnéticas<br><strong>(e também em)</strong> UNIDADE B — CAPÍTULO 6: Isso vai para o nosso blog! – Importância das radiações eletromagnéticas", pag: "54<br><strong>(e também em)</strong> Página: 128" },
-                        { codigo: "9EF12_CN", caed: "Verificar, a partir da aplicação da 1ª lei de Mendel, a expressão de características genéticas em uma população.", ut: "UNIDADE D — CAPÍTULO 10: GENÉTICA E HEREDITARIEDADE", cap: "1. Mendel e as ervilhas / 7. Genótipo / 8. Fenótipo e influência do ambiente / 9. Hereditariedade em humanos / 10. Os grupos sanguíneos", pag: "197, 206, 207, 210, 211" },
-                        { codigo: "9EF15_CN", caed: "Comparar as ideias evolucionistas de Lamarck e Darwin.", ut: "UNIDADE D — CAPÍTULO 11: EVOLUÇÃO DOS SERES VIVOS", cap: "2. O conceito de evolução / 3. A explicação lamarckista para a evolução / 4. A explicação darwinista para a evolução", pag: "222, 223" },
-                        { codigo: "9EF16_CN", caed: "Explicar o processo de evolução e o fenômeno da biodiversidade com base no conceito de seleção natural.", ut: "UNIDADE D — CAPÍTULO 11: EVOLUÇÃO DOS SERES VIVOS", cap: "4. A explicação darwinista para a evolução / 6. Evolução não é um processo individual / 7. Darwin inspirou-se na seleção artificial / 8. Árvores filogenéticas", pag: "223, 225, 226, 227" },
-                        { codigo: "9EF17_CN", caed: "Reconhecer fatores que determinam o processo de especiação.", ut: "UNIDADE D — CAPÍTULO 11: EVOLUÇÃO DOS SERES VIVOS", cap: "5. Como se formam novas espécies? / 8. Árvores filogenéticas", pag: "224, 227" },
-                        { codigo: "9EF19_CN", caed: "Organizar o ciclo evolutivo de uma estrela.", ut: "UNIDADE C — CAPÍTULO 9: GRAVITAÇÃO", cap: "6. Sol, a nossa estrela / 8. Sol e outras estrelas / 9. Ciclo de vida das estrelas / Isso vai para o nosso blog! – Astronomia e Astronáutica", pag: "177, 182, 186, 195" }
-                    ]
-                }
-            }
+            "7ano": { "titulo": "7º Ano - Ensino Fundamental", "ciclos": { 1: [], 2: [], 3: [] } },
+            "8ano": { "titulo": "8º Ano - Ensino Fundamental", "ciclos": { 1: [], 2: [], 3: [] } },
+            "9ano": { "titulo": "9º Ano - Ensino Fundamental", "ciclos": { 1: [], 2: [], 3: [] } }
         };
 
         let turmaAtual = null;
@@ -556,9 +697,9 @@
             const dadosTurma = bancoDados[turmaKey];
             document.getElementById('titulo-turma').innerText = dadosTurma.titulo;
 
-            document.getElementById('count-ciclo1').innerText = dadosTurma.ciclos[1].length;
-            document.getElementById('count-ciclo2').innerText = dadosTurma.ciclos[2].length;
-            document.getElementById('count-ciclo3').innerText = dadosTurma.ciclos[3].length;
+            document.getElementById('count-ciclo1').innerText = dadosTurma.ciclos[1] ? dadosTurma.ciclos[1].length : 0;
+            document.getElementById('count-ciclo2').innerText = dadosTurma.ciclos[2] ? dadosTurma.ciclos[2].length : 0;
+            document.getElementById('count-ciclo3').innerText = dadosTurma.ciclos[3] ? dadosTurma.ciclos[3].length : 0;
 
             carregarCiclo(1);
         }
@@ -592,6 +733,29 @@
             habilidades.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'card habilidade-card p-3 p-md-4';
+                
+                let blocoPedagogico = '';
+                if (item.erro || item.dica) {
+                    blocoPedagogico = `
+                        <div class="row g-2 mt-2">
+                            ${item.erro ? `
+                            <div class="col-12 col-md-6">
+                                <div class="pedagogico-box pedagogico-erro">
+                                    <strong class="d-block mb-1"><i class="fa-solid fa-circle-exclamation me-1"></i> Erro Frequente:</strong>
+                                    ${item.erro}
+                                </div>
+                            </div>` : ''}
+                            ${item.dica ? `
+                            <div class="col-12 col-md-6">
+                                <div class="pedagogico-box pedagogico-dica">
+                                    <strong class="d-block mb-1"><i class="fa-solid fa-lightbulb me-1"></i> Dica de Foco:</strong>
+                                    ${item.dica}
+                                </div>
+                            </div>` : ''}
+                        </div>
+                    `;
+                }
+
                 card.innerHTML = `
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="badge badge-code"><i class="fa-solid fa-hashtag me-1"></i>${item.codigo}</span>
@@ -620,6 +784,7 @@
                             </div>
                         </div>
                     </div>
+                    ${blocoPedagogico}
                 `;
                 conteiner.appendChild(card);
             });
