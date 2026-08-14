@@ -245,6 +245,22 @@
             margin: 0;
         }
 
+        .pedagogico-box {
+            border-radius: var(--radius-md);
+            padding: 0.85rem 1rem;
+            font-size: 0.85rem;
+        }
+        .pedagogico-erro {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+        }
+        .pedagogico-dica {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+        }
+
         @media (max-width: 576px) {
             .header-section h1 { font-size: 1.75rem; }
             .header-section p { font-size: 0.85rem; }
@@ -367,13 +383,64 @@
 
     <script>
         const bancoDados = {
-            "6ano": { "titulo": "6º Ano - Língua Portuguesa", "ciclos": { 1: [], 2: [], 3: [] } },
+            "6ano": {
+                "titulo": "6º Ano - Língua Portuguesa",
+                "ciclos": {
+                    1: [
+                        { codigo: "5EF06_P", bncc: "EF35LP05", caed: "Inferir, em textos de nível 2, o sentido de palavras ou expressões não coloquiais, com apoio de pistas co-textuais (sinonímia, antonímia, palavras do mesmo campo semântico e outras sinalizações).", ut: "UNIDADE 1 — CAPÍTULO 1", cap: "Compreensão e interpretação", pag: "16, 28", erro: "Focar apenas no significado isolado do dicionário.", dica: "Incentive o aluno a buscar sinônimos ou pistas dentro do próprio parágrafo." },
+                        { codigo: "6EF01_P", bncc: "EF15LP03", caed: "Localizar informação em textos de nível 2, quando a informação é retomada, no texto, por um processo de referenciação com referente próximo.", ut: "UNIDADE 1 — CAPÍTULO 1", cap: "Compreensão e interpretação", pag: "16", erro: "Confundir elementos secundários com a informação principal.", dica: "Destaque pronomes que retomam o referente principal." },
+                        { codigo: "6EF03_P", bncc: "EF35LP05", caed: "Reconhecer o assunto de textos de nível 2 nos quais tal reconhecimento requeira a leitura global do texto.", ut: "UNIDADE 1 — CAPÍTULO 1", cap: "Conto: Os sete corvos", pag: "14, 16", erro: "Resumir o texto baseando-se em apenas um parágrafo.", dica: "Responda: 'O que o texto conta como um todo?'" },
+                        { codigo: "6EF07_P", bncc: "EF35LP04", caed: "Inferir informação em textos de nível 2 a partir de uma palavra-chave.", ut: "UNIDADE 1 — CAPÍTULO 2", cap: "Estudo do texto", pag: "38", erro: "Basear-se em achismos sem localizar a palavra-chave.", dica: "Analise as frases ao redor da palavra-chave." },
+                        { codigo: "6EF09_P", bncc: "EF15LP01", caed: "Identificar a finalidade de textos de nível 2 que circulam no campo de atuação da vida pública ou de estudos e pesquisas.", ut: "UNIDADE 1 — CAPÍTULO 3", cap: "Fábulas em cena", pag: "58, 62", erro: "Confundir o tema com o objetivo do autor.", dica: "Pergunte: 'Para que serve este texto? Qual o objetivo?'" },
+                        { codigo: "6EF11_P", bncc: "EF15LP02", caed: "Reconhecer o gênero de textos de nível 2 que circulam no campo de atuação artístico literário, da vida pública ou de estudos e pesquisas.", ut: "UNIDADE 1 — CAPÍTULO 1 e 2", cap: "Contos e Fábulas", pag: "14, 36", erro: "Confundir características de contos com crônicas.", dica: "Observe a estrutura: situação inicial, conflito, desfecho." },
+                        { codigo: "6EF13_P", bncc: "EF35LP29", caed: "Reconhecer o conflito gerador do enredo em narrativas lineares de nível 2, quando o conflito se apresenta no início do texto e/ou há pistas que o sinalizam.", ut: "UNIDADE 1 — CAPÍTULO 1", cap: "Os sete corvos", pag: "14, 16", erro: "Confundir acontecimentos da rotina com o fato gerador do problema.", dica: "Identifique o momento em que a rotina é quebrada." },
+                        { codigo: "6EF15_P", bncc: "EF04LP15", caed: "Identificar a opinião de um personagem em texto de nível 2, sendo os enunciados opinativos marcados por frase exclamativa ou estrutura predicativa.", ut: "UNIDADE 1 — CAPÍTULO 2", cap: "A linguagem do texto", pag: "39, 40", erro: "Confundir fatos narrados com juízos de valor.", dica: "Observe verbos de opinião e pontos de exclamação." },
+                        { codigo: "6EF17_P", bncc: "EF15LP18", caed: "Inferir efeitos de crítica em textos que articulam linguagem verbal e não verbal (multissemióticos).", ut: "UNIDADE 1 — CAPÍTULO 3", cap: "Cruzando linguagens", pag: "66", erro: "Ignorar as imagens, focando apenas no texto escrito.", dica: "Analise como a ilustração reforça a crítica verbal." },
+                        { codigo: "6EF18_P", bncc: "EF05LP07", caed: "Reconhecer, em textos de nível 2, relações lógico-discursivas adição, oposição, condição marcadas por conjunções mais usuais.", ut: "UNIDADE 1 — CAPÍTULO 3", cap: "A língua em foco", pag: "70", erro: "Trocar o sentido de oposição (mas) por adição (e).", dica: "Substitua a conjunção por outra da mesma categoria para testar." },
+                        { codigo: "6EF20_P", bncc: "EF35LP14", caed: "Identificar, em textos de nível 2, o referente de uma expressão nominal com pronome adjetivo (possessivo, demonstrativo, indefinido) ou de elipses.", ut: "UNIDADE 2 — CAPÍTULO 2", cap: "Substantivo e Pronomes", pag: "129, 204", erro: "Desconectar o pronome do termo anterior.", dica: "Mapeie com setas os pronomes até os substantivos retomados." }
+                    ],
+                    2: [
+                        { codigo: "5EF06_P", bncc: "EF35LP05", caed: "Inferir, em textos de nível 2, o sentido de palavras ou expressões não coloquiais, com apoio de pistas co-textuais (sinonímia, antonímia, palavras do mesmo campo semântico e outras sinalizações).", ut: "UNIDADE 2 — CAPÍTULO 1", cap: "A linguagem do texto", pag: "101", erro: "Interpretar sentidos figurados literalmente.", dica: "Use o contexto ampliado do parágrafo." },
+                        { codigo: "6EF02_P", bncc: "EF69LP03", caed: "Localizar informações explícitas, em textos de nível 2, recuperando-as por meio de paráfrase, estando a informação no início do texto.", ut: "UNIDADE 2 — CAPÍTULO 1", cap: "Compreensão e interpretação", pag: "100", erro: "Procurar cópia exata e não o sentido equivalente.", dica: "Treine a busca por sinônimos." },
+                        { codigo: "6EF07_P", bncc: "EF35LP04", caed: "Inferir informação em textos de nível 2 a partir de uma palavra-chave.", ut: "UNIDADE 2 — CAPÍTULO 2", cap: "Estudo do texto", pag: "122", erro: "Fazer extrapolações distantes do texto.", dica: "Ancore a resposta apenas nos limites do texto lido." },
+                        { codigo: "6EF08_P", bncc: "EF69LP03", caed: "Inferir informação em textos de nível 2 por dedução a partir de um enunciado ou na articulação entre dois enunciados.", ut: "UNIDADE 2 — CAPÍTULO 3", cap: "Resenha crítica", pag: "155", erro: "Isolar frases perdendo a relação lógica.", dica: "Relacione a premissa de um parágrafo com a consequência do próximo." },
+                        { codigo: "6EF10_P", bncc: "EF69LP17", caed: "Identificar a finalidade de gêneros publicitários e jornalísticos (cartazes, notícias, charges, cartas do leitor).", ut: "UNIDADE 3 — CAPÍTULO 3", cap: "Campanhas Unicef / Propaganda", pag: "218, 235", erro: "Confundir o tema do anúncio com sua intenção (persuasiva).", dica: "Identifique se o objetivo é convencer, informar ou emocionar." },
+                        { codigo: "6EF11_P", bncc: "EF15LP02", caed: "Reconhecer o gênero de textos de nível 2 que circulam no campo de atuação artístico literário, da vida pública ou de estudos e pesquisas.", ut: "UNIDADE 2 — CAPÍTULO 1", cap: "História em quadrinhos", pag: "112", erro: "Confundir tirinhas e HQs com narrativas em prosa.", dica: "Observe a presença de balões e recursos visuais." },
+                        { codigo: "6EF13_P", bncc: "EF35LP29", caed: "Reconhecer o conflito gerador do enredo em narrativas lineares de nível 2, quando o conflito se apresenta no início do texto e/ou há pistas que o sinalizam.", ut: "UNIDADE 2 — CAPÍTULO 1", cap: "Princesa do pé quebrado", pag: "93, 100", erro: "Confundir apresentação dos personagens com o fato gerador.", dica: "Localize a quebra da rotina da história." },
+                        { codigo: "6EF16_P", bncc: "EF67LP04", caed: "Identificar opinião em textos de estrutura expositiva de níveis 2 e 3, sendo os enunciados opinativos marcados por verbo opinativo (acho que, penso que).", ut: "UNIDADE 2 — CAPÍTULO 3", cap: "Resenha crítica", pag: "153", erro: "Tratar avaliações como dados científicos.", dica: "Grife os verbos de opinião ('acho que', 'penso que')." },
+                        { codigo: "6EF17_P", bncc: "EF15LP18", caed: "Inferir efeitos de crítica em textos que articulam linguagem verbal e não verbal (multissemióticos).", ut: "UNIDADE 3 — CAPÍTULO 3", cap: "Cartazes e campanhas", pag: "218", erro: "Ignorar elementos visuais em favor da leitura escrita.", dica: "Analise o contraste entre imagem e legenda." },
+                        { codigo: "6EF18_P", bncc: "EF05LP07", caed: "Reconhecer, em textos de nível 2, relações lógico-discursivas adição, oposição, condição marcadas por conjunções mais usuais.", ut: "UNIDADE 2 — CAPÍTULO 2", cap: "Os pronomes e a coesão textual", pag: "210", erro: "Interpretar conectivos condicionais como temporais.", dica: "Destacar conjunções e testar sua função lógica." },
+                        { codigo: "6EF20_P", bncc: "EF35LP14", caed: "Identificar, em textos de nível 2, o referente de uma expressão nominal com pronome adjetivo (possessivo, demonstrativo, indefinido) ou de elipses.", ut: "UNIDADE 2 — CAPÍTULO 2", cap: "O adjetivo, o artigo e o numeral / Coesão", pag: "210", erro: "Desconectar o pronome da palavra ou termo anterior a que ele se refere no texto.", dica: "Fazer flechas ligando os pronomes possessivos e demonstrativos aos substantivos retomados." }
+                    ],
+                    3: [
+                        { codigo: "6EF02_P", bncc: "EF69LP03", caed: "Localizar informações explícitas, em textos de nível 2, recuperando-as por meio de paráfrase, estando a informação no início do texto.", ut: "UNIDADE 3 — CAPÍTULO 1", cap: "Estudo do texto", pag: "249", erro: "Confundir secundário com principal.", dica: "Rastreie visualmente o trecho solicitado antes de responder." },
+                        { codigo: "6EF04_P", bncc: "EF69LP03", caed: "Reconhecer o assunto de textos de nível 3 nos quais o assunto é apontado indiretamente pelo título.", ut: "UNIDADE 3 — CAPÍTULO 2", cap: "Derretimento Groenlândia", pag: "266", erro: "Prender-se ao sentido literal do título.", dica: "Analise a metáfora do título versus o conteúdo informativo." },
+                        { codigo: "6EF06_P", bncc: "EF67LP06", caed: "Inferir, em textos de nível 2, o sentido de palavras ou expressões não coloquiais, a partir da leitura global do texto.", ut: "UNIDADE 3 — CAPÍTULO 3", cap: "Divulgação científica", pag: "307", erro: "Traduzir termos sem contexto.", dica: "Explique o termo técnico baseado na explicação do parágrafo." },
+                        { codigo: "6EF08_P", bncc: "EF69LP03", caed: "Inferir informação em textos de nível 2 por dedução a partir de um enunciado ou na articulação entre dois enunciados.", ut: "UNIDADE 3 — CAPÍTULO 1", cap: "Entrevista Wallace-Wells", pag: "246, 249", erro: "Criar hipóteses sem respaldo no texto.", dica: "Aponte a linha que justifica a dedução." },
+                        { codigo: "6EF10_P", bncc: "EF69LP17", caed: "Identificar a finalidade de gêneros publicitários e jornalísticos (cartazes, notícias, charges, cartas do leitor).", ut: "UNIDADE 3 — CAPÍTULO 1", cap: "Notícia e Entrevista", pag: "246, 283", erro: "Confundir a função de entreter com a de orientar/informar.", dica: "Diferenciar textos de opinião e jornalísticos quanto ao objetivo." },
+                        { codigo: "6EF12_P", bncc: "EF69LP02", caed: "Reconhecer o gênero de textos publicitários e jornalísticos (cartazes, notícias, charges, cartas do leitor).", ut: "UNIDADE 3 — CAPÍTULO 2 e 3", cap: "Artigo científico / Notícia", pag: "283, 307", erro: "Confundir artigo científico com reportagem opinativa.", dica: "Observe a presença de dados de pesquisa e especialistas." },
+                        { codigo: "6EF14_P", bncc: "EF69LP47", caed: "Reconhecer o narrador em 1ª pessoa (personagem) ou em 3ª pessoa em narrativas lineares de nível 3.", ut: "UNIDADE 2 — CAPÍTULO 1", cap: "HQs e Contos", pag: "100, 112", erro: "Achar que 1ª pessoa é sempre biografia do autor.", dica: "Verifique pronomes (eu/me vs ele/eles)." },
+                        { codigo: "6EF16_P", bncc: "EF67LP04", caed: "Identificar opinião em textos de estrutura expositiva de níveis 2 e 3, sendo os enunciados opinativos marcados por verbo opinativo (acho que, penso que).", ut: "UNIDADE 3 — CAPÍTULO 3", cap: "Fato e opinião", pag: "296", erro: "Confundir dado estatístico comprovável com o julgamento sobre ele.", dica: "Fatore a prova: Fatos podem ser provados; opiniões expressam pontos de vista." },
+                        { codigo: "6EF17_P", bncc: "EF15LP18", caed: "Inferir efeitos de crítica em textos que articulam linguagem verbal e não verbal (multissemióticos).", ut: "UNIDADE 3 — CAPÍTULO 3", cap: "Artigos e gráficos informativos", pag: "291, 296", erro: "Desprezar infográficos e tabelas analíticas.", dica: "Interpretar gráficos estatísticos como parte da argumentação." },
+                        { codigo: "6EF19_P", bncc: "EF69LP18", caed: "Reconhecer relações lógico-discursivas de adição, oposição, tempo, causa, em texto de nível 3, marcadas por conjunções mais usuais: e, mas, quando, enquanto, porque, pois.", ut: "UNIDADE 3 — CAPÍTULO 1 e 2", cap: "Verbo e Oração", pag: "251, 272", erro: "Confundir causa com consequência ou finalidade.", dica: "Utilize a pergunta 'Por quê?' para isolar a oração causal." },
+                        { codigo: "6EF21_P", bncc: "EF35LP14", caed: "Identificar, em texto de nível 3, o referente de pronomes pessoais do caso reto (anafórico), quando próximo ou saliente (tópico do texto) e de substituições lexicais (substantivos por sinônimos).", ut: "UNIDADE 2 — CAPÍTULO 2", cap: "Adjetivo, artigo e numeral", pag: "183, 210", erro: "Vincular o pronome ao substantivo mais próximo na frase ignorando o contexto.", dica: "Faça testes de substituição lexical para verificar a coesão." },
+                        { codigo: "6EF22_P", bncc: "EF67LP08", caed: "Reconhecer, em textos multissemióticos de nível 3, o efeito de sentido da articulação entre recursos gráficos e verbais.", ut: "UNIDADE 3 — CAPÍTULO 3", cap: "Infográficos e reportagens", pag: "291", erro: "Tratar o elemento visual como mero enfeite sem função argumentativa.", dica: "Analise como a escolha de cores ou ícones reforça a urgência da mensagem." }
+                    ]
+                }
+            },
             "7ano": { "titulo": "7º Ano - Língua Portuguesa", "ciclos": { 1: [], 2: [], 3: [] } },
             "8ano": { "titulo": "8º Ano - Língua Portuguesa", "ciclos": { 1: [], 2: [], 3: [] } },
             "9ano": { "titulo": "9º Ano - Língua Portuguesa", "ciclos": { 1: [], 2: [], 3: [] } }
         };
 
         let turmaAtual = null;
+
+        function atualizarBadges() {
+            document.getElementById('badge-6ano').innerText = (bancoDados["6ano"].ciclos[1].length + bancoDados["6ano"].ciclos[2].length + bancoDados["6ano"].ciclos[3].length) + " Habilidades";
+            document.getElementById('badge-7ano').innerText = (bancoDados["7ano"].ciclos[1].length + bancoDados["7ano"].ciclos[2].length + bancoDados["7ano"].ciclos[3].length) + " Habilidades";
+            document.getElementById('badge-8ano').innerText = (bancoDados["8ano"].ciclos[1].length + bancoDados["8ano"].ciclos[2].length + bancoDados["8ano"].ciclos[3].length) + " Habilidades";
+            document.getElementById('badge-9ano').innerText = (bancoDados["9ano"].ciclos[1].length + bancoDados["9ano"].ciclos[2].length + bancoDados["9ano"].ciclos[3].length) + " Habilidades";
+        }
 
         function selecionarTurma(turmaKey) {
             turmaAtual = turmaKey;
@@ -394,6 +461,7 @@
             document.getElementById('tela-detalhes').style.display = 'none';
             document.getElementById('tela-inicio').style.display = 'block';
             turmaAtual = null;
+            atualizarBadges();
         }
 
         function carregarCiclo(numCiclo) {
@@ -422,23 +490,67 @@
             habilidades.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'card habilidade-card p-3 p-md-4';
+                
+                let blocoPedagogico = '';
+                if (item.erro || item.dica) {
+                    blocoPedagogico = `
+                        <div class="row g-2 mt-2">
+                            ${item.erro ? `
+                            <div class="col-12 col-md-6">
+                                <div class="pedagogico-box pedagogico-erro">
+                                    <strong class="d-block mb-1"><i class="fa-solid fa-circle-exclamation me-1"></i> Erro Frequente:</strong>
+                                    ${item.erro}
+                                </div>
+                            </div>` : ''}
+                            ${item.dica ? `
+                            <div class="col-12 col-md-6">
+                                <div class="pedagogico-box pedagogico-dica">
+                                    <strong class="d-block mb-1"><i class="fa-solid fa-lightbulb me-1"></i> Dica de Foco:</strong>
+                                    ${item.dica}
+                                </div>
+                            </div>` : ''}
+                        </div>
+                    `;
+                }
+
                 card.innerHTML = `
-                    <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
                         <span class="badge badge-code"><i class="fa-solid fa-hashtag me-1"></i>${item.codigo}</span>
+                        <span class="badge bg-light text-secondary border">BNCC: ${item.bncc}</span>
                     </div>
                     <div class="mb-3">
-                        <span class="text-uppercase text-muted fw-bold small d-block mb-1" style="font-size:0.7rem;">Habilidade e Descritor (Oficial CAEd)</span>
+                        <span class="text-uppercase text-muted fw-bold small d-block mb-1" style="font-size:0.7rem;">Habilidade e Descritor (Oficial CAEd - Leitura)</span>
                         <p class="fw-semibold text-dark fs-6 mb-0">${item.caed}</p>
                     </div>
                     <div class="row g-2">
-                        <div class="col-12 col-md-5"><div class="meta-box"><span class="meta-label">Unidade / Capítulo</span><p class="meta-value">${item.ut}</p></div></div>
-                        <div class="col-12 col-md-4"><div class="meta-box"><span class="meta-label">Seção / Tema</span><p class="meta-value">${item.cap}</p></div></div>
-                        <div class="col-12 col-md-3"><div class="meta-box"><span class="meta-label">Página</span><p class="meta-value">${item.pag}</p></div></div>
+                        <div class="col-12 col-md-5">
+                            <div class="meta-box">
+                                <span class="meta-label"><i class="fa-solid fa-layer-group text-primary me-1"></i> Unidade / Capítulo</span>
+                                <p class="meta-value">${item.ut}</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="meta-box">
+                                <span class="meta-label"><i class="fa-solid fa-book-open text-primary me-1"></i> Seção / Tema</span>
+                                <p class="meta-value">${item.cap}</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <div class="meta-box">
+                                <span class="meta-label"><i class="fa-solid fa-bookmark text-primary me-1"></i> Página</span>
+                                <p class="meta-value">${item.pag}</p>
+                            </div>
+                        </div>
                     </div>
+                    ${blocoPedagogico}
                 `;
                 conteiner.appendChild(card);
             });
         }
+
+        window.onload = function() {
+            atualizarBadges();
+        };
     </script>
 </body>
 </html>
